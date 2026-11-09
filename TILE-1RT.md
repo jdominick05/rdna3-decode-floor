@@ -38,3 +38,25 @@ this test.
   this benchmark suggested; do not port to K3 on this evidence.
 - 5-10 %: worth checking K3's own per-stage times first.
 - 10 % or more: port the pattern to K3's matvec kernels (after measuring where K3's time goes).
+
+## Result of v1 (2026-11-09, recorded before v2 was measured)
+
+Three interleaved base / 1rt pairs on the XTX (display attached, both builds from commit 1c64f0b): the 1rt tile was
+slower everywhere in INT4 and unchanged in f16 (the control).
+
+| Quantity | Base | 1rt v1 |
+|---|---|---|
+| 1-block INT4 matvec, K = 128, cold | 2.32 us | 2.60 us |
+| 1-block INT4 matvec, K = 2048, cold | 3.28 us | 3.56 us |
+| E1 INT4 t0 (wide range) | 4.39 us | 4.95 us |
+| INT4 cold token, grouped graph | 3.683 ms | 4.517 ms (+22.6 %) |
+| f16 cold token, grouped graph (control) | 8.830 ms | 8.836 ms |
+
+By the decision rule: do not port v1. But v1 did not implement the design. Its generated code wraps each load in a
+divergent branch and converts each row's scale and zero to float inside that branch, so it waits (`s_waitcnt
+vmcnt(1)`) after each row's loads before issuing the next: the round trips stayed serial, with branch overhead added.
+The design (one round trip per pass) is therefore still untested.
+
+v2: every load issued unconditionally from a clamped valid address; scales and zeros kept as raw f16 until after the
+single wait; bounds applied only in the arithmetic. Gates and predictions as above, unchanged; v2 must show a single
+wait before the arithmetic in the generated code before it is timed.
