@@ -30,30 +30,33 @@ Measured 2026-11-09 on one RX 7900 XTX (gfx1100, 96 CUs / 48 WGPs, 960 GB/s GDDR
    | Part of the graph's 3.66 ms of GPU time | ms |
    |---|---|
    | The weight bytes, at the 858 GB/s the vocab head reaches | 1.88 |
-   | Kernel time above that baseline | 1.43 |
-   | Gaps between kernels (estimate) | 0.23–0.35 |
+   | Kernel time above that baseline (derived) | 1.43–1.55 |
+   | Gaps between kernels (derived) | 0.23–0.35 |
 
-   - **What the 1.43 ms is made of is not measured.** It is time above a bandwidth baseline. It includes arithmetic,
+   - **What the 1.43–1.55 ms is made of is not measured.** It is time above a bandwidth baseline. It includes arithmetic,
      dequantization, reductions, metadata loads and dispatch, as well as memory latency.
    - **Serial loads are a likely contributor.** The generated code waits for each chunk's loads before issuing the
      next. A wave's two rows also run one after the other. An INT4 tile at K = 2048 therefore takes 4 dependent round
      trips, and an f16 tile 16.
-4. **The persistent kernel's result depends on whether something keeps the PCIe link busy.**
+4. **The persistent kernel's result depends on a delay after long launches.**
 
    | INT4 cold token | As configured | Host thread reading GPU memory over PCIe |
    |---|---|---|
    | Grouped graph | 3.68 ms | 3.67 ms |
    | Best persistent variant (barrier-pf) | 3.83 ms, **4 % slower** | 3.60 ms, **2 % faster** |
 
-   - **What was observed.** On this XTX, every tested single launch longer than about 1 ms showed 200–320 µs more time
-     by HIP events (and on the host) than by GPU clocks. That covers the four persistent variants and one plain
-     1.13 ms kernel.
+   - **What was observed.** On this XTX, every tested single launch longer than about 1 ms was followed by an idle
+     period of 200–320 µs. That covers the four persistent variants and one plain 1.13 ms kernel.
+     - Kernel durations and in-kernel stamps exclude it.
+     - HIP events and the host include it.
+     - In a kernel trace it is an idle gap before the next dispatch.
    - **The keep-alive removed it in every persistent test.** The thread reads one word of GPU memory over PCIe in a
      loop.
    - **Launch sequences didn't show it.**
    - **It was paid on every launch, back-to-back launches too.** So a decode loop that runs one long kernel per token
      would pay it on every token.
-   - **The leading hypothesis is PCIe link power management, but it is not established.**
+   - **The mechanism is not established.** Link power management on the PCIe path is the leading hypothesis. The tests
+     that would separate the candidates need root and have not been run.
    - **On GPU time, the persistent kernel recovers the gaps but spends more inside its stages.** The largest
      interval differences are in the experts' down projections (+0.52 ms) and in q|k|v and o (−0.31 ms, where the
      next stage's loads start early). These are differences between synchronization boundaries, not isolated costs.
@@ -71,14 +74,17 @@ comparable kernels. If not, we stop and report that first. A kernel far faster t
 dispatch result."
 
 **What happened.**
-- Of IREE's 26 per-shape kernel times, six are clearly more than 2× ours:
+- Of IREE's 26 per-shape entries (24 distinct shapes; 512×2048 appears twice under two labels), six are clearly more
+  than 2× ours:
   - f16 8192×2048 (4.8×), q 4096×2048 (4.3×), o 2048×4096 (3.5×), down 2048×768 (2.5×) and the 35B vocab head
     (2.3×);
   - INT4 o (2.3×).
 - Two more are close to 2×: the f16 30B head (2.03×) and INT4 8192×2048 (1.98×).
 - In every case ours is the faster kernel.
-- run.sh runs every experiment in one pass, and nothing in it enforced the gate. We compared E0 against IREE's numbers
-  after the full run, so nothing stopped.
+- run.sh runs every experiment in one pass, and nothing in it enforced the gate.
+- **The trip was visible in development runs about 30–50 minutes before the three reported runs.** Those runs' tables
+  carried the IREE columns too. The final runs were made knowing the gate had tripped, so continuing was a decision,
+  not an oversight.
 
 **Why we continued.**
 - **The question is the launch floor.** That lives mostly in the small shapes, and most of those are within 2×: INT4
@@ -92,6 +98,11 @@ dispatch result."
 - **The results hold for this implementation, on this platform, with this synthetic schedule.** Similar standalone
   kernel times do not imply similar occupancy, dependencies, cache behaviour or persistence costs, and only one tile
   implementation was tested. The stages also pass no data, which a real decode step does.
+- **How each result would move with slower kernels:**
+  - **The gap share would only shrink.** The gaps are a fixed cost per stage, so longer kernels make them a smaller part
+    of the token.
+  - **The 1.43–1.55 ms above the bandwidth baseline belongs to this tile.**
+  - **The persistent-versus-graph result (±4 %) could move either way with slower stages.** That is untested.
 - **The rule should have been in the script.** Recorded as a method finding below.
 
 ## Setup
@@ -111,6 +122,7 @@ dispatch result."
   - ASPM L1 is enabled on the card's links (sysfs `l1_aspm=1` on 01:00.0 and 03:00.0); the kernel's ASPM policy is
     `default`.
   - Each run's `environment.txt` records the link state at its start.
+  - The PCIe link's DPM level (`pp_dpm_pcie`) was neither pinned nor recorded during the runs.
 - **Model shapes:**
   - Qwen3-30B-A3B per layer: q 1×4096×2048, k and v 1×512×2048, o 1×2048×4096, router 1×128×2048, and 8 of 128 experts,
     each gate and up 1×768×2048 and down 1×2048×768;
@@ -220,9 +232,11 @@ and the 256- and 512-row shapes: [data/spread.md](data/spread.md).
 392.
 - 384 blocks of 8 waves is exactly the chip's 3,072 wave slots, so the anomaly sits just below a grid that fills the
   card.
+- At K = 2048 the 384-block matvec (20.2–21.8 µs) is within noise of 376 and 392 blocks. So the extra ~9 µs is absent,
+  or hidden, in a 19 µs kernel, which constrains the mechanism.
 - None of the token's launch grids falls in the band. The mechanism is not known.
 
-### E1: the fixed cost of a single kernel (cold, K = 2048; fit t = t0 + bytes / BW)
+### E1: a linear fit of single-kernel time against bytes (cold, K = 2048; t = t0 + bytes / BW)
 
 | Format | Range | t0 | BW (fit) | Shapes under 1 MB |
 |---|---|---|---|---|
@@ -235,6 +249,9 @@ and the 256- and 512-row shapes: [data/spread.md](data/spread.md).
   first version of this report scored the prediction on that wider fit.
 - **The two extra points existed before any XTX measurement.**
 - **The predictions table scores the plan's range.**
+- **t0 is a regression constant, not the measured floor.** One bandwidth does not fit 0.03–36 MB well. The wide-range
+  INT4 t0 (4.38 µs) is above the measured 32-row kernel (3.40 µs), and the wide-range f16 BW (853 GB/s) is above the
+  fastest measured f16 kernel (830 GB/s). The floor table above is the direct measurement.
 
 ### Synchronization inside one persistent kernel (µs per stage, GPU stamps)
 
@@ -246,7 +263,7 @@ and the 256- and 512-row shapes: [data/spread.md](data/spread.md).
 | 240 (5, the shared occupancy limit) | 1.52 | 3.64 | 5.28 | 3.01 | 2.19 |
 
 - **The barrier grows with the number of blocks.** At the token's grid it costs about as much per stage as the
-  estimated gap between graph launches (about 1–1.5 µs). So replacing launches with barriers saves little by itself.
+  estimated gap between graph launches (0.95–1.5 µs, the two estimates below). So replacing launches with barriers saves little by itself.
 - **Dataflow does not grow.**
 - **Prefetch helps dataflow,** where a waiting block claims the next tile. It hurts the barrier variant in this test,
   because block 0 holds every one-tile stage.
@@ -293,7 +310,8 @@ stages 1–255 of one launch's stage times.
 - **Run-to-run spread is under 1 % on every row.**
 - **Bandwidth bounds for the INT4 token:** 1.68 ms at 960 GB/s, 1.88 ms at the 858 GB/s our kernel reaches on the vocab
   head.
-- **The f16 token is close to its bandwidth bound in every grouped or persistent mode** (690 GB/s).
+- **The f16 token runs at 691 GB/s in the grouped graph.** That is 77 % of the ~900 GB/s the f16 vocab heads reach, and
+  2.0 ms (23 % of the token) above its bytes at that rate, against 43 % for INT4.
 - **Warm, the persistent kernel is 22 % slower than the graph even with the link awake.** The stages are short, and the
   synchronization dominates.
 - **Other grids:**
@@ -301,15 +319,15 @@ stages 1–255 of one launch's stage times.
   - dataflow at 384 blocks: 4.00 ms;
   - 96 blocks: 5.7–6.7 ms.
 
-### Time outside the kernel (INT4 cold token, µs)
+### The delay after long launches (INT4 cold token, µs)
 
 Each mode was timed three ways in one process:
 - by events around the run;
 - by GPU stamps just before and just after the run;
 - by events around the stamps.
 
-"Hidden" is the difference between the last two in each window: time that passes on the wall clock but between no GPU
-stamps. Each cell is the median of the three runs' medians, each run's over 60 windows.
+"Hidden" is the difference between the last two in each window: time that the events include and the stamp kernels
+exclude. Each cell is the median of the three runs' medians, each run's over 60 windows.
 
 | Mode | event | stamp to stamp | hidden | windows with hidden > 50 µs | hidden, link kept awake |
 |---|---|---|---|---|---|
@@ -318,14 +336,29 @@ stamps. Each cell is the median of the three runs' medians, each run's over 60 w
 | persistent dataflow-pf | 4589.1 | 4348.5 | 242.9 | 179 of 180 | 9.2 (0 of 180) |
 | empty kernel | 8.7 | 6.3 | 8.7 | 0 of 180 | 8.7 (0 of 180) |
 
-**What the single-run diagnostics showed.** The logs are in [data/dev-observations/](data/dev-observations/).
+**A kernel trace shows it as an idle gap.** From the rocprofv3 traces of run 1, the median gap between a kernel's end
+and the next dispatch's start:
+
+| Kernel before the gap | Gap |
+|---|---|
+| any small kernel (E0, f16 warm) | 11.3 µs |
+| the 0.70 ms f16 30B vocab head | 24.9 µs |
+| the 1.13 ms f16 35B vocab head | 261 µs |
+| each persistent kernel (traced E3 run) | 271–278 µs |
+
+In E0 an event marker sits between consecutive kernels. In the window diagnostic, a one-thread kernel launched right
+after the persistent kernel was not delayed (stamp to stamp ≈ kernel + 10 µs); the delay came before the following
+event completed.
+
+**What the single-run diagnostics showed.** These predate the final runs; the logs are in
+[data/dev-observations/](data/dev-observations/).
 - **The host saw the same extra time.** The launch call returns in 1.4 µs, and the host wait ends ~3,825 µs after
   submit. rocprofv3's kernel duration matched the stamped span (3.572 against 3.562 ms).
 - **Each launch paid it.** Two tokens in one event window cost 2 × 3,821 µs.
 - **Spinning on `hipEventQuery` instead of blocking made no difference.**
 - **The sync-state reset before the launch is not the cause.** Synchronizing after the reset, or placing an empty
   kernel between the reset and the event, made no difference.
-- **The display was not needed.**
+- **The display is not the cause, but it masks the delay part of the time.**
   - With two monitors on the XTX: 65 of 80 windows had it.
   - With the monitors on the integrated GPU: 79 of 80.
 - **No link speed change was seen.** The CPU-side root port read 16 GT/s x16 at every 1 ms sample during the run; it
@@ -337,26 +370,44 @@ stamps. Each cell is the median of the three runs' medians, each run's over 60 w
   with the keep-alive.
 - **There is an apparent transition near 1.0 ms.** The default-link E2 tables hold 528 persistent measurements (3 runs
   × 44 shape, grid and format rows × 4 variants). Each is a median, and the duration used is a proxy: 256 × the median
-  stage time.
-  - Below a proxy of 1.014 ms the extra time was 5–59 µs.
-  - Above it, 200–323 µs.
-  - At 1.014 ms both occur.
+  stage time over stages 1–255 (stage 0 is excluded).
+  - Below 1.01 ms none paid it (extra time 5–59 µs).
+  - Between 1.01 and 1.02 ms, 3 of 5 did.
+  - Above 1.02 ms all did (200–323 µs).
 
   Establishing a cutoff would need paired whole-launch GPU spans and event times.
-- **The RX 7900 XT showed none.** One full-token run, on an x4 link with ASPM off: event 4,380 µs, stamps 4,373 µs. That
-  comparison also changes the card and the topology.
+- **There is a smaller graded part.**
+  - In E0, the gap after the 0.70 ms kernel is 14 µs longer than after small kernels.
+  - The keep-alive also shortens the launch modes by 0.3–1.6 %.
+
+  Both point to a multi-level, timer-based state rather than a single switch.
+- **The RX 7900 XT showed none, but it is not a control.** One full-token run gave event 4,380 µs and stamps
+  4,373 µs.
+  - It differs from the XTX in link width (x4), ASPM state (off), position in the topology and card, all at once.
+  - No environment record of that run is in data/.
+- **The tested kernels make no PCIe traffic while running.** They poll device memory and stream weights. A kernel that
+  touches host memory while running might never reach the idle state; that was not tested.
 
 **What it might be.**
-- **The leading hypothesis is PCIe link power management after about 1 ms with no bus traffic.** ASPM L1 is enabled on
-  the XTX's links and disabled on the XT's.
-- **It is not established, for four reasons:**
+- **The leading hypothesis is power management somewhere on the PCIe path after about 1 ms with no bus traffic.** ASPM
+  L1 is enabled on the XTX's links and disabled on the XT's.
+- **It is not established.**
   - ASPM was never changed on the same card; that needs root.
-  - The keep-alive changes CPU activity and bus traffic together.
-  - Other causes are not excluded: runtime completion and fence handling, the card's host-interface power management,
-    CPU package states, or a combination.
-  - The extra time lies somewhere between the events and the stamp kernels, at either end of the window. Traced runs
-    show the persistent kernel starting ~4 µs after the preceding work, which points to the end. But tracing adds its
-    own completion handling.
+  - The keep-alive's reads wake the CPU's root complex, the card's switch and the GPU's fabric alike, so the A/B does
+    not localize the sleeping part. It also changes CPU activity.
+  - **Candidates not excluded:**
+    - ASPM L1, or its substates;
+    - firmware link DPM (a retrain at wake shorter than the 1 ms poll);
+    - power management in the CPU's root complex or I/O die;
+    - the GPU's host interface;
+    - runtime completion handling;
+    - a combination.
+- **The tests that would separate them, before anyone acts on it:**
+  - `l1_aspm=0` on 01:00.0 and 03:00.0;
+  - the kernel parameter `pcie_aspm.policy=performance`;
+  - `pp_dpm_pcie` pinned at its top level and recorded.
+
+  All need root.
 - **The keep-alive is a workaround, not a fix.** It is a host loop reading one 32-bit word of device memory through the
   BAR, and it costs a CPU core.
 
@@ -386,7 +437,7 @@ stamps. Each cell is the median of the three runs' medians, each run's over 60 w
 | Part | ms | How it is derived |
 |---|---|---|
 | The weight bytes | 1.88 | 1.616 GB at 858 GB/s, the vocab head's rate |
-| Kernel time above that baseline | 1.43 | The traced kernel sum (3.31 ms) minus the bytes |
+| Kernel time above that baseline | 1.43–1.55 | The traced kernel sum (3.31 ms) minus the bytes; 1.55 if the untraced kernel sum is 3.66 − 0.23 ms |
 | Gaps, estimate 1 | 0.35 | Untraced stamp-to-stamp span minus the traced kernel sum |
 | Gaps, estimate 2 | 0.23 | E2's ~0.95 µs per gap (graph per matvec minus E0 kernel time) × 241 |
 
@@ -394,8 +445,9 @@ stamps. Each cell is the median of the three runs' medians, each run's over 60 w
   - Estimate 1 subtracts a pooled traced kernel population from a separate untraced span, and tracing changes kernel
     timing.
   - Estimate 2 extrapolates repeated single-shape sequences to the token's mixed stages.
-- **Neither bounds the true gaps.** A defensible decomposition needs matched graph invocations and a measured tracing
-  effect.
+- **Neither bounds the true gaps, and the excess shares the same uncertainty.** The 1.43 figure and estimate 1 both
+  come from the traced kernel sum, so they are not independent. Tracing's effect on kernel durations is unmeasured.
+  A defensible decomposition needs matched graph invocations and a measured tracing effect.
 
 **barrier-pf against the grouped launches, per layer.** These are differences between intervals that end at
 synchronization boundaries, not isolated costs of the named projections.
@@ -439,8 +491,9 @@ against round-robin tiles is the obvious difference, but it was not tested.
 ## Predictions against outcomes
 
 **How they are scored.**
-- **Where the plan named no metric, the choice is stated.** E2 is scored on default-link event times, an operational
-  reading of the plan, with the awake-link GPU stamps beside them.
+- **E2 is scored on the plan's metric.** PLAN.md takes persistent per-task times from the GPU's realtime counter, so
+  persistent stages are scored on GPU stamps, against event times for launches and the graph (which have no stamps).
+  Default-link event times are given beside them.
 - **Boundaries are strict:** 1.46 is not ≥ 1.5, and 0.92 is outside 1–2.
 
 | Prediction (PLAN.md) | Outcome |
@@ -450,8 +503,8 @@ against round-robin tiles is the obvious difference, but it was not tested.
 | P2 (revised): one-tile stage barrier 3.5–4.5, dataflow 2.8–3.5, dataflow-pf 2.0–2.6 µs | Barrier 3.00–3.64: **below** at low grids. Dataflow 2.84–3.01: **held**. Dataflow-pf 1.76–2.19: **below** at 48 blocks, **held** above. |
 | Empty-stage barrier 1–2 µs | 0.92–1.52: **held** from 96 blocks, **missed** (below) at 48. |
 | barrier-pf no better than barrier in sync | **Held.** It was worse: 3.64–5.28. |
-| E2: dataflow-pf ≥ 1.5 µs below launches and graph on small shapes | Default-link event time. Below launches: **held** on seven of eight shapes (1.58–2.58), **missed** on down (1.46). Below the graph: **held** for the K = 2048 shapes (1.54–2.04), **missed** for K = 512 / 768 (0.89–0.96). Awake-link stamps: below launches 1.47–2.64 (down misses); below the graph 1.58–2.17 for K = 2048, 1.00–1.04 for K = 512 / 768. |
-| E2: shapes over 4 MB within 15 % across modes | **Missed** for INT4. On default-link event time, dataflow-pf is 9–29 % faster than the graph, and barrier-pf ranges from 24 % faster to 12 % slower (o). On awake-link stamps, dataflow-pf is 19–34 % faster. |
+| E2: dataflow-pf ≥ 1.5 µs below launches and graph on small shapes | GPU stamps. Below launches: **held** on all eight small shapes (1.58–2.74). Below the graph: **held** for the K = 2048 shapes (1.61–2.20), **missed** for K = 512 / 768 (1.01–1.06). On default-link event time the down shape also misses against launches (1.46). |
+| E2: shapes over 4 MB within 15 % across modes | **Missed** for INT4 and f16. INT4 on GPU stamps: dataflow-pf 19–34 % faster than the graph. f16 q: barrier-pf 32.6 µs against dataflow-pf 22.9 µs (stamps), 42 % apart. |
 | E3: per-op 7–9 ms | 9.02: **missed** by 0.02 ms (8.87 with the link awake). |
 | E3: grouped and grouped graph 2.9–3.6 ms | 3.68–3.82: **missed**, slightly above. |
 | E3: best persistent 2.6–3.4 ms | 3.83 (3.60 with the link awake): **missed**. |
@@ -471,9 +524,10 @@ against round-robin tiles is the obvious difference, but it was not tested.
 - **This persistent kernel replaces each launch gap with a barrier of about the same cost.** What it can add is
   starting the next stage's weight loads before the barrier. What it can lose is any stage whose tiles a resident grid
   works through one after another, such as the MoE down projections.
-- **On this XTX, single launches longer than ~1 ms showed ~250 µs of event- and host-visible time that GPU clocks
-  don't.** A long persistent kernel pays it, and launch sequences didn't. Time any persistent kernel by GPU stamps as
-  well as by events.
+- **On this XTX, single launches longer than ~1 ms were followed by ~250 µs of idle GPU.** Kernel durations exclude
+  it; a trace shows it as a gap before the next dispatch. A long persistent kernel pays it. Launch sequences didn't:
+  none of their kernels idles the bus for 1 ms (the longest is 193 µs). Time any persistent kernel by GPU stamps and by
+  events, and look at the trace's gaps.
 - **What we would try next, in this order:**
   1. group the experts;
   2. cut dependent round trips per tile: issue all of a tile's loads before using any, and let blocks batch their
@@ -499,8 +553,9 @@ Findings 1 and 5 come from RX 7900 XT smoke runs whose logs are not archived.
 5. **Chunk sizes must round up.** With ⌊9,496 / 210⌋ = 45 tiles per chunk, the vocab head had 212 chunks for 210 blocks.
    The two blocks with a second chunk made the stage 1.44× as long.
 6. **Time a persistent kernel by GPU stamps as well as by events.**
-   - On this XTX, single launches longer than ~1 ms showed ~250 µs that only events and the host saw.
-   - rocprofv3's kernel duration doesn't show it either.
+   - On this XTX, single launches longer than ~1 ms were followed by ~250 µs of idle GPU that kernel durations and
+     in-kernel stamps exclude.
+   - A rocprofv3 trace shows it as a gap before the next dispatch; events and the host include it.
    - A host thread reading device memory over PCIe removed it in every persistent test (`DF_LINK_KEEPALIVE=1`).
 7. **Grids of 380–384 blocks cost ~9 µs extra per launch on this XTX:** just under the 3,072 wave slots of 384 blocks
    of 8 waves. 376 and 385 blocks are normal. Not explained.
@@ -523,7 +578,10 @@ Findings 1 and 5 come from RX 7900 XT smoke runs whose logs are not archived.
 - **The RX 7900 XT disagrees, in one run.** Full INT4 cold token, 42 WGPs, 210-block grid, x4 link with ASPM off:
   - grouped graph 3.44 ms, barrier-pf 4.37 ms (27 % slower), dataflow-pf 5.07 ms;
   - events and stamps agree there, so this is GPU time;
+  - the XT also runs the grouped graph 6 % faster than the XTX (3,429 against 3,658 µs, stamp to stamp) and the
+    per-op graph 6 % slower, despite less bandwidth. So something platform-specific is in the XTX's grouped token;
   - not investigated;
+  - no environment record of the run is in data/;
   - log in [data/20261109-xt-window/](data/20261109-xt-window/), from the build just before the final one (same
     kernels).
 - **"Cold" means cache-cold, not DRAM-cold.** The copies are walked in address order, so consecutive launches touch
@@ -556,23 +614,30 @@ python3 analyze.py --spread spread.md results/*-xtx    # medians and ranges acro
   rows in series, so the floor comparison spans two round trips per K step. The per-round-trip figure is now presented
   as uncontrolled.
 
-**After an independent review:**
-- **The extra completion time.**
-  - "Any kernel longer than 1 ms pays it" became an observation on the tested launches.
+**After two independent reviews:**
+- **The delay after long launches.**
+  - "No GPU clock sees it" was wrong: a kernel trace shows it as an idle gap before the next dispatch. Only kernel
+    durations and in-kernel stamps exclude it.
+  - "Any kernel longer than 1 ms pays it" became an observation on the tested launches, which make no PCIe traffic.
   - Link power management is now labelled a hypothesis.
-  - The all/none 1 ms cutoff became an apparent transition in a duration proxy, with the corrected low range of
-    5–59 µs.
+  - The all/none 1 ms cutoff became an apparent transition in a duration proxy: none below 1.01 ms, 3 of 5 between
+    1.01 and 1.02, all above, with a smaller graded part.
+  - The discriminating root-only tests are named.
   - The single-run diagnostics are archived in [data/dev-observations/](data/dev-observations/).
 - **P1.** Scored on the plan's N = 32 … 8192 range: INT4 bandwidth is now a miss (518 GB/s).
 - **The gap allocation.** "6–10 % of the token" became two model-based estimates with their assumptions.
-- **The residual.** The 1.43 ms above the bandwidth baseline is no longer described as mostly memory latency.
+- **The residual.** The 1.43–1.55 ms above the bandwidth baseline is no longer described as mostly memory latency.
 - **The E0 deviation.** The interpretation is restricted to this implementation and schedule, and the synthetic
-  dependencies (no data between stages) are disclosed.
+  dependencies (no data between stages) are disclosed, and the narrative now says the final runs were made knowing the
+  gate had tripped.
 - **Smaller corrections:**
   - stage differences relabelled as interval differences, with the prefetch shift disclosed;
   - the down row size now counts scales and zeros;
   - E2 and E3 timing documented separately;
-  - signed and strict prediction scoring;
+  - signed and strict prediction scoring, E2 on the plan's metric (GPU stamps), f16 also missing the 15 % band;
+  - E1's t0 as a regression constant;
+  - f16 token at 77 % of the f16 heads' rate, not bandwidth-bound;
+  - the XT's faster grouped token;
   - correctness maxima and metric;
   - the display exception in Setup;
   - format coverage;
