@@ -179,9 +179,85 @@ __device__ __forceinline__ void prefetch_rows(const Seg& s, int t, Pre& p) {
     }
 }
 
+#ifdef TILE_1RT
+// INT4, one dependent round trip per pass (TILE-1RT.md): every load of a pass is issued before any arithmetic: both rows'
+// weights, scales and zeros for two 1,024-column chunks, and x once for the tile (not once per row). K <= 2048 is one
+// pass, K = 4096 two. Per row, the chunks and the arithmetic inside each run in the same order as dot_row / i4_chunk,
+// so the outputs are bitwise equal to the base tile's. Prefetched chunks (PF, j < NP) come from the registers.
+template <bool PF>
+__device__ __forceinline__ void i4_tile_1rt(const Seg& s, int t, const Pre* pre) {
+    const int wave = threadIdx.x >> 5, lane = threadIdx.x & 31;
+    const GLOBAL _Float16* x = gp(reinterpret_cast<const _Float16*>(s.x));
+    const h2 off = {(_Float16)1024.0f, (_Float16)1024.0f}, one = {(_Float16)1.0f, (_Float16)1.0f};
+    bool live[RPW]; RowPtr rp[RPW]; float acc[RPW];
+#pragma unroll
+    for (int i = 0; i < RPW; i++) {
+        const int r = t * TILE_ROWS + wave * RPW + i;
+        live[i] = r < s.rows; rp[i] = row_ptr(s, live[i] ? r : 0); acc[i] = 0.f;
+    }
+    for (int p0 = 0; p0 * 1024 < s.K; p0 += 2) {            // (uniform: one pass for K <= 2048)
+        u32x4 w[RPW][2], xv[2][4]; float sc[RPW][2], zp[RPW][2];
+#pragma unroll
+        for (int j = 0; j < 2; j++) {
+            const int c = lane * 32 + (p0 + j) * 1024;
+            const bool in = c < s.K;
+#pragma unroll
+            for (int i = 0; i < RPW; i++) {
+                w[i][j] = u32x4{0u, 0u, 0u, 0u}; sc[i][j] = 0.f; zp[i][j] = 0.f;
+                if (PF && p0 + j < NP) { w[i][j] = pre->w[i][p0 + j]; sc[i][j] = pre->s[i][p0 + j]; zp[i][j] = pre->z[i][p0 + j]; }
+                else if (in && live[i]) {
+                    w[i][j] = *reinterpret_cast<const GLOBAL u32x4*>(rp[i].wq + c / 2);
+                    sc[i][j] = (float)rp[i].S[c / GROUP]; zp[i][j] = (float)rp[i].Z[c / GROUP];
+                }
+            }
+            const GLOBAL u32x4* xp = reinterpret_cast<const GLOBAL u32x4*>(x + (in ? c : 0));
+#pragma unroll
+            for (int k = 0; k < 4; k++) xv[j][k] = in ? xp[k] : u32x4{0u, 0u, 0u, 0u};
+        }
+#pragma unroll
+        for (int j = 0; j < 2; j++) {
+            if (lane * 32 + (p0 + j) * 1024 >= s.K) continue;   // (the base tile's c < K: per lane, e.g. lanes 24-31 at K = 768)
+            float ax = 0.f;                                      // sum of x over the chunk, once for both rows
+#pragma unroll
+            for (int jj = 0; jj < 4; jj++) {
+                const uint32_t xw[4] = {xv[j][jj].x, xv[j][jj].y, xv[j][jj].z, xv[j][jj].w};
+#pragma unroll
+                for (int k = 0; k < 4; k++) ax = __builtin_amdgcn_fdot2(as_h2(xw[k]), one, ax, false);
+            }
+#pragma unroll
+            for (int i = 0; i < RPW; i++) {
+                if (!live[i]) continue;
+                const uint32_t wq[4] = {w[i][j].x, w[i][j].y, w[i][j].z, w[i][j].w};
+                float aq = 0.f;
+#pragma unroll
+                for (int jj = 0; jj < 4; jj++) {
+                    const uint32_t xw[4] = {xv[j][jj].x, xv[j][jj].y, xv[j][jj].z, xv[j][jj].w};
+                    const uint32_t q = wq[jj];
+#pragma unroll
+                    for (int k = 0; k < 4; k++) {
+                        const uint32_t bits = 0x64006400u | ((q >> (8 * k)) & 0xFu) | (((q >> (8 * k + 4)) & 0xFu) << 16);
+                        aq = __builtin_amdgcn_fdot2(as_h2(bits) - off, as_h2(xw[k]), aq, false);
+                    }
+                }
+                acc[i] = acc[i] + sc[i][j] * (aq - zp[i][j] * ax);
+            }
+        }
+    }
+#pragma unroll
+    for (int i = 0; i < RPW; i++) {
+        if (!live[i]) break;                                     // (uniform within the wave)
+        const float a = wave_sum(acc[i]);
+        if (lane == 0) gpw(s.y)[t * TILE_ROWS + wave * RPW + i] = a;
+    }
+}
+#endif
+
 template <bool PF>
 __device__ __forceinline__ void do_tile(const Seg& s, int t, const Pre* pre) {
     const int wave = threadIdx.x >> 5, lane = threadIdx.x & 31;
+#ifdef TILE_1RT
+    if (s.fmt == FMT_I4 && s.K <= 4096) { i4_tile_1rt<PF>(s, t, pre); return; }
+#endif
 #pragma unroll
     for (int i = 0; i < RPW; i++) {
         const int r = t * TILE_ROWS + wave * RPW + i;
@@ -996,6 +1072,9 @@ static int token_mode(const Opts& o) {
     for (int v = 0; v < NV; v++) if (!variant_on(v)) vfail[v] = true;   // (filtered out: reported as fail rows with status skip)
     CHECK(hipMemset(y, 0, yfloats * 4)); run_perop(0); CHECK(hipStreamSynchronize(st)); CHECK(hipMemcpy(y2, y, yfloats * 4, hipMemcpyDeviceToDevice));
     {   std::vector<float> ref(yfloats), got(yfloats); CHECK(hipMemcpy(ref.data(), y2, yfloats * 4, hipMemcpyDeviceToHost));
+        if (getenv("Y_DUMP")) {   // (Y_DUMP=file: the per-op outputs, for a bitwise comparison between two builds)
+            FILE* f = fopen(getenv("Y_DUMP"), "wb"); if (!f || fwrite(ref.data(), 4, yfloats, f) != yfloats) { fprintf(stderr, "Y_DUMP write failed\n"); exit(2); } fclose(f);
+        }
         for (int v = 0; v < NV; v++) {
             if (!variant_on(v)) continue;
             CHECK(hipMemset(y, 0, yfloats * 4)); Pe.prep(st); Pe.run(st, dst, nst, dsegs[0], v, 1); CHECK(hipStreamSynchronize(st));

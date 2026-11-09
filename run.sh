@@ -9,6 +9,7 @@
 #   ROCM   a ROCm install with hipcc and rocprofv3 (default /opt/rocm)
 #   DEVICE the HIP device index of the card (default: smoke 1, xtx 0; --expect-cus refuses any other card model)
 #   EXPECT_CUS  smoke only: the WGP count the card must report (default 42, the RX 7900 XT; 48 runs smoke on an XTX)
+#   BIN / TAG  another build of decode_floor, and a suffix for the results folder (e.g. BIN=build/decode_floor_1rt TAG=1rt)
 #   PCI    its PCI address, for the environment record (clocks, link state; default: smoke 0000:06:00.0, xtx 0000:03:00.0)
 #   smoke  the RX 7900 XT alone (device 1, 84 CUs = 42 WGPs; HIP reports WGPs on RDNA3), small sizes: nothing reported
 #   xtx    the RX 7900 XTX (device 0, 96 CUs = 48 WGPs): E0, the floor split, E1, sync, E2, E3 (+ occupancy, one-tile claims)
@@ -16,11 +17,11 @@
 set -u
 HERE=$(cd "$(dirname "$0")" && pwd)
 MODE=${1:?usage: run.sh smoke|xtx}
-BIN=$HERE/build/decode_floor
+BIN=${BIN:-$HERE/build/decode_floor}
 GUARD=${GUARD:-}
 ROCM=${ROCM:-/opt/rocm}
 PROF=$ROCM/bin/rocprofv3
-OUT=$HERE/results/$(date +%Y%m%d-%H%M%S)-$MODE
+OUT=$HERE/results/$(date +%Y%m%d-%H%M%S)-$MODE${TAG:+-$TAG}
 mkdir -p "$OUT"
 [ -x "$BIN" ] || { echo "build first: ./build.sh"; exit 2; }
 if [ -n "$GUARD" ] && [ ! -x "$GUARD" ]; then echo "GUARD=$GUARD is not executable"; exit 2; fi
@@ -124,6 +125,11 @@ else
   stage e3-i4-occ8 1200 env STAGES_CSV="$OUT/stages-occ.csv" VARIANTS=dataflow RESIDENCY_PROBE=1 "$BIN" token --fmt i4 --tokens 8 --reps 200 --grid-per-cu 8 "${DEV[@]}" --csv "$OUT/e3-occ.csv"
   # a test of the expert-down explanation: dataflow with one-tile claims on the short-row stages (K <= 768)
   stage e3-i4-chunk1 1200 env STAGES_CSV="$OUT/stages-chunk1.csv" VARIANTS=dataflow,dataflow-pf DF_SHORTK_CHUNK1=1 "$BIN" token --fmt i4 --tokens 8 --reps 200 "${DEV[@]}" --csv "$OUT/e3-chunk1.csv"
+  # GRID4=1: the token at 4 blocks per WGP with the link kept awake (a fixed persistent grid for comparing two builds
+  # whose register use gives different occupancy limits; TILE-1RT.md)
+  if [ "${GRID4:-0}" = 1 ]; then
+    stage e3-i4-ka-g4 1200 env STAGES_CSV="$OUT/stages-g4.csv" DF_LINK_KEEPALIVE=1 "$BIN" token --fmt i4 --tokens 8 --reps 200 --grid-per-cu 4 "${DEV[@]}" --csv "$OUT/e3-g4.csv"
+  fi
   # one traced token run: the per-kernel breakdown of the per-op and grouped modes
   stage e3-i4-traced 1200 $(prof e3-i4) "$BIN" token --fmt i4 --tokens 4 --reps 100 "${DEV[@]}"
 fi
