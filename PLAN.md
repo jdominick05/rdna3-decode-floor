@@ -23,6 +23,8 @@ remove that fixed cost?
   tok/s. Their gate+up+SwiGLU and down+reduce kernels already group the 8 experts.
 - [iree#24165](https://github.com/iree-org/iree/issues/24165): wall-clock timings of about 37 µs per small matvec come
   from their benchmark tool. They are not kernel times, and this experiment does not use them.
+- The iree#23507 kernel times were taken warm: "Both benchmarks run thousands of iterations, so L2/Infinity Cache is
+  warm" (same comment). E0 compares them with our warm runs; our cold runs serve the floor question.
 
 ## Model and formats
 
@@ -86,8 +88,9 @@ so 1.46 GB for the layers plus 0.17 GB for the lm_head: **1.63 GB per token**.
   - **C, persistent:** about 1.63 GB ÷ 780 GB/s = 2.1 ms, plus 5 dependent stages per layer × 48 × t0'
     (0.24–0.72 ms). Predicted **2.3–2.9 ms**.
 - **Refutation:**
-  - If C is no more than 1.25× faster than B, the floor is not launch-related. H2 is false; the report says so and
-    looks at where the time goes instead.
+  - If C is no more than 1.25× faster than B, this implementation did not deliver the predicted gain. That alone does
+    not show the floor is unrelated to launches: synchronization and lost parallelism inside the persistent kernel can
+    consume the saving. The report then breaks the persistent stage time down (sync alone, per-stage stamps) instead.
   - If C beats the bandwidth bound (1.63 GB ÷ 960 GB/s = 1.7 ms), the cache control failed and the run is invalid.
 
 ## Method
@@ -137,3 +140,56 @@ GB of the XTX, under its guard line, with 512 MiB kept free for the display.
 This folder: the HIP source, build and run scripts, the raw results (CSV and JSON), and REPORT.md. Nothing is
 published until the report exists; whether it becomes public, under which licence, and the IREE comment are the
 owner's decisions.
+
+## Revisions after the XT smoke (2026-11-09, before any XTX measurement)
+
+Everything in this section was decided after looking at RX 7900 XT smoke runs (2 layers, small sizes) and before any
+measurement on the XTX. The predictions below are written before the XTX run.
+
+### What the smoke showed (XT, not reported as results)
+- Grouping the experts mattered most: INT4 token (2 layers) 0.63 ms per-op, 0.38 ms grouped.
+- A first persistent kernel (one device-wide barrier, 8 blocks per WGP) was no faster than grouped: 0.40 ms.
+- A barrier over empty stages costs 1.1 µs at 1 block per WGP and 2.8 µs at 8: one shared counter, ~all blocks arrive.
+
+### Design changes
+- **Four persistent variants over the same tile code** (`k_persistent<PF>`, `k_dataflow<PF>`):
+  - *barrier*: static round-robin tiles, a split-phase device-wide barrier between stages;
+  - *dataflow*: per-stage claim and done counters; a block claims a chunk of a stage (chunk = ceil(tiles / grid), so
+    at most one chunk per block), waits only for the stage before, publishes with a release; no barrier;
+  - *-pf*: the claimed or assigned tile's weights are loaded before the wait (between arrive and wait for the barrier).
+    Only for stages whose weights are known before the dependency finishes: never the routed experts' gate|up (the
+    router picks them); their down, and all static weights, yes.
+- **Grid**: one grid for all four, the smallest of their occupancy limits; swept at 1, 2, 4 blocks per WGP and the limit.
+- **Warm / cold A/B**: warm E0 and E2 (one copy reused) and a warm token (every layer reuses one layer's weights and
+  8 experts, INT4 about 31 MB, no vocab head), next to the cold ones.
+- **Graph baseline in E2**: the same S launches captured in a HIP graph.
+
+### Method fixes (from the smoke and two outside reviews)
+- **The timeout clock starves waves.** The waits read the wall clock (`s_sendmsg_rtn` GET_REALTIME) on every poll; with
+  ~150 waiting waves, one wave's reply stalled for 200 ms while the others kept asking (measured: the frozen wave's gap
+  between two loop iterations was 199.99 ms; its neighbours polled 620,000 times). With the clock read once per 4,096
+  polls, all four variants passed 4 of 4 where three had passed 0 of 4. Poll style (acquire, relaxed + fence, atomic
+  add 0) and sleep length made no difference.
+- Every polled or counted word sits on its own 128-byte line; waits poll with acquire loads.
+- The occupancy API's count is not a residency guarantee in general; a residency probe (an empty-stage barrier) is run at
+  every grid used, and the barrier variants are only used where it passes.
+- **Dependency check** (correctness runs): every producer adds (tile + 1) per finished tile to a per-stage sum before it
+  publishes; every consumer checks the complete sum after its wait.
+- **Cold traversal**: no copy cap (too little memory refuses), one advancing cursor across warmup and timed runs, rings
+  that never wrap inside a run; every row records the copies and the reuse distance (at least 400 MB on the XT).
+- Stage stamps: per-stage end = atomic max of its chunks' finish times, taken before each release; start = atomic min
+  over all blocks; a backwards stamp is counted and excluded. Non-finite outputs fail the numeric check. The warm token
+  compares only what the plan writes. A failing variant is recorded as "fail" and the run goes on.
+
+### Predictions for the XTX (written before the run)
+- **sync, one-tile stage**: barrier 3.5–4.5 µs, growing with the grid; dataflow 2.8–3.5 µs; dataflow-pf 2.0–2.6 µs;
+  barrier-pf no better than barrier (block 0 holds every tile, nothing to overlap). Empty-stage barrier 1–2 µs.
+- **E2, small shapes (< 1 MB)**: dataflow-pf below launches and below the graph by at least 1.5 µs per matvec; for
+  shapes over 4 MB all modes within 15 % of each other (bandwidth-bound).
+- **E3, the 48-layer INT4 token (241 dependent stages, 1.63 GB)**:
+  - per-op 7–9 ms; grouped and grouped-graph 2.9–3.6 ms.
+  - The best persistent variant 2.6–3.4 ms: about 2.2 ms of weight traffic at 750 GB/s plus 241 stages × 1.5–4.5 µs.
+  - Revised from P3's 2.3–2.9 ms: the smoke showed a per-stage cost of 2–4.5 µs inside the persistent kernel, more
+    than the 1–3 µs of P2.
+- **Warm token**: the gap between grouped-graph and the best persistent variant at least as large as cold, in µs per
+  stage (no DRAM latency to hide behind).
