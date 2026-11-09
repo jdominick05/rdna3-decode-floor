@@ -24,6 +24,9 @@
 //          --reps N  --stages N  --layers N (token: fewer layers for a smoke run)  --tokens N (routing samples)
 //          --csv FILE (append result rows)
 //          --expect-cus N (refuse any other device; HIP counts WGPs on RDNA3: XTX 48, XT 42)  --grid-per-cu N (persistent blocks per CU; default the occupancy max)
+#include <thread>
+#include <atomic>
+#include <chrono>
 #include <hip/hip_runtime.h>
 #include <hip/hip_fp16.h>
 #include <algorithm>
@@ -210,6 +213,8 @@ __device__ __forceinline__ void run_tile_pf(const Seg* segs, int nseg, int g, co
 
 // an empty kernel (floor mode): the dispatch's own cost as rocprofv3 sees it, with no loads
 __global__ __launch_bounds__(WG) void k_empty(int* sink) { if (sink && threadIdx.x == 0 && blockIdx.x == 0x7fffffff) *sink = 1; }
+// one GPU timestamp (the window diagnostic: GPU time between two of these, independent of the HIP events)
+__global__ void k_stamp(uint64_t* p) { if (threadIdx.x == 0) *p = wall_clock64(); }
 
 // a launch: block b computes tile base + b of the segments [segs, segs + nseg)
 __global__ __launch_bounds__(WG) void k_launch(const Seg* segs, int nseg, int base) {
@@ -602,17 +607,25 @@ static const char* H_FLOOR = "mode,kind,fmt,cache,N,K,blocks,weight_bytes,copies
 // The floor, decomposed (rocprofv3 gives the kernel times; rows only label the launches, in dispatch order):
 //   empty kernels at 1 ... 1536 blocks (dispatch, wave launch and teardown, no loads), then INT4 matvecs of 16 x blocks
 //   rows at K = 128 (one load round trip per lane: one group) and K = 2048 (two) on 1 ... 384 blocks, cold or warm.
+// an env list of ints ("256,384,512"), or the default when the variable is unset or empty
+static std::vector<int> env_ints(const char* name, std::vector<int> def) {
+    const char* e = getenv(name); if (!e || !*e) return def;
+    std::vector<int> v; const std::string s(e); size_t p = 0;
+    while (p < s.size()) { size_t q = s.find(',', p); if (q == std::string::npos) q = s.size(); if (q > p) v.push_back(std::stoi(s.substr(p, q - p))); p = q + 1; }
+    return v.empty() ? def : v;
+}
+// FLOOR_GRIDS / FLOOR_MV_GRIDS (env): the empty-kernel and matvec grids (the sweep around the 384-block anomaly)
 static int floor_mode(const Opts& o) {
     hipStream_t st; CHECK(hipStreamCreate(&st));
     __half* x; float* y; CHECK(hipMalloc(&x, 4096 * 2)); CHECK(hipMalloc(&y, 248320 * 4));
     hipLaunchKernelGGL(k_fill_half, dim3(16), dim3(256), 0, 0, x, (size_t)4096, 7, -1.f, 1.f);
     const int reps = o.reps;
-    for (int g : {1, 2, 8, 48, 96, 192, 384, 768, 1536}) {
+    for (int g : env_ints("FLOOR_GRIDS", {1, 2, 8, 48, 96, 192, 384, 768, 1536})) {
         for (int i = 0; i < 20 + reps; i++) hipLaunchKernelGGL(k_empty, dim3(g), dim3(WG), 0, st, (int*)nullptr);
         CHECK(hipStreamSynchronize(st));
         char row[256]; snprintf(row, sizeof row, "floor,empty,-,-,0,0,%d,0,0,%d", g, reps); csv_row(o, H_FLOOR, row);
     }
-    for (int K : {128, 2048}) for (int g : {1, 2, 8, 48, 384}) {
+    for (int K : {128, 2048}) for (int g : env_ints("FLOOR_MV_GRIDS", {1, 2, 8, 48, 384})) {
         const Shape sh{TILE_ROWS * g, K, "floor"};
         Copies c; make_copies(c, sh, FMT_I4, o.warm);
         const size_t n = c.t.size();
@@ -753,6 +766,20 @@ static bool report_err(Persist& P, const char* what) {
     if (e == 2) fprintf(stderr, "%s: DEPENDENCY FAILURE: after its wait, a stage saw an incomplete sum from the stage before it\n", what);
     return e != 0;
 }
+// DF_LINK_KEEPALIVE=1: while it lives, a host thread reads one word of device memory over PCIe in a loop, so the link
+// never idles. (On the XTX tested, a single launch of a few ms cost ~0.24 ms of wall time after the kernel, time the GPU
+// clocks do not see, unless something kept the link busy; this is the A/B for it.) The destructor joins the thread on
+// every return path.
+struct KeepAlive {
+    std::atomic<bool> stop{false}; std::thread t; uint32_t* w = nullptr; long long reads = 0;
+    KeepAlive() {
+        if (!getenv("DF_LINK_KEEPALIVE")) return;
+        CHECK(hipExtMallocWithFlags((void**)&w, 4096, hipDeviceMallocFinegrained)); CHECK(hipMemset(w, 0, 4096)); CHECK(hipDeviceSynchronize());
+        t = std::thread([this] { volatile uint32_t* p = w; uint32_t sum = 0; long long n = 0; while (!stop.load(std::memory_order_relaxed)) { sum += *p; n++; } reads = n + (sum == 0xdeadbeefu); });
+        printf("# link keep-alive on: a host thread reads device memory over PCIe in a loop\n");
+    }
+    ~KeepAlive() { if (t.joinable()) { stop = true; t.join(); printf("# link keep-alive: %lld reads\n", reads); (void)hipFree(w); } }
+};
 static void print_grid(const Persist& P) {
     int dev; CHECK(hipGetDevice(&dev)); hipDeviceProp_t pr; CHECK(hipGetDeviceProperties(&pr, dev));
     printf("# persistent grid %d blocks of %d (%d per WGP; occupancy max per WGP: barrier %d, barrier-pf %d, dataflow %d, dataflow-pf %d), wall clock %.0f MHz\n",
@@ -766,6 +793,7 @@ static const char* H_PSHAPES = "mode,fmt,cache,N,K,label,weight_bytes,stages,gri
 // variant (E2). Every run reads the next ring of S copies (one cursor); a variant that fails (timeout, dependency check)
 // is reported as "fail" and skipped from then on. Event times, amortized per stage; stage medians from the GPU stamps.
 static int pshapes_mode(const Opts& o) {
+    KeepAlive keepalive;
     const int fmt = fmt_of(o.fmt), S = o.stages;
     hipStream_t st; CHECK(hipStreamCreate(&st));
     __half* x; float* y; CHECK(hipMalloc(&x, 4096 * 2)); CHECK(hipMalloc(&y, 248320 * 4));
@@ -840,13 +868,10 @@ static int sync_mode(const Opts& o) {
     hipEvent_t a, b; CHECK(hipEventCreate(&a)); CHECK(hipEventCreate(&b));
     size_t k = 0;
     for (int nt : {0, 1}) {
-        if (getenv("ONLY_NT") && atoi(getenv("ONLY_NT")) != nt) continue;   // (debugging)
-        const int spf = getenv("PF_OFF") ? 0 : 1;                           // (debugging: the PF kernels with prefetch switched off per stage)
-        std::vector<Stage> hst; for (int i = 0; i < S; i++) hst.push_back({i, nt, nt, spf, 1});
+        std::vector<Stage> hst; for (int i = 0; i < S; i++) hst.push_back({i, nt, nt, 1, 1});
         Stage* ds; CHECK(hipMalloc(&ds, S * sizeof(Stage))); CHECK(hipMemcpy(ds, hst.data(), S * sizeof(Stage), hipMemcpyHostToDevice));
         for (int v = 0; v < NV; v++) {
             if (nt == 0 && v >= V_DATAFLOW) continue;   // (0-tile stages: the barrier alone; dataflow needs a tile per stage)
-            if (getenv("DF_ONLY") && strcmp(getenv("DF_ONLY"), VNAME[v]) != 0) continue;   // (debugging: one variant)
             std::vector<double> stage_us, each_us;
             P.prep(st); P.run(st, ds, S, d, v, nt);  CHECK(hipStreamSynchronize(st));   // (the dependency check, 1-tile stages)
             bool failed = report_err(P, VNAME[v]);
@@ -931,6 +956,7 @@ static TokenPlan plan_token(const TokenModel& m, int layers, bool warm, std::mt1
 }
 
 static int token_mode(const Opts& o) {
+    KeepAlive keepalive;
     const int fmt = fmt_of(o.fmt);
     hipStream_t st; CHECK(hipStreamCreate(&st));
     TokenModel m; build_model(m, fmt, o.warm ? 1 : o.layers, o.warm);
@@ -1010,6 +1036,94 @@ static int token_mode(const Opts& o) {
         }
         csv_row(o, "mode,fmt,cache,strategy,layers,matvecs,stages,weight_bytes,ms_median,ms_p10,ms_p90,effective_GBps,persistent_grid,status", row);
     }
+    // DF_WINDOW_DIAG=1: where event time goes outside the kernels. Each mode, timed three ways: events around the run
+    // with the host waiting in hipEventSynchronize; the same with the host spinning on hipEventQuery; and GPU stamps
+    // from a one-thread kernel just before and just after the run (no events involved; events around those too). An
+    // empty one-block kernel gives the cost of the window itself.
+    if (getenv("DF_WINDOW_DIAG")) {
+        uint64_t* ts; CHECK(hipMalloc(&ts, 2 * sizeof(uint64_t)));
+        const int R = getenv("DF_WINDOW_REPS") ? std::max(4, atoi(getenv("DF_WINDOW_REPS"))) : 30;
+        auto wait = [&](int spin) { if (spin) { hipError_t e; while ((e = hipEventQuery(b)) == hipErrorNotReady) {} CHECK(e); } else CHECK(hipEventSynchronize(b)); };
+        auto runmode = [&](int mo, int p) {
+            if (mo == 1) CHECK(hipGraphLaunch(g_perop[p], st)); else if (mo == 2) run_grouped(p); else if (mo == 3) CHECK(hipGraphLaunch(g_grouped[p], st));
+            else if (mo == NM) hipLaunchKernelGGL(k_empty, dim3(1), dim3(WG), 0, st, (int*)nullptr);
+            else Pe.run(st, dst, nst, dsegs[p], mo - 4);
+        };
+        for (int mo = 1; mo <= NM; mo++) {   // (per-op-graph, grouped, grouped-graph, the persistent variants, then mo == NM: the empty kernel)
+            const bool pers = mo >= 4 && mo < NM;
+            if (pers && vfail[mo - 4]) continue;
+            printf("# window %-22s begins at %.3f s (monotonic)\n", mo == NM ? "empty-kernel" : names[mo], std::chrono::duration<double>(std::chrono::steady_clock::now().time_since_epoch()).count()); fflush(stdout);
+            std::vector<double> ev[2], dev, evs;
+            for (int rep = -2; rep < R; rep++) {
+                const int p = (rep + 2) % P;
+                for (int spin = 0; spin < 2; spin++) {
+                    if (pers) Pe.prep(st);
+                    CHECK(hipEventRecord(a, st)); runmode(mo, p); CHECK(hipEventRecord(b, st)); wait(spin);
+                    float t; CHECK(hipEventElapsedTime(&t, a, b)); if (rep >= 0) ev[spin].push_back(t * 1e3);
+                }
+                if (pers) Pe.prep(st);
+                CHECK(hipEventRecord(a, st));
+                hipLaunchKernelGGL(k_stamp, dim3(1), dim3(64), 0, st, ts); runmode(mo, p); hipLaunchKernelGGL(k_stamp, dim3(1), dim3(64), 0, st, ts + 1);
+                CHECK(hipEventRecord(b, st)); wait(0);
+                float t; CHECK(hipEventElapsedTime(&t, a, b)); uint64_t h[2]; CHECK(hipMemcpy(h, ts, sizeof h, hipMemcpyDeviceToHost));
+                if (rep >= 0) { evs.push_back(t * 1e3); dev.push_back((double)(h[1] - h[0]) * 1e6 / Pe.rate); }
+            }
+            // persistent only: the reset of the sync state (the async memsets of prep) timed alone; the run timed after a
+            // synchronized reset; and the run timed with one empty kernel between the reset and event a
+            std::vector<double> pa, ps, pk;
+            for (int rep = -2; pers && rep < R; rep++) {
+                const int p = (rep + 2) % P; float t;
+                CHECK(hipEventRecord(a, st)); Pe.prep(st); CHECK(hipEventRecord(b, st)); wait(0);
+                CHECK(hipEventElapsedTime(&t, a, b)); if (rep >= 0) pa.push_back(t * 1e3);
+                Pe.run(st, dst, nst, dsegs[p], mo - 4); CHECK(hipStreamSynchronize(st));   // (the reset is consumed by a run before the next one)
+                Pe.prep(st); CHECK(hipStreamSynchronize(st));
+                CHECK(hipEventRecord(a, st)); runmode(mo, p); CHECK(hipEventRecord(b, st)); wait(0);
+                CHECK(hipEventElapsedTime(&t, a, b)); if (rep >= 0) ps.push_back(t * 1e3);
+                Pe.prep(st); hipLaunchKernelGGL(k_empty, dim3(1), dim3(WG), 0, st, (int*)nullptr);
+                CHECK(hipEventRecord(a, st)); runmode(mo, p); CHECK(hipEventRecord(b, st)); wait(0);
+                CHECK(hipEventElapsedTime(&t, a, b)); if (rep >= 0) pk.push_back(t * 1e3);
+            }
+            // host time inside each call of the stamped window (launch calls return when the packet is queued), and two
+            // tokens in one window against one (the second token's cost with no host wait before it)
+            std::vector<double> hrec, hk1, hrun, hk2, hrecb, hwait, one, two;
+            using clk = std::chrono::steady_clock;
+            auto us_since = [](clk::time_point t0, clk::time_point t1) { return std::chrono::duration<double, std::micro>(t1 - t0).count(); };
+            for (int rep = -2; rep < R; rep++) {
+                const int p = (rep + 2) % P; float t;
+                if (pers) Pe.prep(st);
+                CHECK(hipStreamSynchronize(st));
+                auto t0 = clk::now(); CHECK(hipEventRecord(a, st)); auto t1 = clk::now();
+                hipLaunchKernelGGL(k_stamp, dim3(1), dim3(64), 0, st, ts); auto t2 = clk::now();
+                runmode(mo, p); auto t3 = clk::now();
+                hipLaunchKernelGGL(k_stamp, dim3(1), dim3(64), 0, st, ts + 1); auto t4 = clk::now();
+                CHECK(hipEventRecord(b, st)); auto t5 = clk::now(); wait(0); auto t6 = clk::now();
+                if (rep >= 0) { hrec.push_back(us_since(t0, t1)); hk1.push_back(us_since(t1, t2)); hrun.push_back(us_since(t2, t3)); hk2.push_back(us_since(t3, t4)); hrecb.push_back(us_since(t4, t5)); hwait.push_back(us_since(t5, t6)); }
+                for (int n = 1; n <= 2; n++) {
+                    if (pers) Pe.prep(st);
+                    CHECK(hipEventRecord(a, st));
+                    for (int i = 0; i < n; i++) { if (pers && i) Pe.prep(st); runmode(mo, p); }
+                    CHECK(hipEventRecord(b, st)); wait(0);
+                    CHECK(hipEventElapsedTime(&t, a, b)); if (rep >= 0) (n == 1 ? one : two).push_back(t * 1e3);
+                }
+            }
+            const char* nm = mo == NM ? "empty-kernel" : names[mo];
+            printf("# window %-22s host us: record a %.1f, stamp launch %.1f, run %.1f, stamp launch %.1f, record b %.1f, wait %.1f; one token in a window %.1f us, two %.1f us (second token +%.1f)\n",
+                   nm, median(hrec), median(hk1), median(hrun), median(hk2), median(hrecb), median(hwait), median(one), median(two), median(two) - median(one));
+            if (pers) printf("# window %-22s reset alone %9.1f us; event after a synchronized reset %9.1f us; with an empty kernel between the reset and event a %9.1f us\n",
+                             nm, median(pa), median(ps), median(pk));
+            const bool bad = pers && report_err(Pe, nm);
+            printf("# window %-22s event %9.1f us (host waits) %9.1f us (host spins); stamp to stamp %9.1f us, events around the stamps %9.1f us%s\n",
+                   nm, median(ev[0]), median(ev[1]), median(dev), median(evs), bad ? " (WAIT FAILED)" : "");
+            {   // per run: events around the stamps minus stamp to stamp (time the GPU clock does not see), its spread
+                std::vector<double> gap; int big = 0;
+                for (size_t i = 0; i < dev.size(); i++) { gap.push_back(evs[i] - dev[i]); big += gap.back() > 50.0; }
+                printf("# window %-22s events minus stamps per run: p10 %.1f, median %.1f, p90 %.1f, max %.1f us; %d of %zu runs over 50 us; stamp to stamp p10 %.1f p90 %.1f us\n",
+                       nm, pct(gap, 0.1), median(gap), pct(gap, 0.9), *std::max_element(gap.begin(), gap.end()), big, gap.size(), pct(dev, 0.1), pct(dev, 0.9));
+            }
+            if (bad) vfail[mo - 4] = true;
+        }
+        CHECK(hipFree(ts));
+    }
     // each persistent variant's stage times by stage kind: 10 more runs each (routing sample 0), the median of each stage
     // over them; the sum of the stage medians is printed next to the median first-block-start-to-last-stage-end span, so
     // the breakdown can be checked against the token time (STAGES_CSV=file: every stage's median, one row each)
@@ -1049,7 +1163,9 @@ static int token_mode(const Opts& o) {
 }
 
 int main(int argc, char** argv) {
-    if (argc < 2) { fprintf(stderr, "usage: decode_floor check|shapes|sweep|floor|pshapes|sync|token [--fmt f16|i4] [--warm] [--reps N] [--stages N] [--layers N] [--tokens N] [--csv FILE] [--expect-cus N] [--grid-per-cu N]\n"); return 2; }
+    if (argc < 2) { fprintf(stderr, "usage: decode_floor check|shapes|sweep|floor|pshapes|sync|token [--fmt f16|i4] [--warm] [--reps N] [--stages N] [--layers N] [--tokens N] [--csv FILE] [--expect-cus N] [--grid-per-cu N]\n"
+                "env: VARIANTS=a,b  STAGES_CSV=file  RESIDENCY_PROBE=1  DF_SHORTK_CHUNK1=1  DF_WINDOW_DIAG=1  DF_WINDOW_REPS=n\n"
+                "     DF_LINK_KEEPALIVE=1  FLOOR_GRIDS=a,b  FLOOR_MV_GRIDS=a,b\n"); return 2; }
     Opts o; o.mode = argv[1];
     for (int i = 2; i < argc; i++) {
         std::string a = argv[i]; auto next = [&]() { if (i + 1 >= argc) { fprintf(stderr, "%s needs a value\n", a.c_str()); exit(2); } return std::string(argv[++i]); };

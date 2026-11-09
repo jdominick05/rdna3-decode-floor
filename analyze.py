@@ -15,7 +15,7 @@ E2     per matvec: launches, a HIP graph of the launches, and stages of one pers
 E3     the 1,393-matvec token per launch mode (matvecs only: compared between modes, never with whole-token tok/s)
 stages where a token's time goes: grouped kernels (rocprofv3, the traced run) and persistent stages (GPU stamps)
 """
-import csv, glob, os, statistics, sys
+import csv, glob, os, re, statistics, sys
 
 # iree#23507, comment of 2026-04-15 (RX 7900 XTX, rocprofv3 kernel times, warm caches, µs): (N, K) -> time
 IREE_F16 = {(8192, 2048): 74.6, (4096, 2048): 38.6, (2048, 4096): 34.8, (512, 2048): 5.1, (2048, 512): 6.2,
@@ -34,8 +34,13 @@ KINDS = ['q|k|v', 'o', 'router', 'gate|up x8', 'down x8', 'lm_head']
 # holds o_proj (4.5 MB) and the per-op modes' expert down (0.8 MB), told apart by time (bimodal: ~3 and ~10 µs)
 GROUPED = {320: 'q|k|v', 8: 'router', 768: 'gate|up x8', 1024: 'down x8', 9496: 'lm_head'}
 O_SPLIT_US = 6.0
-EXTRA_E3 = [('e3.csv', ''), ('e3-occ.csv', 'own occupancy'), ('e3-chunk1.csv', 'one-tile claims, K ≤ 768')]
-EXTRA_ST = [('stages.csv', ''), ('stages-occ.csv', 'own occupancy'), ('stages-chunk1.csv', 'one-tile claims, K ≤ 768')]
+KA = 'link kept awake'
+EXTRA_E3 = [('e3.csv', ''), ('e3-ka.csv', KA), ('e3-occ.csv', 'own occupancy'), ('e3-chunk1.csv', 'one-tile claims, K ≤ 768')]
+EXTRA_ST = [('stages.csv', ''), ('stages-ka.csv', KA), ('stages-occ.csv', 'own occupancy'), ('stages-chunk1.csv', 'one-tile claims, K ≤ 768')]
+ONLY_PERSISTENT = {'own occupancy', 'one-tile claims, K ≤ 768'}   # (these runs repeat the launch modes unchanged)
+E2_COLS = ['launch_us', 'graph_us', 'barrier_us', 'barrier_pf_us', 'dataflow_us', 'dataflow_pf_us']
+E2_STAMP = ['barrier_stage_us', 'barrier_pf_stage_us', 'dataflow_stage_us', 'dataflow_pf_stage_us']
+WINDOW_RUNS = [('e3-i4-window', 'link left to power-save'), ('e3-i4-window-ka', KA)]
 
 
 def rows(res, name):
@@ -117,10 +122,10 @@ def e1_fits(res):
     return out
 
 
-def floor_rows(res):
-    """[(kind, K, blocks, cache, µs)]: one floor invocation per prof-floor-<cache> folder; an invocation's rows are its
-    empty-kernel rows followed by its matvec rows, in launch order."""
-    fl, inv = rows(res, 'floor.csv'), []
+def floor_rows(res, csvname='floor.csv', profdir=None):
+    """[(kind, K, blocks, cache, µs)]: one floor invocation per prof-floor-<cache> folder (or `profdir`); an invocation's
+    rows are its empty-kernel rows followed by its matvec rows, in launch order."""
+    fl, inv = rows(res, csvname), []
     for r in fl:
         if not inv or (r['kind'] == 'empty' and inv[-1][-1]['kind'] == 'matvec'):
             inv.append([])
@@ -128,7 +133,7 @@ def floor_rows(res):
     out = []
     for chunk in inv:
         cache = next((r['cache'] for r in chunk if r['kind'] == 'matvec'), 'cold')
-        d = os.path.join(res, f'prof-floor-{cache}')
+        d = os.path.join(res, profdir or f'prof-floor-{cache}')
         src = {'empty': [x for x, _ in prof(d, 'k_empty')], 'matvec': [x for x, _ in prof(d, 'k_launch')]}
         idx = {'empty': 0, 'matvec': 0}
         for r in chunk:
@@ -144,7 +149,7 @@ def e3_rows(res):
     out = []
     for name, note in EXTRA_E3:
         for r in rows(res, name):
-            if r['status'] == 'skip' or (note and not r['strategy'].startswith('persistent')):
+            if r['status'] == 'skip' or (note in ONLY_PERSISTENT and not r['strategy'].startswith('persistent')):
                 continue
             out.append(dict(r, note=note, grid=r['persistent_grid'] if r['strategy'].startswith('persistent') else '-'))
     return out
@@ -189,6 +194,42 @@ def persistent_breakdown(res):
     return out
 
 
+def window_rows(res, name):
+    """the window diagnostic (token mode, DF_WINDOW_DIAG) from guard-<name>.log (or <name>.out): mode -> {event, spin, stamps, around, gap,
+    gap_p10, gap_p90, big, n, one, two}"""
+    path = os.path.join(res, f'guard-{name}.log')   # (under the watchdog the program's output is in its log)
+    if not os.path.exists(path):
+        path = os.path.join(res, name + '.out')
+    if not os.path.exists(path):
+        return {}
+    out = {}
+    for line in open(path):
+        m = re.match(r'# window (\S+)\s+event\s+([\d.]+) us \(host waits\)\s+([\d.]+) us \(host spins\); stamp to stamp\s+([\d.]+) us, events around the stamps\s+([\d.]+)', line)
+        if m:
+            out.setdefault(m.group(1), {}).update(event=float(m.group(2)), spin=float(m.group(3)), stamps=float(m.group(4)), around=float(m.group(5)))
+        m = re.match(r'# window (\S+)\s+events minus stamps per run: p10 ([\d.-]+), median ([\d.-]+), p90 ([\d.-]+), max [\d.-]+ us; (\d+) of (\d+) runs', line)
+        if m:
+            out.setdefault(m.group(1), {}).update(gap_p10=float(m.group(2)), gap=float(m.group(3)), gap_p90=float(m.group(4)), big=int(m.group(5)), n=int(m.group(6)))
+        m = re.match(r'# window (\S+)\s+host us:.*one token in a window ([\d.]+) us, two ([\d.]+) us', line)
+        if m:
+            out.setdefault(m.group(1), {}).update(one=float(m.group(2)), two=float(m.group(3)))
+    return out
+
+
+def gap_estimates(res):
+    """untraced gap between dependent launches per INT4 cold shape: E2's graph time per matvec (256 launches, event
+    time) minus the E0 cold kernel time of the same shape (rocprofv3) -> [(N, K, label, graph µs, kernel µs, gap µs)]"""
+    k0 = {(r['N'], r['K']): r['kernel_us'] for r in kernel_rows(res, 'e0.csv', 'prof-e0-{fmt}-{cache}') if r['fmt'] == 'i4' and r['cache'] == 'cold'}
+    out = []
+    for r in rows(res, 'e2.csv'):
+        if r['fmt'] != 'i4' or r['cache'] != 'cold' or r['grid'] != rows(res, 'e2.csv')[0]['grid']:
+            continue
+        k, g = k0.get((int(r['N']), int(r['K']))), flt(r['graph_us'])
+        if k is not None and g is not None:
+            out.append((int(r['N']), int(r['K']), r['label'], g, k, g - k))
+    return out
+
+
 # ---- one run: tables.md ----------------------------------------------------------------------------------------------
 
 def tables(res):
@@ -226,6 +267,14 @@ def tables(res):
             p(f"| {kind} | {K if kind == 'matvec' else '-'} | {blocks} | {cache} | {fnum(t, 2)} |")
         p('')
 
+    fs = floor_rows(res, 'floor-sweep.csv', 'prof-floor-sweep')
+    if fs:
+        p('## The 384-block anomaly: a grid sweep (rocprofv3 kernel time, µs)\n')
+        p('| kind | K | blocks | µs |\n|---|---|---|---|')
+        for kind, K, blocks, cache, t in fs:
+            p(f"| {kind} | {K if kind == 'matvec' else '-'} | {blocks} | {fnum(t, 2)} |")
+        p('')
+
     for fmt, (t0, bw, pts) in e1_fits(res).items():
         small = [t for b, t, _ in pts if b < 1e6]
         p(f'## E1 ({fmt}, cold): t = t0 + bytes / BW over {len(pts)} shapes at K=2048: t0 = {t0:.2f} µs, BW = {bw:.0f} GB/s '
@@ -243,14 +292,38 @@ def tables(res):
             p(f"| {r['variant']} | {r['tiles_per_stage']} | {r['grid']} ({r['blocks_per_WGP']}) | {fnum(r['stage_us_median'], 2)} | {fnum(r['stage_us_p90'], 2)} | {r['status']} |")
         p('')
 
-    e2 = rows(res, 'e2.csv')
-    if e2:
+    for csvname, note in (('e2.csv', 'link left to power-save'), ('e2-ka.csv', KA)):
+        e2 = rows(res, csvname)
+        if not e2:
+            continue
         S = e2[0]['stages']
-        p(f'## E2: per matvec, {S} matvecs as launches, as a HIP graph, and as {S} stages of one persistent kernel (µs each, event time amortized)\n')
+        p(f'## E2 ({note}): per matvec, {S} matvecs as launches, as a HIP graph, and as {S} stages of one persistent kernel (µs each)\n')
+        p('Launches and graph: event time amortized. Persistent: event time amortized / the stage median from GPU stamps.\n')
         p('| fmt | cache | shape | MB | grid | launches | graph | barrier | barrier-pf | dataflow | dataflow-pf |\n|---|---|---|---|---|---|---|---|---|---|---|')
         for r in e2:
-            p(f"| {r['fmt']} | {r['cache']} | 1×{r['N']}×{r['K']} ({r['label']}) | {float(r['weight_bytes']) / 1e6:.2f} | {r['grid']} | {fnum(r['launch_us'], 2)} | {fnum(r['graph_us'], 2)} | "
-              f"{fnum(r['barrier_us'], 2)} | {fnum(r['barrier_pf_us'], 2)} | {fnum(r['dataflow_us'], 2)} | {fnum(r['dataflow_pf_us'], 2)} |")
+            pv = ' | '.join(f"{fnum(r[c], 2)} / {fnum(r[sc], 2)}" for c, sc in zip(E2_COLS[2:], E2_STAMP))
+            p(f"| {r['fmt']} | {r['cache']} | 1×{r['N']}×{r['K']} ({r['label']}) | {float(r['weight_bytes']) / 1e6:.2f} | {r['grid']} | {fnum(r['launch_us'], 2)} | {fnum(r['graph_us'], 2)} | {pv} |")
+        p('')
+
+    ge = gap_estimates(res)
+    if ge:
+        p('## The gap between dependent launches, untraced (INT4 cold, µs): E2 graph per matvec minus the E0 kernel time\n')
+        p('| shape | graph per matvec | kernel (E0) | gap |\n|---|---|---|---|')
+        for N, K, label, g, k, gap in ge:
+            p(f'| 1×{N}×{K} ({label}) | {g:.2f} | {k:.2f} | {gap:.2f} |')
+        p('')
+
+    for name, note in WINDOW_RUNS:
+        w = window_rows(res, name)
+        if not w:
+            continue
+        p(f'## Where event time goes outside the kernels (INT4 cold token, {note}; µs, medians)\n')
+        p('Events: hipEventRecord around the run, the host waiting in hipEventSynchronize. Stamps: a one-thread kernel just before '
+          'and just after the run (GPU clock). Hidden: events around the stamps minus stamp to stamp, per run.\n')
+        p('| mode | event | stamp to stamp | hidden (p10-p90) | runs with hidden > 50 µs | two tokens in one window |\n|---|---|---|---|---|---|')
+        for mode, d in w.items():
+            p(f"| {mode} | {fnum(d.get('event'))} | {fnum(d.get('stamps'))} | {fnum(d.get('gap'))} ({fnum(d.get('gap_p10'))}-{fnum(d.get('gap_p90'))}) | "
+              f"{d.get('big', '-')} of {d.get('n', '-')} | {fnum(d.get('two'))} |")
         p('')
 
     e3 = e3_rows(res)
@@ -366,19 +439,55 @@ def spread(dest, runs):
             p(f"| {fmt} | 1×{N}×{K} ({label}) | {mr(d.get('warm', []), 1)} | {fnum(ref)} | {fnum(gg)} | {mr(d.get('cold', []), 1)} |")
         p('')
 
-    cols = ['launch_us', 'graph_us', 'barrier_us', 'barrier_pf_us', 'dataflow_us', 'dataflow_pf_us']
+    fsk = {}
+    for i, res in enumerate(runs):
+        for kind, K, blocks, cache, t in floor_rows(res, 'floor-sweep.csv', 'prof-floor-sweep'):
+            fsk.setdefault((kind, K, blocks), [None] * len(runs))[i] = t
+    if fsk:
+        p('## The 384-block grid sweep (rocprofv3 kernel time, µs)\n\n| kind | K | blocks | µs |\n|---|---|---|---|')
+        for (kind, K, blocks), v in fsk.items():
+            p(f"| {kind} | {K if kind == 'matvec' else '-'} | {blocks} | {mr(v)} |")
+        p('')
+
+    for name, note in WINDOW_RUNS:
+        wk = {}
+        for i, res in enumerate(runs):
+            for mode, d in window_rows(res, name).items():
+                for f in ('event', 'stamps', 'gap', 'big', 'n', 'two'):
+                    wk.setdefault(mode, {}).setdefault(f, [None] * len(runs))[i] = d.get(f)
+        if wk:
+            p(f'## Event time outside the kernels, INT4 cold token ({note}; µs)\n\n| mode | event | stamp to stamp | hidden | runs with hidden > 50 µs | two tokens |\n|---|---|---|---|---|---|')
+            for mode, d in wk.items():
+                big = '+'.join(str(x) for x in d['big'] if x is not None); n = '+'.join(str(x) for x in d['n'] if x is not None)
+                p(f"| {mode} | {mr(d['event'], 1)} | {mr(d['stamps'], 1)} | {mr(d['gap'], 1)} | {big} of {n} | {mr(d['two'], 1)} |")
+            p('')
+
+    gk = {}
+    for i, res in enumerate(runs):
+        for N, K, label, g, k, gap in gap_estimates(res):
+            gk.setdefault((N, K, label), [None] * len(runs))[i] = gap
+    if gk:
+        p('## Untraced gap between dependent launches (INT4 cold; E2 graph per matvec minus E0 kernel, µs)\n\n| shape | gap |\n|---|---|')
+        for (N, K, label), v in gk.items():
+            p(f'| 1×{N}×{K} ({label}) | {mr(v)} |')
+        p('')
+
+    cols = E2_COLS + E2_STAMP
     e2k = {}
     for i, res in enumerate(runs):
-        for r in rows(res, 'e2.csv'):
-            d = e2k.setdefault((r['fmt'], r['cache'], r['N'], r['K'], r['label'], r['grid']), {c: [None] * len(runs) for c in cols})
-            for c in cols:
-                d[c][i] = flt(r[c])
+        for csvname, note in (('e2.csv', ''), ('e2-ka.csv', KA)):
+            for r in rows(res, csvname):
+                d = e2k.setdefault((note, r['fmt'], r['cache'], r['N'], r['K'], r['label'], r['grid']), {c: [None] * len(runs) for c in cols})
+                for c in cols:
+                    d[c][i] = flt(r.get(c))
     if e2k:
         p('## E2 (µs per matvec; medians across runs, and the largest run-to-run range in the row as % of its median)\n')
-        p('| fmt | cache | shape | grid | launches | graph | barrier | barrier-pf | dataflow | dataflow-pf | max range |\n|---|---|---|---|---|---|---|---|---|---|---|')
-        for (fmt, cache, N, K, label, grid), d in e2k.items():
+        p('Persistent: event time amortized / stage median from GPU stamps.\n')
+        p('| link | fmt | cache | shape | grid | launches | graph | barrier | barrier-pf | dataflow | dataflow-pf | max range |\n|---|---|---|---|---|---|---|---|---|---|---|---|')
+        for (note, fmt, cache, N, K, label, grid), d in e2k.items():
             rng = max(((max(v) - min(v)) / statistics.median(v) for v in ([x for x in d[c] if x is not None] for c in cols) if v), default=0)
-            p(f'| {fmt} | {cache} | 1×{N}×{K} ({label}) | {grid} | ' + ' | '.join(fnum(med(d[c]), 2) for c in cols) + f' | {100 * rng:.0f} % |')
+            pv = ' | '.join(f'{fnum(med(d[c]), 2)} / {fnum(med(d[sc]), 2)}' for c, sc in zip(E2_COLS[2:], E2_STAMP))
+            p(f"| {'awake' if note else 'default'} | {fmt} | {cache} | 1×{N}×{K} ({label}) | {grid} | {fnum(med(d['launch_us']), 2)} | {fnum(med(d['graph_us']), 2)} | {pv} | {100 * rng:.0f} % |")
         p('')
 
     gbs = [grouped_breakdown(r) for r in runs]
