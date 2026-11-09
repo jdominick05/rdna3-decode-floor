@@ -29,8 +29,9 @@ Measured 2026-11-09 on one RX 7900 XTX (gfx1100, 96 CUs / 48 WGPs, 960 GB/s GDDR
    | Time inside the per-layer kernels beyond that | 1.43 |
    | Gaps between kernels | ~0.35 |
 
-   A small kernel is mostly fixed latency. An empty kernel costs 1.1 µs. Each dependent memory round trip in a tile
-   adds about 1 µs more.
+   A small kernel is mostly fixed latency. An empty kernel costs 1.1 µs. The tile then waits on its loads in series:
+   4 dependent round trips for an INT4 tile at K = 2048 (2 rows × 2 chunks, read from the generated code) and 16 for
+   f16, at about 0.5–0.6 µs each on an idle card.
 4. **The persistent kernel's result depends on the PCIe link.**
 
    | INT4 cold token | Default platform settings | PCIe link kept awake |
@@ -176,16 +177,19 @@ slower on the smallest; the gate|up shape is the exception (5.0 against 14.7 µs
 | Kernel | 1 block | 2 | 8 | 48 |
 |---|---|---|---|---|
 | empty | 1.08 | 1.08 | 1.08 | 1.12 |
-| INT4 matvec K = 128 (one round trip per lane), cold | 2.32 | 2.32 | 2.32 | 2.36 |
-| INT4 matvec K = 2048 (two round trips), cold | 3.20 | 3.28 | 3.60 | 4.64 |
+| INT4 matvec K = 128 (2 dependent round trips per wave), cold | 2.32 | 2.32 | 2.32 | 2.36 |
+| INT4 matvec K = 2048 (4 dependent round trips per wave), cold | 3.20 | 3.28 | 3.60 | 4.64 |
 | INT4 matvec K = 128, warm | 2.08 | 2.08 | 2.08 | 2.12 |
 | INT4 matvec K = 2048, warm | 2.52 | 2.52 | 2.52 | 2.64 |
 
 - **Dispatch, wave launch and teardown cost 1.1 µs.**
-- **The first dependent round trip adds 1.2 µs cold (1.0 warm).**
-- **The second adds 0.9 µs cold (0.4 warm).**
+- **A wave works through its two rows one after the other, and through each row's 1,024-column chunks one after the
+  other.** The generated code waits for all of a chunk's loads (`s_waitcnt vmcnt(0)`) before it issues the next
+  chunk's. So K = 128 is 2 dependent round trips per wave, and K = 2048 is 4.
+- **Cold on an idle card, the first two round trips cost 1.24 µs together and the next two 0.88 µs: about 0.5–0.6 µs
+  each.** Warm: 1.00 and 0.44 µs.
 - **Most of a small matvec's 3–5 µs is dependent memory latency inside the kernel.** That is why the f16 floor is
-  higher: an f16 row of 2,048 takes 8 dependent iterations, against 2 for INT4.
+  higher: an f16 row of 2,048 takes 8 dependent iterations, against 2 for INT4 (16 and 4 per wave).
 
 **A grid-size anomaly.** Empty kernels at 380–384 blocks take 10.2–10.3 µs. At 376 blocks they take 1.28 µs, and from
 385 to 576 blocks 1.52–1.60 µs. The 384-block INT4 matvec at K = 128 takes 10.0 µs, against 4.5–4.7 µs at 376 and
@@ -342,7 +346,7 @@ a traced span can't give it directly. E2's estimate of ~0.95 µs per gap gives 0
 - **Per token:** stages +0.26 ms against 0.35 ms of gaps removed, a net 0.08 ms faster on GPU time.
 
 **The down stage (1,024 tiles of K = 768) is what makes the persistent kernel lose.**
-- **What it is:** 16,384 short rows of 384 bytes each in INT4. A down tile is one round trip per lane.
+- **What it is:** 16,384 short rows of 384 bytes each in INT4. A down tile is one round trip per row, two per wave.
 - **As a launch:** 1,024 one-tile blocks; the hardware refills each slot as a block exits.
 - **In the persistent kernel at 240 blocks:** 64 blocks do 5 tiles one after another, and 176 do 4.
 
@@ -352,8 +356,8 @@ a traced span can't give it directly. E2's estimate of ~0.95 µs per gap gives 0
 - **One-tile claims help dataflow.** Its down stage goes from 27.1 to 21.5 µs.
 - **Prefetch does not help.**
 
-The stage takes 19–21 µs. Its bytes take 7.8 µs at 858 GB/s, and 5 serial round trips plus a barrier take about
-6–8 µs at idle latency. So serial tiles alone do not obviously explain it. The cause is not established.
+The stage takes 19–21 µs. Its bytes take 7.8 µs at 858 GB/s, and 5 tiles of 2 serial round trips plus a barrier take
+about 6–8 µs at idle latency. So serial tiles alone do not obviously explain it. The cause is not established.
 
 **Dataflow loses more, also on gate|up.** A claim takes ⌈tiles / 240⌉ contiguous tiles, which leaves blocks idle:
 
@@ -391,7 +395,8 @@ against round-robin tiles is the obvious difference, but it was not tested.
 - **Once the experts are grouped and the launches graphed:**
   - gaps are 6–10 % of the matvec token;
   - the rest is kernel time, and over 40 % of that kernel time is above what the bytes need;
-  - a small kernel is 1.1 µs of dispatch plus about 1 µs per dependent memory round trip.
+  - a small kernel is 1.1 µs of dispatch plus 0.5–0.6 µs per dependent memory round trip, and this tile takes 2–8 of
+    them in series (16 for f16).
 - **A persistent kernel replaces each launch gap with a barrier of about the same cost.** What it can add is starting
   the next stage's weight loads before the barrier. What it can lose is any stage whose tiles a resident grid works
   through one after another, such as the MoE down projections.
