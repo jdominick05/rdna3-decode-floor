@@ -1,0 +1,40 @@
+# One round trip per tile (step 1 of the tile work): plan and predictions
+
+Written 2026-11-09, before any measurement. REPORT.md (tag `report-2026-11-09`) stays as measured; results of this test
+go in their own results folders and a separate write-up.
+
+## The change
+
+The INT4 tile, built with `-DTILE_1RT` (`build/decode_floor_1rt`), issues every load of a pass before any arithmetic:
+both rows' weights, scales and zeros for up to two 1,024-column chunks, and x once for the tile instead of once per row.
+K <= 2048 is one pass (one dependent round trip per wave instead of 4 at K = 2048, 2 at K = 128 / 768); K = 4096 is two
+passes (2 instead of 8). The arithmetic order per row is unchanged, so the outputs must be bitwise equal to the base
+binary's. f16 is unchanged (the control). Batching a persistent block's several tiles (the down stage) is step 2, not
+this test.
+
+## Method
+
+- Base and 1rt binaries from the same commit; runs interleaved in one session (base, 1rt, base, 1rt, base, 1rt).
+- Not compared with data/: the XTX drives the display again (it did not in the published runs).
+- Persistent comparisons on the link-kept-awake arm only.
+- Gates before any timing: `check` with the 1rt binary (incl. K = 4096 two-pass and K = 512 / 768 partial lanes), and
+  the token outputs of both binaries bitwise equal (Y_DUMP), INT4 cold and warm; on the RX 7900 XT first.
+- VGPRs of all five kernels recorded; k_launch should stay <= 96 (16 waves per SIMD). A persistent grid change is
+  reported as part of the result.
+
+## Predictions (each removed round trip ~0.44 us on an idle card: the floor table's second pair)
+
+| Quantity | Base (published) | Predicted with 1rt |
+|---|---|---|
+| 1-block INT4 matvec, K = 128, cold | 2.32 us | 1.8-2.1 us |
+| 1-block INT4 matvec, K = 2048, cold | 3.20 us | 1.8-2.2 us (about the K = 128 value) |
+| E1 INT4 t0 (cold) | 4.38 us | 2.7-3.4 us |
+| INT4 cold token, grouped graph | 3.68 ms | 3.00-3.45 ms (about -0.33 ms at idle latency, more if loaded latency is higher) |
+| f16 rows (control) | - | within 1 % of the interleaved base |
+
+## Decision rule
+
+- Grouped-graph INT4 cold token less than 5 % faster than the interleaved base: the round-trip count is not the lever
+  this benchmark suggested; do not port to K3 on this evidence.
+- 5-10 %: worth checking K3's own per-stage times first.
+- 10 % or more: port the pattern to K3's matvec kernels (after measuring where K3's time goes).
