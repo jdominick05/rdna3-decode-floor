@@ -25,8 +25,9 @@ in [iree-org/iree#24165](https://github.com/iree-org/iree/issues/24165) and
 - A persistent kernel replaces each launch gap with a barrier of about the same cost. Here its best variant was 4 %
   slower than the graph with default settings, and 2 % faster with the PCIe link kept awake.
 - On this XTX, single launches longer than ~1 ms were followed by ~250 µs of idle GPU: a gap before the next dispatch
-  in a kernel trace, excluded from kernel durations. A host thread reading GPU memory over PCIe removed it; power
-  management on the PCIe path is the leading hypothesis, not established.
+  in a kernel trace, excluded from kernel durations. It needs ASPM L1 on the card's PCIe path: turning L1 off on either
+  of its links removed it (root tests, [data/link-tests/](data/link-tests/)), as did a host thread reading GPU memory
+  over PCIe.
 
 ## Build and run
 

@@ -1,0 +1,64 @@
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor token fmt=i4 cache=cold poll=0 sleep=1
+# token model: i4, 48 layers, 128 experts per layer allocated, 16.05 GB
+# token: 1393 matvecs in 241 stages, 1.616 GB of weights per token, 8 routing samples
+# persistent grid 240 blocks of 256 (5 per WGP; occupancy max per WGP: barrier 7, barrier-pf 5, dataflow 8, dataflow-pf 5), wall clock 100 MHz
+PASS token: barrier outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: barrier-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+token,i4,cold,per-op,48,1393,241,1615880192,8.988,8.970,9.007,179.8,0,ok
+token,i4,cold,per-op-graph,48,1393,241,1615880192,8.213,8.177,8.234,196.7,0,ok
+token,i4,cold,grouped,48,1393,241,1615880192,3.795,3.783,3.824,425.8,0,ok
+token,i4,cold,grouped-graph,48,1393,241,1615880192,3.670,3.657,3.698,440.3,0,ok
+token,i4,cold,persistent-barrier,48,1393,241,1615880192,4.044,4.035,4.051,399.6,240,ok
+token,i4,cold,persistent-barrier-pf,48,1393,241,1615880192,3.830,3.580,3.844,421.9,240,ok
+token,i4,cold,persistent-dataflow,48,1393,241,1615880192,4.679,4.664,4.905,345.4,240,ok
+token,i4,cold,persistent-dataflow-pf,48,1393,241,1615880192,4.611,4.376,4.624,350.5,240,ok
+# window per-op-graph           begins at 11272.166 s (monotonic)
+# window per-op-graph           host us: record a 0.8, stamp launch 1.3, run 9.2, stamp launch 1.1, record b 0.8, wait 8198.7; one token in a window 8176.3 us, two 16324.4 us (second token +8148.1)
+# window per-op-graph           event    8195.2 us (host waits)    8174.9 us (host spins); stamp to stamp    8167.6 us, events around the stamps    8177.3 us
+# window per-op-graph           events minus stamps per run: p10 9.3, median 9.7, p90 10.0, max 10.1 us; 0 of 60 runs over 50 us; stamp to stamp p10 8158.2 p90 8187.5 us
+# window grouped                begins at 11275.730 s (monotonic)
+# window grouped                host us: record a 0.9, stamp launch 1.3, run 292.4, stamp launch 1.1, record b 1.0, wait 3524.4; one token in a window 3789.2 us, two 7568.6 us (second token +3779.4)
+# window grouped                event    3803.2 us (host waits)    3792.1 us (host spins); stamp to stamp    3783.1 us, events around the stamps    3794.1 us
+# window grouped                events minus stamps per run: p10 10.6, median 11.0, p90 11.3, max 14.2 us; 0 of 60 runs over 50 us; stamp to stamp p10 3765.6 p90 3801.0 us
+# window grouped-graph          begins at 11277.385 s (monotonic)
+# window grouped-graph          host us: record a 0.8, stamp launch 1.2, run 3.5, stamp launch 1.1, record b 0.8, wait 3684.8; one token in a window 3650.9 us, two 7314.2 us (second token +3663.3)
+# window grouped-graph          event    3672.9 us (host waits)    3653.4 us (host spins); stamp to stamp    3652.4 us, events around the stamps    3662.6 us
+# window grouped-graph          events minus stamps per run: p10 10.2, median 10.7, p90 11.2, max 11.4 us; 0 of 60 runs over 50 us; stamp to stamp p10 3633.1 p90 3676.3 us
+# window persistent-barrier     begins at 11278.981 s (monotonic)
+# window persistent-barrier     host us: record a 0.8, stamp launch 1.2, run 1.2, stamp launch 1.1, record b 1.0, wait 4042.3; one token in a window 4021.3 us, two 8056.5 us (second token +4035.2)
+# window persistent-barrier     reset alone      22.8 us; event after a synchronized reset    4021.5 us; with an empty kernel between the reset and event a    4021.6 us
+# window persistent-barrier     event    4036.8 us (host waits)    4023.0 us (host spins); stamp to stamp    3796.9 us, events around the stamps    4038.7 us
+# window persistent-barrier     events minus stamps per run: p10 9.3, median 243.5, p90 247.3, max 253.8 us; 53 of 60 runs over 50 us; stamp to stamp p10 3777.3 p90 3808.1 us
+# window persistent-barrier-pf  begins at 11281.482 s (monotonic)
+# window persistent-barrier-pf  host us: record a 0.8, stamp launch 1.1, run 1.2, stamp launch 1.1, record b 1.1, wait 3829.8; one token in a window 3807.6 us, two 7618.7 us (second token +3811.1)
+# window persistent-barrier-pf  reset alone      22.8 us; event after a synchronized reset    3823.3 us; with an empty kernel between the reset and event a    3822.4 us
+# window persistent-barrier-pf  event    3821.4 us (host waits)    3818.1 us (host spins); stamp to stamp    3586.4 us, events around the stamps    3829.9 us
+# window persistent-barrier-pf  events minus stamps per run: p10 9.2, median 243.3, p90 245.8, max 250.1 us; 48 of 60 runs over 50 us; stamp to stamp p10 3570.3 p90 3605.2 us
+# window persistent-dataflow    begins at 11283.852 s (monotonic)
+# window persistent-dataflow    host us: record a 0.9, stamp launch 1.2, run 1.5, stamp launch 1.1, record b 1.1, wait 4895.7; one token in a window 4877.8 us, two 9761.0 us (second token +4883.2)
+# window persistent-dataflow    reset alone      22.8 us; event after a synchronized reset    4885.4 us; with an empty kernel between the reset and event a    4884.5 us
+# window persistent-dataflow    event    4878.6 us (host waits)    4877.6 us (host spins); stamp to stamp    4646.7 us, events around the stamps    4883.8 us
+# window persistent-dataflow    events minus stamps per run: p10 9.3, median 242.4, p90 245.8, max 248.6 us; 52 of 60 runs over 50 us; stamp to stamp p10 4624.2 p90 4666.2 us
+# window persistent-dataflow-pf begins at 11286.883 s (monotonic)
+# window persistent-dataflow-pf host us: record a 0.8, stamp launch 1.1, run 1.1, stamp launch 1.1, record b 1.0, wait 4615.2; one token in a window 4596.7 us, two 9201.9 us (second token +4605.2)
+# window persistent-dataflow-pf reset alone      22.7 us; event after a synchronized reset    4581.4 us; with an empty kernel between the reset and event a    4582.2 us
+# window persistent-dataflow-pf event    4570.1 us (host waits)    4566.2 us (host spins); stamp to stamp    4340.6 us, events around the stamps    4575.8 us
+# window persistent-dataflow-pf events minus stamps per run: p10 8.9, median 242.3, p90 245.3, max 256.9 us; 44 of 60 runs over 50 us; stamp to stamp p10 4326.6 p90 4351.4 us
+# window empty-kernel           begins at 11289.721 s (monotonic)
+# window empty-kernel           host us: record a 0.7, stamp launch 1.1, run 1.0, stamp launch 1.0, record b 0.7, wait 22.8; one token in a window 9.0 us, two 12.0 us (second token +3.0)
+# window empty-kernel           event       8.8 us (host waits)       8.7 us (host spins); stamp to stamp       6.2 us, events around the stamps      14.9 us
+# window empty-kernel           events minus stamps per run: p10 8.6, median 8.6, p90 8.9, max 9.1 us; 0 of 60 runs over 50 us; stamp to stamp p10 6.1 p90 6.4 us
+# stages barrier      q|k|v 14.52 o 9.92 router 3.88 gate|up x8 26.56 down x8 19.44 lm_head 203.80 (us, median by kind)
+# stages barrier      q|k|v 14.61 o 9.96 router 3.85 gate|up x8 26.60 down x8 19.44 lm_head 203.80 (us, mean by kind)
+# stages barrier      sum of stage medians 3778.3 us; first block start to last stage end 3774.0 us (median of 10 runs)
+# stages barrier-pf   q|k|v 9.48 o 8.56 router 3.12 gate|up x8 27.64 down x8 21.08 lm_head 196.40 (us, median by kind)
+# stages barrier-pf   q|k|v 9.69 o 8.56 router 3.13 gate|up x8 27.65 down x8 21.08 lm_head 196.40 (us, mean by kind)
+# stages barrier-pf   sum of stage medians 3561.7 us; first block start to last stage end 3555.5 us (median of 10 runs)
+# stages dataflow     q|k|v 13.66 o 9.92 router 3.40 gate|up x8 37.74 down x8 26.95 lm_head 214.52 (us, median by kind)
+# stages dataflow     q|k|v 13.73 o 9.92 router 3.41 gate|up x8 37.75 down x8 26.93 lm_head 214.52 (us, mean by kind)
+# stages dataflow     sum of stage medians 4618.6 us; first block start to last stage end 4605.8 us (median of 10 runs)
+# stages dataflow-pf  q|k|v 10.07 o 8.50 router 2.91 gate|up x8 38.23 down x8 26.13 lm_head 206.61 (us, median by kind)
+# stages dataflow-pf  q|k|v 10.25 o 8.50 router 2.90 gate|up x8 38.15 down x8 26.14 lm_head 206.61 (us, mean by kind)
+# stages dataflow-pf  sum of stage medians 4332.2 us; first block start to last stage end 4323.1 us (median of 10 runs)

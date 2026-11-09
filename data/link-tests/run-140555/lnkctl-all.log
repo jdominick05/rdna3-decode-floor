@@ -1,0 +1,1026 @@
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:03.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+74:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+75:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:03.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+74:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+75:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:03.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+74:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+75:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:03.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+74:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+75:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:03.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+74:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+75:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:03.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+74:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+75:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:03.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+74:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+75:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--
+00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:01.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:02.2  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+00:08.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+03:00.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+04:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+05:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+06:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+06:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+07:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:02.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:04.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+08:05.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:06.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+08:07.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:08.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0c.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+08:0d.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+0a:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0c:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0d:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+0e:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+0f:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+10:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+11:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+12:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+13:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:01.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk-
+13:02.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+13:03.0  LnkCtl: ASPM L0s L1 Enabled; LnkDisable+ CommClk+
+76:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.2  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.3  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.4  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+76:00.6  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+77:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+--

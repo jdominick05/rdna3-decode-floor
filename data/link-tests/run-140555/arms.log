@@ -1,0 +1,268 @@
+start Mon Nov  9 02:05:55 PM EST 2026 out=run-140555 initial: l1_aspm 03=1 01=1 policy=default
+== round 1
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 0Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:06:17 r1-base window rc=0
+14:06:18 r1-base e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 0Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:06:40 r1-base-ka window rc=0
+14:06:41 r1-base-ka e0 rc=0
+  state: l1_aspm 01=0 03=0 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 0Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+14:07:01 r1-l1off-both window rc=0
+14:07:02 r1-l1off-both e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 0Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:07:24 r1-base2 window rc=0
+14:07:25 r1-base2 e0 rc=0
+  state: l1_aspm 01=1 03=0 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 29Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+14:07:46 r1-l1off-gpu window rc=0
+14:07:47 r1-l1off-gpu e0 rc=0
+  state: l1_aspm 01=0 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 32Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:08:08 r1-l1off-root window rc=0
+14:08:09 r1-l1off-root e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: 1: 906Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:08:31 r1-base3 window rc=0
+14:08:32 r1-base3 e0 rc=0
+  state: l1_aspm 01=0 03=0 policy='default [performance] powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 3Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+14:08:52 r1-policy-perf window rc=0
+14:08:53 r1-policy-perf e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 0Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:09:15 r1-base4 window rc=0
+14:09:16 r1-base4 e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=manual power=on
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 0Mhz *
+  pp_dpm_mclk: 3: 1249Mhz *
+  pp_dpm_fclk: 7: 2301Mhz *
+  pp_dpm_socclk: 1: 1500Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:09:37 r1-pcie-pin window rc=0
+14:09:38 r1-pcie-pin e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=on
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 0Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:10:00 r1-base5 window rc=0
+14:10:01 r1-base5 e0 rc=0
+== round 2
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 15Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:10:22 r2-base window rc=0
+14:10:23 r2-base e0 rc=0
+  state: l1_aspm 01=0 03=0 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: 1: 450Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+14:10:44 r2-l1off-both window rc=0
+14:10:45 r2-l1off-both e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 0Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:11:06 r2-base2 window rc=0
+14:11:07 r2-base2 e0 rc=0
+  state: l1_aspm 01=1 03=0 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 38Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+14:11:28 r2-l1off-gpu window rc=0
+14:11:29 r2-l1off-gpu e0 rc=0
+  state: l1_aspm 01=0 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 4Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:11:49 r2-l1off-root window rc=0
+14:11:50 r2-l1off-root e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 189Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:12:12 r2-base3 window rc=0
+14:12:13 r2-base3 e0 rc=0
+  state: l1_aspm 01=0 03=0 policy='default [performance] powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: 1: 582Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM Disabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM Disabled; RCB 64 bytes, LnkDisable- CommClk+
+14:12:32 r2-policy-perf window rc=0
+14:12:34 r2-policy-perf e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 9Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:12:55 r2-base4 window rc=0
+14:12:56 r2-base4 e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=manual power=on
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 0Mhz *
+  pp_dpm_mclk: 3: 1249Mhz *
+  pp_dpm_fclk: 7: 2301Mhz *
+  pp_dpm_socclk: 1: 1500Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:13:17 r2-pcie-pin window rc=0
+14:13:18 r2-pcie-pin e0 rc=0
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=on
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 36Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+14:13:40 r2-base5 window rc=0
+14:13:41 r2-base5 e0 rc=0
+done Mon Nov  9 02:13:41 PM EST 2026
+end state after restore:
+  state: l1_aspm 01=1 03=1 policy='[default] performance powersave powersupersave ' level=auto power=auto
+  pp_dpm_pcie: 2: 16.0GT/s, x16 623Mhz *
+  pp_dpm_sclk: S: 33Mhz *
+  pp_dpm_mclk: 0: 96Mhz *
+  pp_dpm_fclk: 1: 1000Mhz *
+  pp_dpm_socclk: 1: 600Mhz *
+  00:01.1  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+  01:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  02:00.0  LnkCtl: ASPM L1 Enabled; LnkDisable- CommClk+
+  03:00.0  LnkCtl: ASPM L1 Enabled; RCB 64 bytes, LnkDisable- CommClk+
+restored: l1_aspm 03=1 01=1 policy=[default] performance powersave powersupersave  level=auto

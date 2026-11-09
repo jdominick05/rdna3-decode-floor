@@ -55,8 +55,10 @@ Measured 2026-11-09 on one RX 7900 XTX (gfx1100, 96 CUs / 48 WGPs, 960 GB/s GDDR
    - **Launch sequences didn't show it.**
    - **It was paid on every launch, back-to-back launches too.** So a decode loop that runs one long kernel per token
      would pay it on every token.
-   - **The mechanism is not established.** Link power management on the PCIe path is the leading hypothesis. The tests
-     that would separate the candidates need root and have not been run.
+   - **ASPM L1 on the XTX's PCIe path is necessary for it.** In root tests run after the measurements, turning L1 off on
+     either of the card's two links removed it completely: ~9 µs of hidden time in 0 of 60 windows, from ~242 µs.
+     Holding the link's DPM level at its top did not. Why an L1 exit costs ~240 µs here, far more than a normal one,
+     is not established.
    - **On GPU time, the persistent kernel recovers the gaps but spends more inside its stages.** The largest
      interval differences are in the experts' down projections (+0.52 ms) and in q|k|v and o (−0.31 ms, where the
      next stage's loads start early). These are differences between synchronization boundaries, not isolated costs.
@@ -123,6 +125,7 @@ dispatch result."
     `default`.
   - Each run's `environment.txt` records the link state at its start.
   - The PCIe link's DPM level (`pp_dpm_pcie`) was neither pinned nor recorded during the runs.
+  - Root tests of these settings were run afterwards: [data/link-tests/](data/link-tests/).
 - **Model shapes:**
   - Qwen3-30B-A3B per layer: q 1×4096×2048, k and v 1×512×2048, o 1×2048×4096, router 1×128×2048, and 8 of 128 experts,
     each gate and up 1×768×2048 and down 1×2048×768;
@@ -380,7 +383,8 @@ event completed.
   - In E0, the gap after the 0.70 ms kernel is 14 µs longer than after small kernels.
   - The keep-alive also shortens the launch modes by 0.3–1.6 %.
 
-  Both point to a multi-level, timer-based state rather than a single switch.
+  Both point to a multi-level, timer-based state rather than a single switch. The 0.70 ms kernel's part did not change
+  with ASPM L1 off (root tests below), so it has another cause.
 - **The RX 7900 XT showed none, but it is not a control.** One full-token run gave event 4,380 µs and stamps
   4,373 µs.
   - It differs from the XTX in link width (x4), ASPM state (off), position in the topology and card, all at once.
@@ -388,28 +392,37 @@ event completed.
 - **The tested kernels make no PCIe traffic while running.** They poll device memory and stream weights. A kernel that
   touches host memory while running might never reach the idle state; that was not tested.
 
-**What it might be.**
-- **The leading hypothesis is power management somewhere on the PCIe path after about 1 ms with no bus traffic.** ASPM
-  L1 is enabled on the XTX's links and disabled on the XT's.
-- **It is not established.**
-  - ASPM was never changed on the same card; that needs root.
-  - The keep-alive's reads wake the CPU's root complex, the card's switch and the GPU's fabric alike, so the A/B does
-    not localize the sleeping part. It also changes CPU activity.
-  - **Candidates not excluded:**
-    - ASPM L1, or its substates;
-    - firmware link DPM (a retrain at wake shorter than the 1 ms poll);
-    - power management in the CPU's root complex or I/O die;
-    - the GPU's host interface;
-    - runtime completion handling;
-    - a combination.
-- **The tests that would separate them, before anyone acts on it:**
-  - `l1_aspm=0` on 01:00.0 and 03:00.0;
-  - the kernel parameter `pcie_aspm.policy=performance`;
-  - `pp_dpm_pcie` pinned at its top level and recorded.
+**What removes it: root tests** ([data/link-tests/](data/link-tests/), written down before running).
+- **Setup:** two rounds on the same XTX, after the measurements above.
+  - Each arm changes one setting and runs the window diagnostic and E0's f16 shapes.
+  - Base blocks run between the arms.
+  - The monitors were on the XTX, which masks the delay in some windows.
 
-  All need root.
-- **The keep-alive is a workaround, not a fix.** It is a host loop reading one 32-bit word of device memory through the
-  BAR, and it costs a CPU core.
+| Arm | hidden, barrier-pf (median) | windows over 50 µs | E0 f16 35B head, by events |
+|---|---|---|---|
+| base (10 blocks) | 241–243 µs | 45–53 of 60 | 1,380–1,383 µs |
+| keep-alive thread | 9.4 µs | 0 of 60 | (no keep-alive in E0) |
+| ASPM L1 off on both links | 9.2–9.3 µs | 0 of 60 | 1,148 µs |
+| L1 off on the switch-to-GPU link only | 9.0–9.3 µs | 0 of 60 | 1,148 µs |
+| L1 off on the CPU-side link only | 9.0–9.5 µs | 0 of 60 | 1,148 µs |
+| system ASPM policy `performance` | 9.0–9.2 µs | 0 of 60 | 1,148 µs |
+| PCIe link DPM and all clocks held at their top levels | 241–242 µs | 44–50 of 60 | 1,381–1,382 µs |
+
+- **ASPM L1 on the XTX's path is necessary for the delay.**
+- **Link DPM is excluded.**
+- **The plain 1.13 ms kernel has the same cause.** Its kernel time is ~1,129 µs.
+- **The controls held.** The grouped graph stayed at ~10 µs of hidden time in every arm, and barrier-pf's
+  stamp-to-stamp time stayed within 0.6 % of base.
+- **Either link alone is enough to remove it.** A switch's upstream link enters L1 only when its downstream links are in
+  L1, so the data fit an exit from L1 on the CPU-side link. No counter shows which link actually entered L1.
+- **~240 µs is far longer than a normal L1 exit.** So L1 is a necessary condition, and the ~240 µs may come from
+  something deeper that L1 enables. That is not established.
+- **Two workarounds:**
+  - **The keep-alive** needs no root. It is a host loop reading one 32-bit word of device memory through the BAR, and
+    it costs a CPU core.
+  - **`l1_aspm=0` on the GPU's link** needs root and costs some idle power.
+- **A warning for anyone reproducing.** The system-wide policy write wedged an unrelated USB4 controller on this board
+  until a reboot (details in data/link-tests). Use the per-link controls.
 
 ### Where the token's GPU time goes (INT4 cold, µs per stage)
 
@@ -526,8 +539,8 @@ against round-robin tiles is the obvious difference, but it was not tested.
   works through one after another, such as the MoE down projections.
 - **On this XTX, single launches longer than ~1 ms were followed by ~250 µs of idle GPU.** Kernel durations exclude
   it; a trace shows it as a gap before the next dispatch. A long persistent kernel pays it. Launch sequences didn't:
-  none of their kernels idles the bus for 1 ms (the longest is 193 µs). Time any persistent kernel by GPU stamps and by
-  events, and look at the trace's gaps.
+  none of their kernels idles the bus for 1 ms (the longest is 193 µs). It needs ASPM L1 on the card's PCIe path:
+  turning L1 off removed it. Time any persistent kernel by GPU stamps and by events, and look at the trace's gaps.
 - **What we would try next, in this order:**
   1. group the experts;
   2. cut dependent round trips per tile: issue all of a tile's loads before using any, and let blocks batch their
@@ -557,6 +570,8 @@ Findings 1 and 5 come from RX 7900 XT smoke runs whose logs are not archived.
      in-kernel stamps exclude.
    - A rocprofv3 trace shows it as a gap before the next dispatch; events and the host include it.
    - A host thread reading device memory over PCIe removed it in every persistent test (`DF_LINK_KEEPALIVE=1`).
+   - So did turning ASPM L1 off on either of the card's PCIe links (`l1_aspm=0`, root). Holding the link's DPM level
+     at its top did not.
 7. **Grids of 380–384 blocks cost ~9 µs extra per launch on this XTX:** just under the 3,072 wave slots of 384 blocks
    of 8 waves. 376 and 385 blocks are normal. Not explained.
 8. **Put the stop rules in the script.** The E0 gate was in the plan but not in run.sh, so it tripped without stopping
@@ -573,8 +588,9 @@ Findings 1 and 5 come from RX 7900 XT smoke runs whose logs are not archived.
   differ.
 - **Our hand-written tile kernel, not IREE codegen.** It is faster than IREE's on the large shapes (see the deviation
   section), and only one tile implementation was tested.
-- **One machine, one board topology, one driver, kernel and ROCm build.** The extra completion time depends on
-  something about this platform, and other boards and BIOS settings may differ.
+- **One machine, one board topology, one driver, kernel and ROCm build.** The extra completion time needs ASPM L1 on
+  this card's path. Other boards, BIOS ASPM settings and switches may differ. The root tests ran in one session, with
+  the monitors on the XTX.
 - **The RX 7900 XT disagrees, in one run.** Full INT4 cold token, 42 WGPs, 210-block grid, x4 link with ASPM off:
   - grouped graph 3.44 ms, barrier-pf 4.37 ms (27 % slower), dataflow-pf 5.07 ms;
   - events and stamps agree there, so this is GPU time;
@@ -613,6 +629,12 @@ python3 analyze.py --spread spread.md results/*-xtx    # medians and ranges acro
 - **The round-trip cost.** It was given as about 1 µs per dependent round trip. The generated code runs a wave's two
   rows in series, so the floor comparison spans two round trips per K step. The per-round-trip figure is now presented
   as uncontrolled.
+
+**After the root tests** (the same day, [data/link-tests/](data/link-tests/)):
+- **The cause's switch is found.** The leading hypothesis became a measured necessary condition: ASPM L1 on the XTX's
+  PCIe path.
+- **Ruled out:** link DPM, and the plain kernel having a different cause.
+- **Still open:** the source of the ~240 µs, and which link's L1 exit pays it.
 
 **After two independent reviews:**
 - **The delay after long launches.**
