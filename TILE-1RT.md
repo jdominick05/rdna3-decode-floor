@@ -60,3 +60,18 @@ The design (one round trip per pass) is therefore still untested.
 v2: every load issued unconditionally from a clamped valid address; scales and zeros kept as raw f16 until after the
 single wait; bounds applied only in the arithmetic. Gates and predictions as above, unchanged; v2 must show a single
 wait before the arithmetic in the generated code before it is timed.
+
+## v2's pre-timing gate (recorded after the v2 runs, before scoring them)
+
+The gate above says v2 must show a single wait before the arithmetic before it is timed. I checked only that the load
+section compiled to straight-line code, then timed it. Read properly, the gate fails in part:
+- 11 of the pass's 12 16-byte loads and 6 of its 8 scale/zero loads are issued before the first data wait.
+- One row's weight, scale and zero loads for one chunk are sunk by the compiler into that row's `live` branch, after the
+  chunk's x-sum arithmetic, and waited for there: a second dependent round trip for that row (base: 4 per wave at
+  K = 2048; v2: 2).
+- Two waits inside the load cluster are on loads issued before it (register reuse), not on the tile's own data.
+
+So v2 tests "2 round trips instead of 4", not "1 instead of 4". The fix would be to keep the loads out of any branch
+(mask dead rows in the arithmetic). The v2 timing is scored as it stands, with this label. One 1rt-v2 run
+(20261109-135031) stopped at floor-cold when rocprofv3 segfaulted at startup (pool release, before the kernel ran); it
+is excluded, so 1rt-v2 has 2 runs against base-v2's 3.
