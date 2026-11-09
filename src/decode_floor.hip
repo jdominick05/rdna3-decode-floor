@@ -196,27 +196,28 @@ __device__ __forceinline__ void i4_tile_1rt(const Seg& s, int t, const Pre* pre)
         live[i] = r < s.rows; rp[i] = row_ptr(s, live[i] ? r : 0); acc[i] = 0.f;
     }
     for (int p0 = 0; p0 * 1024 < s.K; p0 += 2) {            // (uniform: one pass for K <= 2048)
-        u32x4 w[RPW][2], xv[2][4]; float sc[RPW][2], zp[RPW][2];
+        // every load of the pass, unconditionally, from a valid address: a lane whose chunk lies past K reads column 0,
+        // a dead row reads row 0's address (row_ptr above); the bounds are applied in the arithmetic. Scales and zeros
+        // stay f16 until then, so nothing waits before the last load is issued (v1 converted them inside per-lane
+        // branches and waited for each row in turn: TILE-1RT.md).
+        u32x4 w[RPW][2], xv[2][4]; _Float16 sh[RPW][2], zh[RPW][2];
 #pragma unroll
         for (int j = 0; j < 2; j++) {
-            const int c = lane * 32 + (p0 + j) * 1024;
-            const bool in = c < s.K;
+            const int c = lane * 32 + (p0 + j) * 1024, cc = c < s.K ? c : 0;
+            const bool pref = PF && p0 + j < NP;                 // (uniform)
 #pragma unroll
             for (int i = 0; i < RPW; i++) {
-                w[i][j] = u32x4{0u, 0u, 0u, 0u}; sc[i][j] = 0.f; zp[i][j] = 0.f;
-                if (PF && p0 + j < NP) { w[i][j] = pre->w[i][p0 + j]; sc[i][j] = pre->s[i][p0 + j]; zp[i][j] = pre->z[i][p0 + j]; }
-                else if (in && live[i]) {
-                    w[i][j] = *reinterpret_cast<const GLOBAL u32x4*>(rp[i].wq + c / 2);
-                    sc[i][j] = (float)rp[i].S[c / GROUP]; zp[i][j] = (float)rp[i].Z[c / GROUP];
-                }
+                if (pref) { w[i][j] = pre->w[i][p0 + j]; sh[i][j] = (_Float16)0.f; zh[i][j] = (_Float16)0.f; }
+                else { w[i][j] = *reinterpret_cast<const GLOBAL u32x4*>(rp[i].wq + cc / 2); sh[i][j] = rp[i].S[cc / GROUP]; zh[i][j] = rp[i].Z[cc / GROUP]; }
             }
-            const GLOBAL u32x4* xp = reinterpret_cast<const GLOBAL u32x4*>(x + (in ? c : 0));
+            const GLOBAL u32x4* xp = reinterpret_cast<const GLOBAL u32x4*>(x + cc);
 #pragma unroll
-            for (int k = 0; k < 4; k++) xv[j][k] = in ? xp[k] : u32x4{0u, 0u, 0u, 0u};
+            for (int k = 0; k < 4; k++) xv[j][k] = xp[k];
         }
 #pragma unroll
         for (int j = 0; j < 2; j++) {
             if (lane * 32 + (p0 + j) * 1024 >= s.K) continue;   // (the base tile's c < K: per lane, e.g. lanes 24-31 at K = 768)
+            const bool pref = PF && p0 + j < NP;
             float ax = 0.f;                                      // sum of x over the chunk, once for both rows
 #pragma unroll
             for (int jj = 0; jj < 4; jj++) {
@@ -239,7 +240,8 @@ __device__ __forceinline__ void i4_tile_1rt(const Seg& s, int t, const Pre* pre)
                         aq = __builtin_amdgcn_fdot2(as_h2(bits) - off, as_h2(xw[k]), aq, false);
                     }
                 }
-                acc[i] = acc[i] + sc[i][j] * (aq - zp[i][j] * ax);
+                const float sc = pref ? pre->s[i][p0 + j] : (float)sh[i][j], zp = pref ? pre->z[i][p0 + j] : (float)zh[i][j];
+                acc[i] = acc[i] + sc * (aq - zp * ax);
             }
         }
     }
