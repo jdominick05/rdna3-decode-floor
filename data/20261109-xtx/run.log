@@ -1,0 +1,44 @@
+=== 12:08:54 env
+=== 12:08:55 env rc=0 
+=== 12:08:55 check
+=== 12:08:56 check rc=0       1 RESULT PASS 
+=== 12:08:56 e0-f16-warm
+=== 12:08:57 e0-f16-warm rc=0 
+=== 12:08:57 e0-f16-cold
+=== 12:08:58 e0-f16-cold rc=0 
+=== 12:08:58 e0-i4-warm
+=== 12:08:59 e0-i4-warm rc=0 
+=== 12:08:59 e0-i4-cold
+=== 12:09:01 e0-i4-cold rc=0 
+=== 12:09:01 e1-i4
+=== 12:09:02 e1-i4 rc=0 
+=== 12:09:02 e1-f16
+=== 12:09:03 e1-f16 rc=0 
+=== 12:09:03 sync-g1
+=== 12:09:04 sync-g1 rc=0 
+=== 12:09:04 sync-g2
+=== 12:09:05 sync-g2 rc=0 
+=== 12:09:05 sync-g4
+=== 12:09:06 sync-g4 rc=0 
+=== 12:09:06 sync-g0
+=== 12:09:07 sync-g0 rc=0 
+=== 12:09:07 e2-i4
+=== 12:09:09 e2-i4 rc=0 
+=== 12:09:09 e2-i4-g2
+=== 12:09:11 e2-i4-g2 rc=0 
+=== 12:09:11 e2-f16
+=== 12:09:14 e2-f16 rc=0 
+=== 12:09:14 e2-i4-warm
+=== 12:09:15 e2-i4-warm rc=0 
+=== 12:09:15 e3-i4
+=== 12:09:16 e3-i4 rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 12:09:16 e3-i4-g2
+=== 12:09:18 e3-i4-g2 rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 12:09:18 e3-i4-warm
+=== 12:09:19 e3-i4-warm rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 12:09:19 e3-f16
+=== 12:09:21 e3-f16 rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 12:09:21 e3-i4-traced
+=== 12:09:23 e3-i4-traced rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+tables: ~/src/rdna3-decode-floor/results/20261109-120854-xtx/tables.md
+=== 12:09:24 done: ~/src/rdna3-decode-floor/results/20261109-120854-xtx

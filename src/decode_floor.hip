@@ -662,6 +662,8 @@ struct Persist {
         return u;
     }
 };
+// VARIANTS (env, comma-separated names): run only these persistent variants (e.g. above one variant's residency limit)
+static bool variant_on(int v) { const char* e = getenv("VARIANTS"); if (!e) return true; std::string s = std::string(",") + e + ","; return s.find(std::string(",") + VNAME[v] + ",") != std::string::npos; }
 static std::vector<double> finite(const std::vector<double>& v) { std::vector<double> r; for (double x : v) if (std::isfinite(x)) r.push_back(x); return r; }
 static bool report_err(Persist& P, const char* what) {
     const int e = P.err();
@@ -930,9 +932,11 @@ static int token_mode(const Opts& o) {
     // data; prefetching only moves loads), no wait timed out, and the dependency check (validate) saw every producer.
     // y is zeroed before the reference too, so regions a plan does not write (the warm token's vocab head) compare equal.
     bool vfail[NV] = {false, false, false, false};
+    for (int v = 0; v < NV; v++) if (!variant_on(v)) vfail[v] = true;   // (filtered out: reported as fail rows with status skip)
     CHECK(hipMemset(y, 0, yfloats * 4)); run_perop(0); CHECK(hipStreamSynchronize(st)); CHECK(hipMemcpy(y2, y, yfloats * 4, hipMemcpyDeviceToDevice));
     {   std::vector<float> ref(yfloats), got(yfloats); CHECK(hipMemcpy(ref.data(), y2, yfloats * 4, hipMemcpyDeviceToHost));
         for (int v = 0; v < NV; v++) {
+            if (!variant_on(v)) continue;
             CHECK(hipMemset(y, 0, yfloats * 4)); Pe.prep(st); Pe.run(st, dst, nst, dsegs[0], v, 1); CHECK(hipStreamSynchronize(st));
             if (report_err(Pe, VNAME[v])) { vfail[v] = true; printf("FAIL token: %s (wait or dependency check)\n", VNAME[v]); continue; }
             CHECK(hipMemcpy(got.data(), y, yfloats * 4, hipMemcpyDeviceToHost));
@@ -963,7 +967,7 @@ static int token_mode(const Opts& o) {
     }
     for (int mo = 0; mo < NM; mo++) {
         char row[512];
-        if (mo >= 4 && vfail[mo - 4]) snprintf(row, sizeof row, "token,%s,%s,%s,%d,%d,%d,%.0f,,,,,%d,fail", o.fmt.c_str(), o.warm ? "warm" : "cold", names[mo], o.layers, nseg, nst, (double)plans[0].bytes, Pe.grid);
+        if (mo >= 4 && vfail[mo - 4]) snprintf(row, sizeof row, variant_on(mo - 4) ? "token,%s,%s,%s,%d,%d,%d,%.0f,,,,,%d,fail" : "token,%s,%s,%s,%d,%d,%d,%.0f,,,,,%d,skip", o.fmt.c_str(), o.warm ? "warm" : "cold", names[mo], o.layers, nseg, nst, (double)plans[0].bytes, Pe.grid);
         else {
             const double med = median(ms[mo]);
             snprintf(row, sizeof row, "token,%s,%s,%s,%d,%d,%d,%.0f,%.3f,%.3f,%.3f,%.1f,%d,ok", o.fmt.c_str(), o.warm ? "warm" : "cold", names[mo], o.layers, nseg, nst, (double)plans[0].bytes,
@@ -985,7 +989,7 @@ static int token_mode(const Opts& o) {
         printf(" (us, median by kind)\n");
     }
     if (Pe.nonmono) printf("# WARNING: %d stage stamps ran backwards (excluded)\n", Pe.nonmono);
-    int nf = 0; for (int v = 0; v < NV; v++) nf += vfail[v];
+    int nf = 0; for (int v = 0; v < NV; v++) nf += vfail[v] && variant_on(v);
     return nf ? 6 : 0;   // (6: a persistent variant failed; its rows say fail, the others are valid)
 }
 
