@@ -5,7 +5,7 @@
 # that ends with 6 (a persistent variant failed its wait or dependency check; its rows say "fail") is recorded and the
 # script goes on.
 #   smoke  the RX 7900 XT alone (device 1, 84 CUs = 42 WGPs; HIP reports WGPs on RDNA3), small sizes: nothing reported
-#   xtx    the RX 7900 XTX (device 0, 96 CUs = 48 WGPs): E0, E1, sync, E2, E3
+#   xtx    the RX 7900 XTX (device 0, 96 CUs = 48 WGPs): E0, the floor split, E1, sync, E2, E3 (+ occupancy, one-tile claims)
 # Results: results/<date>-<mode>/ (CSV files with headers, rocprofv3 kernel traces, logs, environment, tables.md).
 set -u
 HERE=$(cd "$(dirname "$0")" && pwd)
@@ -53,6 +53,7 @@ stage check 600 "$BIN" check "${DEV[@]}"
 if [ "$MODE" = smoke ]; then
   stage e0-f16 600 $(prof e0-f16-cold) "$BIN" shapes --fmt f16 --reps 40 "${DEV[@]}" --csv "$OUT/e0.csv"
   stage e0-i4 600 $(prof e0-i4-cold) "$BIN" shapes --fmt i4 --reps 40 "${DEV[@]}" --csv "$OUT/e0.csv"
+  stage floor-cold 600 $(prof floor-cold) "$BIN" floor --reps 40 "${DEV[@]}" --csv "$OUT/floor.csv"
   for g in 1 2 0; do stage sync-g$g 600 "$BIN" sync --stages 64 --reps 120 --grid-per-cu $g "${DEV[@]}" --csv "$OUT/sync.csv"; done
   stage e2-i4 600 "$BIN" pshapes --fmt i4 --stages 16 --reps 120 "${DEV[@]}" --csv "$OUT/e2.csv"
   stage e3-i4 600 "$BIN" token --fmt i4 --layers 2 --tokens 2 --reps 100 "${DEV[@]}" --csv "$OUT/e3.csv"
@@ -64,6 +65,8 @@ else
     stage e0-$fmt-warm 900 $(prof e0-$fmt-warm) "$BIN" shapes --fmt $fmt --warm --reps 200 "${DEV[@]}" --csv "$OUT/e0.csv"
     stage e0-$fmt-cold 900 $(prof e0-$fmt-cold) "$BIN" shapes --fmt $fmt --reps 200 "${DEV[@]}" --csv "$OUT/e0.csv"
   done
+  # the floor decomposed: empty kernels, and INT4 matvecs at K = 128 and 2048 on 1, 2, 8 blocks, cold and warm
+  for c in cold warm; do stage floor-$c 600 $(prof floor-$c) "$BIN" floor $( [ $c = warm ] && echo --warm ) --reps 200 "${DEV[@]}" --csv "$OUT/floor.csv"; done
   # E1: the N sweep at K=2048, cold
   for fmt in i4 f16; do
     stage e1-$fmt 900 $(prof e1-$fmt) "$BIN" sweep --fmt $fmt --reps 200 "${DEV[@]}" --csv "$OUT/e1.csv"
@@ -76,10 +79,16 @@ else
   stage e2-f16 1200 "$BIN" pshapes --fmt f16 --stages 256 --reps 200 "${DEV[@]}" --csv "$OUT/e2.csv"
   stage e2-i4-warm 1200 "$BIN" pshapes --fmt i4 --warm --stages 256 --reps 200 "${DEV[@]}" --csv "$OUT/e2.csv"
   # E3: the 1,393-matvec token (48 layers + lm_head) in every mode, interleaved; INT4 at two grids, warm, f16
-  stage e3-i4 1200 "$BIN" token --fmt i4 --tokens 8 --reps 200 "${DEV[@]}" --csv "$OUT/e3.csv"
-  stage e3-i4-g2 1200 "$BIN" token --fmt i4 --tokens 8 --reps 200 --grid-per-cu 2 "${DEV[@]}" --csv "$OUT/e3.csv"
-  stage e3-i4-warm 1200 "$BIN" token --fmt i4 --warm --tokens 8 --reps 200 "${DEV[@]}" --csv "$OUT/e3.csv"
-  stage e3-f16 1200 "$BIN" token --fmt f16 --tokens 8 --reps 200 "${DEV[@]}" --csv "$OUT/e3.csv"
+  S="env STAGES_CSV=$OUT/stages.csv"
+  stage e3-i4 1200 $S "$BIN" token --fmt i4 --tokens 8 --reps 200 "${DEV[@]}" --csv "$OUT/e3.csv"
+  stage e3-i4-g2 1200 $S "$BIN" token --fmt i4 --tokens 8 --reps 200 --grid-per-cu 2 "${DEV[@]}" --csv "$OUT/e3.csv"
+  stage e3-i4-warm 1200 $S "$BIN" token --fmt i4 --warm --tokens 8 --reps 200 "${DEV[@]}" --csv "$OUT/e3.csv"
+  stage e3-f16 1200 $S "$BIN" token --fmt f16 --tokens 8 --reps 200 "${DEV[@]}" --csv "$OUT/e3.csv"
+  # the plain variants at their own occupancy (the shared grid is capped by the prefetch variants' registers)
+  stage e3-i4-occ7 1200 env STAGES_CSV="$OUT/stages-occ.csv" VARIANTS=barrier,dataflow RESIDENCY_PROBE=1 "$BIN" token --fmt i4 --tokens 8 --reps 200 --grid-per-cu 7 "${DEV[@]}" --csv "$OUT/e3-occ.csv"
+  stage e3-i4-occ8 1200 env STAGES_CSV="$OUT/stages-occ.csv" VARIANTS=dataflow RESIDENCY_PROBE=1 "$BIN" token --fmt i4 --tokens 8 --reps 200 --grid-per-cu 8 "${DEV[@]}" --csv "$OUT/e3-occ.csv"
+  # a test of the expert-down explanation: dataflow with one-tile claims on the short-row stages (K <= 768)
+  stage e3-i4-chunk1 1200 env STAGES_CSV="$OUT/stages-chunk1.csv" VARIANTS=dataflow,dataflow-pf DF_SHORTK_CHUNK1=1 "$BIN" token --fmt i4 --tokens 8 --reps 200 "${DEV[@]}" --csv "$OUT/e3-chunk1.csv"
   # one traced token run: the per-kernel breakdown of the per-op and grouped modes
   stage e3-i4-traced 1200 $(prof e3-i4) "$BIN" token --fmt i4 --tokens 4 --reps 100 "${DEV[@]}"
 fi

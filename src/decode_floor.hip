@@ -208,6 +208,9 @@ __device__ __forceinline__ void run_tile_pf(const Seg* segs, int nseg, int g, co
     if (i >= 0) do_tile<true>(segs[i], g - segs[i].tile0, &p);
 }
 
+// an empty kernel (floor mode): the dispatch's own cost as rocprofv3 sees it, with no loads
+__global__ __launch_bounds__(WG) void k_empty(int* sink) { if (sink && threadIdx.x == 0 && blockIdx.x == 0x7fffffff) *sink = 1; }
+
 // a launch: block b computes tile base + b of the segments [segs, segs + nseg)
 __global__ __launch_bounds__(WG) void k_launch(const Seg* segs, int nseg, int base) {
     run_tile(segs, nseg, base + (int)blockIdx.x);
@@ -595,6 +598,36 @@ static int shapes_mode(const Opts& o) {
     return 0;
 }
 
+static const char* H_FLOOR = "mode,kind,fmt,cache,N,K,blocks,weight_bytes,copies,reps";
+// The floor, decomposed (rocprofv3 gives the kernel times; rows only label the launches, in dispatch order):
+//   empty kernels at 1 ... 1536 blocks (dispatch, wave launch and teardown, no loads), then INT4 matvecs of 16 x blocks
+//   rows at K = 128 (one load round trip per lane: one group) and K = 2048 (two) on 1 ... 384 blocks, cold or warm.
+static int floor_mode(const Opts& o) {
+    hipStream_t st; CHECK(hipStreamCreate(&st));
+    __half* x; float* y; CHECK(hipMalloc(&x, 4096 * 2)); CHECK(hipMalloc(&y, 248320 * 4));
+    hipLaunchKernelGGL(k_fill_half, dim3(16), dim3(256), 0, 0, x, (size_t)4096, 7, -1.f, 1.f);
+    const int reps = o.reps;
+    for (int g : {1, 2, 8, 48, 96, 192, 384, 768, 1536}) {
+        for (int i = 0; i < 20 + reps; i++) hipLaunchKernelGGL(k_empty, dim3(g), dim3(WG), 0, st, (int*)nullptr);
+        CHECK(hipStreamSynchronize(st));
+        char row[256]; snprintf(row, sizeof row, "floor,empty,-,-,0,0,%d,0,0,%d", g, reps); csv_row(o, H_FLOOR, row);
+    }
+    for (int K : {128, 2048}) for (int g : {1, 2, 8, 48, 384}) {
+        const Shape sh{TILE_ROWS * g, K, "floor"};
+        Copies c; make_copies(c, sh, FMT_I4, o.warm);
+        const size_t n = c.t.size();
+        std::vector<Seg> hs; for (auto& t : c.t) hs.push_back(seg_of(t, x, y, 0));
+        Seg* d; CHECK(hipMalloc(&d, hs.size() * sizeof(Seg))); CHECK(hipMemcpy(d, hs.data(), hs.size() * sizeof(Seg), hipMemcpyHostToDevice));
+        size_t k = 0;
+        for (int i = 0; i < 20 + reps; i++) hipLaunchKernelGGL(k_launch, dim3(g), dim3(WG), 0, st, d + (k++ % n), 1, 0);
+        CHECK(hipStreamSynchronize(st));
+        char row[256]; snprintf(row, sizeof row, "floor,matvec,i4,%s,%d,%d,%d,%.0f,%zu,%d", o.warm ? "warm" : "cold", sh.N, K, g, (double)c.bytes, n, reps);
+        csv_row(o, H_FLOOR, row);
+        CHECK(hipFree(d)); c.a.release();
+    }
+    return 0;
+}
+
 // The four persistent variants (the same tile code; PLAN.md, E2 / E3): a device-wide barrier between stages or per-stage
 // done counters (dataflow), each with or without prefetching a tile's weights before its wait.
 enum { V_BARRIER = 0, V_BARRIER_PF, V_DATAFLOW, V_DATAFLOW_PF, NV };
@@ -918,6 +951,8 @@ static int token_mode(const Opts& o) {
     std::vector<Stage> S0 = plans[0].stages; const int nst = (int)S0.size(), nseg = (int)plans[0].segs.size();   // (the same stages for every routing sample)
     Persist Pe; Pe.init(nst);
     set_chunks(S0, Pe.grid);
+    if (getenv("DF_SHORTK_CHUNK1"))   // (test: one-tile dataflow claims on stages whose rows are short, K <= 768: the experts' down)
+        for (auto& st0 : S0) if (plans[0].segs[st0.seg0].K <= 768) st0.chunk = 1;
     CHECK(hipMalloc(&dst, nst * sizeof(Stage))); CHECK(hipMemcpy(dst, S0.data(), nst * sizeof(Stage), hipMemcpyHostToDevice));
     printf("# token: %d matvecs in %d stages, %.3f GB of weights per token, %d routing samples\n", nseg, nst, plans[0].bytes / 1e9, P);
     print_grid(Pe);
@@ -975,26 +1010,46 @@ static int token_mode(const Opts& o) {
         }
         csv_row(o, "mode,fmt,cache,strategy,layers,matvecs,stages,weight_bytes,ms_median,ms_p10,ms_p90,effective_GBps,persistent_grid,status", row);
     }
-    // each persistent variant's stage times by stage kind (one more run each, routing sample 0)
+    // each persistent variant's stage times by stage kind: 10 more runs each (routing sample 0), the median of each stage
+    // over them; the sum of the stage medians is printed next to the median first-block-start-to-last-stage-end span, so
+    // the breakdown can be checked against the token time (STAGES_CSV=file: every stage's median, one row each)
     const char* kinds[6] = {"q|k|v", "o", "router", "gate|up x8", "down x8", "lm_head"};
+    FILE* sc = getenv("STAGES_CSV") ? fopen(getenv("STAGES_CSV"), "a") : nullptr;
+    if (sc && ftell(sc) == 0) fprintf(sc, "fmt,cache,variant,grid,stage,kind,us_median\n");
     for (int v = 0; v < NV; v++) {
         if (vfail[v]) continue;
-        Pe.prep(st); Pe.run(st, dst, nst, dsegs[0], v); CHECK(hipStreamSynchronize(st));
-        if (report_err(Pe, VNAME[v])) continue;
-        auto u = Pe.stage_us(nst);
+        std::vector<std::vector<double>> per(nst); std::vector<double> spans; bool bad = false;
+        for (int r = 0; r < 10 && !bad; r++) {
+            Pe.prep(st); Pe.run(st, dst, nst, dsegs[0], v); CHECK(hipStreamSynchronize(st));
+            if (report_err(Pe, VNAME[v])) { bad = true; break; }
+            auto u = Pe.stage_us(nst); double sum = 0; bool fin = true;
+            for (int i = 0; i < nst; i++) { per[i].push_back(u[i]); if (std::isfinite(u[i])) sum += u[i]; else fin = false; }
+            if (fin) spans.push_back(sum);
+        }
+        if (bad) continue;
+        std::vector<double> med(nst); double total = 0;
+        for (int i = 0; i < nst; i++) { auto f = finite(per[i]); med[i] = f.empty() ? NAN : median(f); if (std::isfinite(med[i])) total += med[i]; }
         std::vector<std::vector<double>> by(6);
-        for (int i = 0; i < nst; i++) by[(!o.warm && i == nst - 1) ? 5 : i % 5].push_back(u[i]);
+        for (int i = 0; i < nst; i++) {
+            const int k = (!o.warm && i == nst - 1) ? 5 : i % 5;
+            by[k].push_back(med[i]);
+            if (sc) fprintf(sc, "%s,%s,%s,%d,%d,%s,%.3f\n", o.fmt.c_str(), o.warm ? "warm" : "cold", VNAME[v], Pe.grid, i, kinds[k], med[i]);
+        }
         printf("# stages %-12s", VNAME[v]);
         for (int k = 0; k < 6; k++) if (!by[k].empty()) printf(" %s %.2f", kinds[k], median(finite(by[k])));
-        printf(" (us, median by kind)\n");
+        printf(" (us, median by kind)\n# stages %-12s", VNAME[v]);
+        for (int k = 0; k < 6; k++) if (!by[k].empty()) { double m = 0; auto f = finite(by[k]); for (double x : f) m += x; printf(" %s %.2f", kinds[k], f.empty() ? NAN : m / f.size()); }
+        printf(" (us, mean by kind)\n# stages %-12s sum of stage medians %.1f us; first block start to last stage end %.1f us (median of %zu runs)\n",
+               VNAME[v], total, spans.empty() ? NAN : median(spans), spans.size());
     }
+    if (sc) fclose(sc);
     if (Pe.nonmono) printf("# WARNING: %d stage stamps ran backwards (excluded)\n", Pe.nonmono);
     int nf = 0; for (int v = 0; v < NV; v++) nf += vfail[v] && variant_on(v);
     return nf ? 6 : 0;   // (6: a persistent variant failed; its rows say fail, the others are valid)
 }
 
 int main(int argc, char** argv) {
-    if (argc < 2) { fprintf(stderr, "usage: decode_floor check|shapes|sweep|pshapes|sync|token [--fmt f16|i4] [--warm] [--reps N] [--stages N] [--layers N] [--tokens N] [--csv FILE] [--expect-cus N] [--grid-per-cu N]\n"); return 2; }
+    if (argc < 2) { fprintf(stderr, "usage: decode_floor check|shapes|sweep|floor|pshapes|sync|token [--fmt f16|i4] [--warm] [--reps N] [--stages N] [--layers N] [--tokens N] [--csv FILE] [--expect-cus N] [--grid-per-cu N]\n"); return 2; }
     Opts o; o.mode = argv[1];
     for (int i = 2; i < argc; i++) {
         std::string a = argv[i]; auto next = [&]() { if (i + 1 >= argc) { fprintf(stderr, "%s needs a value\n", a.c_str()); exit(2); } return std::string(argv[++i]); };
@@ -1013,6 +1068,7 @@ int main(int argc, char** argv) {
     if (o.mode == "shapes" || o.mode == "sweep") return shapes_mode(o);
     if (o.mode == "pshapes") return pshapes_mode(o);
     if (o.mode == "sync") return sync_mode(o);
+    if (o.mode == "floor") return floor_mode(o);
     if (o.mode == "token") return token_mode(o);
     fprintf(stderr, "unknown mode %s\n", o.mode.c_str()); return 2;
 }
