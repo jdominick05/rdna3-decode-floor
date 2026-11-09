@@ -495,24 +495,24 @@ static const std::vector<Shape> TABLE_SHAPES = {
     {2048, 768, "30B moe down"}, {512, 2048, "35B moe gate/up"}};
 
 // Weight copies of one shape. Cold: enough copies that they total more than 4 x the 96 MB Infinity Cache (no cap: too
-// little memory is a refusal from the arena, never a quietly smaller set), rounded up to a multiple of `ring` (the
-// number of copies one run reads) and at least 3 rings, so a run never reads a copy that one of the last two runs read.
-// Callers walk the copies with one advancing cursor (warmup included). Warm: one copy, reused on purpose.
+// little memory is a refusal from the arena, never a quietly smaller set), at least `ring` (the copies one run reads)
+// and a whole number of rings. Callers walk the copies in order with one advancing cursor (warmup included), so a copy
+// is read again only after all n - 1 others. Warm: one copy, reused on purpose.
 struct Copies { Arena a; std::vector<Tensor> t; size_t bytes = 0; };
 static void make_copies(Copies& c, const Shape& sh, int fmt, bool warm, int ring = 1) {
     c.bytes = tensor_bytes(sh.N, sh.K, fmt);
     size_t n = 1;
     if (!warm) {
         n = (4 * CACHE_BYTES + c.bytes - 1) / c.bytes + 1;
-        n = std::max(n, (size_t)3 * ring);
+        n = std::max(n, (size_t)ring);
         n = (n + ring - 1) / ring * ring;
     }
     c.a.init(tensor_alloc_bytes(sh.N, sh.K, fmt) * n + 4096, "weights");
     for (size_t i = 0; i < n; i++) c.t.push_back(make_tensor(c.a, sh.N, sh.K, fmt, 1000 + (uint32_t)i));
     CHECK(hipDeviceSynchronize());
 }
-// the bytes read between two reads of the same copy, walking the copies in order one ring per run
-static double reuse_mb(const Copies& c, int ring) { return c.t.size() <= 1 ? 0.0 : (double)(c.t.size() - ring) * c.bytes / 1e6; }
+// the bytes read between two reads of the same copy, walking the copies in order (rings consecutively)
+static double reuse_mb(const Copies& c, int /*ring*/) { return c.t.size() <= 1 ? 0.0 : (double)(c.t.size() - 1) * c.bytes / 1e6; }
 
 static int check_mode(const Opts& o) {
     int bad = 0;
