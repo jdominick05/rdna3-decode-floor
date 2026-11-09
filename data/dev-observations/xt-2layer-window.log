@@ -1,0 +1,36 @@
+# device AMD Radeon RX 7900 XT (gfx1100), 42 CUs, decode_floor token fmt=i4 cache=cold poll=0 sleep=1
+# token model: i4, 2 layers, 128 experts per layer allocated, 0.83 GB
+# token: 59 matvecs in 11 stages, 0.226 GB of weights per token, 2 routing samples
+# persistent grid 210 blocks of 256 (5 per WGP; occupancy max per WGP: barrier 7, barrier-pf 5, dataflow 8, dataflow-pf 5), wall clock 100 MHz
+PASS token: barrier outputs == the per-op outputs bitwise (223872 floats), dependency check ok
+PASS token: barrier-pf outputs == the per-op outputs bitwise (223872 floats), dependency check ok
+PASS token: dataflow outputs == the per-op outputs bitwise (223872 floats), dependency check ok
+PASS token: dataflow-pf outputs == the per-op outputs bitwise (223872 floats), dependency check ok
+token,i4,cold,per-op,2,59,11,225746944,0.629,0.628,0.632,358.9,0,ok
+token,i4,cold,per-op-graph,2,59,11,225746944,0.591,0.587,0.593,381.9,0,ok
+token,i4,cold,grouped,2,59,11,225746944,0.375,0.374,0.377,601.2,0,ok
+token,i4,cold,grouped-graph,2,59,11,225746944,0.370,0.370,0.383,609.4,0,ok
+token,i4,cold,persistent-barrier,2,59,11,225746944,0.443,0.438,0.445,510.0,210,ok
+token,i4,cold,persistent-barrier-pf,2,59,11,225746944,0.441,0.436,0.443,511.9,210,ok
+token,i4,cold,persistent-dataflow,2,59,11,225746944,0.473,0.472,0.474,477.6,210,ok
+token,i4,cold,persistent-dataflow-pf,2,59,11,225746944,0.476,0.473,0.478,474.1,210,ok
+# window per-op-graph           event     586.1 us (host waits)     588.4 us (host spins); stamp to stamp     583.6 us, events around the stamps     594.7 us
+# window grouped                event     375.1 us (host waits)     375.8 us (host spins); stamp to stamp     371.7 us, events around the stamps     382.6 us
+# window grouped-graph          event     372.7 us (host waits)     371.1 us (host spins); stamp to stamp     368.0 us, events around the stamps     379.2 us
+# window persistent-barrier     event     436.6 us (host waits)     437.1 us (host spins); stamp to stamp     433.6 us, events around the stamps     444.6 us
+# window persistent-barrier-pf  event     434.8 us (host waits)     435.1 us (host spins); stamp to stamp     431.8 us, events around the stamps     442.6 us
+# window persistent-dataflow    event     470.4 us (host waits)     471.6 us (host spins); stamp to stamp     468.8 us, events around the stamps     479.3 us
+# window persistent-dataflow-pf event     472.8 us (host waits)     472.4 us (host spins); stamp to stamp     469.3 us, events around the stamps     479.6 us
+# window empty-kernel           event      10.2 us (host waits)      10.4 us (host spins); stamp to stamp       7.2 us, events around the stamps      17.1 us
+# stages barrier      q|k|v 13.91 o 10.04 router 4.64 gate|up x8 34.24 down x8 26.48 lm_head 243.88 (us, median by kind)
+# stages barrier      q|k|v 13.36 o 9.86 router 4.54 gate|up x8 34.08 down x8 26.36 lm_head 243.88 (us, mean by kind)
+# stages barrier      sum of stage medians 420.3 us; first block start to last stage end 420.4 us (median of 10 runs)
+# stages barrier-pf   q|k|v 18.19 o 9.32 router 3.80 gate|up x8 35.00 down x8 26.76 lm_head 241.20 (us, median by kind)
+# stages barrier-pf   q|k|v 14.50 o 9.24 router 3.76 gate|up x8 34.86 down x8 26.64 lm_head 241.20 (us, mean by kind)
+# stages barrier-pf   sum of stage medians 419.2 us; first block start to last stage end 419.4 us (median of 10 runs)
+# stages dataflow     q|k|v 14.60 o 10.23 router 4.02 gate|up x8 44.25 down x8 31.68 lm_head 248.64 (us, median by kind)
+# stages dataflow     q|k|v 13.96 o 9.95 router 3.98 gate|up x8 44.14 down x8 31.63 lm_head 248.64 (us, mean by kind)
+# stages dataflow     sum of stage medians 455.9 us; first block start to last stage end 456.1 us (median of 10 runs)
+# stages dataflow-pf  q|k|v 19.44 o 9.09 router 3.42 gate|up x8 44.41 down x8 34.59 lm_head 245.47 (us, median by kind)
+# stages dataflow-pf  q|k|v 15.33 o 9.08 router 3.38 gate|up x8 44.16 down x8 34.15 lm_head 245.47 (us, mean by kind)
+# stages dataflow-pf  sum of stage medians 457.7 us; first block start to last stage end 457.1 us (median of 10 runs)

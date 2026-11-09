@@ -1,0 +1,36 @@
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor token fmt=i4 cache=cold poll=0 sleep=1
+# token model: i4, 48 layers, 128 experts per layer allocated, 16.05 GB
+# token: 1393 matvecs in 241 stages, 1.616 GB of weights per token, 8 routing samples
+# persistent grid 240 blocks of 256 (5 per WGP; occupancy max per WGP: barrier 7, barrier-pf 5, dataflow 8, dataflow-pf 5), wall clock 100 MHz
+PASS token: barrier outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: barrier-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+token,i4,cold,per-op,48,1393,241,1615880192,8.989,8.961,9.520,179.8,0,ok
+token,i4,cold,per-op-graph,48,1393,241,1615880192,8.196,8.185,8.678,197.1,0,ok
+token,i4,cold,grouped,48,1393,241,1615880192,3.820,3.802,4.117,423.0,0,ok
+token,i4,cold,grouped-graph,48,1393,241,1615880192,3.686,3.671,3.709,438.4,0,ok
+token,i4,cold,persistent-barrier,48,1393,241,1615880192,4.038,4.022,4.545,400.2,240,ok
+token,i4,cold,persistent-barrier-pf,48,1393,241,1615880192,3.835,3.821,3.896,421.4,240,ok
+token,i4,cold,persistent-dataflow,48,1393,241,1615880192,4.888,4.647,4.908,330.6,240,ok
+token,i4,cold,persistent-dataflow-pf,48,1393,241,1615880192,4.605,4.372,4.620,350.9,240,ok
+# window per-op-graph           event    8195.9 us (host waits)    8174.5 us (host spins); stamp to stamp    8164.9 us, events around the stamps    8174.5 us
+# window grouped                event    3812.7 us (host waits)    3798.4 us (host spins); stamp to stamp    3798.3 us, events around the stamps    3810.4 us
+# window grouped-graph          event    3681.3 us (host waits)    3667.2 us (host spins); stamp to stamp    3665.4 us, events around the stamps    3676.1 us
+# window persistent-barrier     event    4029.6 us (host waits)    4023.0 us (host spins); stamp to stamp    3789.7 us, events around the stamps    4032.9 us
+# window persistent-barrier-pf  event    3819.6 us (host waits)    3820.5 us (host spins); stamp to stamp    3582.8 us, events around the stamps    3824.8 us
+# window persistent-dataflow    event    4884.2 us (host waits)    4880.8 us (host spins); stamp to stamp    4643.1 us, events around the stamps    4884.4 us
+# window persistent-dataflow-pf event    4594.2 us (host waits)    4591.4 us (host spins); stamp to stamp    4358.4 us, events around the stamps    4600.0 us
+# window empty-kernel           event       8.8 us (host waits)       9.0 us (host spins); stamp to stamp       6.4 us, events around the stamps      15.1 us
+# stages barrier      q|k|v 14.48 o 9.92 router 3.84 gate|up x8 26.56 down x8 19.40 lm_head 203.00 (us, median by kind)
+# stages barrier      q|k|v 14.60 o 9.94 router 3.83 gate|up x8 26.57 down x8 19.39 lm_head 203.00 (us, mean by kind)
+# stages barrier      sum of stage medians 3770.7 us; first block start to last stage end 3766.9 us (median of 10 runs)
+# stages barrier-pf   q|k|v 9.56 o 8.56 router 3.12 gate|up x8 27.64 down x8 21.12 lm_head 197.32 (us, median by kind)
+# stages barrier-pf   q|k|v 9.77 o 8.55 router 3.11 gate|up x8 27.70 down x8 21.10 lm_head 197.32 (us, mean by kind)
+# stages barrier-pf   sum of stage medians 3568.0 us; first block start to last stage end 3564.0 us (median of 10 runs)
+# stages dataflow     q|k|v 13.72 o 9.92 router 3.41 gate|up x8 37.92 down x8 27.04 lm_head 214.47 (us, median by kind)
+# stages dataflow     q|k|v 13.77 o 9.94 router 3.42 gate|up x8 37.84 down x8 27.06 lm_head 214.47 (us, mean by kind)
+# stages dataflow     sum of stage medians 4632.0 us; first block start to last stage end 4626.0 us (median of 10 runs)
+# stages dataflow-pf  q|k|v 10.09 o 8.54 router 2.90 gate|up x8 38.37 down x8 26.24 lm_head 206.16 (us, median by kind)
+# stages dataflow-pf  q|k|v 10.27 o 8.54 router 2.91 gate|up x8 38.26 down x8 26.22 lm_head 206.16 (us, mean by kind)
+# stages dataflow-pf  sum of stage medians 4343.8 us; first block start to last stage end 4327.9 us (median of 10 runs)

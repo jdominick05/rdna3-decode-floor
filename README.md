@@ -7,22 +7,26 @@ launched four ways:
 - those launches as a HIP graph;
 - one persistent kernel per token, in four variants.
 
-Each runs cold and warm, in INT4 and f16, with the same tile kernel in every mode. It was written for the discussion
+Single kernels run cold and warm in INT4 and f16; the per-shape and token runs cover INT4 cold, INT4 warm and f16
+cold. The same tile kernel runs in every mode. It was written for the discussion
 in [iree-org/iree#24165](https://github.com/iree-org/iree/issues/24165) and
 [#23507](https://github.com/iree-org/iree/issues/23507).
 
-- [REPORT.md](REPORT.md): the results, including where the plan's own stop rule tripped.
+- [REPORT.md](REPORT.md): the results, including where the plan's own stop rule tripped, and what changed after an
+  independent review.
 - [PLAN.md](PLAN.md): the experiments and predictions, written before measuring.
 - [data/](data/): three full runs (CSV, logs, environment) and their spread.
 
 ## In three lines
 
-- Grouping the MoE experts into one launch per stage takes the matvec token from 9.0 to 3.7 ms. After that, launch
-  gaps are 6–10 % of it, and most of the rest is dependent memory latency inside small kernels.
+- Grouping the MoE experts into one launch per stage takes the matvec token from 9.0 to 3.7 ms. After that, the gaps
+  between launches are a minority of it (two model-based estimates: 0.23–0.35 ms), and about 1.4 ms of kernel time
+  sits above a bandwidth baseline.
 - A persistent kernel replaces each launch gap with a barrier of about the same cost. Here its best variant was 4 %
   slower than the graph with default settings, and 2 % faster with the PCIe link kept awake.
-- On this XTX, any single kernel longer than ~1 ms (persistent or not) pays ~250 µs of PCIe link wake-up after it
-  ends. No GPU clock sees it, but the host does.
+- On this XTX, single launches longer than ~1 ms showed ~250 µs more time by events and on the host than by GPU
+  clocks. A host thread reading GPU memory over PCIe removed it; link power management is the leading hypothesis, not
+  established.
 
 ## Build and run
 

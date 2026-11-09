@@ -1,0 +1,28 @@
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor token fmt=i4 cache=cold poll=0 sleep=1
+# token model: i4, 48 layers, 128 experts per layer allocated, 16.05 GB
+# token: 1393 matvecs in 241 stages, 1.616 GB of weights per token, 8 routing samples
+# persistent grid 240 blocks of 256 (5 per WGP; occupancy max per WGP: barrier 7, barrier-pf 5, dataflow 8, dataflow-pf 5), wall clock 100 MHz
+PASS token: barrier-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+token,i4,cold,per-op,48,1393,241,1615880192,8.994,8.968,9.464,179.7,0,ok
+token,i4,cold,per-op-graph,48,1393,241,1615880192,8.183,8.175,8.213,197.5,0,ok
+token,i4,cold,grouped,48,1393,241,1615880192,3.808,3.803,3.840,424.4,0,ok
+token,i4,cold,grouped-graph,48,1393,241,1615880192,3.700,3.692,3.707,436.8,0,ok
+token,i4,cold,persistent-barrier,48,1393,241,1615880192,,,,,240,skip
+token,i4,cold,persistent-barrier-pf,48,1393,241,1615880192,3.835,3.590,4.102,421.4,240,ok
+token,i4,cold,persistent-dataflow,48,1393,241,1615880192,,,,,240,skip
+token,i4,cold,persistent-dataflow-pf,48,1393,241,1615880192,4.617,4.605,4.834,350.0,240,ok
+# window per-op-graph           event    8204.5 us (host waits)    8182.0 us (host spins); stamp to stamp    8176.6 us, events around the stamps    8186.5 us
+# window grouped                event    3814.7 us (host waits)    3803.0 us (host spins); stamp to stamp    3799.5 us, events around the stamps    3810.4 us
+# window grouped-graph          event    3682.9 us (host waits)    3666.5 us (host spins); stamp to stamp    3666.9 us, events around the stamps    3677.2 us
+# window persistent-barrier-pf  reset alone      23.0 us; event after a synchronized reset    3819.5 us; with an empty kernel between the reset and event a    3816.6 us
+# window persistent-barrier-pf  event    3822.8 us (host waits)    3820.3 us (host spins); stamp to stamp    3585.9 us, events around the stamps    3826.0 us
+# window persistent-dataflow-pf reset alone      22.8 us; event after a synchronized reset    4583.1 us; with an empty kernel between the reset and event a    4583.0 us
+# window persistent-dataflow-pf event    4589.1 us (host waits)    4586.7 us (host spins); stamp to stamp    4350.2 us, events around the stamps    4591.9 us
+# window empty-kernel           event       8.9 us (host waits)       9.1 us (host spins); stamp to stamp       6.3 us, events around the stamps      15.2 us
+# stages barrier-pf   q|k|v 9.56 o 8.48 router 3.12 gate|up x8 27.76 down x8 21.04 lm_head 197.00 (us, median by kind)
+# stages barrier-pf   q|k|v 9.78 o 8.50 router 3.14 gate|up x8 27.77 down x8 21.03 lm_head 197.00 (us, mean by kind)
+# stages barrier-pf   sum of stage medians 3567.0 us; first block start to last stage end 3561.8 us (median of 10 runs)
+# stages dataflow-pf  q|k|v 10.06 o 8.52 router 2.93 gate|up x8 38.46 down x8 26.16 lm_head 206.51 (us, median by kind)
+# stages dataflow-pf  q|k|v 10.25 o 8.51 router 2.93 gate|up x8 38.31 down x8 26.18 lm_head 206.51 (us, mean by kind)
+# stages dataflow-pf  sum of stage medians 4342.8 us; first block start to last stage end 4332.0 us (median of 10 runs)
