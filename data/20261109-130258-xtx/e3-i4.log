@@ -1,0 +1,28 @@
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor token fmt=i4 cache=cold poll=0 sleep=1
+# token model: i4, 48 layers, 128 experts per layer allocated, 16.05 GB
+# token: 1393 matvecs in 241 stages, 1.616 GB of weights per token, 8 routing samples
+# persistent grid 240 blocks of 256 (5 per WGP; occupancy max per WGP: barrier 7, barrier-pf 5, dataflow 8, dataflow-pf 5), wall clock 100 MHz
+PASS token: barrier outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: barrier-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+token,i4,cold,per-op,48,1393,241,1615880192,9.004,8.988,9.041,179.5,0,ok
+token,i4,cold,per-op-graph,48,1393,241,1615880192,8.208,8.199,8.222,196.9,0,ok
+token,i4,cold,grouped,48,1393,241,1615880192,3.801,3.782,3.827,425.1,0,ok
+token,i4,cold,grouped-graph,48,1393,241,1615880192,3.681,3.658,3.693,439.0,0,ok
+token,i4,cold,persistent-barrier,48,1393,241,1615880192,4.042,4.038,4.057,399.8,240,ok
+token,i4,cold,persistent-barrier-pf,48,1393,241,1615880192,3.830,3.823,3.863,421.9,240,ok
+token,i4,cold,persistent-dataflow,48,1393,241,1615880192,4.897,4.891,4.915,330.0,240,ok
+token,i4,cold,persistent-dataflow-pf,48,1393,241,1615880192,4.613,4.595,4.640,350.3,240,ok
+# stages barrier      q|k|v 14.48 o 9.96 router 3.88 gate|up x8 26.60 down x8 19.44 lm_head 203.12 (us, median by kind)
+# stages barrier      q|k|v 14.61 o 10.00 router 3.86 gate|up x8 26.62 down x8 19.45 lm_head 203.12 (us, mean by kind)
+# stages barrier      sum of stage medians 3780.9 us; first block start to last stage end 3775.6 us (median of 10 runs)
+# stages barrier-pf   q|k|v 9.56 o 8.52 router 3.12 gate|up x8 27.68 down x8 21.08 lm_head 196.44 (us, median by kind)
+# stages barrier-pf   q|k|v 9.73 o 8.56 router 3.14 gate|up x8 27.71 down x8 21.11 lm_head 196.44 (us, mean by kind)
+# stages barrier-pf   sum of stage medians 3568.8 us; first block start to last stage end 3566.1 us (median of 10 runs)
+# stages dataflow     q|k|v 13.74 o 9.96 router 3.44 gate|up x8 38.04 down x8 27.11 lm_head 214.23 (us, median by kind)
+# stages dataflow     q|k|v 13.77 o 9.99 router 3.43 gate|up x8 38.04 down x8 27.07 lm_head 214.23 (us, mean by kind)
+# stages dataflow     sum of stage medians 4644.8 us; first block start to last stage end 4634.7 us (median of 10 runs)
+# stages dataflow-pf  q|k|v 10.04 o 8.54 router 2.93 gate|up x8 38.44 down x8 26.28 lm_head 207.11 (us, median by kind)
+# stages dataflow-pf  q|k|v 10.24 o 8.52 router 2.94 gate|up x8 38.38 down x8 26.30 lm_head 207.11 (us, mean by kind)
+# stages dataflow-pf  sum of stage medians 4352.9 us; first block start to last stage end 4346.3 us (median of 10 runs)

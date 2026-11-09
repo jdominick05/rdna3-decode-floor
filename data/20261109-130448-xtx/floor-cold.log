@@ -1,0 +1,29 @@
+W1109 13:04:55.044578  153304 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000306 sec
+W1109 13:04:55.044869  153304 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor floor --reps 200 --expect-cus 48 --csv results/20261109-130448-xtx/floor.csv' ::     0.000000 sec
+W1109 13:04:55.057856  153304 tool.cpp:3770] HSA version 1.21.0 initialized (instance=0)
+W1109 13:05:04.862315  153304 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor floor --reps 200 --expect-cus 48 --csv results/20261109-130448-xtx/floor.csv' ::     9.817445 sec
+E1109 13:05:04.882297  153304 output_stream.cpp:110] Opened result file: results/20261109-130448-xtx/prof-floor-cold/floor-cold_kernel_trace.csv
+E1109 13:05:10.245575  153304 output_stream.cpp:110] Opened result file: results/20261109-130448-xtx/prof-floor-cold/floor-cold_agent_info.csv
+W1109 13:05:10.259160  153304 simple_timer.cpp:55] [rocprofv3] output generation ::     5.383380 sec
+W1109 13:05:10.259198  153304 simple_timer.cpp:55] [rocprofv3] tool finalization ::     5.383441 sec
+W1109 13:05:10.259285  153309 tool.cpp:4676] [PPID=153282][PID=153304][TID=153309][signal_finalization_worker] rocprofv3 finalizing after signal 0...
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor floor fmt=i4 cache=cold poll=0 sleep=1
+floor,empty,-,-,0,0,1,0,0,200
+floor,empty,-,-,0,0,2,0,0,200
+floor,empty,-,-,0,0,8,0,0,200
+floor,empty,-,-,0,0,48,0,0,200
+floor,empty,-,-,0,0,96,0,0,200
+floor,empty,-,-,0,0,192,0,0,200
+floor,empty,-,-,0,0,384,0,0,200
+floor,empty,-,-,0,0,768,0,0,200
+floor,empty,-,-,0,0,1536,0,0,200
+floor,matvec,i4,cold,16,128,1,1088,370087,200
+floor,matvec,i4,cold,32,128,2,2176,185044,200
+floor,matvec,i4,cold,128,128,8,8704,46262,200
+floor,matvec,i4,cold,768,128,48,52224,7712,200
+floor,matvec,i4,cold,6144,128,384,417792,965,200
+floor,matvec,i4,cold,16,2048,1,17408,23132,200
+floor,matvec,i4,cold,32,2048,2,34816,11567,200
+floor,matvec,i4,cold,128,2048,8,139264,2893,200
+floor,matvec,i4,cold,768,2048,48,835584,483,200
+floor,matvec,i4,cold,6144,2048,384,6684672,62,200

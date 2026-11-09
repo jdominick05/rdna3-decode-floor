@@ -1,0 +1,23 @@
+W1109 13:03:01.095607  146378 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000340 sec
+W1109 13:03:01.095899  146378 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor shapes --fmt f16 --warm --reps 200 --expect-cus 48 --csv results/20261109-130258-xtx/e0.csv' ::     0.000000 sec
+W1109 13:03:01.109344  146378 tool.cpp:3770] HSA version 1.21.0 initialized (instance=0)
+W1109 13:03:01.657121  146378 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor shapes --fmt f16 --warm --reps 200 --expect-cus 48 --csv results/20261109-130258-xtx/e0.csv' ::     0.561221 sec
+E1109 13:03:01.670654  146378 output_stream.cpp:110] Opened result file: results/20261109-130258-xtx/prof-e0-f16-warm/e0-f16-warm_kernel_trace.csv
+E1109 13:03:01.684386  146378 output_stream.cpp:110] Opened result file: results/20261109-130258-xtx/prof-e0-f16-warm/e0-f16-warm_agent_info.csv
+W1109 13:03:01.686141  146378 simple_timer.cpp:55] [rocprofv3] output generation ::     0.028727 sec
+W1109 13:03:01.686171  146378 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.028775 sec
+W1109 13:03:01.686243  146383 tool.cpp:4676] [PPID=146356][PID=146378][TID=146383][signal_finalization_worker] rocprofv3 finalizing after signal 0...
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor shapes fmt=f16 cache=warm poll=0 sleep=1
+shapes,f16,warm,8192,2048,"35B gdn_qkv_proj",33554432,1,0.0,23.28,22.80,23.64,1441.3
+shapes,f16,warm,4096,2048,"30B/35B q_proj",16777216,1,0.0,16.48,16.20,16.76,1018.0
+shapes,f16,warm,2048,4096,"30B/35B o_proj",16777216,1,0.0,17.48,17.28,17.76,959.8
+shapes,f16,warm,512,2048,"30B/35B k_proj v_proj",2097152,1,0.0,12.48,12.36,12.72,168.0
+shapes,f16,warm,2048,512,"35B shared_down",2097152,1,0.0,10.92,10.84,11.16,192.0
+shapes,f16,warm,256,2048,"35B router",1048576,1,0.0,12.36,12.28,12.56,84.8
+shapes,f16,warm,128,2048,"30B router",524288,1,0.0,12.32,12.20,12.52,42.6
+shapes,f16,warm,32,2048,"35B gdn_b gdn_a",131072,1,0.0,12.24,12.12,12.48,10.7
+shapes,f16,warm,151936,2048,"30B lm_head",622329856,1,0.0,718.12,716.44,719.96,866.6
+shapes,f16,warm,248320,2048,"35B lm_head",1017118720,1,0.0,1386.65,1383.93,1390.69,733.5
+shapes,f16,warm,768,2048,"30B moe gate/up",3145728,1,0.0,12.56,12.44,12.92,250.4
+shapes,f16,warm,2048,768,"30B moe down",3145728,1,0.0,11.00,10.92,11.40,286.0
+shapes,f16,warm,512,2048,"35B moe gate/up",2097152,1,0.0,12.48,12.36,12.80,168.0

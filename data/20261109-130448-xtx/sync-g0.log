@@ -1,0 +1,9 @@
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor sync fmt=i4 cache=cold poll=0 sleep=1
+# persistent grid 240 blocks of 256 (5 per WGP; occupancy max per WGP: barrier 7, barrier-pf 5, dataflow 8, dataflow-pf 5), wall clock 100 MHz
+# one-tile copies: 23296 (405.5 MB), a copy is re-read after 405.5 MB
+sync,i4,barrier,0,240,5,1.52,1.64,1.57,ok
+sync,i4,barrier-pf,0,240,5,1.56,1.64,1.59,ok
+sync,i4,barrier,1,240,5,3.64,3.84,3.75,ok
+sync,i4,barrier-pf,1,240,5,5.32,5.56,6.35,ok
+sync,i4,dataflow,1,240,5,3.04,3.32,3.13,ok
+sync,i4,dataflow-pf,1,240,5,2.20,2.58,2.31,ok

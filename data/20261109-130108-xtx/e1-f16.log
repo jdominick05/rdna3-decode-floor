@@ -1,0 +1,22 @@
+W1109 13:01:35.492467  141540 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000333 sec
+W1109 13:01:35.492777  141540 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor sweep --fmt f16 --reps 200 --expect-cus 48 --csv results/20261109-130108-xtx/e1.csv' ::     0.000000 sec
+W1109 13:01:35.506279  141540 tool.cpp:3770] HSA version 1.21.0 initialized (instance=0)
+W1109 13:01:35.714142  141540 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor sweep --fmt f16 --reps 200 --expect-cus 48 --csv results/20261109-130108-xtx/e1.csv' ::     0.221365 sec
+E1109 13:01:35.727645  141540 output_stream.cpp:110] Opened result file: results/20261109-130108-xtx/prof-e1-f16/e1-f16_kernel_trace.csv
+E1109 13:01:35.756803  141540 output_stream.cpp:110] Opened result file: results/20261109-130108-xtx/prof-e1-f16/e1-f16_agent_info.csv
+W1109 13:01:35.758555  141540 simple_timer.cpp:55] [rocprofv3] output generation ::     0.044116 sec
+W1109 13:01:35.758580  141540 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.044161 sec
+W1109 13:01:35.758671  141545 tool.cpp:4676] [PPID=141518][PID=141540][TID=141545][signal_finalization_worker] rocprofv3 finalizing after signal 0...
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor sweep fmt=f16 cache=cold poll=0 sleep=1
+shapes,f16,cold,32,2048,"sweep K=2048",131072,3073,402.7,13.80,13.64,14.20,9.5
+shapes,f16,cold,64,2048,"sweep K=2048",262144,1537,402.7,13.96,13.72,14.36,18.8
+shapes,f16,cold,128,2048,"sweep K=2048",524288,769,402.7,14.16,13.88,14.44,37.0
+shapes,f16,cold,256,2048,"sweep K=2048",1048576,385,402.7,14.28,14.08,14.68,73.4
+shapes,f16,cold,512,2048,"sweep K=2048",2097152,193,402.7,15.08,14.64,15.52,139.1
+shapes,f16,cold,768,2048,"sweep K=2048",3145728,129,402.7,15.80,15.28,16.32,199.1
+shapes,f16,cold,1024,2048,"sweep K=2048",4194304,97,402.7,17.08,16.28,17.52,245.6
+shapes,f16,cold,2048,2048,"sweep K=2048",8388608,49,402.7,23.48,20.80,24.00,357.3
+shapes,f16,cold,4096,2048,"sweep K=2048",16777216,25,402.7,37.20,33.04,38.48,451.0
+shapes,f16,cold,8192,2048,"sweep K=2048",33554432,13,402.7,57.00,55.40,66.28,588.7
+shapes,f16,cold,16384,2048,"sweep K=2048",67108864,7,402.7,98.80,97.68,114.44,679.2
+shapes,f16,cold,32768,2048,"sweep K=2048",134217728,4,402.7,174.00,172.68,180.36,771.4

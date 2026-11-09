@@ -1,237 +1,463 @@
 # Where a Qwen3-30B-A3B decode token's matvec time goes on an RX 7900 XTX
 
-Measured 2026-11-09 on one RX 7900 XTX (gfx1100, 96 CUs / 48 WGPs, 960 GB/s GDDR6, 96 MB Infinity Cache). Plan and
-pre-registered predictions: [PLAN.md](PLAN.md) (written before measuring; its last section was revised after an
-RX 7900 XT smoke run and before any XTX measurement). Raw data: [data/20261109-xtx/](data/20261109-xtx/).
+Measured 2026-11-09 on one RX 7900 XTX (gfx1100, 96 CUs / 48 WGPs, 960 GB/s GDDR6, 96 MB Infinity Cache).
+- **Plan:** [PLAN.md](PLAN.md), with the predictions written before measuring. Its last section was revised after an
+  RX 7900 XT smoke run, before any XTX measurement.
+- **Data:** three full runs of the same build, in [data/](data/). [data/spread.md](data/spread.md) gives the median and
+  range across the three. The numbers below are those medians.
 
 ## The answer in short
 
-- **The matvec "token" here is 1,393 matrix-vector products only** (48 layers + the vocab head): no attention, norms,
-  routing or sampling. Compare the modes below with each other, never with whole-token speeds such as IREE's 120 tok/s.
-- **Grouping the experts is the big lever.** One launch per matvec: 9.00 ms. One launch per dependent stage (q|k|v
-  together, the 8 experts' gate|up together, their 8 downs together): 3.80 ms. A HIP graph of those: 3.68 ms.
-- **With experts grouped and a graph, launch gaps are a small part of the token.** The grouped kernels add up to
-  3.36 ms of GPU time (rocprofv3), so the gaps between them total about 0.32 ms: 1.33 µs per stage, 9 % of the token.
-- **The fixed cost of a small kernel is inside the kernel, not in the launch.** Single-kernel times fit
-  t = t0 + bytes / BW with t0 = 4.4 µs (INT4) and 6.2 µs (f16), cold, measured with rocprofv3 kernel timestamps.
-- **A persistent kernel removes the gaps but did not beat grouped launches here.** Best of four persistent variants:
-  3.83 ms (3.86 ms with more blocks), against 3.68 ms. In isolation a small matvec costs less as a persistent stage
-  (2.6–3.7 µs against 4.5–5.5 µs as graph launches), but on the full token one stage type, the experts' down
-  projections (K = 768, short rows), runs at 18–27 µs inside the persistent kernel against 10.3 µs as a launch,
-  which costs more than the gaps saved. The pre-registered prediction for the persistent kernel (2.6–3.4 ms) failed.
+1. **The "token" here is 1,393 matrix-vector products only:** 48 layers plus the vocab head, in 241 dependent stages.
+   Attention, norms, routing and sampling are not run. Compare the modes with each other, never with whole-token speeds
+   such as IREE's 120 tok/s.
+2. **Grouping the experts is the big lever.**
+
+   | Mode | INT4 cold token |
+   |---|---|
+   | One launch per matvec | 9.02 ms |
+   | One launch per dependent stage | 3.82 ms |
+   | The same stages as a HIP graph | 3.68 ms |
+
+3. **With experts grouped and launches graphed, launch gaps are a small part of the token.** By two estimates the gaps
+   come to 0.23–0.35 ms, 6–10 % of the token. The larger fixed cost is inside the kernels. The grouped graph runs for
+   3.66 ms of GPU time:
+
+   | Part | ms |
+   |---|---|
+   | The weight bytes, at the 858 GB/s the vocab head reaches | 1.88 |
+   | Time inside the per-layer kernels beyond that | 1.43 |
+   | Gaps between kernels | ~0.35 |
+
+   A small kernel is mostly fixed latency. An empty kernel costs 1.1 µs. Each dependent memory round trip in a tile
+   adds about 1 µs more.
+4. **The persistent kernel's result depends on the PCIe link.**
+
+   | INT4 cold token | Default platform settings | PCIe link kept awake |
+   |---|---|---|
+   | Grouped graph | 3.68 ms | 3.67 ms |
+   | Best persistent variant (barrier-pf) | 3.83 ms, **4 % slower** | 3.60 ms, **2 % faster** |
+
+   - **On this XTX, any single kernel that runs longer than about 1.0 ms pays about 250 µs when it ends.** The host
+     sees completion that long after the GPU's own clocks say the kernel finished. Grouped launch sequences don't pay
+     it, presumably because their stream of command fetches keeps the link busy.
+   - **A host thread reading GPU memory over PCIe removes it completely.**
+   - **A real decode loop on this machine pays it on every token,** because the host must read the result before it
+     can pick the next token.
+   - **On GPU time, the persistent kernel recovers the ~0.35 ms of gaps but spends ~0.26 ms more inside its stages.**
+     The experts' down projections cost +0.52 ms; prefetching the next stage's weights saves 0.31 ms on q|k|v and o.
+   - **This is far from the pre-registered bar.** The refutation test asked for at least 1.25× faster than the graph.
+     The persistent kernel did not deliver the gain.
+5. **The plan's E0 stop rule tripped, and we kept going.** On large shapes our kernels are 2–5× faster than IREE's. The
+   next section says what that means.
+6. **These are one machine's numbers.** On the RX 7900 XT (one run), the persistent kernel was 27 % slower than the
+   graph even on GPU time. See Limitations.
+
+## Deviation from the plan: the E0 stop rule tripped
+
+**The rule.** PLAN.md's E0 gate reads: "If they come within about 2× of IREE's per-shape times, the comparison is on
+comparable kernels. If not, we stop and report that first. A kernel far faster than theirs is a codegen result, not a
+dispatch result."
+
+**What happened.**
+- Of IREE's 26 per-shape kernel times, 6 are more than 2× ours:
+  - f16 8192×2048 (4.8×), q 4096×2048 (4.3×), o 2048×4096 (3.5×), down 2048×768 (2.5×) and the 35B vocab head
+    (2.3×);
+  - INT4 o (2.3×).
+- Two more sit at 2.0×.
+- In every case ours is the faster kernel.
+- run.sh runs every experiment in one pass, and nothing in it enforced the gate. We compared E0 against IREE's numbers
+  after the full run, so nothing stopped.
+
+**Why we continued, and why the results still answer the question.**
+- **The question is the launch floor.** That lives in the small shapes, and those are within 2×: INT4 1.1–1.8× (one
+  shape where IREE is faster, 2048×512 at 0.8×) and f16 1.0–1.9× except the down projection (2.5×).
+- **The large-shape difference is codegen.** iree#23507 reports llama.cpp's f16 kernels 2–2.7× faster than IREE's on
+  the large shapes. Ours are 1.3–2× faster again.
+
+**What it means.**
+- **Our token times are not IREE's token times.** With IREE's kernels the large stages would take longer, and the
+  launch share of the token would be smaller.
+- **The conclusions hold for kernels in our speed class.** That covers the gap measurements, the in-kernel fixed cost
+  and the persistent-kernel comparison.
+- **The rule should have been in the script.** Recorded as a method finding below.
 
 ## Setup
 
-- **Card and software:** RX 7900 XTX alone (`HIP_VISIBLE_DEVICES=0`), Linux 7.0.0-38, TheRock ROCm 10.2.0a20261011
-  (HIP 7.17, AMD clang 24), DPM forced high (SCLK top state 2,482 MHz, MCLK 1,249 MHz), amdgpu runtime PM off. The XTX
-  also drives the desktop. Every process ran under a GPU watchdog (VRAM limit, kernel-log fault watch).
-- **Model shapes:** Qwen3-30B-A3B, per layer q 1×4096×2048, k and v 1×512×2048, o 1×2048×4096, router 1×128×2048, 8 of
-  128 experts × (gate and up 1×768×2048, down 1×2048×768), vocab head 1×151936×2048. Random weights in the real shapes
-  (timing does not depend on values). The routed experts are drawn at random per token (8 routing samples).
-- **Formats:** f16 weights; INT4 with groups of 128 and an f16 scale and zero point per group (1.616 GB per INT4 token,
-  6.083 GB per f16 token; f16 allocates only the 8 experts a token uses, since 128 would not fit).
-- **One matvec tile function in every mode.** 16 rows per 256-thread block, f32 accumulation with `v_dot2_f32_f16`;
-  INT4 nibbles become f16 via the 0x6400 exponent trick. Checked in the generated code: the same loads
-  (`global_load_b128`) and the same instruction mix in every kernel up to scheduling.
+- **Card and software:**
+  - RX 7900 XTX alone (`HIP_VISIBLE_DEVICES=0`), Linux 7.0.0-38, TheRock ROCm 10.2.0a20261011 (HIP 7.17, AMD clang 24);
+  - DPM forced high (SCLK top state 2,482 MHz, MCLK 1,249 MHz), amdgpu runtime PM off;
+  - no display attached to the XTX during the three runs (the monitors were on the integrated GPU);
+  - every process ran under a GPU watchdog (VRAM limit, kernel-log fault watch).
+- **PCIe:**
+  - The XTX is on CPU lanes at 16 GT/s x16, behind the card's own switch.
+  - ASPM L1 is enabled on the card's links (sysfs `l1_aspm=1` on 01:00.0 and 03:00.0); the kernel's ASPM policy is
+    `default`.
+  - Each run's `environment.txt` records the link state.
+- **Model shapes:**
+  - Qwen3-30B-A3B per layer: q 1×4096×2048, k and v 1×512×2048, o 1×2048×4096, router 1×128×2048, and 8 of 128 experts,
+    each gate and up 1×768×2048 and down 1×2048×768;
+  - vocab head 1×151936×2048;
+  - random weights in the real shapes (timing does not depend on values);
+  - the routed experts are drawn at random per token (8 routing samples).
+- **Formats:**
+  - f16 weights;
+  - INT4 with groups of 128 and an f16 scale and zero point per group;
+  - 1.616 GB per INT4 token, 6.083 GB per f16 token (f16 allocates only the 8 experts a token uses, since 128 would not
+    fit).
+- **One matvec tile function in every mode:**
+  - 16 rows per 256-thread block (8 waves, 2 rows per wave, one row at a time);
+  - f32 accumulation with `v_dot2_f32_f16`;
+  - INT4 nibbles become f16 via the 0x6400 exponent trick;
+  - a lane reads 32 INT4 columns or 8 f16 columns per iteration.
 - **Modes:**
   - per-op: one launch per matvec;
-  - grouped: one launch per stage;
+  - grouped: one launch per stage (q|k|v together, the 8 experts' gate|up together, their downs together);
   - graph: the same launches captured in a HIP graph;
   - four persistent variants, one launch per token:
     - *barrier*: static round-robin tiles, a split-phase device-wide barrier between stages;
-    - *dataflow*: per-stage claim and done counters, each block claims at most one chunk per stage and waits only for
-      the stage before it;
-    - *-pf*: prefetch the claimed tile's weights before the wait. Not for the routed experts' gate|up, whose experts
-      the router picks.
+    - *dataflow*: per-stage claim and done counters; each block claims at most one chunk of ⌈tiles / blocks⌉ tiles
+      per stage and waits only for the stage before it;
+    - *-pf*: prefetch the claimed tile's weights before the wait (not for the routed gate|up, whose experts the router
+      picks).
 - **Cold and warm:**
   - cold: weight copies totalling at least 400 MB, walked in order, so a copy is re-read only after 400+ MB of other
-    traffic (each row records copies and reuse distance);
+    traffic;
   - warm: one copy reused;
   - warm token: every layer reuses one layer's weights and 8 experts (31 MB), no vocab head.
 - **Timing:**
   - single kernels: rocprofv3 `--kernel-trace` GPU timestamps, the same tool as iree#23507;
-  - token and E2 modes: HIP events around the whole sequence, modes interleaved, order rotated each round, median of
-    10 rounds after 2 warmup rounds;
-  - persistent stages: the GPU wall clock (100 MHz) at stage boundaries.
+  - token and E2 modes: HIP events around the whole sequence; modes interleaved, order rotated each round; median of 10
+    rounds after 2 warmup rounds;
+  - persistent stages: the GPU wall clock (100 MHz) at stage boundaries;
+  - token windows also with a one-thread "stamp" kernel just before and just after the run (GPU clock, no events);
+  - E2 and E3 each run twice: as is, and with a host thread reading one word of device memory over PCIe in a loop
+    (`DF_LINK_KEEPALIVE=1`).
 
 ## Correctness
 
-- Every kernel against a naive reference, 26 shape/format pairs: max relative error 1e-4 (f16) and 3e-4 (INT4); the
-  reference itself against a double-precision host computation; non-finite values fail.
-- Every persistent variant's token outputs are **bitwise equal** to the per-op outputs, in the cold, warm and f16
-  tokens and at every grid used.
-- A dependency check in those runs: every producer adds its tiles' ids to a per-stage sum before it publishes; every
-  consumer checks the complete sum after its wait. No failure.
-- No wait timed out in any reported run.
+- **Every kernel against a naive reference.** 26 shape/format pairs, max relative error 1e-4 (f16) and 3e-4 (INT4).
+  The reference itself is checked against a double-precision host computation, and non-finite values fail.
+- **Every persistent variant's token outputs are bitwise equal to the per-op outputs.** That holds in the cold, warm
+  and f16 tokens, at every grid used, with and without the keep-alive.
+- **A dependency check ran in the same runs.** Every producer adds its tiles' ids to a per-stage sum before it
+  publishes, and every consumer checks the complete sum after its wait. No failure.
+- **No wait timed out in any reported run.**
 
 ## Results
 
 ### E0: single kernels, their shapes (rocprofv3 kernel time, µs)
 
 iree#23507's numbers were taken warm ("Both benchmarks run thousands of iterations, so L2/Infinity Cache is warm"), so
-they compare with our warm column.
+they compare with our warm columns. The ratio is IREE's time over ours; **bold** rows are beyond the plan's 2× gate.
 
-| Shape (1×N×K) | MB (INT4) | ours INT4 warm | IREE INT4 (warm) | ours INT4 cold | ours f16 warm | IREE f16 (warm) | llama.cpp f16 (warm) | ours f16 cold |
-|---|---|---|---|---|---|---|---|---|
-| 8192×2048 | 8.91 | 9.2 | 18.2 | 20.1 | 15.7 | 74.6 | 31.5 | 48.5 |
-| 4096×2048 (q) | 4.46 | 6.1 | 10.3 | 12.6 | 9.0 | 38.6 | 15.7 | 29.8 |
-| 2048×4096 (o) | 4.46 | 6.1 | 13.9 | 10.0 | 10.0 | 34.8 | 12.7 | 22.9 |
-| 512×2048 (k, v) | 0.56 | 3.0 | 5.2 | 4.0 | 5.0 | 5.1 | 3.1 | 7.4 |
-| 128×2048 (router) | 0.14 | 2.9 | 5.0 | 3.6 | 4.8 | 5.3 | 2.1 | 6.5 |
-| 32×2048 | 0.03 | 2.9 | 4.9 | 3.4 | 4.7 | 9.0 | 2.0 | 6.3 |
-| 768×2048 (gate, up) | 0.84 | 3.2 | 5.6 | 4.6 | 5.0 | 5.0 | 14.7 | 8.2 |
-| 2048×768 (down) | 0.84 | 3.0 | 3.2 | 3.5 | 3.6 | 8.9 | 4.9 | 7.6 |
-| 151936×2048 (head) | 165 | 192.5 | 231.8 | 192.9 | 697.5 | 1413 | 784.9 | 697.0 |
+| Shape (1×N×K) | ours INT4 warm | IREE INT4 | ratio | ours INT4 cold | ours f16 warm | IREE f16 | ratio | llama.cpp f16 | ours f16 cold |
+|---|---|---|---|---|---|---|---|---|---|
+| **8192×2048** | 9.2 | 18.2 | 2.0 | 20.1 | 15.6 | 74.6 | **4.8** | 31.5 | 48.6 |
+| **4096×2048 (q)** | 6.2 | 10.3 | 1.7 | 12.7 | 9.0 | 38.6 | **4.3** | 15.7 | 29.9 |
+| **2048×4096 (o)** | 6.1 | 13.9 | **2.3** | 10.2 | 10.0 | 34.8 | **3.5** | 12.7 | 22.6 |
+| 512×2048 (k, v) | 3.0 | 5.2 | 1.7 | 4.2 | 5.0 | 5.1 | 1.0 | 3.1 | 7.4 |
+| 2048×512 (35B shared down) | 3.0 | 2.5 | 0.8 | 3.6 | 3.5 | 6.2 | 1.8 | 5.1 | 7.5 |
+| 128×2048 (router) | 2.9 | 5.0 | 1.7 | 3.6 | 4.8 | 5.3 | 1.1 | 2.1 | 6.5 |
+| 32×2048 | 2.9 | 4.9 | 1.7 | 3.4 | 4.7 | 9.0 | 1.9 | 2.0 | 6.3 |
+| 768×2048 (gate, up) | 3.2 | 5.6 | 1.8 | 4.6 | 5.0 | 5.0 | 1.0 | 14.7 | 8.3 |
+| **2048×768 (down)** | 3.0 | 3.2 | 1.1 | 3.6 | 3.6 | 8.9 | **2.5** | 4.9 | 7.6 |
+| 151936×2048 (30B head) | 192.4 | 231.8 | 1.2 | 193.0 | 696.9 | 1413 | 2.0 | 784.9 | 696.5 |
+| **248320×2048 (35B head)** | 306.8 | 346.3 | 1.1 | 307.0 | 1129.4 | 2570 | **2.3** | 1285 | 1128.6 |
 
-Against IREE's per-shape kernels (warm against warm), our tile kernel is faster or equal on every shape but one (INT4
-2048×512: 3.0 against 2.5 µs). On the small shapes, the ones that matter for the floor, IREE takes 0.8–1.8× our
-time in INT4 and 1.0–2.5× in f16, so mostly inside the plan's "within about 2×" gate; the large f16 shapes differ by
-4–5×, a codegen difference iree#23507 also reports against llama.cpp. Against llama.cpp's f16 kernels, ours is faster
-on the large shapes (15.7 against 31.5 µs on 8192×2048) and about 2× slower on the small ones (4.7–5.0 against
-2.0–3.1 µs); the gate|up shape is the exception (5.0 against 14.7). So the comparison is between kernels of a similar
-class, not an outlier.
+Against llama.cpp's f16 kernels (also from iree#23507), ours are 1.3–2× faster on the large shapes and 1.6–2.4×
+slower on the smallest; the gate|up shape is the exception (5.0 against 14.7 µs). All rows, and the 256- and 512-row shapes:
+[data/spread.md](data/spread.md).
+
+### The floor of a small kernel (rocprofv3, µs)
+
+| Kernel | 1 block | 2 | 8 | 48 |
+|---|---|---|---|---|
+| empty | 1.08 | 1.08 | 1.08 | 1.12 |
+| INT4 matvec K = 128 (one round trip per lane), cold | 2.32 | 2.32 | 2.32 | 2.36 |
+| INT4 matvec K = 2048 (two round trips), cold | 3.20 | 3.28 | 3.60 | 4.64 |
+| INT4 matvec K = 128, warm | 2.08 | 2.08 | 2.08 | 2.12 |
+| INT4 matvec K = 2048, warm | 2.52 | 2.52 | 2.52 | 2.64 |
+
+- **Dispatch, wave launch and teardown cost 1.1 µs.**
+- **The first dependent round trip adds 1.2 µs cold (1.0 warm).**
+- **The second adds 0.9 µs cold (0.4 warm).**
+- **Most of a small matvec's 3–5 µs is dependent memory latency inside the kernel.** That is why the f16 floor is
+  higher: an f16 row of 2,048 takes 8 dependent iterations, against 2 for INT4.
+
+**A grid-size anomaly.** Empty kernels at 380–384 blocks take 10.2–10.3 µs. At 376 blocks they take 1.28 µs, and from
+385 to 576 blocks 1.52–1.60 µs. The 384-block INT4 matvec at K = 128 takes 10.0 µs, against 4.5–4.7 µs at 376 and
+392.
+- 384 blocks of 8 waves is exactly the chip's 3,072 wave slots, so the anomaly sits just below a grid that fills the
+  card.
+- None of the token's launch grids falls in the band. The mechanism is not known.
 
 ### E1: the fixed cost of a single kernel (cold, K = 2048, N = 32 … 32768)
 
 | Format | t0 | BW (fit) | Shapes under 1 MB |
 |---|---|---|---|
-| INT4 | 4.4 µs | 721 GB/s (75 %) | 3.4–4.7 µs |
-| f16 | 6.2 µs | 851 GB/s (89 %) | 6.3–6.6 µs |
-
-The f16 floor is higher because of how the tile loop reads: each lane reads 8 columns per iteration, so an f16 row of
-2,048 takes 8 dependent iterations (load, wait, accumulate), against 2 for INT4 (32 columns per iteration). The floor
-of a tiny matvec here is mostly dependent memory latency inside the kernel.
+| INT4 | 4.38 µs | 720 GB/s (75 %) | 3.36–4.64 µs |
+| f16 | 6.27 µs | 853 GB/s (89 %) | 6.28–6.60 µs |
 
 ### Synchronization inside one persistent kernel (µs per stage, GPU stamps)
 
-| Blocks per WGP | barrier, empty stage | barrier, 1 tile | dataflow, 1 tile | dataflow-pf, 1 tile |
-|---|---|---|---|---|
-| 1 (48 blocks) | 0.92 | 3.04 | 2.88 | 1.76 |
-| 2 | 1.04 | 3.24 | 2.88 | 2.04 |
-| 4 | 1.32 | 3.40 | 3.00 | 2.16 |
-| 5 (240, the shared occupancy limit) | 1.52 | 3.60 | 3.00 | 2.20 |
+| Blocks (per WGP) | barrier, empty stage | barrier, 1 tile | barrier-pf, 1 tile | dataflow, 1 tile | dataflow-pf, 1 tile |
+|---|---|---|---|---|---|
+| 48 (1) | 0.92 | 3.00 | 3.64 | 2.84 | 1.76 |
+| 96 (2) | 1.00 | 3.24 | 4.24 | 2.92 | 2.06 |
+| 192 (4) | 1.32 | 3.48 | 4.76 | 2.99 | 2.16 |
+| 240 (5, the shared occupancy limit) | 1.52 | 3.64 | 5.28 | 3.01 | 2.19 |
 
-- **The barrier grows with the number of blocks.**
-- **Dataflow, which has no barrier, does not grow.**
-- **Prefetch helps dataflow**, where an already-waiting block claims the next tile. It cannot help the barrier
-  variant in this test, because block 0 holds every one-tile stage.
+- **The barrier grows with the number of blocks.** At the token's grid it costs about as much per stage as a graph's
+  gap between launches (1–1.5 µs). So replacing launches with barriers saves little by itself.
+- **Dataflow does not grow.**
+- **Prefetch helps dataflow,** where a waiting block claims the next tile. It hurts the barrier variant in this test,
+  because block 0 holds every one-tile stage.
 
-### E2: one shape, 256 times in a row (µs per matvec, event time; INT4, cold, 240 blocks)
+### E2: one shape, 256 times in a row (INT4, cold, 240 blocks, link kept awake; µs per matvec)
+
+Launches and graph are event times amortized over 256. Persistent stages are GPU-stamp medians.
 
 | Shape | launches | graph | barrier | barrier-pf | dataflow | dataflow-pf |
 |---|---|---|---|---|---|---|
-| 8192×2048 | 22.4 | 22.0 | 19.5 | 16.4 | 19.1 | 15.6 |
-| 4096×2048 (q) | 14.1 | 13.8 | 13.6 | 10.7 | 12.2 | 10.2 |
-| 512×2048 (k, v) | 5.7 | 5.1 | 4.3 | 6.5 | 5.5 | 3.4 |
-| 128×2048 (router) | 5.1 | 4.6 | 4.0 | 6.5 | 3.6 | 3.0 |
-| 32×2048 | 5.1 | 4.5 | 3.9 | 6.4 | 3.3 | 2.6 |
-| 768×2048 (gate, up) | 6.1 | 5.5 | 5.5 | 6.5 | 5.4 | 3.6 |
-| 2048×768 (down) | 5.1 | 4.6 | 3.8 | 5.8 | 3.7 | 3.7 |
+| 8192×2048 | 22.20 | 21.88 | 18.52 | 15.56 | 18.02 | 14.51 |
+| 4096×2048 (q) | 14.05 | 13.77 | 12.52 | 9.68 | 11.17 | 9.15 |
+| 2048×4096 (o) | 11.30 | 10.80 | 9.28 | 11.08 | 9.40 | 8.79 |
+| 512×2048 (k, v) | 5.59 | 5.09 | 4.24 | 5.52 | 4.48 | 3.31 |
+| 128×2048 (router) | 5.05 | 4.54 | 3.88 | 5.40 | 3.55 | 2.96 |
+| 32×2048 | 4.98 | 4.47 | 3.80 | 5.36 | 3.24 | 2.60 |
+| 768×2048 (gate, up) | 6.00 | 5.53 | 4.52 | 5.48 | 4.16 | 3.36 |
+| 2048×768 (down) | 4.99 | 4.52 | 3.68 | 4.76 | 3.60 | 3.52 |
 
-In isolation, the dataflow-pf persistent stage beats launches by 1.4–2.5 µs per small matvec and by 2.4–6.8 µs on the
-4–9 MB shapes, where the next matrix's first loads overlap the current one. Full table, f16 and warm rows, and the
-96-block grid: [data/20261109-xtx/tables.md](data/20261109-xtx/tables.md).
+- **In isolation, a persistent stage beats a graph launch.** On small shapes dataflow-pf is 1.0–2.2 µs per matvec
+  cheaper. On the 4–9 MB shapes it saves 2.0–7.4 µs (o, the K = 4096 shape, gains least), where the next matrix's
+  first loads overlap the current one.
+- **The untraced gap between dependent graph launches is 0.9–1.1 µs on small shapes.** That is E2's graph time minus
+  the E0 kernel time of the same shape; 0.56–1.83 µs across all shapes.
+- **Persistent event times need the link condition.** In the default-link E2 table, every persistent run longer than
+  1.0 ms reads about 1 µs per matvec slower by events than by stamps (the link wake-up below, spread over 256 stages).
+  All E2 rows, f16, warm and the 96-block grid: [data/spread.md](data/spread.md).
 
-### E3: the 48-layer token (ms, 1,393 matvecs in 241 dependent stages; median, p10–p90 in the data)
+### E3: the 48-layer token (ms, 1,393 matvecs in 241 dependent stages)
 
-| Mode | INT4 cold | INT4 warm (31 MB, no head) | f16 cold |
-|---|---|---|---|
-| per-op | 9.00 | 6.92 | 14.81 |
-| per-op graph | 8.20 | 6.09 | 13.99 |
-| grouped | 3.80 | 2.18 | 8.93 |
-| **grouped graph** | **3.68** | **2.03** | 8.81 |
-| persistent barrier | 4.04 (3.86 at 7 blocks/WGP) | 2.73 | 8.77 (a tie with the graph: 0.04 ms, under the 0.05 ms threshold) |
-| persistent barrier-pf | 3.83 | 2.73 | 8.98 |
-| persistent dataflow | 4.90 (4.02 at 8 blocks/WGP) | 3.62 | 8.95 |
-| persistent dataflow-pf | 4.60 | 3.49 | 8.90 |
+| Mode | INT4 cold | INT4 cold, link awake | INT4 warm (31 MB, no head) | warm, awake | f16 cold | f16, awake |
+|---|---|---|---|---|---|---|
+| per-op | 9.02 | 8.87 | 6.94 | 6.78 | 14.81 | 14.66 |
+| per-op graph | 8.21 | 8.18 | 6.10 | 6.09 | 13.99 | 13.97 |
+| grouped | 3.82 | 3.79 | 2.18 | 2.15 | 8.93 | 8.90 |
+| **grouped graph** | **3.68** | **3.67** | **2.03** | **2.04** | 8.82 | 8.80 |
+| persistent barrier | 4.04 | 3.80 | 2.74 | 2.49 | 8.78 | **8.53** |
+| persistent barrier-pf | 3.83 | **3.60** | 2.74 | 2.49 | 8.98 | 8.74 |
+| persistent dataflow | 4.90 | 4.66 | 3.63 | 3.38 | 8.94 | 8.71 |
+| persistent dataflow-pf | 4.61 | 4.37 | 3.49 | 3.24 | 8.90 | 8.67 |
 
-Bandwidth bounds for the INT4 token: 1.68 ms at 960 GB/s, 2.24 ms at the 721 GB/s our kernel reaches cold. The f16
-token (6.1 GB) is bandwidth-bound in every grouped or persistent mode (690 GB/s).
+- **Run-to-run spread is under 1 % on every row.**
+- **Bandwidth bounds for the INT4 token:** 1.68 ms at 960 GB/s, 1.88 ms at the 858 GB/s our kernel reaches on the vocab
+  head.
+- **The f16 token is bandwidth-bound in every grouped or persistent mode.**
+- **Warm, the persistent kernel is 22 % slower than the graph even with the link awake.** The stages are short, and the
+  synchronization dominates.
+- **Other grids:**
+  - plain barrier at its own occupancy (336 blocks): 3.86 ms;
+  - dataflow at 384 blocks: 4.00 ms;
+  - 96 blocks: 5.7–6.7 ms.
 
-### Where the persistent kernel loses (INT4 cold, per stage, µs)
+### Time outside the kernel: the PCIe link (INT4 cold token, µs)
 
-| Stage | grouped launch (rocprofv3) | persistent barrier stage (240 blocks) | (336 blocks) |
-|---|---|---|---|
-| q\|k\|v (320 tiles) | 14.9 | 14.5 | 14.4 |
-| o (128 tiles) | 9.8 | 10.0 | 10.0 |
-| router (8 tiles) | 3.2 | 3.8 | 4.4 |
-| gate\|up ×8 (768 tiles) | 27.9 | 26.6 | 23.9 |
-| **down ×8 (1,024 tiles, K = 768)** | **10.3** | **19.4** | **18.3** |
-| vocab head (9,496 tiles) | 193.0 | 202.3 | 199.7 |
+Each mode was timed three ways in one process:
+- by events around the run;
+- by GPU stamps just before and just after the run;
+- by events around the stamps.
 
-- **A down tile is a single memory round trip.** Its rows are 384 bytes in INT4, so each lane does one load.
-- **A launch keeps the down tiles in flight.** It has 1,024 one-tile blocks, and the hardware refills each slot as a
-  block exits.
-- **The persistent grid serializes them.** 240–384 resident blocks work through 3–4 tiles each, one after another,
-  and static round-robin leaves some blocks a fourth tile. That costs 8–9 µs per layer, about 0.4 ms per token, more
-  than the 0.32 ms of gaps it removes.
-- **More blocks help, but don't close it.** The persistent kernel's grid is capped by its most register-hungry variant
-  (5 blocks per WGP for the prefetch kernels, at 119–132 VGPRs). Running the plain variants at their own limits
-  (barrier 7, dataflow 8) narrows the gap but does not close it.
+"Hidden" is the per-run difference between the last two: time that passes on the wall clock but on no GPU clock. Each
+cell is the median of 3 runs × 60 windows.
+
+| Mode | event | stamp to stamp | hidden | windows with hidden > 50 µs | hidden, link kept awake |
+|---|---|---|---|---|---|
+| grouped graph | 3676.5 | 3658.1 | 10.4 | 0 of 180 | 10.6 (0 of 180) |
+| persistent barrier-pf | 3816.5 | 3578.4 | 242.8 | 179 of 180 | 9.2 (0 of 180) |
+| persistent dataflow-pf | 4589.1 | 4348.5 | 242.9 | 179 of 180 | 9.2 (0 of 180) |
+| empty kernel | 8.7 | 6.3 | 8.7 | 0 of 180 | 8.7 (0 of 180) |
+
+**How it was isolated (single runs before the final three):**
+- **The host saw the same delay.** The launch call returns in 1.4 µs, and the host wait ends ~3,825 µs after submit.
+  rocprofv3's kernel duration matched the stamped span (3.572 against 3.562 ms).
+- **It is paid on every token.** Two tokens in one event window cost 2 × 3,821 µs.
+- **It is not the host wait method.** Spinning on `hipEventQuery` instead of blocking: no change.
+- **It is not the sync-state reset before the launch.** Synchronizing after the reset: no change. An empty kernel
+  between the reset and the event: no change.
+- **It is not the display.**
+  - With two monitors on the XTX: 65 of 80 windows had it.
+  - With the monitors moved to the integrated GPU: 79 of 80.
+- **It is not a link speed change.** The CPU-side root port held 16 GT/s x16 throughout, polled every 1 ms; it drops to
+  2.5 GT/s x1 only when the program is idle.
+- **It needs about 1.0 ms of idle bus.** The default-link E2 tables hold 528 persistent measurements (3 runs × 44
+  shape, grid and format rows × 4 variants; each one a median over many launches):
+  - none of the 179 kernels that took 1.01 ms or less paid it (13–44 µs, normal launch latency);
+  - all 349 that took longer did (200–323 µs, median 259).
+- **It is specific to this XTX's link.** The RX 7900 XT, on an x4 link with ASPM off, shows none (one full-token run:
+  event 4,380 µs, stamps 4,373 µs).
+
+**What it is.** PCIe link power saving after about 1 ms with no bus traffic. ASPM L1 is enabled on the XTX's links and
+disabled on the XT's. Whether the cost is ASPM L1 exit, the card's link-clock deep sleep or something else is **not
+established**: changing ASPM needs root and was not tried. The keep-alive thread, a host loop reading one 32-bit word
+of device memory through the BAR, is a workaround that costs a CPU core.
+
+### Where the token's GPU time goes (INT4 cold, µs per stage)
+
+- **Grouped:** rocprofv3 kernel time, mean per stage over the traced run.
+- **Persistent:** GPU-stamp stage time, the mean over the token's stages of each stage's median over 10 runs. A
+  persistent stage includes its synchronization; a kernel time does not include the gap to the next launch.
+
+| Mode (blocks) | q\|k\|v | o | router | gate\|up ×8 | down ×8 | vocab head | sum (ms) |
+|---|---|---|---|---|---|---|---|
+| grouped launches | 14.90 | 9.82 | 3.20 | 26.69 | 10.29 | 192.75 | 3.310 |
+| barrier (240) | 14.59 | 10.00 | 3.84 | 26.59 | 19.45 | 203.12 | 3.778 |
+| **barrier-pf (240)** | **9.74** | **8.56** | 3.15 | 27.71 | **21.12** | 196.56 | 3.570 |
+| dataflow (240) | 13.78 | 9.97 | 3.43 | 38.04 | 27.13 | 214.40 | 4.648 |
+| dataflow-pf (240) | 10.24 | 8.52 | 2.94 | 38.38 | 26.29 | 206.57 | 4.353 |
+| barrier (336) | 14.51 | 9.99 | 4.32 | 23.81 | 18.24 | 198.88 | 3.599 |
+| dataflow (384) | 13.97 | 11.57 | 4.26 | 27.39 | 21.65 | 208.32 | 3.992 |
+| dataflow, one-tile claims on down (240) | 13.98 | 10.00 | 3.44 | 38.33 | 21.54 | 213.83 | 4.402 |
+
+**The grouped graph's 3.66 ms of GPU time (stamp to stamp):**
+
+| Part | ms | How it is derived |
+|---|---|---|
+| The weight bytes | 1.88 | 1.616 GB at 858 GB/s, the vocab head's rate |
+| Kernel time beyond the bytes | 1.43 | Kernel sum 3.31 ms minus the bytes |
+| Gaps | 0.35 | Stamp-to-stamp span minus the kernel sum |
+
+The gaps line mixes a traced kernel sum with an untraced span. Tracing inflates the gap between kernels to ~3.3 µs, so
+a traced span can't give it directly. E2's estimate of ~0.95 µs per gap gives 0.23 ms instead.
+
+**barrier-pf against the grouped launches, per layer:**
+- **Gains:** q|k|v is 5.2 µs faster and o 1.3 µs faster. The next stage's weight loads start before the barrier.
+- **Losses:** gate|up is 1.0 µs slower, and the down projections 10.8 µs slower.
+- **Per token:** stages +0.26 ms against 0.35 ms of gaps removed, a net 0.08 ms faster on GPU time.
+
+**The down stage (1,024 tiles of K = 768) is what makes the persistent kernel lose.**
+- **What it is:** 16,384 short rows of 384 bytes each in INT4. A down tile is one round trip per lane.
+- **As a launch:** 1,024 one-tile blocks; the hardware refills each slot as a block exits.
+- **In the persistent kernel at 240 blocks:** 64 blocks do 5 tiles one after another, and 176 do 4.
+
+**What was tested:**
+- **More blocks help little.** At 336 blocks, 16 blocks do 4 tiles and the rest 3, and the barrier stage only goes from
+  19.45 to 18.24 µs.
+- **One-tile claims help dataflow.** Its down stage goes from 27.1 to 21.5 µs.
+- **Prefetch does not help.**
+
+The stage takes 19–21 µs. Its bytes take 7.8 µs at 858 GB/s, and 5 serial round trips plus a barrier take about
+6–8 µs at idle latency. So serial tiles alone do not obviously explain it. The cause is not established.
+
+**Dataflow loses more, also on gate|up.** A claim takes ⌈tiles / 240⌉ contiguous tiles, which leaves blocks idle:
+
+| Stage | Tiles | Tiles per claim | Claims | Idle blocks |
+|---|---|---|---|---|
+| q\|k\|v | 320 | 2 | 160 | 80 |
+| gate\|up | 768 | 4 | 192 | 48 |
+| down | 1,024 | 5 | 205 | 35 |
+| vocab head | 9,496 | 40 | 238 | 2 |
+
+Its gate|up stage takes 38 µs against the barrier's 26.6 µs at the same per-block maximum of 4 tiles. Contiguous chunks
+against round-robin tiles is the obvious difference, but it was not tested.
 
 ## Predictions against outcomes
 
-| Prediction | Outcome |
+| Prediction (PLAN.md) | Outcome |
 |---|---|
-| P1: single kernels t0 3–5 µs, BW 700–850 GB/s (cold) | INT4 4.4 µs, 721 GB/s: **held**. f16 6.2 µs, 851 GB/s: t0 **missed** (dependent loads, see E1) |
-| P2 (revised): one-tile stage barrier 3.5–4.5, dataflow 2.8–3.5, dataflow-pf 2.0–2.6 µs | barrier 3.0–3.6 (**below** at low grids), dataflow 2.9–3.0 **held**, dataflow-pf 1.8–2.2 (**at or below**) |
-| Empty-stage barrier 1–2 µs | 0.92–1.52 **held** |
-| barrier-pf no better than barrier in sync | **held** (worse: 3.7–5.1) |
-| E2: dataflow-pf ≥ 1.5 µs below launches and graph on small shapes | below launches: **held** except down (1.4); below the graph: **held** for K = 2048 shapes, **missed** for K = 512 / 768 (0.9) |
-| E2: shapes over 4 MB within 15 % across modes | **missed** for INT4: dataflow-pf 21–30 % faster than launches (barrier-pf mixed: 24–27 % faster on two shapes, 7 % slower on o); f16 within 15 % except q, where barrier-pf is 22 % slower |
-| E3: per-op 7–9 ms | 9.00, **held** at the edge |
-| E3: grouped and grouped-graph 2.9–3.6 ms | 3.68–3.80, **missed** (slightly above) |
-| E3: best persistent 2.6–3.4 ms | 3.83 (3.86 at higher occupancy), **missed** |
-| Refutation test: persistent ≥ 1.25× faster than the grouped graph | **not met**: this implementation did not deliver the gain. The breakdown above shows why, and that it is not launch cost |
-| Warm token: persistent-vs-graph gap at least as large as cold | cold +0.15 ms, warm +0.70 ms: **held** |
+| E0 gate: our kernels within about 2× of IREE's, else stop and report first | **Tripped.** 6 of 26 shapes beyond 2×, all faster than IREE's. The script did not stop. Reported above. |
+| P1: single kernels t0 3–5 µs, BW 700–850 GB/s (cold) | INT4: 4.38 µs, 720 GB/s, **held**. f16: 6.27 µs, 853 GB/s, t0 **missed** (dependent loads). |
+| P2 (revised): one-tile stage barrier 3.5–4.5, dataflow 2.8–3.5, dataflow-pf 2.0–2.6 µs | Barrier 3.00–3.64: **below** at low grids. Dataflow 2.84–3.01: **held**. Dataflow-pf 1.76–2.19: **at or below**. |
+| Empty-stage barrier 1–2 µs | 0.92–1.52: **held**. |
+| barrier-pf no better than barrier in sync | **Held.** It was worse: 3.64–5.28. |
+| E2: dataflow-pf ≥ 1.5 µs below launches and graph on small shapes | Below launches: **held** (1.5–2.6). Below the graph: **held** for K = 2048 shapes (1.6–2.2), **missed** for K = 512 / 768 (1.0). |
+| E2: shapes over 4 MB within 15 % across modes | **Missed** for INT4: dataflow-pf 19–34 % faster than the graph. |
+| E3: per-op 7–9 ms | 9.02 (8.87 with the link awake): **at the upper edge**. |
+| E3: grouped and grouped graph 2.9–3.6 ms | 3.68–3.82: **missed**, slightly above. |
+| E3: best persistent 2.6–3.4 ms | 3.83 (3.60 with the link awake): **missed**. |
+| Refutation test: persistent ≥ 1.25× faster than the grouped graph | **Not met.** 0.96× with default settings, 1.02× with the link awake. |
+| Warm token: persistent-vs-graph gap at least as large as cold | Cold +0.15 / −0.07 ms (default / awake); warm +0.70 / +0.46 ms: **held**. |
 
 ## What this says about the floor in iree#24165
 
 - **Wall time vs kernel time.** iree#24165's ~37 µs per small matvec is benchmark wall time. As kernel time (iree#23507,
   and our E0) the same shapes are 3–5 µs.
-- **Where the token's time goes once experts are grouped and launches are graphed:**
-  - about 9 % is launch gaps;
-  - the rest is kernel time, which for small matvecs is mostly a fixed in-kernel cost: dependent memory latency,
-    4.4 µs INT4 / 6.2 µs f16 here.
+- **Once the experts are grouped and the launches graphed:**
+  - gaps are 6–10 % of the matvec token;
+  - the rest is kernel time, and over 40 % of that kernel time is above what the bytes need;
+  - a small kernel is 1.1 µs of dispatch plus about 1 µs per dependent memory round trip.
+- **A persistent kernel replaces each launch gap with a barrier of about the same cost.** What it can add is starting
+  the next stage's weight loads before the barrier. What it can lose is any stage whose tiles a resident grid works
+  through one after another, such as the MoE down projections.
+- **On a 7900 XTX with default link power settings, the persistent design pays a wake-up that launch sequences don't.**
+  A kernel longer than ~1 ms pays ~250 µs, which wipes out the gain here. Time any persistent kernel by GPU stamps as
+  well as by events.
 - **What would move it, in this order:**
   1. group the experts;
-  2. reduce dependent loads per tile (more columns per lane, or loads issued ahead in the K loop);
-  3. only then fuse into one launch. A persistent kernel only pays off if every stage, especially short-row ones like
-     the MoE down projections, keeps as many loads in flight as a full launch does.
+  2. cut dependent round trips per tile: issue all of a tile's loads before using any, and let blocks batch their
+     tiles;
+  3. only then fuse into one launch, with cross-stage prefetch, and with a link that stays awake.
 
 ## Method findings (each cost a debugging cycle; recorded for anyone building a persistent kernel on gfx1100)
 
 1. **Don't read the clock on every poll in a device wait.**
-   - What happened: the wait loops read the wall clock (`s_sendmsg_rtn` GET_REALTIME) on every poll. With about 150
+   - **What happened:** the wait loops read the wall clock (`s_sendmsg_rtn` GET_REALTIME) on every poll. With about 150
      waiting waves, one wave's reply stalled for 200 ms while its neighbours polled 620,000 times; it only un-stalled
      when they gave up.
-   - The fix: read the clock once per 4,096 polls. Three variants went from 0 of 4 to 4 of 4 passing runs.
-   - What didn't matter: poll style (acquire load, relaxed load plus fence, atomic add of 0) and sleep length.
-2. **Every polled or counted word on its own 128-byte line.**
-3. **The occupancy API's count is not a residency guarantee.** A barrier needs every block resident; probe it (an
-   empty-stage barrier either completes or times out) at every grid used.
-4. **A device-wide barrier's cost grows with the block count** (0.9 µs at 48 blocks, 1.5 µs at 240). Per-stage done
-   counters (dataflow) don't.
-5. **Chunk sizes must round up.** With floor(9,496 / 210) = 45 tiles per chunk, the vocab head had 212 chunks for
-   210 blocks; the two blocks with a second chunk made the stage 1.44× as long.
+   - **The fix:** read the clock once per 4,096 polls. Three variants went from 0 of 4 to 4 of 4 passing runs.
+   - **What didn't matter:** poll style (acquire load, relaxed load plus fence, atomic add of 0) and sleep length.
+   - **Scope:** seen on the RX 7900 XT, one ROCm build.
+2. **Put every polled or counted word on its own 128-byte line.**
+3. **The occupancy API's count is not a residency guarantee.** A barrier needs every block resident. Probe it at every
+   grid used: an empty-stage barrier either completes or times out.
+4. **A device-wide barrier's cost grows with the block count:** 0.9 µs at 48 blocks, 1.5 µs at 240. Per-stage done
+   counters (dataflow) don't grow.
+5. **Chunk sizes must round up.** With ⌊9,496 / 210⌋ = 45 tiles per chunk, the vocab head had 212 chunks for 210 blocks.
+   The two blocks with a second chunk made the stage 1.44× as long.
+6. **Time a persistent kernel by GPU stamps as well as by events.**
+   - On this XTX, a single kernel longer than ~1 ms paid ~250 µs of link wake-up that only events and the host saw.
+   - rocprofv3's kernel duration doesn't show it either.
+   - A host thread reading device memory over PCIe keeps the link awake (`DF_LINK_KEEPALIVE=1`).
+7. **Grids of 380–384 blocks cost ~9 µs extra per launch on this XTX:** just under the 3,072 wave slots of 384 blocks
+   of 8 waves. 376 and 385 blocks are normal. Not explained.
+8. **Put the stop rules in the script.** The E0 gate was in the plan but not in run.sh, so it tripped without stopping
+   anything.
 
 ## Limitations
 
-- **Matvecs only**, as stated above.
-- **Random weights, our INT4 layout**: GPTQ-like groups of 128 with f16 scales and zeros; IREE's exact INT4 layout
-  may differ.
-- **Our hand-written tile kernel, not IREE codegen.** The question was the launch strategy, with the kernel held fixed.
-- **One card, one driver and kernel version, one ROCm build**; the XTX was also driving the desktop.
-- **Token and E2 times are event times** (they include the first launch's latency once per sequence). Single-kernel
-  times are rocprofv3.
+- **Matvecs only,** as stated above.
+- **Random weights in our INT4 layout:** GPTQ-like groups of 128 with f16 scales and zeros. IREE's exact INT4 layout may
+  differ.
+- **Our hand-written tile kernel, not IREE codegen.** It is faster than IREE's on the large shapes (see the deviation
+  section).
+- **One machine, one board topology, one driver, kernel and ROCm build.** The link finding depends on this platform's
+  PCIe power settings, and other boards and BIOS settings may differ.
+- **The RX 7900 XT disagrees, in one run.** Full INT4 cold token, 42 WGPs, 210-block grid, x4 link with ASPM off:
+  - grouped graph 3.44 ms, barrier-pf 4.37 ms (27 % slower), dataflow-pf 5.07 ms;
+  - events and stamps agree there, so this is GPU time;
+  - not investigated;
+  - log in [data/20261109-xt-window/](data/20261109-xt-window/), from the build just before the final one (same
+    kernels).
+- **"Cold" means cache-cold, not DRAM-cold.** The copies are walked in address order, so consecutive launches touch
+  adjacent DRAM pages. The token's stages read non-adjacent weights.
+- **The gap estimates mix traced and untraced numbers.** Tracing inflates the gaps, so two estimates are given.
+- **Display.** The three runs had no display on the XTX. Earlier runs with two monitors on it gave the same launch-mode
+  numbers within 1 %.
+- **Traces are not in data/.** The rocprofv3 traces (~370 MB per run) are not included; each run's `tables.md` holds
+  what was derived from them. run.sh regenerates them.
 
 ## Reproduce
 
 ```
-./build.sh                       # needs a ROCm / TheRock with hipcc (ROCM=...)
-GUARD=/path/to/a/gpu/watchdog ./run.sh smoke   # a second card first, small sizes (edit the device index in run.sh)
-GUARD=... ./run.sh xtx           # the measurements; results/<date>-xtx/ with tables.md
+ROCM=/opt/rocm ./build.sh                    # hipcc from a ROCm install
+./run.sh smoke                               # a second card first, small sizes (DEVICE=n picks the HIP device)
+./run.sh xtx                                 # the measurements: results/<date>-xtx/ with tables.md
+python3 analyze.py --spread spread.md results/*-xtx    # medians and ranges across runs
 ```
 
-`decode_floor check | shapes | sweep | sync | pshapes | token` run the pieces directly; `--help`-style usage is printed
-without arguments. MIT licence.
+- **The watchdog is optional.** Set `GUARD=/path/to/watchdog`: run.sh calls it as `GUARD LOG SECS CMD...`. Without it,
+  each stage runs under `timeout` and the clocks are not pinned. Pin them for comparable numbers.
+- **The pieces run directly:** `decode_floor check | shapes | sweep | floor | sync | pshapes | token`. Run it without
+  arguments to print usage, including the environment switches.
+- **Licence:** MIT.

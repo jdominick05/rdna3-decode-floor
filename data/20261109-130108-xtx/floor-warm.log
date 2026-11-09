@@ -1,0 +1,29 @@
+W1109 13:01:32.180919  141117 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000328 sec
+W1109 13:01:32.181193  141117 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor floor --warm --reps 200 --expect-cus 48 --csv results/20261109-130108-xtx/floor.csv' ::     0.000000 sec
+W1109 13:01:32.194406  141117 tool.cpp:3770] HSA version 1.21.0 initialized (instance=0)
+W1109 13:01:32.258464  141117 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor floor --warm --reps 200 --expect-cus 48 --csv results/20261109-130108-xtx/floor.csv' ::     0.077271 sec
+E1109 13:01:32.272208  141117 output_stream.cpp:110] Opened result file: results/20261109-130108-xtx/prof-floor-warm/floor-warm_kernel_trace.csv
+E1109 13:01:32.289557  141117 output_stream.cpp:110] Opened result file: results/20261109-130108-xtx/prof-floor-warm/floor-warm_agent_info.csv
+W1109 13:01:32.291218  141117 simple_timer.cpp:55] [rocprofv3] output generation ::     0.032468 sec
+W1109 13:01:32.291237  141117 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.032509 sec
+W1109 13:01:32.291306  141120 tool.cpp:4676] [PPID=141095][PID=141117][TID=141120][signal_finalization_worker] rocprofv3 finalizing after signal 0...
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor floor fmt=i4 cache=warm poll=0 sleep=1
+floor,empty,-,-,0,0,1,0,0,200
+floor,empty,-,-,0,0,2,0,0,200
+floor,empty,-,-,0,0,8,0,0,200
+floor,empty,-,-,0,0,48,0,0,200
+floor,empty,-,-,0,0,96,0,0,200
+floor,empty,-,-,0,0,192,0,0,200
+floor,empty,-,-,0,0,384,0,0,200
+floor,empty,-,-,0,0,768,0,0,200
+floor,empty,-,-,0,0,1536,0,0,200
+floor,matvec,i4,warm,16,128,1,1088,1,200
+floor,matvec,i4,warm,32,128,2,2176,1,200
+floor,matvec,i4,warm,128,128,8,8704,1,200
+floor,matvec,i4,warm,768,128,48,52224,1,200
+floor,matvec,i4,warm,6144,128,384,417792,1,200
+floor,matvec,i4,warm,16,2048,1,17408,1,200
+floor,matvec,i4,warm,32,2048,2,34816,1,200
+floor,matvec,i4,warm,128,2048,8,139264,1,200
+floor,matvec,i4,warm,768,2048,48,835584,1,200
+floor,matvec,i4,warm,6144,2048,384,6684672,1,200

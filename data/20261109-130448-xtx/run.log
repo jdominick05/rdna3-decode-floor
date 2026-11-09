@@ -1,0 +1,72 @@
+=== 13:04:48 env
+=== 13:04:49 env rc=0 
+=== 13:04:49 check
+=== 13:04:50 check rc=0       1 RESULT PASS 
+=== 13:04:50 e0-f16-warm
+=== 13:04:51 e0-f16-warm rc=0 
+=== 13:04:51 e0-f16-cold
+=== 13:04:52 e0-f16-cold rc=0 
+=== 13:04:52 e0-i4-warm
+=== 13:04:53 e0-i4-warm rc=0 
+=== 13:04:53 e0-i4-cold
+=== 13:04:54 e0-i4-cold rc=0 
+=== 13:04:54 floor-cold
+=== 13:05:11 floor-cold rc=0 
+=== 13:05:11 floor-warm
+=== 13:05:12 floor-warm rc=0 
+=== 13:05:12 floor-sweep
+=== 13:05:13 floor-sweep rc=0 
+=== 13:05:13 e1-i4
+=== 13:05:14 e1-i4 rc=0 
+=== 13:05:14 e1-f16
+=== 13:05:15 e1-f16 rc=0 
+=== 13:05:15 sync-g1
+=== 13:05:16 sync-g1 rc=0 
+=== 13:05:16 sync-g2
+=== 13:05:17 sync-g2 rc=0 
+=== 13:05:17 sync-g4
+=== 13:05:18 sync-g4 rc=0 
+=== 13:05:18 sync-g0
+=== 13:05:20 sync-g0 rc=0 
+=== 13:05:20 e2-i4
+=== 13:05:22 e2-i4 rc=0 
+=== 13:05:22 e2-i4-g2
+=== 13:05:24 e2-i4-g2 rc=0 
+=== 13:05:24 e2-f16
+=== 13:05:26 e2-f16 rc=0 
+=== 13:05:26 e2-i4-warm
+=== 13:05:27 e2-i4-warm rc=0 
+=== 13:05:27 e2-i4-ka
+=== 13:05:29 e2-i4-ka rc=0 
+=== 13:05:29 e2-f16-ka
+=== 13:05:32 e2-f16-ka rc=0 
+=== 13:05:32 e2-i4-warm-ka
+=== 13:05:33 e2-i4-warm-ka rc=0 
+=== 13:05:33 e3-i4
+=== 13:05:35 e3-i4 rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:05:35 e3-i4-g2
+=== 13:05:38 e3-i4-g2 rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:05:38 e3-i4-warm
+=== 13:05:39 e3-i4-warm rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:05:39 e3-f16
+=== 13:05:41 e3-f16 rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:05:41 e3-i4-ka
+=== 13:05:43 e3-i4-ka rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:05:43 e3-i4-warm-ka
+=== 13:05:44 e3-i4-warm-ka rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:05:44 e3-f16-ka
+=== 13:05:46 e3-f16-ka rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:05:46 e3-i4-window
+=== 13:06:06 e3-i4-window rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:06:06 e3-i4-window-ka
+=== 13:06:24 e3-i4-window-ka rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:06:24 e3-i4-occ7
+=== 13:06:25 e3-i4-occ7 rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: dataflow outputs == the per- 
+=== 13:06:25 e3-i4-occ8
+=== 13:06:26 e3-i4-occ8 rc=0       1 PASS token: dataflow outputs == the per- 
+=== 13:06:26 e3-i4-chunk1
+=== 13:06:27 e3-i4-chunk1 rc=0       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+=== 13:06:27 e3-i4-traced
+=== 13:06:29 e3-i4-traced rc=0       1 PASS token: barrier outputs == the per-o       1 PASS token: barrier-pf outputs == the pe       1 PASS token: dataflow outputs == the per-       1 PASS token: dataflow-pf outputs == the p 
+tables: results/20261109-130448-xtx/tables.md
+=== 13:06:37 done: results/20261109-130448-xtx

@@ -195,12 +195,11 @@ def persistent_breakdown(res):
 
 
 def window_rows(res, name):
-    """the window diagnostic (token mode, DF_WINDOW_DIAG) from guard-<name>.log (or <name>.out): mode -> {event, spin, stamps, around, gap,
+    """the window diagnostic (token mode, DF_WINDOW_DIAG) from guard-<name>.log (or <name>.log / <name>.out): mode -> {event, spin, stamps, around, gap,
     gap_p10, gap_p90, big, n, one, two}"""
-    path = os.path.join(res, f'guard-{name}.log')   # (under the watchdog the program's output is in its log)
-    if not os.path.exists(path):
-        path = os.path.join(res, name + '.out')
-    if not os.path.exists(path):
+    # (under the watchdog the program's output is in guard-<name>.log; data/ keeps it as <name>.log)
+    path = next((q for q in (os.path.join(res, f'guard-{name}.log'), os.path.join(res, f'{name}.log'), os.path.join(res, f'{name}.out')) if os.path.exists(q)), None)
+    if path is None:
         return {}
     out = {}
     for line in open(path):

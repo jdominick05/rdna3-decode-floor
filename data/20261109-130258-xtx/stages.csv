@@ -1,0 +1,3853 @@
+fmt,cache,variant,grid,stage,kind,us_median
+i4,cold,barrier,240,0,q|k|v,15.460
+i4,cold,barrier,240,1,o,9.840
+i4,cold,barrier,240,2,router,3.960
+i4,cold,barrier,240,3,gate|up x8,26.600
+i4,cold,barrier,240,4,down x8,19.360
+i4,cold,barrier,240,5,q|k|v,14.640
+i4,cold,barrier,240,6,o,9.960
+i4,cold,barrier,240,7,router,3.800
+i4,cold,barrier,240,8,gate|up x8,26.600
+i4,cold,barrier,240,9,down x8,19.600
+i4,cold,barrier,240,10,q|k|v,14.440
+i4,cold,barrier,240,11,o,10.280
+i4,cold,barrier,240,12,router,3.880
+i4,cold,barrier,240,13,gate|up x8,26.600
+i4,cold,barrier,240,14,down x8,19.440
+i4,cold,barrier,240,15,q|k|v,14.320
+i4,cold,barrier,240,16,o,9.840
+i4,cold,barrier,240,17,router,3.880
+i4,cold,barrier,240,18,gate|up x8,26.440
+i4,cold,barrier,240,19,down x8,19.520
+i4,cold,barrier,240,20,q|k|v,14.920
+i4,cold,barrier,240,21,o,9.800
+i4,cold,barrier,240,22,router,3.840
+i4,cold,barrier,240,23,gate|up x8,26.640
+i4,cold,barrier,240,24,down x8,19.480
+i4,cold,barrier,240,25,q|k|v,14.280
+i4,cold,barrier,240,26,o,10.160
+i4,cold,barrier,240,27,router,3.800
+i4,cold,barrier,240,28,gate|up x8,26.640
+i4,cold,barrier,240,29,down x8,19.360
+i4,cold,barrier,240,30,q|k|v,14.320
+i4,cold,barrier,240,31,o,10.000
+i4,cold,barrier,240,32,router,3.880
+i4,cold,barrier,240,33,gate|up x8,26.560
+i4,cold,barrier,240,34,down x8,19.360
+i4,cold,barrier,240,35,q|k|v,15.040
+i4,cold,barrier,240,36,o,9.880
+i4,cold,barrier,240,37,router,3.880
+i4,cold,barrier,240,38,gate|up x8,26.560
+i4,cold,barrier,240,39,down x8,19.520
+i4,cold,barrier,240,40,q|k|v,14.440
+i4,cold,barrier,240,41,o,10.000
+i4,cold,barrier,240,42,router,3.840
+i4,cold,barrier,240,43,gate|up x8,26.800
+i4,cold,barrier,240,44,down x8,19.440
+i4,cold,barrier,240,45,q|k|v,13.920
+i4,cold,barrier,240,46,o,9.960
+i4,cold,barrier,240,47,router,3.960
+i4,cold,barrier,240,48,gate|up x8,26.440
+i4,cold,barrier,240,49,down x8,19.640
+i4,cold,barrier,240,50,q|k|v,14.960
+i4,cold,barrier,240,51,o,9.880
+i4,cold,barrier,240,52,router,4.000
+i4,cold,barrier,240,53,gate|up x8,26.400
+i4,cold,barrier,240,54,down x8,19.200
+i4,cold,barrier,240,55,q|k|v,14.360
+i4,cold,barrier,240,56,o,9.840
+i4,cold,barrier,240,57,router,3.920
+i4,cold,barrier,240,58,gate|up x8,26.920
+i4,cold,barrier,240,59,down x8,19.600
+i4,cold,barrier,240,60,q|k|v,14.280
+i4,cold,barrier,240,61,o,10.040
+i4,cold,barrier,240,62,router,3.920
+i4,cold,barrier,240,63,gate|up x8,26.560
+i4,cold,barrier,240,64,down x8,19.480
+i4,cold,barrier,240,65,q|k|v,14.640
+i4,cold,barrier,240,66,o,10.000
+i4,cold,barrier,240,67,router,3.960
+i4,cold,barrier,240,68,gate|up x8,26.360
+i4,cold,barrier,240,69,down x8,19.280
+i4,cold,barrier,240,70,q|k|v,15.200
+i4,cold,barrier,240,71,o,10.080
+i4,cold,barrier,240,72,router,3.800
+i4,cold,barrier,240,73,gate|up x8,27.080
+i4,cold,barrier,240,74,down x8,19.520
+i4,cold,barrier,240,75,q|k|v,14.360
+i4,cold,barrier,240,76,o,9.960
+i4,cold,barrier,240,77,router,3.800
+i4,cold,barrier,240,78,gate|up x8,26.480
+i4,cold,barrier,240,79,down x8,19.560
+i4,cold,barrier,240,80,q|k|v,14.920
+i4,cold,barrier,240,81,o,9.920
+i4,cold,barrier,240,82,router,3.840
+i4,cold,barrier,240,83,gate|up x8,26.520
+i4,cold,barrier,240,84,down x8,19.520
+i4,cold,barrier,240,85,q|k|v,14.440
+i4,cold,barrier,240,86,o,10.120
+i4,cold,barrier,240,87,router,3.800
+i4,cold,barrier,240,88,gate|up x8,26.800
+i4,cold,barrier,240,89,down x8,19.360
+i4,cold,barrier,240,90,q|k|v,14.520
+i4,cold,barrier,240,91,o,10.120
+i4,cold,barrier,240,92,router,3.760
+i4,cold,barrier,240,93,gate|up x8,26.560
+i4,cold,barrier,240,94,down x8,19.480
+i4,cold,barrier,240,95,q|k|v,14.480
+i4,cold,barrier,240,96,o,9.920
+i4,cold,barrier,240,97,router,3.920
+i4,cold,barrier,240,98,gate|up x8,26.760
+i4,cold,barrier,240,99,down x8,19.360
+i4,cold,barrier,240,100,q|k|v,14.920
+i4,cold,barrier,240,101,o,9.960
+i4,cold,barrier,240,102,router,3.840
+i4,cold,barrier,240,103,gate|up x8,26.720
+i4,cold,barrier,240,104,down x8,19.360
+i4,cold,barrier,240,105,q|k|v,14.200
+i4,cold,barrier,240,106,o,10.360
+i4,cold,barrier,240,107,router,3.720
+i4,cold,barrier,240,108,gate|up x8,26.520
+i4,cold,barrier,240,109,down x8,19.440
+i4,cold,barrier,240,110,q|k|v,14.360
+i4,cold,barrier,240,111,o,9.640
+i4,cold,barrier,240,112,router,3.880
+i4,cold,barrier,240,113,gate|up x8,26.280
+i4,cold,barrier,240,114,down x8,19.760
+i4,cold,barrier,240,115,q|k|v,15.120
+i4,cold,barrier,240,116,o,9.920
+i4,cold,barrier,240,117,router,3.760
+i4,cold,barrier,240,118,gate|up x8,26.840
+i4,cold,barrier,240,119,down x8,19.320
+i4,cold,barrier,240,120,q|k|v,14.320
+i4,cold,barrier,240,121,o,10.320
+i4,cold,barrier,240,122,router,3.760
+i4,cold,barrier,240,123,gate|up x8,26.760
+i4,cold,barrier,240,124,down x8,19.360
+i4,cold,barrier,240,125,q|k|v,14.240
+i4,cold,barrier,240,126,o,9.840
+i4,cold,barrier,240,127,router,3.880
+i4,cold,barrier,240,128,gate|up x8,26.640
+i4,cold,barrier,240,129,down x8,19.400
+i4,cold,barrier,240,130,q|k|v,15.280
+i4,cold,barrier,240,131,o,9.960
+i4,cold,barrier,240,132,router,3.960
+i4,cold,barrier,240,133,gate|up x8,26.520
+i4,cold,barrier,240,134,down x8,19.320
+i4,cold,barrier,240,135,q|k|v,14.280
+i4,cold,barrier,240,136,o,10.000
+i4,cold,barrier,240,137,router,3.840
+i4,cold,barrier,240,138,gate|up x8,27.000
+i4,cold,barrier,240,139,down x8,19.440
+i4,cold,barrier,240,140,q|k|v,14.400
+i4,cold,barrier,240,141,o,10.280
+i4,cold,barrier,240,142,router,3.840
+i4,cold,barrier,240,143,gate|up x8,26.480
+i4,cold,barrier,240,144,down x8,19.560
+i4,cold,barrier,240,145,q|k|v,14.680
+i4,cold,barrier,240,146,o,9.880
+i4,cold,barrier,240,147,router,3.920
+i4,cold,barrier,240,148,gate|up x8,26.440
+i4,cold,barrier,240,149,down x8,19.360
+i4,cold,barrier,240,150,q|k|v,15.040
+i4,cold,barrier,240,151,o,10.400
+i4,cold,barrier,240,152,router,3.800
+i4,cold,barrier,240,153,gate|up x8,26.960
+i4,cold,barrier,240,154,down x8,19.520
+i4,cold,barrier,240,155,q|k|v,14.560
+i4,cold,barrier,240,156,o,10.240
+i4,cold,barrier,240,157,router,3.800
+i4,cold,barrier,240,158,gate|up x8,26.600
+i4,cold,barrier,240,159,down x8,19.560
+i4,cold,barrier,240,160,q|k|v,15.000
+i4,cold,barrier,240,161,o,9.840
+i4,cold,barrier,240,162,router,3.920
+i4,cold,barrier,240,163,gate|up x8,26.640
+i4,cold,barrier,240,164,down x8,19.400
+i4,cold,barrier,240,165,q|k|v,14.760
+i4,cold,barrier,240,166,o,10.040
+i4,cold,barrier,240,167,router,3.800
+i4,cold,barrier,240,168,gate|up x8,26.800
+i4,cold,barrier,240,169,down x8,19.440
+i4,cold,barrier,240,170,q|k|v,14.480
+i4,cold,barrier,240,171,o,9.880
+i4,cold,barrier,240,172,router,3.920
+i4,cold,barrier,240,173,gate|up x8,26.400
+i4,cold,barrier,240,174,down x8,19.720
+i4,cold,barrier,240,175,q|k|v,14.400
+i4,cold,barrier,240,176,o,9.920
+i4,cold,barrier,240,177,router,3.880
+i4,cold,barrier,240,178,gate|up x8,26.520
+i4,cold,barrier,240,179,down x8,19.480
+i4,cold,barrier,240,180,q|k|v,15.080
+i4,cold,barrier,240,181,o,10.080
+i4,cold,barrier,240,182,router,3.760
+i4,cold,barrier,240,183,gate|up x8,26.920
+i4,cold,barrier,240,184,down x8,19.200
+i4,cold,barrier,240,185,q|k|v,14.120
+i4,cold,barrier,240,186,o,10.200
+i4,cold,barrier,240,187,router,3.800
+i4,cold,barrier,240,188,gate|up x8,26.480
+i4,cold,barrier,240,189,down x8,19.400
+i4,cold,barrier,240,190,q|k|v,14.400
+i4,cold,barrier,240,191,o,9.560
+i4,cold,barrier,240,192,router,3.880
+i4,cold,barrier,240,193,gate|up x8,26.520
+i4,cold,barrier,240,194,down x8,19.440
+i4,cold,barrier,240,195,q|k|v,15.160
+i4,cold,barrier,240,196,o,9.680
+i4,cold,barrier,240,197,router,3.840
+i4,cold,barrier,240,198,gate|up x8,26.600
+i4,cold,barrier,240,199,down x8,19.400
+i4,cold,barrier,240,200,q|k|v,14.280
+i4,cold,barrier,240,201,o,10.200
+i4,cold,barrier,240,202,router,3.760
+i4,cold,barrier,240,203,gate|up x8,26.880
+i4,cold,barrier,240,204,down x8,19.440
+i4,cold,barrier,240,205,q|k|v,14.240
+i4,cold,barrier,240,206,o,9.760
+i4,cold,barrier,240,207,router,4.000
+i4,cold,barrier,240,208,gate|up x8,26.480
+i4,cold,barrier,240,209,down x8,19.520
+i4,cold,barrier,240,210,q|k|v,14.920
+i4,cold,barrier,240,211,o,9.880
+i4,cold,barrier,240,212,router,3.920
+i4,cold,barrier,240,213,gate|up x8,26.240
+i4,cold,barrier,240,214,down x8,19.400
+i4,cold,barrier,240,215,q|k|v,14.520
+i4,cold,barrier,240,216,o,10.240
+i4,cold,barrier,240,217,router,3.880
+i4,cold,barrier,240,218,gate|up x8,26.840
+i4,cold,barrier,240,219,down x8,19.360
+i4,cold,barrier,240,220,q|k|v,14.320
+i4,cold,barrier,240,221,o,9.840
+i4,cold,barrier,240,222,router,3.880
+i4,cold,barrier,240,223,gate|up x8,26.520
+i4,cold,barrier,240,224,down x8,19.400
+i4,cold,barrier,240,225,q|k|v,14.720
+i4,cold,barrier,240,226,o,10.160
+i4,cold,barrier,240,227,router,3.920
+i4,cold,barrier,240,228,gate|up x8,26.320
+i4,cold,barrier,240,229,down x8,19.480
+i4,cold,barrier,240,230,q|k|v,15.240
+i4,cold,barrier,240,231,o,10.160
+i4,cold,barrier,240,232,router,3.840
+i4,cold,barrier,240,233,gate|up x8,26.840
+i4,cold,barrier,240,234,down x8,19.520
+i4,cold,barrier,240,235,q|k|v,14.400
+i4,cold,barrier,240,236,o,10.200
+i4,cold,barrier,240,237,router,3.760
+i4,cold,barrier,240,238,gate|up x8,26.640
+i4,cold,barrier,240,239,down x8,19.360
+i4,cold,barrier,240,240,lm_head,203.120
+i4,cold,barrier-pf,240,0,q|k|v,20.130
+i4,cold,barrier-pf,240,1,o,8.840
+i4,cold,barrier-pf,240,2,router,3.080
+i4,cold,barrier-pf,240,3,gate|up x8,27.360
+i4,cold,barrier-pf,240,4,down x8,21.600
+i4,cold,barrier-pf,240,5,q|k|v,9.760
+i4,cold,barrier-pf,240,6,o,8.320
+i4,cold,barrier-pf,240,7,router,3.080
+i4,cold,barrier-pf,240,8,gate|up x8,27.800
+i4,cold,barrier-pf,240,9,down x8,21.120
+i4,cold,barrier-pf,240,10,q|k|v,9.080
+i4,cold,barrier-pf,240,11,o,8.480
+i4,cold,barrier-pf,240,12,router,3.160
+i4,cold,barrier-pf,240,13,gate|up x8,27.640
+i4,cold,barrier-pf,240,14,down x8,21.120
+i4,cold,barrier-pf,240,15,q|k|v,9.640
+i4,cold,barrier-pf,240,16,o,8.640
+i4,cold,barrier-pf,240,17,router,3.120
+i4,cold,barrier-pf,240,18,gate|up x8,27.720
+i4,cold,barrier-pf,240,19,down x8,21.280
+i4,cold,barrier-pf,240,20,q|k|v,9.440
+i4,cold,barrier-pf,240,21,o,8.440
+i4,cold,barrier-pf,240,22,router,3.200
+i4,cold,barrier-pf,240,23,gate|up x8,27.960
+i4,cold,barrier-pf,240,24,down x8,21.080
+i4,cold,barrier-pf,240,25,q|k|v,9.600
+i4,cold,barrier-pf,240,26,o,8.440
+i4,cold,barrier-pf,240,27,router,3.120
+i4,cold,barrier-pf,240,28,gate|up x8,27.760
+i4,cold,barrier-pf,240,29,down x8,20.880
+i4,cold,barrier-pf,240,30,q|k|v,9.640
+i4,cold,barrier-pf,240,31,o,8.680
+i4,cold,barrier-pf,240,32,router,3.040
+i4,cold,barrier-pf,240,33,gate|up x8,27.560
+i4,cold,barrier-pf,240,34,down x8,21.240
+i4,cold,barrier-pf,240,35,q|k|v,9.720
+i4,cold,barrier-pf,240,36,o,8.560
+i4,cold,barrier-pf,240,37,router,3.160
+i4,cold,barrier-pf,240,38,gate|up x8,27.520
+i4,cold,barrier-pf,240,39,down x8,21.000
+i4,cold,barrier-pf,240,40,q|k|v,9.400
+i4,cold,barrier-pf,240,41,o,8.360
+i4,cold,barrier-pf,240,42,router,3.120
+i4,cold,barrier-pf,240,43,gate|up x8,28.040
+i4,cold,barrier-pf,240,44,down x8,21.040
+i4,cold,barrier-pf,240,45,q|k|v,9.560
+i4,cold,barrier-pf,240,46,o,8.520
+i4,cold,barrier-pf,240,47,router,3.200
+i4,cold,barrier-pf,240,48,gate|up x8,27.480
+i4,cold,barrier-pf,240,49,down x8,21.120
+i4,cold,barrier-pf,240,50,q|k|v,9.200
+i4,cold,barrier-pf,240,51,o,8.520
+i4,cold,barrier-pf,240,52,router,3.120
+i4,cold,barrier-pf,240,53,gate|up x8,27.520
+i4,cold,barrier-pf,240,54,down x8,21.000
+i4,cold,barrier-pf,240,55,q|k|v,9.480
+i4,cold,barrier-pf,240,56,o,9.040
+i4,cold,barrier-pf,240,57,router,3.160
+i4,cold,barrier-pf,240,58,gate|up x8,27.760
+i4,cold,barrier-pf,240,59,down x8,21.000
+i4,cold,barrier-pf,240,60,q|k|v,9.400
+i4,cold,barrier-pf,240,61,o,8.520
+i4,cold,barrier-pf,240,62,router,3.080
+i4,cold,barrier-pf,240,63,gate|up x8,27.600
+i4,cold,barrier-pf,240,64,down x8,21.360
+i4,cold,barrier-pf,240,65,q|k|v,9.480
+i4,cold,barrier-pf,240,66,o,8.520
+i4,cold,barrier-pf,240,67,router,3.120
+i4,cold,barrier-pf,240,68,gate|up x8,27.480
+i4,cold,barrier-pf,240,69,down x8,21.320
+i4,cold,barrier-pf,240,70,q|k|v,9.480
+i4,cold,barrier-pf,240,71,o,8.440
+i4,cold,barrier-pf,240,72,router,3.160
+i4,cold,barrier-pf,240,73,gate|up x8,27.960
+i4,cold,barrier-pf,240,74,down x8,20.840
+i4,cold,barrier-pf,240,75,q|k|v,9.720
+i4,cold,barrier-pf,240,76,o,8.760
+i4,cold,barrier-pf,240,77,router,3.200
+i4,cold,barrier-pf,240,78,gate|up x8,27.440
+i4,cold,barrier-pf,240,79,down x8,21.160
+i4,cold,barrier-pf,240,80,q|k|v,9.160
+i4,cold,barrier-pf,240,81,o,8.560
+i4,cold,barrier-pf,240,82,router,3.120
+i4,cold,barrier-pf,240,83,gate|up x8,27.280
+i4,cold,barrier-pf,240,84,down x8,21.440
+i4,cold,barrier-pf,240,85,q|k|v,9.600
+i4,cold,barrier-pf,240,86,o,8.560
+i4,cold,barrier-pf,240,87,router,3.120
+i4,cold,barrier-pf,240,88,gate|up x8,27.920
+i4,cold,barrier-pf,240,89,down x8,20.880
+i4,cold,barrier-pf,240,90,q|k|v,9.480
+i4,cold,barrier-pf,240,91,o,8.600
+i4,cold,barrier-pf,240,92,router,3.040
+i4,cold,barrier-pf,240,93,gate|up x8,27.720
+i4,cold,barrier-pf,240,94,down x8,21.000
+i4,cold,barrier-pf,240,95,q|k|v,9.680
+i4,cold,barrier-pf,240,96,o,8.480
+i4,cold,barrier-pf,240,97,router,3.120
+i4,cold,barrier-pf,240,98,gate|up x8,27.680
+i4,cold,barrier-pf,240,99,down x8,21.160
+i4,cold,barrier-pf,240,100,q|k|v,9.400
+i4,cold,barrier-pf,240,101,o,8.400
+i4,cold,barrier-pf,240,102,router,3.280
+i4,cold,barrier-pf,240,103,gate|up x8,28.120
+i4,cold,barrier-pf,240,104,down x8,20.960
+i4,cold,barrier-pf,240,105,q|k|v,9.240
+i4,cold,barrier-pf,240,106,o,8.640
+i4,cold,barrier-pf,240,107,router,3.120
+i4,cold,barrier-pf,240,108,gate|up x8,27.520
+i4,cold,barrier-pf,240,109,down x8,21.040
+i4,cold,barrier-pf,240,110,q|k|v,9.560
+i4,cold,barrier-pf,240,111,o,8.480
+i4,cold,barrier-pf,240,112,router,3.120
+i4,cold,barrier-pf,240,113,gate|up x8,27.600
+i4,cold,barrier-pf,240,114,down x8,21.040
+i4,cold,barrier-pf,240,115,q|k|v,9.480
+i4,cold,barrier-pf,240,116,o,8.400
+i4,cold,barrier-pf,240,117,router,3.200
+i4,cold,barrier-pf,240,118,gate|up x8,27.840
+i4,cold,barrier-pf,240,119,down x8,21.240
+i4,cold,barrier-pf,240,120,q|k|v,9.480
+i4,cold,barrier-pf,240,121,o,8.640
+i4,cold,barrier-pf,240,122,router,3.200
+i4,cold,barrier-pf,240,123,gate|up x8,28.000
+i4,cold,barrier-pf,240,124,down x8,20.920
+i4,cold,barrier-pf,240,125,q|k|v,9.600
+i4,cold,barrier-pf,240,126,o,8.480
+i4,cold,barrier-pf,240,127,router,3.200
+i4,cold,barrier-pf,240,128,gate|up x8,27.600
+i4,cold,barrier-pf,240,129,down x8,21.080
+i4,cold,barrier-pf,240,130,q|k|v,9.360
+i4,cold,barrier-pf,240,131,o,8.520
+i4,cold,barrier-pf,240,132,router,3.320
+i4,cold,barrier-pf,240,133,gate|up x8,27.520
+i4,cold,barrier-pf,240,134,down x8,21.160
+i4,cold,barrier-pf,240,135,q|k|v,9.280
+i4,cold,barrier-pf,240,136,o,8.360
+i4,cold,barrier-pf,240,137,router,3.160
+i4,cold,barrier-pf,240,138,gate|up x8,28.160
+i4,cold,barrier-pf,240,139,down x8,20.880
+i4,cold,barrier-pf,240,140,q|k|v,9.600
+i4,cold,barrier-pf,240,141,o,8.640
+i4,cold,barrier-pf,240,142,router,3.120
+i4,cold,barrier-pf,240,143,gate|up x8,27.480
+i4,cold,barrier-pf,240,144,down x8,21.320
+i4,cold,barrier-pf,240,145,q|k|v,9.640
+i4,cold,barrier-pf,240,146,o,8.640
+i4,cold,barrier-pf,240,147,router,3.120
+i4,cold,barrier-pf,240,148,gate|up x8,27.440
+i4,cold,barrier-pf,240,149,down x8,21.320
+i4,cold,barrier-pf,240,150,q|k|v,9.760
+i4,cold,barrier-pf,240,151,o,8.560
+i4,cold,barrier-pf,240,152,router,3.160
+i4,cold,barrier-pf,240,153,gate|up x8,28.000
+i4,cold,barrier-pf,240,154,down x8,20.920
+i4,cold,barrier-pf,240,155,q|k|v,9.680
+i4,cold,barrier-pf,240,156,o,8.680
+i4,cold,barrier-pf,240,157,router,3.080
+i4,cold,barrier-pf,240,158,gate|up x8,27.720
+i4,cold,barrier-pf,240,159,down x8,21.200
+i4,cold,barrier-pf,240,160,q|k|v,9.440
+i4,cold,barrier-pf,240,161,o,8.600
+i4,cold,barrier-pf,240,162,router,3.080
+i4,cold,barrier-pf,240,163,gate|up x8,27.640
+i4,cold,barrier-pf,240,164,down x8,21.080
+i4,cold,barrier-pf,240,165,q|k|v,9.520
+i4,cold,barrier-pf,240,166,o,8.640
+i4,cold,barrier-pf,240,167,router,3.240
+i4,cold,barrier-pf,240,168,gate|up x8,27.920
+i4,cold,barrier-pf,240,169,down x8,20.880
+i4,cold,barrier-pf,240,170,q|k|v,9.680
+i4,cold,barrier-pf,240,171,o,8.480
+i4,cold,barrier-pf,240,172,router,3.120
+i4,cold,barrier-pf,240,173,gate|up x8,27.680
+i4,cold,barrier-pf,240,174,down x8,21.240
+i4,cold,barrier-pf,240,175,q|k|v,9.440
+i4,cold,barrier-pf,240,176,o,8.400
+i4,cold,barrier-pf,240,177,router,3.160
+i4,cold,barrier-pf,240,178,gate|up x8,27.680
+i4,cold,barrier-pf,240,179,down x8,21.040
+i4,cold,barrier-pf,240,180,q|k|v,9.520
+i4,cold,barrier-pf,240,181,o,8.760
+i4,cold,barrier-pf,240,182,router,3.160
+i4,cold,barrier-pf,240,183,gate|up x8,28.120
+i4,cold,barrier-pf,240,184,down x8,21.120
+i4,cold,barrier-pf,240,185,q|k|v,9.520
+i4,cold,barrier-pf,240,186,o,8.720
+i4,cold,barrier-pf,240,187,router,3.080
+i4,cold,barrier-pf,240,188,gate|up x8,27.520
+i4,cold,barrier-pf,240,189,down x8,20.800
+i4,cold,barrier-pf,240,190,q|k|v,9.560
+i4,cold,barrier-pf,240,191,o,8.560
+i4,cold,barrier-pf,240,192,router,3.160
+i4,cold,barrier-pf,240,193,gate|up x8,27.520
+i4,cold,barrier-pf,240,194,down x8,20.960
+i4,cold,barrier-pf,240,195,q|k|v,9.680
+i4,cold,barrier-pf,240,196,o,8.520
+i4,cold,barrier-pf,240,197,router,3.120
+i4,cold,barrier-pf,240,198,gate|up x8,27.840
+i4,cold,barrier-pf,240,199,down x8,20.920
+i4,cold,barrier-pf,240,200,q|k|v,9.600
+i4,cold,barrier-pf,240,201,o,8.400
+i4,cold,barrier-pf,240,202,router,3.120
+i4,cold,barrier-pf,240,203,gate|up x8,28.080
+i4,cold,barrier-pf,240,204,down x8,21.080
+i4,cold,barrier-pf,240,205,q|k|v,9.280
+i4,cold,barrier-pf,240,206,o,8.400
+i4,cold,barrier-pf,240,207,router,3.240
+i4,cold,barrier-pf,240,208,gate|up x8,27.760
+i4,cold,barrier-pf,240,209,down x8,21.160
+i4,cold,barrier-pf,240,210,q|k|v,9.600
+i4,cold,barrier-pf,240,211,o,8.480
+i4,cold,barrier-pf,240,212,router,3.120
+i4,cold,barrier-pf,240,213,gate|up x8,27.400
+i4,cold,barrier-pf,240,214,down x8,21.240
+i4,cold,barrier-pf,240,215,q|k|v,9.280
+i4,cold,barrier-pf,240,216,o,8.640
+i4,cold,barrier-pf,240,217,router,3.120
+i4,cold,barrier-pf,240,218,gate|up x8,28.080
+i4,cold,barrier-pf,240,219,down x8,21.040
+i4,cold,barrier-pf,240,220,q|k|v,9.560
+i4,cold,barrier-pf,240,221,o,8.800
+i4,cold,barrier-pf,240,222,router,3.080
+i4,cold,barrier-pf,240,223,gate|up x8,27.400
+i4,cold,barrier-pf,240,224,down x8,21.440
+i4,cold,barrier-pf,240,225,q|k|v,9.360
+i4,cold,barrier-pf,240,226,o,8.480
+i4,cold,barrier-pf,240,227,router,3.120
+i4,cold,barrier-pf,240,228,gate|up x8,27.560
+i4,cold,barrier-pf,240,229,down x8,21.160
+i4,cold,barrier-pf,240,230,q|k|v,9.760
+i4,cold,barrier-pf,240,231,o,8.440
+i4,cold,barrier-pf,240,232,router,3.040
+i4,cold,barrier-pf,240,233,gate|up x8,27.960
+i4,cold,barrier-pf,240,234,down x8,21.040
+i4,cold,barrier-pf,240,235,q|k|v,9.720
+i4,cold,barrier-pf,240,236,o,8.800
+i4,cold,barrier-pf,240,237,router,3.120
+i4,cold,barrier-pf,240,238,gate|up x8,27.800
+i4,cold,barrier-pf,240,239,down x8,21.480
+i4,cold,barrier-pf,240,240,lm_head,196.440
+i4,cold,dataflow,240,0,q|k|v,15.310
+i4,cold,dataflow,240,1,o,9.730
+i4,cold,dataflow,240,2,router,3.330
+i4,cold,dataflow,240,3,gate|up x8,38.710
+i4,cold,dataflow,240,4,down x8,27.180
+i4,cold,dataflow,240,5,q|k|v,13.610
+i4,cold,dataflow,240,6,o,9.830
+i4,cold,dataflow,240,7,router,3.350
+i4,cold,dataflow,240,8,gate|up x8,37.370
+i4,cold,dataflow,240,9,down x8,27.160
+i4,cold,dataflow,240,10,q|k|v,13.890
+i4,cold,dataflow,240,11,o,10.210
+i4,cold,dataflow,240,12,router,3.320
+i4,cold,dataflow,240,13,gate|up x8,38.330
+i4,cold,dataflow,240,14,down x8,27.450
+i4,cold,dataflow,240,15,q|k|v,13.710
+i4,cold,dataflow,240,16,o,10.070
+i4,cold,dataflow,240,17,router,3.430
+i4,cold,dataflow,240,18,gate|up x8,37.710
+i4,cold,dataflow,240,19,down x8,27.210
+i4,cold,dataflow,240,20,q|k|v,13.760
+i4,cold,dataflow,240,21,o,9.780
+i4,cold,dataflow,240,22,router,3.380
+i4,cold,dataflow,240,23,gate|up x8,38.040
+i4,cold,dataflow,240,24,down x8,27.000
+i4,cold,dataflow,240,25,q|k|v,13.500
+i4,cold,dataflow,240,26,o,10.020
+i4,cold,dataflow,240,27,router,3.450
+i4,cold,dataflow,240,28,gate|up x8,37.550
+i4,cold,dataflow,240,29,down x8,27.380
+i4,cold,dataflow,240,30,q|k|v,13.920
+i4,cold,dataflow,240,31,o,9.920
+i4,cold,dataflow,240,32,router,3.410
+i4,cold,dataflow,240,33,gate|up x8,38.270
+i4,cold,dataflow,240,34,down x8,27.120
+i4,cold,dataflow,240,35,q|k|v,13.650
+i4,cold,dataflow,240,36,o,9.920
+i4,cold,dataflow,240,37,router,3.470
+i4,cold,dataflow,240,38,gate|up x8,38.030
+i4,cold,dataflow,240,39,down x8,27.170
+i4,cold,dataflow,240,40,q|k|v,13.630
+i4,cold,dataflow,240,41,o,9.880
+i4,cold,dataflow,240,42,router,3.500
+i4,cold,dataflow,240,43,gate|up x8,37.920
+i4,cold,dataflow,240,44,down x8,26.960
+i4,cold,dataflow,240,45,q|k|v,13.970
+i4,cold,dataflow,240,46,o,9.950
+i4,cold,dataflow,240,47,router,3.480
+i4,cold,dataflow,240,48,gate|up x8,37.400
+i4,cold,dataflow,240,49,down x8,27.120
+i4,cold,dataflow,240,50,q|k|v,13.910
+i4,cold,dataflow,240,51,o,9.980
+i4,cold,dataflow,240,52,router,3.560
+i4,cold,dataflow,240,53,gate|up x8,38.010
+i4,cold,dataflow,240,54,down x8,27.380
+i4,cold,dataflow,240,55,q|k|v,13.640
+i4,cold,dataflow,240,56,o,10.260
+i4,cold,dataflow,240,57,router,3.440
+i4,cold,dataflow,240,58,gate|up x8,38.690
+i4,cold,dataflow,240,59,down x8,26.840
+i4,cold,dataflow,240,60,q|k|v,13.470
+i4,cold,dataflow,240,61,o,10.140
+i4,cold,dataflow,240,62,router,3.500
+i4,cold,dataflow,240,63,gate|up x8,37.650
+i4,cold,dataflow,240,64,down x8,27.130
+i4,cold,dataflow,240,65,q|k|v,14.020
+i4,cold,dataflow,240,66,o,9.760
+i4,cold,dataflow,240,67,router,3.390
+i4,cold,dataflow,240,68,gate|up x8,37.220
+i4,cold,dataflow,240,69,down x8,27.140
+i4,cold,dataflow,240,70,q|k|v,13.760
+i4,cold,dataflow,240,71,o,10.070
+i4,cold,dataflow,240,72,router,3.430
+i4,cold,dataflow,240,73,gate|up x8,37.460
+i4,cold,dataflow,240,74,down x8,26.930
+i4,cold,dataflow,240,75,q|k|v,13.720
+i4,cold,dataflow,240,76,o,10.200
+i4,cold,dataflow,240,77,router,3.420
+i4,cold,dataflow,240,78,gate|up x8,38.400
+i4,cold,dataflow,240,79,down x8,26.810
+i4,cold,dataflow,240,80,q|k|v,13.840
+i4,cold,dataflow,240,81,o,10.040
+i4,cold,dataflow,240,82,router,3.400
+i4,cold,dataflow,240,83,gate|up x8,37.830
+i4,cold,dataflow,240,84,down x8,26.890
+i4,cold,dataflow,240,85,q|k|v,13.810
+i4,cold,dataflow,240,86,o,9.920
+i4,cold,dataflow,240,87,router,3.470
+i4,cold,dataflow,240,88,gate|up x8,38.080
+i4,cold,dataflow,240,89,down x8,27.080
+i4,cold,dataflow,240,90,q|k|v,14.160
+i4,cold,dataflow,240,91,o,9.980
+i4,cold,dataflow,240,92,router,3.400
+i4,cold,dataflow,240,93,gate|up x8,37.890
+i4,cold,dataflow,240,94,down x8,27.040
+i4,cold,dataflow,240,95,q|k|v,13.900
+i4,cold,dataflow,240,96,o,9.930
+i4,cold,dataflow,240,97,router,3.490
+i4,cold,dataflow,240,98,gate|up x8,38.940
+i4,cold,dataflow,240,99,down x8,26.900
+i4,cold,dataflow,240,100,q|k|v,13.890
+i4,cold,dataflow,240,101,o,9.800
+i4,cold,dataflow,240,102,router,3.430
+i4,cold,dataflow,240,103,gate|up x8,38.200
+i4,cold,dataflow,240,104,down x8,26.870
+i4,cold,dataflow,240,105,q|k|v,13.500
+i4,cold,dataflow,240,106,o,10.180
+i4,cold,dataflow,240,107,router,3.400
+i4,cold,dataflow,240,108,gate|up x8,37.680
+i4,cold,dataflow,240,109,down x8,26.710
+i4,cold,dataflow,240,110,q|k|v,13.260
+i4,cold,dataflow,240,111,o,9.820
+i4,cold,dataflow,240,112,router,3.480
+i4,cold,dataflow,240,113,gate|up x8,37.760
+i4,cold,dataflow,240,114,down x8,26.820
+i4,cold,dataflow,240,115,q|k|v,13.970
+i4,cold,dataflow,240,116,o,9.910
+i4,cold,dataflow,240,117,router,3.440
+i4,cold,dataflow,240,118,gate|up x8,38.040
+i4,cold,dataflow,240,119,down x8,27.270
+i4,cold,dataflow,240,120,q|k|v,13.670
+i4,cold,dataflow,240,121,o,10.210
+i4,cold,dataflow,240,122,router,3.460
+i4,cold,dataflow,240,123,gate|up x8,38.170
+i4,cold,dataflow,240,124,down x8,27.220
+i4,cold,dataflow,240,125,q|k|v,13.740
+i4,cold,dataflow,240,126,o,9.730
+i4,cold,dataflow,240,127,router,3.520
+i4,cold,dataflow,240,128,gate|up x8,38.210
+i4,cold,dataflow,240,129,down x8,26.960
+i4,cold,dataflow,240,130,q|k|v,14.030
+i4,cold,dataflow,240,131,o,9.870
+i4,cold,dataflow,240,132,router,3.500
+i4,cold,dataflow,240,133,gate|up x8,38.020
+i4,cold,dataflow,240,134,down x8,27.280
+i4,cold,dataflow,240,135,q|k|v,13.960
+i4,cold,dataflow,240,136,o,9.890
+i4,cold,dataflow,240,137,router,3.440
+i4,cold,dataflow,240,138,gate|up x8,37.960
+i4,cold,dataflow,240,139,down x8,27.150
+i4,cold,dataflow,240,140,q|k|v,13.160
+i4,cold,dataflow,240,141,o,9.810
+i4,cold,dataflow,240,142,router,3.520
+i4,cold,dataflow,240,143,gate|up x8,37.650
+i4,cold,dataflow,240,144,down x8,26.960
+i4,cold,dataflow,240,145,q|k|v,13.890
+i4,cold,dataflow,240,146,o,9.960
+i4,cold,dataflow,240,147,router,3.360
+i4,cold,dataflow,240,148,gate|up x8,38.370
+i4,cold,dataflow,240,149,down x8,27.210
+i4,cold,dataflow,240,150,q|k|v,13.880
+i4,cold,dataflow,240,151,o,10.380
+i4,cold,dataflow,240,152,router,3.530
+i4,cold,dataflow,240,153,gate|up x8,38.160
+i4,cold,dataflow,240,154,down x8,27.070
+i4,cold,dataflow,240,155,q|k|v,13.520
+i4,cold,dataflow,240,156,o,10.110
+i4,cold,dataflow,240,157,router,3.410
+i4,cold,dataflow,240,158,gate|up x8,38.440
+i4,cold,dataflow,240,159,down x8,27.110
+i4,cold,dataflow,240,160,q|k|v,13.880
+i4,cold,dataflow,240,161,o,9.880
+i4,cold,dataflow,240,162,router,3.440
+i4,cold,dataflow,240,163,gate|up x8,37.600
+i4,cold,dataflow,240,164,down x8,27.290
+i4,cold,dataflow,240,165,q|k|v,14.010
+i4,cold,dataflow,240,166,o,10.180
+i4,cold,dataflow,240,167,router,3.350
+i4,cold,dataflow,240,168,gate|up x8,38.000
+i4,cold,dataflow,240,169,down x8,26.810
+i4,cold,dataflow,240,170,q|k|v,13.560
+i4,cold,dataflow,240,171,o,9.960
+i4,cold,dataflow,240,172,router,3.330
+i4,cold,dataflow,240,173,gate|up x8,38.800
+i4,cold,dataflow,240,174,down x8,27.360
+i4,cold,dataflow,240,175,q|k|v,13.360
+i4,cold,dataflow,240,176,o,10.080
+i4,cold,dataflow,240,177,router,3.460
+i4,cold,dataflow,240,178,gate|up x8,37.560
+i4,cold,dataflow,240,179,down x8,26.840
+i4,cold,dataflow,240,180,q|k|v,14.120
+i4,cold,dataflow,240,181,o,10.040
+i4,cold,dataflow,240,182,router,3.420
+i4,cold,dataflow,240,183,gate|up x8,38.050
+i4,cold,dataflow,240,184,down x8,27.110
+i4,cold,dataflow,240,185,q|k|v,13.480
+i4,cold,dataflow,240,186,o,10.530
+i4,cold,dataflow,240,187,router,3.480
+i4,cold,dataflow,240,188,gate|up x8,38.590
+i4,cold,dataflow,240,189,down x8,27.080
+i4,cold,dataflow,240,190,q|k|v,13.660
+i4,cold,dataflow,240,191,o,9.610
+i4,cold,dataflow,240,192,router,3.470
+i4,cold,dataflow,240,193,gate|up x8,37.930
+i4,cold,dataflow,240,194,down x8,26.870
+i4,cold,dataflow,240,195,q|k|v,13.770
+i4,cold,dataflow,240,196,o,9.660
+i4,cold,dataflow,240,197,router,3.440
+i4,cold,dataflow,240,198,gate|up x8,38.180
+i4,cold,dataflow,240,199,down x8,27.100
+i4,cold,dataflow,240,200,q|k|v,13.390
+i4,cold,dataflow,240,201,o,10.160
+i4,cold,dataflow,240,202,router,3.420
+i4,cold,dataflow,240,203,gate|up x8,38.200
+i4,cold,dataflow,240,204,down x8,26.760
+i4,cold,dataflow,240,205,q|k|v,13.650
+i4,cold,dataflow,240,206,o,9.840
+i4,cold,dataflow,240,207,router,3.440
+i4,cold,dataflow,240,208,gate|up x8,37.960
+i4,cold,dataflow,240,209,down x8,26.930
+i4,cold,dataflow,240,210,q|k|v,13.980
+i4,cold,dataflow,240,211,o,9.800
+i4,cold,dataflow,240,212,router,3.360
+i4,cold,dataflow,240,213,gate|up x8,38.480
+i4,cold,dataflow,240,214,down x8,27.380
+i4,cold,dataflow,240,215,q|k|v,13.720
+i4,cold,dataflow,240,216,o,9.940
+i4,cold,dataflow,240,217,router,3.360
+i4,cold,dataflow,240,218,gate|up x8,38.100
+i4,cold,dataflow,240,219,down x8,27.340
+i4,cold,dataflow,240,220,q|k|v,13.610
+i4,cold,dataflow,240,221,o,10.210
+i4,cold,dataflow,240,222,router,3.460
+i4,cold,dataflow,240,223,gate|up x8,38.090
+i4,cold,dataflow,240,224,down x8,26.850
+i4,cold,dataflow,240,225,q|k|v,13.620
+i4,cold,dataflow,240,226,o,9.840
+i4,cold,dataflow,240,227,router,3.400
+i4,cold,dataflow,240,228,gate|up x8,37.680
+i4,cold,dataflow,240,229,down x8,27.130
+i4,cold,dataflow,240,230,q|k|v,13.640
+i4,cold,dataflow,240,231,o,10.200
+i4,cold,dataflow,240,232,router,3.410
+i4,cold,dataflow,240,233,gate|up x8,38.080
+i4,cold,dataflow,240,234,down x8,26.880
+i4,cold,dataflow,240,235,q|k|v,13.680
+i4,cold,dataflow,240,236,o,10.370
+i4,cold,dataflow,240,237,router,3.430
+i4,cold,dataflow,240,238,gate|up x8,38.590
+i4,cold,dataflow,240,239,down x8,27.130
+i4,cold,dataflow,240,240,lm_head,214.230
+i4,cold,dataflow-pf,240,0,q|k|v,19.520
+i4,cold,dataflow-pf,240,1,o,8.380
+i4,cold,dataflow-pf,240,2,router,2.840
+i4,cold,dataflow-pf,240,3,gate|up x8,39.460
+i4,cold,dataflow-pf,240,4,down x8,26.240
+i4,cold,dataflow-pf,240,5,q|k|v,9.470
+i4,cold,dataflow-pf,240,6,o,8.560
+i4,cold,dataflow-pf,240,7,router,3.020
+i4,cold,dataflow-pf,240,8,gate|up x8,37.400
+i4,cold,dataflow-pf,240,9,down x8,25.520
+i4,cold,dataflow-pf,240,10,q|k|v,10.810
+i4,cold,dataflow-pf,240,11,o,8.670
+i4,cold,dataflow-pf,240,12,router,2.800
+i4,cold,dataflow-pf,240,13,gate|up x8,38.730
+i4,cold,dataflow-pf,240,14,down x8,26.360
+i4,cold,dataflow-pf,240,15,q|k|v,9.730
+i4,cold,dataflow-pf,240,16,o,8.590
+i4,cold,dataflow-pf,240,17,router,2.890
+i4,cold,dataflow-pf,240,18,gate|up x8,37.920
+i4,cold,dataflow-pf,240,19,down x8,26.240
+i4,cold,dataflow-pf,240,20,q|k|v,10.170
+i4,cold,dataflow-pf,240,21,o,8.390
+i4,cold,dataflow-pf,240,22,router,2.870
+i4,cold,dataflow-pf,240,23,gate|up x8,38.570
+i4,cold,dataflow-pf,240,24,down x8,26.240
+i4,cold,dataflow-pf,240,25,q|k|v,10.010
+i4,cold,dataflow-pf,240,26,o,8.460
+i4,cold,dataflow-pf,240,27,router,3.030
+i4,cold,dataflow-pf,240,28,gate|up x8,38.010
+i4,cold,dataflow-pf,240,29,down x8,26.470
+i4,cold,dataflow-pf,240,30,q|k|v,9.880
+i4,cold,dataflow-pf,240,31,o,8.680
+i4,cold,dataflow-pf,240,32,router,2.860
+i4,cold,dataflow-pf,240,33,gate|up x8,39.180
+i4,cold,dataflow-pf,240,34,down x8,26.200
+i4,cold,dataflow-pf,240,35,q|k|v,10.040
+i4,cold,dataflow-pf,240,36,o,8.530
+i4,cold,dataflow-pf,240,37,router,2.930
+i4,cold,dataflow-pf,240,38,gate|up x8,38.490
+i4,cold,dataflow-pf,240,39,down x8,26.460
+i4,cold,dataflow-pf,240,40,q|k|v,10.120
+i4,cold,dataflow-pf,240,41,o,8.290
+i4,cold,dataflow-pf,240,42,router,2.880
+i4,cold,dataflow-pf,240,43,gate|up x8,37.530
+i4,cold,dataflow-pf,240,44,down x8,26.550
+i4,cold,dataflow-pf,240,45,q|k|v,9.980
+i4,cold,dataflow-pf,240,46,o,8.640
+i4,cold,dataflow-pf,240,47,router,2.990
+i4,cold,dataflow-pf,240,48,gate|up x8,38.430
+i4,cold,dataflow-pf,240,49,down x8,26.270
+i4,cold,dataflow-pf,240,50,q|k|v,10.140
+i4,cold,dataflow-pf,240,51,o,8.460
+i4,cold,dataflow-pf,240,52,router,2.860
+i4,cold,dataflow-pf,240,53,gate|up x8,38.880
+i4,cold,dataflow-pf,240,54,down x8,26.400
+i4,cold,dataflow-pf,240,55,q|k|v,9.960
+i4,cold,dataflow-pf,240,56,o,8.340
+i4,cold,dataflow-pf,240,57,router,3.040
+i4,cold,dataflow-pf,240,58,gate|up x8,39.080
+i4,cold,dataflow-pf,240,59,down x8,26.440
+i4,cold,dataflow-pf,240,60,q|k|v,10.040
+i4,cold,dataflow-pf,240,61,o,8.320
+i4,cold,dataflow-pf,240,62,router,3.080
+i4,cold,dataflow-pf,240,63,gate|up x8,37.560
+i4,cold,dataflow-pf,240,64,down x8,26.320
+i4,cold,dataflow-pf,240,65,q|k|v,10.740
+i4,cold,dataflow-pf,240,66,o,8.520
+i4,cold,dataflow-pf,240,67,router,2.900
+i4,cold,dataflow-pf,240,68,gate|up x8,38.970
+i4,cold,dataflow-pf,240,69,down x8,26.240
+i4,cold,dataflow-pf,240,70,q|k|v,10.130
+i4,cold,dataflow-pf,240,71,o,8.590
+i4,cold,dataflow-pf,240,72,router,3.030
+i4,cold,dataflow-pf,240,73,gate|up x8,37.480
+i4,cold,dataflow-pf,240,74,down x8,25.760
+i4,cold,dataflow-pf,240,75,q|k|v,10.000
+i4,cold,dataflow-pf,240,76,o,8.560
+i4,cold,dataflow-pf,240,77,router,2.870
+i4,cold,dataflow-pf,240,78,gate|up x8,38.470
+i4,cold,dataflow-pf,240,79,down x8,26.240
+i4,cold,dataflow-pf,240,80,q|k|v,10.440
+i4,cold,dataflow-pf,240,81,o,8.530
+i4,cold,dataflow-pf,240,82,router,2.910
+i4,cold,dataflow-pf,240,83,gate|up x8,38.620
+i4,cold,dataflow-pf,240,84,down x8,26.030
+i4,cold,dataflow-pf,240,85,q|k|v,10.210
+i4,cold,dataflow-pf,240,86,o,8.640
+i4,cold,dataflow-pf,240,87,router,3.070
+i4,cold,dataflow-pf,240,88,gate|up x8,38.440
+i4,cold,dataflow-pf,240,89,down x8,26.600
+i4,cold,dataflow-pf,240,90,q|k|v,10.000
+i4,cold,dataflow-pf,240,91,o,8.470
+i4,cold,dataflow-pf,240,92,router,2.770
+i4,cold,dataflow-pf,240,93,gate|up x8,38.360
+i4,cold,dataflow-pf,240,94,down x8,26.820
+i4,cold,dataflow-pf,240,95,q|k|v,10.200
+i4,cold,dataflow-pf,240,96,o,8.490
+i4,cold,dataflow-pf,240,97,router,2.890
+i4,cold,dataflow-pf,240,98,gate|up x8,37.790
+i4,cold,dataflow-pf,240,99,down x8,26.080
+i4,cold,dataflow-pf,240,100,q|k|v,10.090
+i4,cold,dataflow-pf,240,101,o,8.520
+i4,cold,dataflow-pf,240,102,router,2.890
+i4,cold,dataflow-pf,240,103,gate|up x8,38.410
+i4,cold,dataflow-pf,240,104,down x8,26.010
+i4,cold,dataflow-pf,240,105,q|k|v,10.040
+i4,cold,dataflow-pf,240,106,o,8.570
+i4,cold,dataflow-pf,240,107,router,3.020
+i4,cold,dataflow-pf,240,108,gate|up x8,38.480
+i4,cold,dataflow-pf,240,109,down x8,26.360
+i4,cold,dataflow-pf,240,110,q|k|v,10.010
+i4,cold,dataflow-pf,240,111,o,8.510
+i4,cold,dataflow-pf,240,112,router,2.850
+i4,cold,dataflow-pf,240,113,gate|up x8,38.510
+i4,cold,dataflow-pf,240,114,down x8,25.990
+i4,cold,dataflow-pf,240,115,q|k|v,10.220
+i4,cold,dataflow-pf,240,116,o,8.480
+i4,cold,dataflow-pf,240,117,router,2.970
+i4,cold,dataflow-pf,240,118,gate|up x8,37.670
+i4,cold,dataflow-pf,240,119,down x8,26.400
+i4,cold,dataflow-pf,240,120,q|k|v,9.970
+i4,cold,dataflow-pf,240,121,o,8.560
+i4,cold,dataflow-pf,240,122,router,2.990
+i4,cold,dataflow-pf,240,123,gate|up x8,39.450
+i4,cold,dataflow-pf,240,124,down x8,26.160
+i4,cold,dataflow-pf,240,125,q|k|v,9.700
+i4,cold,dataflow-pf,240,126,o,8.400
+i4,cold,dataflow-pf,240,127,router,3.020
+i4,cold,dataflow-pf,240,128,gate|up x8,38.840
+i4,cold,dataflow-pf,240,129,down x8,26.550
+i4,cold,dataflow-pf,240,130,q|k|v,10.230
+i4,cold,dataflow-pf,240,131,o,8.500
+i4,cold,dataflow-pf,240,132,router,2.930
+i4,cold,dataflow-pf,240,133,gate|up x8,38.410
+i4,cold,dataflow-pf,240,134,down x8,26.720
+i4,cold,dataflow-pf,240,135,q|k|v,9.930
+i4,cold,dataflow-pf,240,136,o,8.410
+i4,cold,dataflow-pf,240,137,router,2.910
+i4,cold,dataflow-pf,240,138,gate|up x8,38.240
+i4,cold,dataflow-pf,240,139,down x8,26.450
+i4,cold,dataflow-pf,240,140,q|k|v,9.760
+i4,cold,dataflow-pf,240,141,o,8.560
+i4,cold,dataflow-pf,240,142,router,2.840
+i4,cold,dataflow-pf,240,143,gate|up x8,38.280
+i4,cold,dataflow-pf,240,144,down x8,26.400
+i4,cold,dataflow-pf,240,145,q|k|v,9.950
+i4,cold,dataflow-pf,240,146,o,8.610
+i4,cold,dataflow-pf,240,147,router,3.000
+i4,cold,dataflow-pf,240,148,gate|up x8,37.190
+i4,cold,dataflow-pf,240,149,down x8,26.280
+i4,cold,dataflow-pf,240,150,q|k|v,10.080
+i4,cold,dataflow-pf,240,151,o,8.460
+i4,cold,dataflow-pf,240,152,router,2.870
+i4,cold,dataflow-pf,240,153,gate|up x8,38.520
+i4,cold,dataflow-pf,240,154,down x8,26.320
+i4,cold,dataflow-pf,240,155,q|k|v,10.110
+i4,cold,dataflow-pf,240,156,o,8.600
+i4,cold,dataflow-pf,240,157,router,2.820
+i4,cold,dataflow-pf,240,158,gate|up x8,38.360
+i4,cold,dataflow-pf,240,159,down x8,26.130
+i4,cold,dataflow-pf,240,160,q|k|v,10.040
+i4,cold,dataflow-pf,240,161,o,8.580
+i4,cold,dataflow-pf,240,162,router,2.880
+i4,cold,dataflow-pf,240,163,gate|up x8,38.530
+i4,cold,dataflow-pf,240,164,down x8,26.080
+i4,cold,dataflow-pf,240,165,q|k|v,10.150
+i4,cold,dataflow-pf,240,166,o,8.590
+i4,cold,dataflow-pf,240,167,router,3.020
+i4,cold,dataflow-pf,240,168,gate|up x8,38.250
+i4,cold,dataflow-pf,240,169,down x8,26.440
+i4,cold,dataflow-pf,240,170,q|k|v,9.740
+i4,cold,dataflow-pf,240,171,o,8.560
+i4,cold,dataflow-pf,240,172,router,2.920
+i4,cold,dataflow-pf,240,173,gate|up x8,38.450
+i4,cold,dataflow-pf,240,174,down x8,26.260
+i4,cold,dataflow-pf,240,175,q|k|v,10.090
+i4,cold,dataflow-pf,240,176,o,8.530
+i4,cold,dataflow-pf,240,177,router,3.000
+i4,cold,dataflow-pf,240,178,gate|up x8,38.930
+i4,cold,dataflow-pf,240,179,down x8,26.390
+i4,cold,dataflow-pf,240,180,q|k|v,10.130
+i4,cold,dataflow-pf,240,181,o,8.600
+i4,cold,dataflow-pf,240,182,router,2.960
+i4,cold,dataflow-pf,240,183,gate|up x8,38.210
+i4,cold,dataflow-pf,240,184,down x8,26.440
+i4,cold,dataflow-pf,240,185,q|k|v,10.080
+i4,cold,dataflow-pf,240,186,o,8.540
+i4,cold,dataflow-pf,240,187,router,3.000
+i4,cold,dataflow-pf,240,188,gate|up x8,38.330
+i4,cold,dataflow-pf,240,189,down x8,26.280
+i4,cold,dataflow-pf,240,190,q|k|v,10.240
+i4,cold,dataflow-pf,240,191,o,8.600
+i4,cold,dataflow-pf,240,192,router,2.840
+i4,cold,dataflow-pf,240,193,gate|up x8,38.570
+i4,cold,dataflow-pf,240,194,down x8,26.280
+i4,cold,dataflow-pf,240,195,q|k|v,9.990
+i4,cold,dataflow-pf,240,196,o,8.600
+i4,cold,dataflow-pf,240,197,router,2.920
+i4,cold,dataflow-pf,240,198,gate|up x8,37.320
+i4,cold,dataflow-pf,240,199,down x8,26.280
+i4,cold,dataflow-pf,240,200,q|k|v,9.770
+i4,cold,dataflow-pf,240,201,o,8.570
+i4,cold,dataflow-pf,240,202,router,3.070
+i4,cold,dataflow-pf,240,203,gate|up x8,39.100
+i4,cold,dataflow-pf,240,204,down x8,26.680
+i4,cold,dataflow-pf,240,205,q|k|v,10.050
+i4,cold,dataflow-pf,240,206,o,8.510
+i4,cold,dataflow-pf,240,207,router,2.880
+i4,cold,dataflow-pf,240,208,gate|up x8,38.210
+i4,cold,dataflow-pf,240,209,down x8,26.230
+i4,cold,dataflow-pf,240,210,q|k|v,9.990
+i4,cold,dataflow-pf,240,211,o,8.470
+i4,cold,dataflow-pf,240,212,router,2.850
+i4,cold,dataflow-pf,240,213,gate|up x8,38.240
+i4,cold,dataflow-pf,240,214,down x8,26.140
+i4,cold,dataflow-pf,240,215,q|k|v,9.750
+i4,cold,dataflow-pf,240,216,o,8.440
+i4,cold,dataflow-pf,240,217,router,3.040
+i4,cold,dataflow-pf,240,218,gate|up x8,38.420
+i4,cold,dataflow-pf,240,219,down x8,25.960
+i4,cold,dataflow-pf,240,220,q|k|v,10.060
+i4,cold,dataflow-pf,240,221,o,8.420
+i4,cold,dataflow-pf,240,222,router,2.990
+i4,cold,dataflow-pf,240,223,gate|up x8,38.140
+i4,cold,dataflow-pf,240,224,down x8,26.440
+i4,cold,dataflow-pf,240,225,q|k|v,9.760
+i4,cold,dataflow-pf,240,226,o,8.570
+i4,cold,dataflow-pf,240,227,router,2.930
+i4,cold,dataflow-pf,240,228,gate|up x8,38.780
+i4,cold,dataflow-pf,240,229,down x8,26.460
+i4,cold,dataflow-pf,240,230,q|k|v,10.120
+i4,cold,dataflow-pf,240,231,o,8.560
+i4,cold,dataflow-pf,240,232,router,2.960
+i4,cold,dataflow-pf,240,233,gate|up x8,38.440
+i4,cold,dataflow-pf,240,234,down x8,26.440
+i4,cold,dataflow-pf,240,235,q|k|v,9.880
+i4,cold,dataflow-pf,240,236,o,8.720
+i4,cold,dataflow-pf,240,237,router,3.000
+i4,cold,dataflow-pf,240,238,gate|up x8,38.440
+i4,cold,dataflow-pf,240,239,down x8,26.110
+i4,cold,dataflow-pf,240,240,lm_head,207.110
+i4,cold,barrier,96,0,q|k|v,16.650
+i4,cold,barrier,96,1,o,12.040
+i4,cold,barrier,96,2,router,3.400
+i4,cold,barrier,96,3,gate|up x8,44.480
+i4,cold,barrier,96,4,down x8,34.560
+i4,cold,barrier,96,5,q|k|v,15.880
+i4,cold,barrier,96,6,o,12.000
+i4,cold,barrier,96,7,router,3.240
+i4,cold,barrier,96,8,gate|up x8,45.480
+i4,cold,barrier,96,9,down x8,35.160
+i4,cold,barrier,96,10,q|k|v,15.400
+i4,cold,barrier,96,11,o,12.520
+i4,cold,barrier,96,12,router,3.320
+i4,cold,barrier,96,13,gate|up x8,44.520
+i4,cold,barrier,96,14,down x8,34.760
+i4,cold,barrier,96,15,q|k|v,15.360
+i4,cold,barrier,96,16,o,11.760
+i4,cold,barrier,96,17,router,3.480
+i4,cold,barrier,96,18,gate|up x8,44.680
+i4,cold,barrier,96,19,down x8,34.840
+i4,cold,barrier,96,20,q|k|v,15.840
+i4,cold,barrier,96,21,o,11.760
+i4,cold,barrier,96,22,router,3.160
+i4,cold,barrier,96,23,gate|up x8,45.240
+i4,cold,barrier,96,24,down x8,34.920
+i4,cold,barrier,96,25,q|k|v,15.320
+i4,cold,barrier,96,26,o,12.120
+i4,cold,barrier,96,27,router,3.320
+i4,cold,barrier,96,28,gate|up x8,44.840
+i4,cold,barrier,96,29,down x8,34.840
+i4,cold,barrier,96,30,q|k|v,15.440
+i4,cold,barrier,96,31,o,11.920
+i4,cold,barrier,96,32,router,3.520
+i4,cold,barrier,96,33,gate|up x8,44.280
+i4,cold,barrier,96,34,down x8,34.680
+i4,cold,barrier,96,35,q|k|v,16.040
+i4,cold,barrier,96,36,o,12.040
+i4,cold,barrier,96,37,router,3.320
+i4,cold,barrier,96,38,gate|up x8,44.880
+i4,cold,barrier,96,39,down x8,34.920
+i4,cold,barrier,96,40,q|k|v,15.760
+i4,cold,barrier,96,41,o,12.160
+i4,cold,barrier,96,42,router,3.200
+i4,cold,barrier,96,43,gate|up x8,45.440
+i4,cold,barrier,96,44,down x8,35.080
+i4,cold,barrier,96,45,q|k|v,15.440
+i4,cold,barrier,96,46,o,11.880
+i4,cold,barrier,96,47,router,3.440
+i4,cold,barrier,96,48,gate|up x8,44.240
+i4,cold,barrier,96,49,down x8,34.840
+i4,cold,barrier,96,50,q|k|v,16.160
+i4,cold,barrier,96,51,o,11.960
+i4,cold,barrier,96,52,router,3.400
+i4,cold,barrier,96,53,gate|up x8,44.400
+i4,cold,barrier,96,54,down x8,34.960
+i4,cold,barrier,96,55,q|k|v,15.440
+i4,cold,barrier,96,56,o,12.120
+i4,cold,barrier,96,57,router,3.320
+i4,cold,barrier,96,58,gate|up x8,45.400
+i4,cold,barrier,96,59,down x8,35.160
+i4,cold,barrier,96,60,q|k|v,15.440
+i4,cold,barrier,96,61,o,11.840
+i4,cold,barrier,96,62,router,3.440
+i4,cold,barrier,96,63,gate|up x8,44.520
+i4,cold,barrier,96,64,down x8,34.440
+i4,cold,barrier,96,65,q|k|v,15.720
+i4,cold,barrier,96,66,o,11.800
+i4,cold,barrier,96,67,router,3.400
+i4,cold,barrier,96,68,gate|up x8,44.200
+i4,cold,barrier,96,69,down x8,34.840
+i4,cold,barrier,96,70,q|k|v,15.960
+i4,cold,barrier,96,71,o,12.440
+i4,cold,barrier,96,72,router,3.200
+i4,cold,barrier,96,73,gate|up x8,45.400
+i4,cold,barrier,96,74,down x8,35.200
+i4,cold,barrier,96,75,q|k|v,15.400
+i4,cold,barrier,96,76,o,12.360
+i4,cold,barrier,96,77,router,3.400
+i4,cold,barrier,96,78,gate|up x8,44.240
+i4,cold,barrier,96,79,down x8,34.960
+i4,cold,barrier,96,80,q|k|v,16.200
+i4,cold,barrier,96,81,o,11.840
+i4,cold,barrier,96,82,router,3.560
+i4,cold,barrier,96,83,gate|up x8,44.600
+i4,cold,barrier,96,84,down x8,34.880
+i4,cold,barrier,96,85,q|k|v,15.640
+i4,cold,barrier,96,86,o,12.400
+i4,cold,barrier,96,87,router,3.440
+i4,cold,barrier,96,88,gate|up x8,45.360
+i4,cold,barrier,96,89,down x8,34.800
+i4,cold,barrier,96,90,q|k|v,15.560
+i4,cold,barrier,96,91,o,12.360
+i4,cold,barrier,96,92,router,3.200
+i4,cold,barrier,96,93,gate|up x8,44.760
+i4,cold,barrier,96,94,down x8,34.960
+i4,cold,barrier,96,95,q|k|v,15.400
+i4,cold,barrier,96,96,o,11.680
+i4,cold,barrier,96,97,router,3.480
+i4,cold,barrier,96,98,gate|up x8,44.320
+i4,cold,barrier,96,99,down x8,34.840
+i4,cold,barrier,96,100,q|k|v,16.080
+i4,cold,barrier,96,101,o,11.840
+i4,cold,barrier,96,102,router,3.320
+i4,cold,barrier,96,103,gate|up x8,45.560
+i4,cold,barrier,96,104,down x8,34.960
+i4,cold,barrier,96,105,q|k|v,15.360
+i4,cold,barrier,96,106,o,12.440
+i4,cold,barrier,96,107,router,3.240
+i4,cold,barrier,96,108,gate|up x8,45.000
+i4,cold,barrier,96,109,down x8,35.000
+i4,cold,barrier,96,110,q|k|v,15.560
+i4,cold,barrier,96,111,o,11.760
+i4,cold,barrier,96,112,router,3.360
+i4,cold,barrier,96,113,gate|up x8,44.480
+i4,cold,barrier,96,114,down x8,34.880
+i4,cold,barrier,96,115,q|k|v,16.200
+i4,cold,barrier,96,116,o,11.920
+i4,cold,barrier,96,117,router,3.320
+i4,cold,barrier,96,118,gate|up x8,44.720
+i4,cold,barrier,96,119,down x8,35.080
+i4,cold,barrier,96,120,q|k|v,15.360
+i4,cold,barrier,96,121,o,12.080
+i4,cold,barrier,96,122,router,3.240
+i4,cold,barrier,96,123,gate|up x8,45.360
+i4,cold,barrier,96,124,down x8,35.400
+i4,cold,barrier,96,125,q|k|v,15.240
+i4,cold,barrier,96,126,o,11.640
+i4,cold,barrier,96,127,router,3.280
+i4,cold,barrier,96,128,gate|up x8,44.400
+i4,cold,barrier,96,129,down x8,34.960
+i4,cold,barrier,96,130,q|k|v,15.920
+i4,cold,barrier,96,131,o,11.880
+i4,cold,barrier,96,132,router,3.360
+i4,cold,barrier,96,133,gate|up x8,44.240
+i4,cold,barrier,96,134,down x8,34.520
+i4,cold,barrier,96,135,q|k|v,15.400
+i4,cold,barrier,96,136,o,12.200
+i4,cold,barrier,96,137,router,3.160
+i4,cold,barrier,96,138,gate|up x8,45.560
+i4,cold,barrier,96,139,down x8,35.400
+i4,cold,barrier,96,140,q|k|v,15.320
+i4,cold,barrier,96,141,o,12.040
+i4,cold,barrier,96,142,router,3.240
+i4,cold,barrier,96,143,gate|up x8,44.560
+i4,cold,barrier,96,144,down x8,34.800
+i4,cold,barrier,96,145,q|k|v,15.720
+i4,cold,barrier,96,146,o,11.920
+i4,cold,barrier,96,147,router,3.400
+i4,cold,barrier,96,148,gate|up x8,44.360
+i4,cold,barrier,96,149,down x8,34.600
+i4,cold,barrier,96,150,q|k|v,15.800
+i4,cold,barrier,96,151,o,12.480
+i4,cold,barrier,96,152,router,3.280
+i4,cold,barrier,96,153,gate|up x8,45.280
+i4,cold,barrier,96,154,down x8,35.000
+i4,cold,barrier,96,155,q|k|v,15.640
+i4,cold,barrier,96,156,o,12.160
+i4,cold,barrier,96,157,router,3.240
+i4,cold,barrier,96,158,gate|up x8,44.480
+i4,cold,barrier,96,159,down x8,34.680
+i4,cold,barrier,96,160,q|k|v,15.840
+i4,cold,barrier,96,161,o,12.040
+i4,cold,barrier,96,162,router,3.360
+i4,cold,barrier,96,163,gate|up x8,44.600
+i4,cold,barrier,96,164,down x8,34.840
+i4,cold,barrier,96,165,q|k|v,15.840
+i4,cold,barrier,96,166,o,12.120
+i4,cold,barrier,96,167,router,3.240
+i4,cold,barrier,96,168,gate|up x8,45.440
+i4,cold,barrier,96,169,down x8,34.920
+i4,cold,barrier,96,170,q|k|v,15.640
+i4,cold,barrier,96,171,o,12.200
+i4,cold,barrier,96,172,router,3.280
+i4,cold,barrier,96,173,gate|up x8,44.520
+i4,cold,barrier,96,174,down x8,34.880
+i4,cold,barrier,96,175,q|k|v,15.480
+i4,cold,barrier,96,176,o,11.880
+i4,cold,barrier,96,177,router,3.360
+i4,cold,barrier,96,178,gate|up x8,44.280
+i4,cold,barrier,96,179,down x8,34.840
+i4,cold,barrier,96,180,q|k|v,15.800
+i4,cold,barrier,96,181,o,12.000
+i4,cold,barrier,96,182,router,3.200
+i4,cold,barrier,96,183,gate|up x8,45.440
+i4,cold,barrier,96,184,down x8,35.000
+i4,cold,barrier,96,185,q|k|v,15.560
+i4,cold,barrier,96,186,o,12.400
+i4,cold,barrier,96,187,router,3.280
+i4,cold,barrier,96,188,gate|up x8,45.080
+i4,cold,barrier,96,189,down x8,35.040
+i4,cold,barrier,96,190,q|k|v,15.320
+i4,cold,barrier,96,191,o,11.760
+i4,cold,barrier,96,192,router,3.480
+i4,cold,barrier,96,193,gate|up x8,44.600
+i4,cold,barrier,96,194,down x8,34.600
+i4,cold,barrier,96,195,q|k|v,15.880
+i4,cold,barrier,96,196,o,11.680
+i4,cold,barrier,96,197,router,3.280
+i4,cold,barrier,96,198,gate|up x8,44.880
+i4,cold,barrier,96,199,down x8,35.080
+i4,cold,barrier,96,200,q|k|v,15.360
+i4,cold,barrier,96,201,o,12.240
+i4,cold,barrier,96,202,router,3.280
+i4,cold,barrier,96,203,gate|up x8,45.480
+i4,cold,barrier,96,204,down x8,35.040
+i4,cold,barrier,96,205,q|k|v,15.320
+i4,cold,barrier,96,206,o,12.000
+i4,cold,barrier,96,207,router,3.320
+i4,cold,barrier,96,208,gate|up x8,44.280
+i4,cold,barrier,96,209,down x8,34.640
+i4,cold,barrier,96,210,q|k|v,16.040
+i4,cold,barrier,96,211,o,11.880
+i4,cold,barrier,96,212,router,3.400
+i4,cold,barrier,96,213,gate|up x8,44.520
+i4,cold,barrier,96,214,down x8,35.000
+i4,cold,barrier,96,215,q|k|v,15.480
+i4,cold,barrier,96,216,o,12.400
+i4,cold,barrier,96,217,router,3.320
+i4,cold,barrier,96,218,gate|up x8,45.560
+i4,cold,barrier,96,219,down x8,35.080
+i4,cold,barrier,96,220,q|k|v,15.640
+i4,cold,barrier,96,221,o,11.800
+i4,cold,barrier,96,222,router,3.440
+i4,cold,barrier,96,223,gate|up x8,44.440
+i4,cold,barrier,96,224,down x8,34.920
+i4,cold,barrier,96,225,q|k|v,15.640
+i4,cold,barrier,96,226,o,12.120
+i4,cold,barrier,96,227,router,3.320
+i4,cold,barrier,96,228,gate|up x8,44.240
+i4,cold,barrier,96,229,down x8,34.680
+i4,cold,barrier,96,230,q|k|v,16.040
+i4,cold,barrier,96,231,o,12.440
+i4,cold,barrier,96,232,router,3.440
+i4,cold,barrier,96,233,gate|up x8,45.320
+i4,cold,barrier,96,234,down x8,35.080
+i4,cold,barrier,96,235,q|k|v,15.360
+i4,cold,barrier,96,236,o,12.400
+i4,cold,barrier,96,237,router,3.280
+i4,cold,barrier,96,238,gate|up x8,44.400
+i4,cold,barrier,96,239,down x8,34.800
+i4,cold,barrier,96,240,lm_head,312.840
+i4,cold,barrier-pf,96,0,q|k|v,19.560
+i4,cold,barrier-pf,96,1,o,11.040
+i4,cold,barrier-pf,96,2,router,2.640
+i4,cold,barrier-pf,96,3,gate|up x8,44.560
+i4,cold,barrier-pf,96,4,down x8,34.200
+i4,cold,barrier-pf,96,5,q|k|v,14.560
+i4,cold,barrier-pf,96,6,o,10.600
+i4,cold,barrier-pf,96,7,router,3.120
+i4,cold,barrier-pf,96,8,gate|up x8,45.560
+i4,cold,barrier-pf,96,9,down x8,34.280
+i4,cold,barrier-pf,96,10,q|k|v,14.640
+i4,cold,barrier-pf,96,11,o,10.560
+i4,cold,barrier-pf,96,12,router,2.840
+i4,cold,barrier-pf,96,13,gate|up x8,44.600
+i4,cold,barrier-pf,96,14,down x8,34.440
+i4,cold,barrier-pf,96,15,q|k|v,14.520
+i4,cold,barrier-pf,96,16,o,10.440
+i4,cold,barrier-pf,96,17,router,2.920
+i4,cold,barrier-pf,96,18,gate|up x8,44.400
+i4,cold,barrier-pf,96,19,down x8,34.520
+i4,cold,barrier-pf,96,20,q|k|v,15.040
+i4,cold,barrier-pf,96,21,o,10.360
+i4,cold,barrier-pf,96,22,router,3.120
+i4,cold,barrier-pf,96,23,gate|up x8,45.360
+i4,cold,barrier-pf,96,24,down x8,34.440
+i4,cold,barrier-pf,96,25,q|k|v,15.200
+i4,cold,barrier-pf,96,26,o,10.360
+i4,cold,barrier-pf,96,27,router,2.800
+i4,cold,barrier-pf,96,28,gate|up x8,45.040
+i4,cold,barrier-pf,96,29,down x8,34.520
+i4,cold,barrier-pf,96,30,q|k|v,14.760
+i4,cold,barrier-pf,96,31,o,10.320
+i4,cold,barrier-pf,96,32,router,2.880
+i4,cold,barrier-pf,96,33,gate|up x8,44.560
+i4,cold,barrier-pf,96,34,down x8,34.360
+i4,cold,barrier-pf,96,35,q|k|v,14.960
+i4,cold,barrier-pf,96,36,o,10.680
+i4,cold,barrier-pf,96,37,router,2.760
+i4,cold,barrier-pf,96,38,gate|up x8,45.000
+i4,cold,barrier-pf,96,39,down x8,34.480
+i4,cold,barrier-pf,96,40,q|k|v,14.720
+i4,cold,barrier-pf,96,41,o,10.280
+i4,cold,barrier-pf,96,42,router,2.880
+i4,cold,barrier-pf,96,43,gate|up x8,45.600
+i4,cold,barrier-pf,96,44,down x8,34.360
+i4,cold,barrier-pf,96,45,q|k|v,14.800
+i4,cold,barrier-pf,96,46,o,10.240
+i4,cold,barrier-pf,96,47,router,3.120
+i4,cold,barrier-pf,96,48,gate|up x8,44.520
+i4,cold,barrier-pf,96,49,down x8,34.160
+i4,cold,barrier-pf,96,50,q|k|v,14.480
+i4,cold,barrier-pf,96,51,o,10.360
+i4,cold,barrier-pf,96,52,router,3.080
+i4,cold,barrier-pf,96,53,gate|up x8,44.360
+i4,cold,barrier-pf,96,54,down x8,34.440
+i4,cold,barrier-pf,96,55,q|k|v,14.720
+i4,cold,barrier-pf,96,56,o,10.560
+i4,cold,barrier-pf,96,57,router,2.840
+i4,cold,barrier-pf,96,58,gate|up x8,45.440
+i4,cold,barrier-pf,96,59,down x8,34.160
+i4,cold,barrier-pf,96,60,q|k|v,14.600
+i4,cold,barrier-pf,96,61,o,10.240
+i4,cold,barrier-pf,96,62,router,3.040
+i4,cold,barrier-pf,96,63,gate|up x8,44.480
+i4,cold,barrier-pf,96,64,down x8,34.320
+i4,cold,barrier-pf,96,65,q|k|v,14.400
+i4,cold,barrier-pf,96,66,o,10.560
+i4,cold,barrier-pf,96,67,router,3.040
+i4,cold,barrier-pf,96,68,gate|up x8,44.320
+i4,cold,barrier-pf,96,69,down x8,34.200
+i4,cold,barrier-pf,96,70,q|k|v,14.800
+i4,cold,barrier-pf,96,71,o,10.640
+i4,cold,barrier-pf,96,72,router,2.800
+i4,cold,barrier-pf,96,73,gate|up x8,45.560
+i4,cold,barrier-pf,96,74,down x8,34.360
+i4,cold,barrier-pf,96,75,q|k|v,14.480
+i4,cold,barrier-pf,96,76,o,10.640
+i4,cold,barrier-pf,96,77,router,2.800
+i4,cold,barrier-pf,96,78,gate|up x8,44.480
+i4,cold,barrier-pf,96,79,down x8,34.440
+i4,cold,barrier-pf,96,80,q|k|v,14.640
+i4,cold,barrier-pf,96,81,o,10.360
+i4,cold,barrier-pf,96,82,router,2.920
+i4,cold,barrier-pf,96,83,gate|up x8,44.680
+i4,cold,barrier-pf,96,84,down x8,34.600
+i4,cold,barrier-pf,96,85,q|k|v,14.880
+i4,cold,barrier-pf,96,86,o,10.320
+i4,cold,barrier-pf,96,87,router,2.640
+i4,cold,barrier-pf,96,88,gate|up x8,45.480
+i4,cold,barrier-pf,96,89,down x8,34.720
+i4,cold,barrier-pf,96,90,q|k|v,14.880
+i4,cold,barrier-pf,96,91,o,10.440
+i4,cold,barrier-pf,96,92,router,3.120
+i4,cold,barrier-pf,96,93,gate|up x8,44.600
+i4,cold,barrier-pf,96,94,down x8,34.640
+i4,cold,barrier-pf,96,95,q|k|v,15.040
+i4,cold,barrier-pf,96,96,o,10.440
+i4,cold,barrier-pf,96,97,router,3.040
+i4,cold,barrier-pf,96,98,gate|up x8,44.360
+i4,cold,barrier-pf,96,99,down x8,34.160
+i4,cold,barrier-pf,96,100,q|k|v,14.600
+i4,cold,barrier-pf,96,101,o,10.320
+i4,cold,barrier-pf,96,102,router,3.080
+i4,cold,barrier-pf,96,103,gate|up x8,45.480
+i4,cold,barrier-pf,96,104,down x8,34.440
+i4,cold,barrier-pf,96,105,q|k|v,14.640
+i4,cold,barrier-pf,96,106,o,10.280
+i4,cold,barrier-pf,96,107,router,3.080
+i4,cold,barrier-pf,96,108,gate|up x8,45.160
+i4,cold,barrier-pf,96,109,down x8,34.640
+i4,cold,barrier-pf,96,110,q|k|v,14.960
+i4,cold,barrier-pf,96,111,o,10.400
+i4,cold,barrier-pf,96,112,router,2.840
+i4,cold,barrier-pf,96,113,gate|up x8,44.320
+i4,cold,barrier-pf,96,114,down x8,34.320
+i4,cold,barrier-pf,96,115,q|k|v,14.920
+i4,cold,barrier-pf,96,116,o,10.520
+i4,cold,barrier-pf,96,117,router,3.040
+i4,cold,barrier-pf,96,118,gate|up x8,44.840
+i4,cold,barrier-pf,96,119,down x8,34.320
+i4,cold,barrier-pf,96,120,q|k|v,14.960
+i4,cold,barrier-pf,96,121,o,10.440
+i4,cold,barrier-pf,96,122,router,2.840
+i4,cold,barrier-pf,96,123,gate|up x8,45.680
+i4,cold,barrier-pf,96,124,down x8,34.440
+i4,cold,barrier-pf,96,125,q|k|v,14.520
+i4,cold,barrier-pf,96,126,o,10.240
+i4,cold,barrier-pf,96,127,router,3.320
+i4,cold,barrier-pf,96,128,gate|up x8,44.720
+i4,cold,barrier-pf,96,129,down x8,34.640
+i4,cold,barrier-pf,96,130,q|k|v,14.840
+i4,cold,barrier-pf,96,131,o,10.120
+i4,cold,barrier-pf,96,132,router,3.000
+i4,cold,barrier-pf,96,133,gate|up x8,44.640
+i4,cold,barrier-pf,96,134,down x8,34.200
+i4,cold,barrier-pf,96,135,q|k|v,15.000
+i4,cold,barrier-pf,96,136,o,10.040
+i4,cold,barrier-pf,96,137,router,2.920
+i4,cold,barrier-pf,96,138,gate|up x8,45.400
+i4,cold,barrier-pf,96,139,down x8,34.680
+i4,cold,barrier-pf,96,140,q|k|v,14.880
+i4,cold,barrier-pf,96,141,o,10.440
+i4,cold,barrier-pf,96,142,router,2.760
+i4,cold,barrier-pf,96,143,gate|up x8,44.560
+i4,cold,barrier-pf,96,144,down x8,34.480
+i4,cold,barrier-pf,96,145,q|k|v,14.320
+i4,cold,barrier-pf,96,146,o,10.400
+i4,cold,barrier-pf,96,147,router,3.240
+i4,cold,barrier-pf,96,148,gate|up x8,44.360
+i4,cold,barrier-pf,96,149,down x8,34.440
+i4,cold,barrier-pf,96,150,q|k|v,15.280
+i4,cold,barrier-pf,96,151,o,10.080
+i4,cold,barrier-pf,96,152,router,3.040
+i4,cold,barrier-pf,96,153,gate|up x8,45.560
+i4,cold,barrier-pf,96,154,down x8,34.400
+i4,cold,barrier-pf,96,155,q|k|v,14.400
+i4,cold,barrier-pf,96,156,o,10.520
+i4,cold,barrier-pf,96,157,router,3.160
+i4,cold,barrier-pf,96,158,gate|up x8,44.520
+i4,cold,barrier-pf,96,159,down x8,34.440
+i4,cold,barrier-pf,96,160,q|k|v,15.120
+i4,cold,barrier-pf,96,161,o,10.080
+i4,cold,barrier-pf,96,162,router,3.000
+i4,cold,barrier-pf,96,163,gate|up x8,44.560
+i4,cold,barrier-pf,96,164,down x8,34.400
+i4,cold,barrier-pf,96,165,q|k|v,14.680
+i4,cold,barrier-pf,96,166,o,10.400
+i4,cold,barrier-pf,96,167,router,3.120
+i4,cold,barrier-pf,96,168,gate|up x8,45.520
+i4,cold,barrier-pf,96,169,down x8,34.520
+i4,cold,barrier-pf,96,170,q|k|v,14.760
+i4,cold,barrier-pf,96,171,o,10.440
+i4,cold,barrier-pf,96,172,router,3.320
+i4,cold,barrier-pf,96,173,gate|up x8,44.640
+i4,cold,barrier-pf,96,174,down x8,34.480
+i4,cold,barrier-pf,96,175,q|k|v,15.080
+i4,cold,barrier-pf,96,176,o,10.280
+i4,cold,barrier-pf,96,177,router,2.800
+i4,cold,barrier-pf,96,178,gate|up x8,44.400
+i4,cold,barrier-pf,96,179,down x8,34.400
+i4,cold,barrier-pf,96,180,q|k|v,14.520
+i4,cold,barrier-pf,96,181,o,10.560
+i4,cold,barrier-pf,96,182,router,2.760
+i4,cold,barrier-pf,96,183,gate|up x8,45.720
+i4,cold,barrier-pf,96,184,down x8,34.480
+i4,cold,barrier-pf,96,185,q|k|v,14.320
+i4,cold,barrier-pf,96,186,o,10.600
+i4,cold,barrier-pf,96,187,router,2.840
+i4,cold,barrier-pf,96,188,gate|up x8,44.640
+i4,cold,barrier-pf,96,189,down x8,34.600
+i4,cold,barrier-pf,96,190,q|k|v,14.520
+i4,cold,barrier-pf,96,191,o,10.520
+i4,cold,barrier-pf,96,192,router,3.160
+i4,cold,barrier-pf,96,193,gate|up x8,44.320
+i4,cold,barrier-pf,96,194,down x8,34.480
+i4,cold,barrier-pf,96,195,q|k|v,14.800
+i4,cold,barrier-pf,96,196,o,10.320
+i4,cold,barrier-pf,96,197,router,3.040
+i4,cold,barrier-pf,96,198,gate|up x8,45.040
+i4,cold,barrier-pf,96,199,down x8,34.480
+i4,cold,barrier-pf,96,200,q|k|v,14.240
+i4,cold,barrier-pf,96,201,o,10.520
+i4,cold,barrier-pf,96,202,router,2.920
+i4,cold,barrier-pf,96,203,gate|up x8,45.520
+i4,cold,barrier-pf,96,204,down x8,34.520
+i4,cold,barrier-pf,96,205,q|k|v,14.560
+i4,cold,barrier-pf,96,206,o,10.440
+i4,cold,barrier-pf,96,207,router,2.800
+i4,cold,barrier-pf,96,208,gate|up x8,44.560
+i4,cold,barrier-pf,96,209,down x8,34.440
+i4,cold,barrier-pf,96,210,q|k|v,14.960
+i4,cold,barrier-pf,96,211,o,10.160
+i4,cold,barrier-pf,96,212,router,2.840
+i4,cold,barrier-pf,96,213,gate|up x8,44.200
+i4,cold,barrier-pf,96,214,down x8,34.480
+i4,cold,barrier-pf,96,215,q|k|v,14.640
+i4,cold,barrier-pf,96,216,o,10.320
+i4,cold,barrier-pf,96,217,router,2.720
+i4,cold,barrier-pf,96,218,gate|up x8,45.720
+i4,cold,barrier-pf,96,219,down x8,34.720
+i4,cold,barrier-pf,96,220,q|k|v,14.840
+i4,cold,barrier-pf,96,221,o,10.360
+i4,cold,barrier-pf,96,222,router,2.760
+i4,cold,barrier-pf,96,223,gate|up x8,44.560
+i4,cold,barrier-pf,96,224,down x8,34.680
+i4,cold,barrier-pf,96,225,q|k|v,15.000
+i4,cold,barrier-pf,96,226,o,10.240
+i4,cold,barrier-pf,96,227,router,2.760
+i4,cold,barrier-pf,96,228,gate|up x8,44.440
+i4,cold,barrier-pf,96,229,down x8,34.520
+i4,cold,barrier-pf,96,230,q|k|v,15.080
+i4,cold,barrier-pf,96,231,o,10.200
+i4,cold,barrier-pf,96,232,router,3.320
+i4,cold,barrier-pf,96,233,gate|up x8,45.520
+i4,cold,barrier-pf,96,234,down x8,34.320
+i4,cold,barrier-pf,96,235,q|k|v,14.520
+i4,cold,barrier-pf,96,236,o,10.560
+i4,cold,barrier-pf,96,237,router,2.880
+i4,cold,barrier-pf,96,238,gate|up x8,44.240
+i4,cold,barrier-pf,96,239,down x8,34.480
+i4,cold,barrier-pf,96,240,lm_head,309.200
+i4,cold,dataflow,96,0,q|k|v,17.610
+i4,cold,dataflow,96,1,o,11.260
+i4,cold,dataflow,96,2,router,3.020
+i4,cold,dataflow,96,3,gate|up x8,53.120
+i4,cold,dataflow,96,4,down x8,42.270
+i4,cold,dataflow,96,5,q|k|v,17.120
+i4,cold,dataflow,96,6,o,11.590
+i4,cold,dataflow,96,7,router,2.820
+i4,cold,dataflow,96,8,gate|up x8,53.120
+i4,cold,dataflow,96,9,down x8,41.720
+i4,cold,dataflow,96,10,q|k|v,16.510
+i4,cold,dataflow,96,11,o,11.930
+i4,cold,dataflow,96,12,router,2.840
+i4,cold,dataflow,96,13,gate|up x8,53.550
+i4,cold,dataflow,96,14,down x8,41.760
+i4,cold,dataflow,96,15,q|k|v,16.620
+i4,cold,dataflow,96,16,o,11.470
+i4,cold,dataflow,96,17,router,3.060
+i4,cold,dataflow,96,18,gate|up x8,52.970
+i4,cold,dataflow,96,19,down x8,42.650
+i4,cold,dataflow,96,20,q|k|v,17.120
+i4,cold,dataflow,96,21,o,11.540
+i4,cold,dataflow,96,22,router,2.860
+i4,cold,dataflow,96,23,gate|up x8,53.880
+i4,cold,dataflow,96,24,down x8,41.670
+i4,cold,dataflow,96,25,q|k|v,16.600
+i4,cold,dataflow,96,26,o,11.710
+i4,cold,dataflow,96,27,router,2.930
+i4,cold,dataflow,96,28,gate|up x8,53.860
+i4,cold,dataflow,96,29,down x8,42.160
+i4,cold,dataflow,96,30,q|k|v,16.740
+i4,cold,dataflow,96,31,o,11.720
+i4,cold,dataflow,96,32,router,2.970
+i4,cold,dataflow,96,33,gate|up x8,54.000
+i4,cold,dataflow,96,34,down x8,41.930
+i4,cold,dataflow,96,35,q|k|v,17.020
+i4,cold,dataflow,96,36,o,11.650
+i4,cold,dataflow,96,37,router,2.840
+i4,cold,dataflow,96,38,gate|up x8,53.700
+i4,cold,dataflow,96,39,down x8,42.020
+i4,cold,dataflow,96,40,q|k|v,16.860
+i4,cold,dataflow,96,41,o,11.520
+i4,cold,dataflow,96,42,router,2.800
+i4,cold,dataflow,96,43,gate|up x8,52.720
+i4,cold,dataflow,96,44,down x8,41.580
+i4,cold,dataflow,96,45,q|k|v,16.680
+i4,cold,dataflow,96,46,o,11.600
+i4,cold,dataflow,96,47,router,2.990
+i4,cold,dataflow,96,48,gate|up x8,53.520
+i4,cold,dataflow,96,49,down x8,41.700
+i4,cold,dataflow,96,50,q|k|v,17.080
+i4,cold,dataflow,96,51,o,11.450
+i4,cold,dataflow,96,52,router,2.990
+i4,cold,dataflow,96,53,gate|up x8,53.320
+i4,cold,dataflow,96,54,down x8,41.940
+i4,cold,dataflow,96,55,q|k|v,16.800
+i4,cold,dataflow,96,56,o,11.770
+i4,cold,dataflow,96,57,router,2.880
+i4,cold,dataflow,96,58,gate|up x8,53.760
+i4,cold,dataflow,96,59,down x8,41.800
+i4,cold,dataflow,96,60,q|k|v,16.720
+i4,cold,dataflow,96,61,o,11.370
+i4,cold,dataflow,96,62,router,3.070
+i4,cold,dataflow,96,63,gate|up x8,53.360
+i4,cold,dataflow,96,64,down x8,41.670
+i4,cold,dataflow,96,65,q|k|v,16.680
+i4,cold,dataflow,96,66,o,11.570
+i4,cold,dataflow,96,67,router,3.040
+i4,cold,dataflow,96,68,gate|up x8,54.570
+i4,cold,dataflow,96,69,down x8,41.420
+i4,cold,dataflow,96,70,q|k|v,16.880
+i4,cold,dataflow,96,71,o,11.800
+i4,cold,dataflow,96,72,router,2.840
+i4,cold,dataflow,96,73,gate|up x8,54.410
+i4,cold,dataflow,96,74,down x8,42.030
+i4,cold,dataflow,96,75,q|k|v,16.840
+i4,cold,dataflow,96,76,o,11.570
+i4,cold,dataflow,96,77,router,2.960
+i4,cold,dataflow,96,78,gate|up x8,54.360
+i4,cold,dataflow,96,79,down x8,41.760
+i4,cold,dataflow,96,80,q|k|v,16.770
+i4,cold,dataflow,96,81,o,11.480
+i4,cold,dataflow,96,82,router,3.060
+i4,cold,dataflow,96,83,gate|up x8,53.540
+i4,cold,dataflow,96,84,down x8,42.080
+i4,cold,dataflow,96,85,q|k|v,16.640
+i4,cold,dataflow,96,86,o,11.770
+i4,cold,dataflow,96,87,router,2.900
+i4,cold,dataflow,96,88,gate|up x8,54.200
+i4,cold,dataflow,96,89,down x8,42.120
+i4,cold,dataflow,96,90,q|k|v,16.710
+i4,cold,dataflow,96,91,o,11.810
+i4,cold,dataflow,96,92,router,2.840
+i4,cold,dataflow,96,93,gate|up x8,53.180
+i4,cold,dataflow,96,94,down x8,42.050
+i4,cold,dataflow,96,95,q|k|v,16.640
+i4,cold,dataflow,96,96,o,11.460
+i4,cold,dataflow,96,97,router,3.070
+i4,cold,dataflow,96,98,gate|up x8,53.740
+i4,cold,dataflow,96,99,down x8,41.540
+i4,cold,dataflow,96,100,q|k|v,16.960
+i4,cold,dataflow,96,101,o,11.490
+i4,cold,dataflow,96,102,router,2.860
+i4,cold,dataflow,96,103,gate|up x8,52.760
+i4,cold,dataflow,96,104,down x8,41.690
+i4,cold,dataflow,96,105,q|k|v,16.690
+i4,cold,dataflow,96,106,o,11.970
+i4,cold,dataflow,96,107,router,2.840
+i4,cold,dataflow,96,108,gate|up x8,54.330
+i4,cold,dataflow,96,109,down x8,41.500
+i4,cold,dataflow,96,110,q|k|v,16.470
+i4,cold,dataflow,96,111,o,11.500
+i4,cold,dataflow,96,112,router,3.020
+i4,cold,dataflow,96,113,gate|up x8,55.900
+i4,cold,dataflow,96,114,down x8,41.820
+i4,cold,dataflow,96,115,q|k|v,17.180
+i4,cold,dataflow,96,116,o,11.450
+i4,cold,dataflow,96,117,router,3.030
+i4,cold,dataflow,96,118,gate|up x8,53.460
+i4,cold,dataflow,96,119,down x8,42.120
+i4,cold,dataflow,96,120,q|k|v,16.750
+i4,cold,dataflow,96,121,o,11.710
+i4,cold,dataflow,96,122,router,2.770
+i4,cold,dataflow,96,123,gate|up x8,53.390
+i4,cold,dataflow,96,124,down x8,41.460
+i4,cold,dataflow,96,125,q|k|v,16.440
+i4,cold,dataflow,96,126,o,11.500
+i4,cold,dataflow,96,127,router,2.960
+i4,cold,dataflow,96,128,gate|up x8,53.460
+i4,cold,dataflow,96,129,down x8,41.760
+i4,cold,dataflow,96,130,q|k|v,16.920
+i4,cold,dataflow,96,131,o,11.650
+i4,cold,dataflow,96,132,router,2.960
+i4,cold,dataflow,96,133,gate|up x8,53.160
+i4,cold,dataflow,96,134,down x8,42.230
+i4,cold,dataflow,96,135,q|k|v,16.780
+i4,cold,dataflow,96,136,o,11.690
+i4,cold,dataflow,96,137,router,2.840
+i4,cold,dataflow,96,138,gate|up x8,54.000
+i4,cold,dataflow,96,139,down x8,42.260
+i4,cold,dataflow,96,140,q|k|v,16.450
+i4,cold,dataflow,96,141,o,11.470
+i4,cold,dataflow,96,142,router,2.940
+i4,cold,dataflow,96,143,gate|up x8,53.560
+i4,cold,dataflow,96,144,down x8,42.250
+i4,cold,dataflow,96,145,q|k|v,16.930
+i4,cold,dataflow,96,146,o,11.560
+i4,cold,dataflow,96,147,router,2.960
+i4,cold,dataflow,96,148,gate|up x8,53.450
+i4,cold,dataflow,96,149,down x8,41.850
+i4,cold,dataflow,96,150,q|k|v,16.800
+i4,cold,dataflow,96,151,o,12.060
+i4,cold,dataflow,96,152,router,2.930
+i4,cold,dataflow,96,153,gate|up x8,53.960
+i4,cold,dataflow,96,154,down x8,42.290
+i4,cold,dataflow,96,155,q|k|v,16.840
+i4,cold,dataflow,96,156,o,11.730
+i4,cold,dataflow,96,157,router,2.900
+i4,cold,dataflow,96,158,gate|up x8,53.540
+i4,cold,dataflow,96,159,down x8,41.890
+i4,cold,dataflow,96,160,q|k|v,16.670
+i4,cold,dataflow,96,161,o,11.480
+i4,cold,dataflow,96,162,router,3.000
+i4,cold,dataflow,96,163,gate|up x8,53.880
+i4,cold,dataflow,96,164,down x8,41.490
+i4,cold,dataflow,96,165,q|k|v,17.040
+i4,cold,dataflow,96,166,o,11.840
+i4,cold,dataflow,96,167,router,2.850
+i4,cold,dataflow,96,168,gate|up x8,52.920
+i4,cold,dataflow,96,169,down x8,41.920
+i4,cold,dataflow,96,170,q|k|v,16.550
+i4,cold,dataflow,96,171,o,11.660
+i4,cold,dataflow,96,172,router,2.830
+i4,cold,dataflow,96,173,gate|up x8,53.630
+i4,cold,dataflow,96,174,down x8,41.620
+i4,cold,dataflow,96,175,q|k|v,16.600
+i4,cold,dataflow,96,176,o,11.690
+i4,cold,dataflow,96,177,router,3.020
+i4,cold,dataflow,96,178,gate|up x8,53.000
+i4,cold,dataflow,96,179,down x8,41.970
+i4,cold,dataflow,96,180,q|k|v,16.900
+i4,cold,dataflow,96,181,o,11.500
+i4,cold,dataflow,96,182,router,2.870
+i4,cold,dataflow,96,183,gate|up x8,53.920
+i4,cold,dataflow,96,184,down x8,41.950
+i4,cold,dataflow,96,185,q|k|v,16.680
+i4,cold,dataflow,96,186,o,11.570
+i4,cold,dataflow,96,187,router,2.820
+i4,cold,dataflow,96,188,gate|up x8,54.710
+i4,cold,dataflow,96,189,down x8,42.250
+i4,cold,dataflow,96,190,q|k|v,16.630
+i4,cold,dataflow,96,191,o,11.460
+i4,cold,dataflow,96,192,router,3.050
+i4,cold,dataflow,96,193,gate|up x8,53.800
+i4,cold,dataflow,96,194,down x8,41.790
+i4,cold,dataflow,96,195,q|k|v,16.940
+i4,cold,dataflow,96,196,o,11.370
+i4,cold,dataflow,96,197,router,2.840
+i4,cold,dataflow,96,198,gate|up x8,53.860
+i4,cold,dataflow,96,199,down x8,41.600
+i4,cold,dataflow,96,200,q|k|v,16.670
+i4,cold,dataflow,96,201,o,11.910
+i4,cold,dataflow,96,202,router,2.920
+i4,cold,dataflow,96,203,gate|up x8,53.280
+i4,cold,dataflow,96,204,down x8,41.920
+i4,cold,dataflow,96,205,q|k|v,16.640
+i4,cold,dataflow,96,206,o,11.910
+i4,cold,dataflow,96,207,router,2.960
+i4,cold,dataflow,96,208,gate|up x8,53.490
+i4,cold,dataflow,96,209,down x8,41.780
+i4,cold,dataflow,96,210,q|k|v,17.090
+i4,cold,dataflow,96,211,o,11.520
+i4,cold,dataflow,96,212,router,3.030
+i4,cold,dataflow,96,213,gate|up x8,54.480
+i4,cold,dataflow,96,214,down x8,41.620
+i4,cold,dataflow,96,215,q|k|v,16.770
+i4,cold,dataflow,96,216,o,11.750
+i4,cold,dataflow,96,217,router,2.850
+i4,cold,dataflow,96,218,gate|up x8,53.620
+i4,cold,dataflow,96,219,down x8,41.900
+i4,cold,dataflow,96,220,q|k|v,16.770
+i4,cold,dataflow,96,221,o,11.460
+i4,cold,dataflow,96,222,router,3.060
+i4,cold,dataflow,96,223,gate|up x8,54.420
+i4,cold,dataflow,96,224,down x8,41.580
+i4,cold,dataflow,96,225,q|k|v,17.210
+i4,cold,dataflow,96,226,o,11.650
+i4,cold,dataflow,96,227,router,3.020
+i4,cold,dataflow,96,228,gate|up x8,53.540
+i4,cold,dataflow,96,229,down x8,41.560
+i4,cold,dataflow,96,230,q|k|v,16.770
+i4,cold,dataflow,96,231,o,11.970
+i4,cold,dataflow,96,232,router,3.070
+i4,cold,dataflow,96,233,gate|up x8,53.930
+i4,cold,dataflow,96,234,down x8,42.460
+i4,cold,dataflow,96,235,q|k|v,16.730
+i4,cold,dataflow,96,236,o,11.840
+i4,cold,dataflow,96,237,router,2.920
+i4,cold,dataflow,96,238,gate|up x8,53.280
+i4,cold,dataflow,96,239,down x8,41.660
+i4,cold,dataflow,96,240,lm_head,317.510
+i4,cold,dataflow-pf,96,0,q|k|v,19.750
+i4,cold,dataflow-pf,96,1,o,10.780
+i4,cold,dataflow-pf,96,2,router,2.110
+i4,cold,dataflow-pf,96,3,gate|up x8,53.640
+i4,cold,dataflow-pf,96,4,down x8,41.000
+i4,cold,dataflow-pf,96,5,q|k|v,14.690
+i4,cold,dataflow-pf,96,6,o,10.720
+i4,cold,dataflow-pf,96,7,router,2.120
+i4,cold,dataflow-pf,96,8,gate|up x8,53.920
+i4,cold,dataflow-pf,96,9,down x8,40.320
+i4,cold,dataflow-pf,96,10,q|k|v,14.320
+i4,cold,dataflow-pf,96,11,o,11.060
+i4,cold,dataflow-pf,96,12,router,2.130
+i4,cold,dataflow-pf,96,13,gate|up x8,53.970
+i4,cold,dataflow-pf,96,14,down x8,40.600
+i4,cold,dataflow-pf,96,15,q|k|v,14.360
+i4,cold,dataflow-pf,96,16,o,10.780
+i4,cold,dataflow-pf,96,17,router,2.120
+i4,cold,dataflow-pf,96,18,gate|up x8,53.120
+i4,cold,dataflow-pf,96,19,down x8,40.170
+i4,cold,dataflow-pf,96,20,q|k|v,14.480
+i4,cold,dataflow-pf,96,21,o,10.600
+i4,cold,dataflow-pf,96,22,router,2.120
+i4,cold,dataflow-pf,96,23,gate|up x8,53.020
+i4,cold,dataflow-pf,96,24,down x8,41.500
+i4,cold,dataflow-pf,96,25,q|k|v,14.520
+i4,cold,dataflow-pf,96,26,o,10.780
+i4,cold,dataflow-pf,96,27,router,2.120
+i4,cold,dataflow-pf,96,28,gate|up x8,53.480
+i4,cold,dataflow-pf,96,29,down x8,41.160
+i4,cold,dataflow-pf,96,30,q|k|v,14.650
+i4,cold,dataflow-pf,96,31,o,10.850
+i4,cold,dataflow-pf,96,32,router,2.120
+i4,cold,dataflow-pf,96,33,gate|up x8,54.760
+i4,cold,dataflow-pf,96,34,down x8,40.660
+i4,cold,dataflow-pf,96,35,q|k|v,14.710
+i4,cold,dataflow-pf,96,36,o,10.770
+i4,cold,dataflow-pf,96,37,router,2.100
+i4,cold,dataflow-pf,96,38,gate|up x8,52.840
+i4,cold,dataflow-pf,96,39,down x8,41.040
+i4,cold,dataflow-pf,96,40,q|k|v,14.640
+i4,cold,dataflow-pf,96,41,o,10.640
+i4,cold,dataflow-pf,96,42,router,2.120
+i4,cold,dataflow-pf,96,43,gate|up x8,53.440
+i4,cold,dataflow-pf,96,44,down x8,40.550
+i4,cold,dataflow-pf,96,45,q|k|v,14.490
+i4,cold,dataflow-pf,96,46,o,10.860
+i4,cold,dataflow-pf,96,47,router,2.120
+i4,cold,dataflow-pf,96,48,gate|up x8,52.560
+i4,cold,dataflow-pf,96,49,down x8,40.240
+i4,cold,dataflow-pf,96,50,q|k|v,14.540
+i4,cold,dataflow-pf,96,51,o,10.680
+i4,cold,dataflow-pf,96,52,router,2.180
+i4,cold,dataflow-pf,96,53,gate|up x8,54.120
+i4,cold,dataflow-pf,96,54,down x8,40.690
+i4,cold,dataflow-pf,96,55,q|k|v,14.430
+i4,cold,dataflow-pf,96,56,o,10.720
+i4,cold,dataflow-pf,96,57,router,2.140
+i4,cold,dataflow-pf,96,58,gate|up x8,53.650
+i4,cold,dataflow-pf,96,59,down x8,41.020
+i4,cold,dataflow-pf,96,60,q|k|v,14.450
+i4,cold,dataflow-pf,96,61,o,10.860
+i4,cold,dataflow-pf,96,62,router,2.120
+i4,cold,dataflow-pf,96,63,gate|up x8,53.600
+i4,cold,dataflow-pf,96,64,down x8,40.260
+i4,cold,dataflow-pf,96,65,q|k|v,14.530
+i4,cold,dataflow-pf,96,66,o,10.830
+i4,cold,dataflow-pf,96,67,router,2.130
+i4,cold,dataflow-pf,96,68,gate|up x8,53.650
+i4,cold,dataflow-pf,96,69,down x8,40.880
+i4,cold,dataflow-pf,96,70,q|k|v,14.690
+i4,cold,dataflow-pf,96,71,o,10.740
+i4,cold,dataflow-pf,96,72,router,2.120
+i4,cold,dataflow-pf,96,73,gate|up x8,54.240
+i4,cold,dataflow-pf,96,74,down x8,40.800
+i4,cold,dataflow-pf,96,75,q|k|v,14.530
+i4,cold,dataflow-pf,96,76,o,10.750
+i4,cold,dataflow-pf,96,77,router,2.060
+i4,cold,dataflow-pf,96,78,gate|up x8,52.880
+i4,cold,dataflow-pf,96,79,down x8,40.750
+i4,cold,dataflow-pf,96,80,q|k|v,14.720
+i4,cold,dataflow-pf,96,81,o,10.580
+i4,cold,dataflow-pf,96,82,router,2.160
+i4,cold,dataflow-pf,96,83,gate|up x8,53.570
+i4,cold,dataflow-pf,96,84,down x8,40.870
+i4,cold,dataflow-pf,96,85,q|k|v,14.620
+i4,cold,dataflow-pf,96,86,o,10.800
+i4,cold,dataflow-pf,96,87,router,2.120
+i4,cold,dataflow-pf,96,88,gate|up x8,53.240
+i4,cold,dataflow-pf,96,89,down x8,41.000
+i4,cold,dataflow-pf,96,90,q|k|v,14.640
+i4,cold,dataflow-pf,96,91,o,10.850
+i4,cold,dataflow-pf,96,92,router,2.100
+i4,cold,dataflow-pf,96,93,gate|up x8,54.910
+i4,cold,dataflow-pf,96,94,down x8,40.770
+i4,cold,dataflow-pf,96,95,q|k|v,14.760
+i4,cold,dataflow-pf,96,96,o,10.650
+i4,cold,dataflow-pf,96,97,router,2.120
+i4,cold,dataflow-pf,96,98,gate|up x8,54.840
+i4,cold,dataflow-pf,96,99,down x8,41.150
+i4,cold,dataflow-pf,96,100,q|k|v,14.710
+i4,cold,dataflow-pf,96,101,o,10.600
+i4,cold,dataflow-pf,96,102,router,2.120
+i4,cold,dataflow-pf,96,103,gate|up x8,52.420
+i4,cold,dataflow-pf,96,104,down x8,41.840
+i4,cold,dataflow-pf,96,105,q|k|v,14.610
+i4,cold,dataflow-pf,96,106,o,10.880
+i4,cold,dataflow-pf,96,107,router,2.110
+i4,cold,dataflow-pf,96,108,gate|up x8,53.880
+i4,cold,dataflow-pf,96,109,down x8,40.940
+i4,cold,dataflow-pf,96,110,q|k|v,14.640
+i4,cold,dataflow-pf,96,111,o,10.920
+i4,cold,dataflow-pf,96,112,router,2.130
+i4,cold,dataflow-pf,96,113,gate|up x8,54.040
+i4,cold,dataflow-pf,96,114,down x8,41.420
+i4,cold,dataflow-pf,96,115,q|k|v,14.710
+i4,cold,dataflow-pf,96,116,o,10.770
+i4,cold,dataflow-pf,96,117,router,2.130
+i4,cold,dataflow-pf,96,118,gate|up x8,53.310
+i4,cold,dataflow-pf,96,119,down x8,40.690
+i4,cold,dataflow-pf,96,120,q|k|v,14.600
+i4,cold,dataflow-pf,96,121,o,10.800
+i4,cold,dataflow-pf,96,122,router,2.090
+i4,cold,dataflow-pf,96,123,gate|up x8,54.070
+i4,cold,dataflow-pf,96,124,down x8,40.790
+i4,cold,dataflow-pf,96,125,q|k|v,14.490
+i4,cold,dataflow-pf,96,126,o,10.720
+i4,cold,dataflow-pf,96,127,router,2.120
+i4,cold,dataflow-pf,96,128,gate|up x8,53.070
+i4,cold,dataflow-pf,96,129,down x8,40.280
+i4,cold,dataflow-pf,96,130,q|k|v,14.590
+i4,cold,dataflow-pf,96,131,o,10.780
+i4,cold,dataflow-pf,96,132,router,2.160
+i4,cold,dataflow-pf,96,133,gate|up x8,55.290
+i4,cold,dataflow-pf,96,134,down x8,40.170
+i4,cold,dataflow-pf,96,135,q|k|v,14.820
+i4,cold,dataflow-pf,96,136,o,10.680
+i4,cold,dataflow-pf,96,137,router,2.090
+i4,cold,dataflow-pf,96,138,gate|up x8,53.000
+i4,cold,dataflow-pf,96,139,down x8,40.540
+i4,cold,dataflow-pf,96,140,q|k|v,14.570
+i4,cold,dataflow-pf,96,141,o,10.850
+i4,cold,dataflow-pf,96,142,router,2.150
+i4,cold,dataflow-pf,96,143,gate|up x8,53.270
+i4,cold,dataflow-pf,96,144,down x8,41.120
+i4,cold,dataflow-pf,96,145,q|k|v,14.590
+i4,cold,dataflow-pf,96,146,o,10.940
+i4,cold,dataflow-pf,96,147,router,2.130
+i4,cold,dataflow-pf,96,148,gate|up x8,53.240
+i4,cold,dataflow-pf,96,149,down x8,41.290
+i4,cold,dataflow-pf,96,150,q|k|v,14.790
+i4,cold,dataflow-pf,96,151,o,10.730
+i4,cold,dataflow-pf,96,152,router,2.110
+i4,cold,dataflow-pf,96,153,gate|up x8,54.000
+i4,cold,dataflow-pf,96,154,down x8,40.550
+i4,cold,dataflow-pf,96,155,q|k|v,14.640
+i4,cold,dataflow-pf,96,156,o,10.800
+i4,cold,dataflow-pf,96,157,router,2.130
+i4,cold,dataflow-pf,96,158,gate|up x8,53.290
+i4,cold,dataflow-pf,96,159,down x8,40.530
+i4,cold,dataflow-pf,96,160,q|k|v,14.480
+i4,cold,dataflow-pf,96,161,o,10.620
+i4,cold,dataflow-pf,96,162,router,2.120
+i4,cold,dataflow-pf,96,163,gate|up x8,54.150
+i4,cold,dataflow-pf,96,164,down x8,41.320
+i4,cold,dataflow-pf,96,165,q|k|v,14.780
+i4,cold,dataflow-pf,96,166,o,10.820
+i4,cold,dataflow-pf,96,167,router,2.160
+i4,cold,dataflow-pf,96,168,gate|up x8,53.600
+i4,cold,dataflow-pf,96,169,down x8,41.730
+i4,cold,dataflow-pf,96,170,q|k|v,14.570
+i4,cold,dataflow-pf,96,171,o,10.700
+i4,cold,dataflow-pf,96,172,router,2.070
+i4,cold,dataflow-pf,96,173,gate|up x8,53.570
+i4,cold,dataflow-pf,96,174,down x8,41.440
+i4,cold,dataflow-pf,96,175,q|k|v,14.600
+i4,cold,dataflow-pf,96,176,o,10.860
+i4,cold,dataflow-pf,96,177,router,2.110
+i4,cold,dataflow-pf,96,178,gate|up x8,53.620
+i4,cold,dataflow-pf,96,179,down x8,41.050
+i4,cold,dataflow-pf,96,180,q|k|v,14.650
+i4,cold,dataflow-pf,96,181,o,10.660
+i4,cold,dataflow-pf,96,182,router,2.120
+i4,cold,dataflow-pf,96,183,gate|up x8,54.590
+i4,cold,dataflow-pf,96,184,down x8,40.910
+i4,cold,dataflow-pf,96,185,q|k|v,14.540
+i4,cold,dataflow-pf,96,186,o,10.720
+i4,cold,dataflow-pf,96,187,router,2.130
+i4,cold,dataflow-pf,96,188,gate|up x8,54.700
+i4,cold,dataflow-pf,96,189,down x8,40.600
+i4,cold,dataflow-pf,96,190,q|k|v,14.550
+i4,cold,dataflow-pf,96,191,o,10.730
+i4,cold,dataflow-pf,96,192,router,2.150
+i4,cold,dataflow-pf,96,193,gate|up x8,53.840
+i4,cold,dataflow-pf,96,194,down x8,40.310
+i4,cold,dataflow-pf,96,195,q|k|v,14.490
+i4,cold,dataflow-pf,96,196,o,10.720
+i4,cold,dataflow-pf,96,197,router,2.120
+i4,cold,dataflow-pf,96,198,gate|up x8,54.400
+i4,cold,dataflow-pf,96,199,down x8,41.430
+i4,cold,dataflow-pf,96,200,q|k|v,14.720
+i4,cold,dataflow-pf,96,201,o,10.730
+i4,cold,dataflow-pf,96,202,router,2.080
+i4,cold,dataflow-pf,96,203,gate|up x8,53.840
+i4,cold,dataflow-pf,96,204,down x8,41.210
+i4,cold,dataflow-pf,96,205,q|k|v,14.440
+i4,cold,dataflow-pf,96,206,o,11.030
+i4,cold,dataflow-pf,96,207,router,2.120
+i4,cold,dataflow-pf,96,208,gate|up x8,52.640
+i4,cold,dataflow-pf,96,209,down x8,40.880
+i4,cold,dataflow-pf,96,210,q|k|v,14.530
+i4,cold,dataflow-pf,96,211,o,10.740
+i4,cold,dataflow-pf,96,212,router,2.170
+i4,cold,dataflow-pf,96,213,gate|up x8,53.950
+i4,cold,dataflow-pf,96,214,down x8,40.650
+i4,cold,dataflow-pf,96,215,q|k|v,14.780
+i4,cold,dataflow-pf,96,216,o,10.670
+i4,cold,dataflow-pf,96,217,router,2.100
+i4,cold,dataflow-pf,96,218,gate|up x8,53.510
+i4,cold,dataflow-pf,96,219,down x8,40.750
+i4,cold,dataflow-pf,96,220,q|k|v,14.600
+i4,cold,dataflow-pf,96,221,o,10.570
+i4,cold,dataflow-pf,96,222,router,2.120
+i4,cold,dataflow-pf,96,223,gate|up x8,54.230
+i4,cold,dataflow-pf,96,224,down x8,40.300
+i4,cold,dataflow-pf,96,225,q|k|v,14.470
+i4,cold,dataflow-pf,96,226,o,10.760
+i4,cold,dataflow-pf,96,227,router,2.150
+i4,cold,dataflow-pf,96,228,gate|up x8,54.210
+i4,cold,dataflow-pf,96,229,down x8,40.880
+i4,cold,dataflow-pf,96,230,q|k|v,14.720
+i4,cold,dataflow-pf,96,231,o,10.590
+i4,cold,dataflow-pf,96,232,router,2.110
+i4,cold,dataflow-pf,96,233,gate|up x8,53.870
+i4,cold,dataflow-pf,96,234,down x8,40.200
+i4,cold,dataflow-pf,96,235,q|k|v,14.500
+i4,cold,dataflow-pf,96,236,o,10.770
+i4,cold,dataflow-pf,96,237,router,2.080
+i4,cold,dataflow-pf,96,238,gate|up x8,53.680
+i4,cold,dataflow-pf,96,239,down x8,40.870
+i4,cold,dataflow-pf,96,240,lm_head,314.970
+i4,warm,barrier,240,0,q|k|v,8.520
+i4,warm,barrier,240,1,o,6.000
+i4,warm,barrier,240,2,router,3.400
+i4,warm,barrier,240,3,gate|up x8,19.360
+i4,warm,barrier,240,4,down x8,15.280
+i4,warm,barrier,240,5,q|k|v,7.360
+i4,warm,barrier,240,6,o,6.120
+i4,warm,barrier,240,7,router,3.440
+i4,warm,barrier,240,8,gate|up x8,19.480
+i4,warm,barrier,240,9,down x8,15.400
+i4,warm,barrier,240,10,q|k|v,7.200
+i4,warm,barrier,240,11,o,6.080
+i4,warm,barrier,240,12,router,3.440
+i4,warm,barrier,240,13,gate|up x8,19.520
+i4,warm,barrier,240,14,down x8,15.280
+i4,warm,barrier,240,15,q|k|v,7.240
+i4,warm,barrier,240,16,o,6.000
+i4,warm,barrier,240,17,router,3.360
+i4,warm,barrier,240,18,gate|up x8,19.520
+i4,warm,barrier,240,19,down x8,15.280
+i4,warm,barrier,240,20,q|k|v,7.400
+i4,warm,barrier,240,21,o,6.040
+i4,warm,barrier,240,22,router,3.440
+i4,warm,barrier,240,23,gate|up x8,19.560
+i4,warm,barrier,240,24,down x8,15.360
+i4,warm,barrier,240,25,q|k|v,7.240
+i4,warm,barrier,240,26,o,6.160
+i4,warm,barrier,240,27,router,3.360
+i4,warm,barrier,240,28,gate|up x8,19.600
+i4,warm,barrier,240,29,down x8,15.280
+i4,warm,barrier,240,30,q|k|v,7.240
+i4,warm,barrier,240,31,o,6.080
+i4,warm,barrier,240,32,router,3.400
+i4,warm,barrier,240,33,gate|up x8,19.600
+i4,warm,barrier,240,34,down x8,15.160
+i4,warm,barrier,240,35,q|k|v,7.360
+i4,warm,barrier,240,36,o,6.120
+i4,warm,barrier,240,37,router,3.320
+i4,warm,barrier,240,38,gate|up x8,19.480
+i4,warm,barrier,240,39,down x8,15.400
+i4,warm,barrier,240,40,q|k|v,7.320
+i4,warm,barrier,240,41,o,6.200
+i4,warm,barrier,240,42,router,3.440
+i4,warm,barrier,240,43,gate|up x8,19.440
+i4,warm,barrier,240,44,down x8,15.320
+i4,warm,barrier,240,45,q|k|v,7.240
+i4,warm,barrier,240,46,o,6.080
+i4,warm,barrier,240,47,router,3.400
+i4,warm,barrier,240,48,gate|up x8,19.480
+i4,warm,barrier,240,49,down x8,15.280
+i4,warm,barrier,240,50,q|k|v,7.320
+i4,warm,barrier,240,51,o,6.120
+i4,warm,barrier,240,52,router,3.440
+i4,warm,barrier,240,53,gate|up x8,19.440
+i4,warm,barrier,240,54,down x8,15.360
+i4,warm,barrier,240,55,q|k|v,7.360
+i4,warm,barrier,240,56,o,6.120
+i4,warm,barrier,240,57,router,3.360
+i4,warm,barrier,240,58,gate|up x8,19.600
+i4,warm,barrier,240,59,down x8,15.440
+i4,warm,barrier,240,60,q|k|v,7.240
+i4,warm,barrier,240,61,o,6.040
+i4,warm,barrier,240,62,router,3.400
+i4,warm,barrier,240,63,gate|up x8,19.440
+i4,warm,barrier,240,64,down x8,15.400
+i4,warm,barrier,240,65,q|k|v,7.360
+i4,warm,barrier,240,66,o,6.120
+i4,warm,barrier,240,67,router,3.360
+i4,warm,barrier,240,68,gate|up x8,19.520
+i4,warm,barrier,240,69,down x8,15.120
+i4,warm,barrier,240,70,q|k|v,7.320
+i4,warm,barrier,240,71,o,6.240
+i4,warm,barrier,240,72,router,3.400
+i4,warm,barrier,240,73,gate|up x8,19.560
+i4,warm,barrier,240,74,down x8,15.400
+i4,warm,barrier,240,75,q|k|v,7.160
+i4,warm,barrier,240,76,o,6.200
+i4,warm,barrier,240,77,router,3.400
+i4,warm,barrier,240,78,gate|up x8,19.680
+i4,warm,barrier,240,79,down x8,15.360
+i4,warm,barrier,240,80,q|k|v,7.320
+i4,warm,barrier,240,81,o,6.080
+i4,warm,barrier,240,82,router,3.360
+i4,warm,barrier,240,83,gate|up x8,19.560
+i4,warm,barrier,240,84,down x8,15.320
+i4,warm,barrier,240,85,q|k|v,7.400
+i4,warm,barrier,240,86,o,6.120
+i4,warm,barrier,240,87,router,3.480
+i4,warm,barrier,240,88,gate|up x8,19.440
+i4,warm,barrier,240,89,down x8,15.360
+i4,warm,barrier,240,90,q|k|v,7.280
+i4,warm,barrier,240,91,o,6.080
+i4,warm,barrier,240,92,router,3.360
+i4,warm,barrier,240,93,gate|up x8,19.480
+i4,warm,barrier,240,94,down x8,15.320
+i4,warm,barrier,240,95,q|k|v,7.240
+i4,warm,barrier,240,96,o,6.080
+i4,warm,barrier,240,97,router,3.400
+i4,warm,barrier,240,98,gate|up x8,19.520
+i4,warm,barrier,240,99,down x8,15.320
+i4,warm,barrier,240,100,q|k|v,7.400
+i4,warm,barrier,240,101,o,5.960
+i4,warm,barrier,240,102,router,3.360
+i4,warm,barrier,240,103,gate|up x8,19.480
+i4,warm,barrier,240,104,down x8,15.480
+i4,warm,barrier,240,105,q|k|v,7.280
+i4,warm,barrier,240,106,o,6.120
+i4,warm,barrier,240,107,router,3.320
+i4,warm,barrier,240,108,gate|up x8,19.520
+i4,warm,barrier,240,109,down x8,15.320
+i4,warm,barrier,240,110,q|k|v,7.320
+i4,warm,barrier,240,111,o,6.000
+i4,warm,barrier,240,112,router,3.440
+i4,warm,barrier,240,113,gate|up x8,19.600
+i4,warm,barrier,240,114,down x8,15.360
+i4,warm,barrier,240,115,q|k|v,7.360
+i4,warm,barrier,240,116,o,6.120
+i4,warm,barrier,240,117,router,3.320
+i4,warm,barrier,240,118,gate|up x8,19.560
+i4,warm,barrier,240,119,down x8,15.240
+i4,warm,barrier,240,120,q|k|v,7.280
+i4,warm,barrier,240,121,o,6.160
+i4,warm,barrier,240,122,router,3.480
+i4,warm,barrier,240,123,gate|up x8,19.600
+i4,warm,barrier,240,124,down x8,15.320
+i4,warm,barrier,240,125,q|k|v,7.320
+i4,warm,barrier,240,126,o,6.040
+i4,warm,barrier,240,127,router,3.360
+i4,warm,barrier,240,128,gate|up x8,19.520
+i4,warm,barrier,240,129,down x8,15.320
+i4,warm,barrier,240,130,q|k|v,7.320
+i4,warm,barrier,240,131,o,6.120
+i4,warm,barrier,240,132,router,3.440
+i4,warm,barrier,240,133,gate|up x8,19.480
+i4,warm,barrier,240,134,down x8,15.320
+i4,warm,barrier,240,135,q|k|v,7.240
+i4,warm,barrier,240,136,o,6.040
+i4,warm,barrier,240,137,router,3.400
+i4,warm,barrier,240,138,gate|up x8,19.560
+i4,warm,barrier,240,139,down x8,15.320
+i4,warm,barrier,240,140,q|k|v,7.280
+i4,warm,barrier,240,141,o,6.040
+i4,warm,barrier,240,142,router,3.400
+i4,warm,barrier,240,143,gate|up x8,19.480
+i4,warm,barrier,240,144,down x8,15.280
+i4,warm,barrier,240,145,q|k|v,7.400
+i4,warm,barrier,240,146,o,6.040
+i4,warm,barrier,240,147,router,3.320
+i4,warm,barrier,240,148,gate|up x8,19.480
+i4,warm,barrier,240,149,down x8,15.320
+i4,warm,barrier,240,150,q|k|v,7.400
+i4,warm,barrier,240,151,o,6.120
+i4,warm,barrier,240,152,router,3.320
+i4,warm,barrier,240,153,gate|up x8,19.560
+i4,warm,barrier,240,154,down x8,15.400
+i4,warm,barrier,240,155,q|k|v,7.240
+i4,warm,barrier,240,156,o,6.160
+i4,warm,barrier,240,157,router,3.440
+i4,warm,barrier,240,158,gate|up x8,19.440
+i4,warm,barrier,240,159,down x8,15.360
+i4,warm,barrier,240,160,q|k|v,7.360
+i4,warm,barrier,240,161,o,6.080
+i4,warm,barrier,240,162,router,3.480
+i4,warm,barrier,240,163,gate|up x8,19.480
+i4,warm,barrier,240,164,down x8,15.280
+i4,warm,barrier,240,165,q|k|v,7.400
+i4,warm,barrier,240,166,o,6.160
+i4,warm,barrier,240,167,router,3.400
+i4,warm,barrier,240,168,gate|up x8,19.600
+i4,warm,barrier,240,169,down x8,15.240
+i4,warm,barrier,240,170,q|k|v,7.240
+i4,warm,barrier,240,171,o,6.160
+i4,warm,barrier,240,172,router,3.360
+i4,warm,barrier,240,173,gate|up x8,19.560
+i4,warm,barrier,240,174,down x8,15.360
+i4,warm,barrier,240,175,q|k|v,7.280
+i4,warm,barrier,240,176,o,6.160
+i4,warm,barrier,240,177,router,3.360
+i4,warm,barrier,240,178,gate|up x8,19.520
+i4,warm,barrier,240,179,down x8,15.400
+i4,warm,barrier,240,180,q|k|v,7.360
+i4,warm,barrier,240,181,o,6.120
+i4,warm,barrier,240,182,router,3.440
+i4,warm,barrier,240,183,gate|up x8,19.600
+i4,warm,barrier,240,184,down x8,15.320
+i4,warm,barrier,240,185,q|k|v,7.240
+i4,warm,barrier,240,186,o,6.080
+i4,warm,barrier,240,187,router,3.320
+i4,warm,barrier,240,188,gate|up x8,19.320
+i4,warm,barrier,240,189,down x8,15.320
+i4,warm,barrier,240,190,q|k|v,7.280
+i4,warm,barrier,240,191,o,6.080
+i4,warm,barrier,240,192,router,3.400
+i4,warm,barrier,240,193,gate|up x8,19.520
+i4,warm,barrier,240,194,down x8,15.320
+i4,warm,barrier,240,195,q|k|v,7.360
+i4,warm,barrier,240,196,o,6.120
+i4,warm,barrier,240,197,router,3.360
+i4,warm,barrier,240,198,gate|up x8,19.400
+i4,warm,barrier,240,199,down x8,15.320
+i4,warm,barrier,240,200,q|k|v,7.160
+i4,warm,barrier,240,201,o,6.160
+i4,warm,barrier,240,202,router,3.360
+i4,warm,barrier,240,203,gate|up x8,19.520
+i4,warm,barrier,240,204,down x8,15.320
+i4,warm,barrier,240,205,q|k|v,7.320
+i4,warm,barrier,240,206,o,6.040
+i4,warm,barrier,240,207,router,3.320
+i4,warm,barrier,240,208,gate|up x8,19.560
+i4,warm,barrier,240,209,down x8,15.280
+i4,warm,barrier,240,210,q|k|v,7.400
+i4,warm,barrier,240,211,o,5.960
+i4,warm,barrier,240,212,router,3.440
+i4,warm,barrier,240,213,gate|up x8,19.520
+i4,warm,barrier,240,214,down x8,15.280
+i4,warm,barrier,240,215,q|k|v,7.280
+i4,warm,barrier,240,216,o,6.160
+i4,warm,barrier,240,217,router,3.400
+i4,warm,barrier,240,218,gate|up x8,19.560
+i4,warm,barrier,240,219,down x8,15.400
+i4,warm,barrier,240,220,q|k|v,7.240
+i4,warm,barrier,240,221,o,6.120
+i4,warm,barrier,240,222,router,3.480
+i4,warm,barrier,240,223,gate|up x8,19.640
+i4,warm,barrier,240,224,down x8,15.320
+i4,warm,barrier,240,225,q|k|v,7.400
+i4,warm,barrier,240,226,o,6.040
+i4,warm,barrier,240,227,router,3.360
+i4,warm,barrier,240,228,gate|up x8,19.520
+i4,warm,barrier,240,229,down x8,15.320
+i4,warm,barrier,240,230,q|k|v,7.440
+i4,warm,barrier,240,231,o,6.200
+i4,warm,barrier,240,232,router,3.360
+i4,warm,barrier,240,233,gate|up x8,19.480
+i4,warm,barrier,240,234,down x8,15.400
+i4,warm,barrier,240,235,q|k|v,7.280
+i4,warm,barrier,240,236,o,6.280
+i4,warm,barrier,240,237,router,3.360
+i4,warm,barrier,240,238,gate|up x8,19.520
+i4,warm,barrier,240,239,down x8,15.280
+i4,warm,barrier-pf,240,0,q|k|v,10.620
+i4,warm,barrier-pf,240,1,o,6.120
+i4,warm,barrier-pf,240,2,router,3.040
+i4,warm,barrier-pf,240,3,gate|up x8,19.680
+i4,warm,barrier-pf,240,4,down x8,16.200
+i4,warm,barrier-pf,240,5,q|k|v,6.720
+i4,warm,barrier-pf,240,6,o,5.800
+i4,warm,barrier-pf,240,7,router,3.120
+i4,warm,barrier-pf,240,8,gate|up x8,19.800
+i4,warm,barrier-pf,240,9,down x8,16.200
+i4,warm,barrier-pf,240,10,q|k|v,6.680
+i4,warm,barrier-pf,240,11,o,5.760
+i4,warm,barrier-pf,240,12,router,3.040
+i4,warm,barrier-pf,240,13,gate|up x8,19.720
+i4,warm,barrier-pf,240,14,down x8,16.280
+i4,warm,barrier-pf,240,15,q|k|v,6.680
+i4,warm,barrier-pf,240,16,o,5.800
+i4,warm,barrier-pf,240,17,router,3.080
+i4,warm,barrier-pf,240,18,gate|up x8,19.720
+i4,warm,barrier-pf,240,19,down x8,16.200
+i4,warm,barrier-pf,240,20,q|k|v,6.640
+i4,warm,barrier-pf,240,21,o,6.000
+i4,warm,barrier-pf,240,22,router,3.040
+i4,warm,barrier-pf,240,23,gate|up x8,19.920
+i4,warm,barrier-pf,240,24,down x8,16.120
+i4,warm,barrier-pf,240,25,q|k|v,6.760
+i4,warm,barrier-pf,240,26,o,5.920
+i4,warm,barrier-pf,240,27,router,3.000
+i4,warm,barrier-pf,240,28,gate|up x8,19.800
+i4,warm,barrier-pf,240,29,down x8,16.120
+i4,warm,barrier-pf,240,30,q|k|v,6.800
+i4,warm,barrier-pf,240,31,o,5.800
+i4,warm,barrier-pf,240,32,router,3.000
+i4,warm,barrier-pf,240,33,gate|up x8,19.920
+i4,warm,barrier-pf,240,34,down x8,16.280
+i4,warm,barrier-pf,240,35,q|k|v,6.560
+i4,warm,barrier-pf,240,36,o,5.960
+i4,warm,barrier-pf,240,37,router,2.960
+i4,warm,barrier-pf,240,38,gate|up x8,19.800
+i4,warm,barrier-pf,240,39,down x8,16.200
+i4,warm,barrier-pf,240,40,q|k|v,6.720
+i4,warm,barrier-pf,240,41,o,5.800
+i4,warm,barrier-pf,240,42,router,3.080
+i4,warm,barrier-pf,240,43,gate|up x8,19.800
+i4,warm,barrier-pf,240,44,down x8,16.120
+i4,warm,barrier-pf,240,45,q|k|v,6.720
+i4,warm,barrier-pf,240,46,o,5.720
+i4,warm,barrier-pf,240,47,router,3.120
+i4,warm,barrier-pf,240,48,gate|up x8,19.840
+i4,warm,barrier-pf,240,49,down x8,16.400
+i4,warm,barrier-pf,240,50,q|k|v,6.520
+i4,warm,barrier-pf,240,51,o,5.960
+i4,warm,barrier-pf,240,52,router,3.120
+i4,warm,barrier-pf,240,53,gate|up x8,19.720
+i4,warm,barrier-pf,240,54,down x8,15.920
+i4,warm,barrier-pf,240,55,q|k|v,6.680
+i4,warm,barrier-pf,240,56,o,5.840
+i4,warm,barrier-pf,240,57,router,3.040
+i4,warm,barrier-pf,240,58,gate|up x8,19.800
+i4,warm,barrier-pf,240,59,down x8,16.320
+i4,warm,barrier-pf,240,60,q|k|v,6.680
+i4,warm,barrier-pf,240,61,o,5.760
+i4,warm,barrier-pf,240,62,router,3.200
+i4,warm,barrier-pf,240,63,gate|up x8,19.720
+i4,warm,barrier-pf,240,64,down x8,16.120
+i4,warm,barrier-pf,240,65,q|k|v,6.800
+i4,warm,barrier-pf,240,66,o,5.840
+i4,warm,barrier-pf,240,67,router,3.040
+i4,warm,barrier-pf,240,68,gate|up x8,19.680
+i4,warm,barrier-pf,240,69,down x8,16.120
+i4,warm,barrier-pf,240,70,q|k|v,6.800
+i4,warm,barrier-pf,240,71,o,5.800
+i4,warm,barrier-pf,240,72,router,2.960
+i4,warm,barrier-pf,240,73,gate|up x8,19.880
+i4,warm,barrier-pf,240,74,down x8,16.160
+i4,warm,barrier-pf,240,75,q|k|v,6.640
+i4,warm,barrier-pf,240,76,o,5.840
+i4,warm,barrier-pf,240,77,router,3.120
+i4,warm,barrier-pf,240,78,gate|up x8,19.800
+i4,warm,barrier-pf,240,79,down x8,16.080
+i4,warm,barrier-pf,240,80,q|k|v,6.720
+i4,warm,barrier-pf,240,81,o,5.880
+i4,warm,barrier-pf,240,82,router,3.000
+i4,warm,barrier-pf,240,83,gate|up x8,19.800
+i4,warm,barrier-pf,240,84,down x8,16.320
+i4,warm,barrier-pf,240,85,q|k|v,6.720
+i4,warm,barrier-pf,240,86,o,5.920
+i4,warm,barrier-pf,240,87,router,3.040
+i4,warm,barrier-pf,240,88,gate|up x8,19.840
+i4,warm,barrier-pf,240,89,down x8,16.040
+i4,warm,barrier-pf,240,90,q|k|v,6.760
+i4,warm,barrier-pf,240,91,o,5.800
+i4,warm,barrier-pf,240,92,router,3.200
+i4,warm,barrier-pf,240,93,gate|up x8,19.760
+i4,warm,barrier-pf,240,94,down x8,16.240
+i4,warm,barrier-pf,240,95,q|k|v,6.840
+i4,warm,barrier-pf,240,96,o,5.760
+i4,warm,barrier-pf,240,97,router,3.080
+i4,warm,barrier-pf,240,98,gate|up x8,19.720
+i4,warm,barrier-pf,240,99,down x8,16.280
+i4,warm,barrier-pf,240,100,q|k|v,6.760
+i4,warm,barrier-pf,240,101,o,5.920
+i4,warm,barrier-pf,240,102,router,3.120
+i4,warm,barrier-pf,240,103,gate|up x8,19.800
+i4,warm,barrier-pf,240,104,down x8,16.200
+i4,warm,barrier-pf,240,105,q|k|v,6.720
+i4,warm,barrier-pf,240,106,o,5.840
+i4,warm,barrier-pf,240,107,router,2.960
+i4,warm,barrier-pf,240,108,gate|up x8,20.000
+i4,warm,barrier-pf,240,109,down x8,15.960
+i4,warm,barrier-pf,240,110,q|k|v,6.720
+i4,warm,barrier-pf,240,111,o,5.840
+i4,warm,barrier-pf,240,112,router,3.080
+i4,warm,barrier-pf,240,113,gate|up x8,19.840
+i4,warm,barrier-pf,240,114,down x8,16.240
+i4,warm,barrier-pf,240,115,q|k|v,6.880
+i4,warm,barrier-pf,240,116,o,5.840
+i4,warm,barrier-pf,240,117,router,3.080
+i4,warm,barrier-pf,240,118,gate|up x8,19.880
+i4,warm,barrier-pf,240,119,down x8,16.040
+i4,warm,barrier-pf,240,120,q|k|v,6.720
+i4,warm,barrier-pf,240,121,o,5.840
+i4,warm,barrier-pf,240,122,router,3.040
+i4,warm,barrier-pf,240,123,gate|up x8,19.840
+i4,warm,barrier-pf,240,124,down x8,16.040
+i4,warm,barrier-pf,240,125,q|k|v,6.840
+i4,warm,barrier-pf,240,126,o,5.800
+i4,warm,barrier-pf,240,127,router,3.080
+i4,warm,barrier-pf,240,128,gate|up x8,19.840
+i4,warm,barrier-pf,240,129,down x8,16.280
+i4,warm,barrier-pf,240,130,q|k|v,6.560
+i4,warm,barrier-pf,240,131,o,5.880
+i4,warm,barrier-pf,240,132,router,2.960
+i4,warm,barrier-pf,240,133,gate|up x8,19.720
+i4,warm,barrier-pf,240,134,down x8,16.240
+i4,warm,barrier-pf,240,135,q|k|v,6.800
+i4,warm,barrier-pf,240,136,o,5.800
+i4,warm,barrier-pf,240,137,router,3.080
+i4,warm,barrier-pf,240,138,gate|up x8,19.960
+i4,warm,barrier-pf,240,139,down x8,16.080
+i4,warm,barrier-pf,240,140,q|k|v,6.720
+i4,warm,barrier-pf,240,141,o,5.800
+i4,warm,barrier-pf,240,142,router,3.040
+i4,warm,barrier-pf,240,143,gate|up x8,19.760
+i4,warm,barrier-pf,240,144,down x8,16.320
+i4,warm,barrier-pf,240,145,q|k|v,6.800
+i4,warm,barrier-pf,240,146,o,5.720
+i4,warm,barrier-pf,240,147,router,3.160
+i4,warm,barrier-pf,240,148,gate|up x8,19.800
+i4,warm,barrier-pf,240,149,down x8,16.200
+i4,warm,barrier-pf,240,150,q|k|v,6.840
+i4,warm,barrier-pf,240,151,o,5.720
+i4,warm,barrier-pf,240,152,router,3.080
+i4,warm,barrier-pf,240,153,gate|up x8,19.840
+i4,warm,barrier-pf,240,154,down x8,16.040
+i4,warm,barrier-pf,240,155,q|k|v,6.760
+i4,warm,barrier-pf,240,156,o,5.800
+i4,warm,barrier-pf,240,157,router,3.080
+i4,warm,barrier-pf,240,158,gate|up x8,19.880
+i4,warm,barrier-pf,240,159,down x8,16.080
+i4,warm,barrier-pf,240,160,q|k|v,6.800
+i4,warm,barrier-pf,240,161,o,5.800
+i4,warm,barrier-pf,240,162,router,3.120
+i4,warm,barrier-pf,240,163,gate|up x8,19.880
+i4,warm,barrier-pf,240,164,down x8,16.200
+i4,warm,barrier-pf,240,165,q|k|v,6.720
+i4,warm,barrier-pf,240,166,o,5.920
+i4,warm,barrier-pf,240,167,router,3.040
+i4,warm,barrier-pf,240,168,gate|up x8,19.800
+i4,warm,barrier-pf,240,169,down x8,16.200
+i4,warm,barrier-pf,240,170,q|k|v,6.720
+i4,warm,barrier-pf,240,171,o,5.960
+i4,warm,barrier-pf,240,172,router,3.080
+i4,warm,barrier-pf,240,173,gate|up x8,19.800
+i4,warm,barrier-pf,240,174,down x8,16.240
+i4,warm,barrier-pf,240,175,q|k|v,6.600
+i4,warm,barrier-pf,240,176,o,5.840
+i4,warm,barrier-pf,240,177,router,3.080
+i4,warm,barrier-pf,240,178,gate|up x8,19.840
+i4,warm,barrier-pf,240,179,down x8,16.000
+i4,warm,barrier-pf,240,180,q|k|v,6.760
+i4,warm,barrier-pf,240,181,o,5.840
+i4,warm,barrier-pf,240,182,router,3.040
+i4,warm,barrier-pf,240,183,gate|up x8,19.920
+i4,warm,barrier-pf,240,184,down x8,16.280
+i4,warm,barrier-pf,240,185,q|k|v,6.800
+i4,warm,barrier-pf,240,186,o,5.760
+i4,warm,barrier-pf,240,187,router,3.240
+i4,warm,barrier-pf,240,188,gate|up x8,19.800
+i4,warm,barrier-pf,240,189,down x8,16.040
+i4,warm,barrier-pf,240,190,q|k|v,6.680
+i4,warm,barrier-pf,240,191,o,5.960
+i4,warm,barrier-pf,240,192,router,3.120
+i4,warm,barrier-pf,240,193,gate|up x8,19.720
+i4,warm,barrier-pf,240,194,down x8,16.320
+i4,warm,barrier-pf,240,195,q|k|v,6.800
+i4,warm,barrier-pf,240,196,o,5.840
+i4,warm,barrier-pf,240,197,router,2.960
+i4,warm,barrier-pf,240,198,gate|up x8,19.600
+i4,warm,barrier-pf,240,199,down x8,16.200
+i4,warm,barrier-pf,240,200,q|k|v,6.640
+i4,warm,barrier-pf,240,201,o,5.960
+i4,warm,barrier-pf,240,202,router,3.040
+i4,warm,barrier-pf,240,203,gate|up x8,19.840
+i4,warm,barrier-pf,240,204,down x8,16.280
+i4,warm,barrier-pf,240,205,q|k|v,6.720
+i4,warm,barrier-pf,240,206,o,5.720
+i4,warm,barrier-pf,240,207,router,3.080
+i4,warm,barrier-pf,240,208,gate|up x8,19.880
+i4,warm,barrier-pf,240,209,down x8,16.200
+i4,warm,barrier-pf,240,210,q|k|v,6.760
+i4,warm,barrier-pf,240,211,o,5.800
+i4,warm,barrier-pf,240,212,router,3.040
+i4,warm,barrier-pf,240,213,gate|up x8,19.720
+i4,warm,barrier-pf,240,214,down x8,16.040
+i4,warm,barrier-pf,240,215,q|k|v,6.800
+i4,warm,barrier-pf,240,216,o,5.760
+i4,warm,barrier-pf,240,217,router,3.200
+i4,warm,barrier-pf,240,218,gate|up x8,19.840
+i4,warm,barrier-pf,240,219,down x8,16.120
+i4,warm,barrier-pf,240,220,q|k|v,6.800
+i4,warm,barrier-pf,240,221,o,5.800
+i4,warm,barrier-pf,240,222,router,3.080
+i4,warm,barrier-pf,240,223,gate|up x8,19.880
+i4,warm,barrier-pf,240,224,down x8,16.280
+i4,warm,barrier-pf,240,225,q|k|v,6.680
+i4,warm,barrier-pf,240,226,o,5.800
+i4,warm,barrier-pf,240,227,router,3.080
+i4,warm,barrier-pf,240,228,gate|up x8,19.640
+i4,warm,barrier-pf,240,229,down x8,16.160
+i4,warm,barrier-pf,240,230,q|k|v,6.680
+i4,warm,barrier-pf,240,231,o,5.920
+i4,warm,barrier-pf,240,232,router,3.080
+i4,warm,barrier-pf,240,233,gate|up x8,19.840
+i4,warm,barrier-pf,240,234,down x8,16.040
+i4,warm,barrier-pf,240,235,q|k|v,6.760
+i4,warm,barrier-pf,240,236,o,5.800
+i4,warm,barrier-pf,240,237,router,3.040
+i4,warm,barrier-pf,240,238,gate|up x8,19.800
+i4,warm,barrier-pf,240,239,down x8,16.000
+i4,warm,dataflow,240,0,q|k|v,9.330
+i4,warm,dataflow,240,1,o,6.160
+i4,warm,dataflow,240,2,router,2.960
+i4,warm,dataflow,240,3,gate|up x8,31.670
+i4,warm,dataflow,240,4,down x8,20.840
+i4,warm,dataflow,240,5,q|k|v,8.180
+i4,warm,dataflow,240,6,o,6.910
+i4,warm,dataflow,240,7,router,3.140
+i4,warm,dataflow,240,8,gate|up x8,28.820
+i4,warm,dataflow,240,9,down x8,21.200
+i4,warm,dataflow,240,10,q|k|v,8.760
+i4,warm,dataflow,240,11,o,7.000
+i4,warm,dataflow,240,12,router,2.960
+i4,warm,dataflow,240,13,gate|up x8,31.450
+i4,warm,dataflow,240,14,down x8,21.460
+i4,warm,dataflow,240,15,q|k|v,8.430
+i4,warm,dataflow,240,16,o,7.100
+i4,warm,dataflow,240,17,router,3.060
+i4,warm,dataflow,240,18,gate|up x8,29.470
+i4,warm,dataflow,240,19,down x8,21.830
+i4,warm,dataflow,240,20,q|k|v,8.870
+i4,warm,dataflow,240,21,o,6.940
+i4,warm,dataflow,240,22,router,2.960
+i4,warm,dataflow,240,23,gate|up x8,31.280
+i4,warm,dataflow,240,24,down x8,21.270
+i4,warm,dataflow,240,25,q|k|v,8.340
+i4,warm,dataflow,240,26,o,7.030
+i4,warm,dataflow,240,27,router,3.020
+i4,warm,dataflow,240,28,gate|up x8,29.830
+i4,warm,dataflow,240,29,down x8,21.890
+i4,warm,dataflow,240,30,q|k|v,8.620
+i4,warm,dataflow,240,31,o,6.920
+i4,warm,dataflow,240,32,router,2.960
+i4,warm,dataflow,240,33,gate|up x8,31.290
+i4,warm,dataflow,240,34,down x8,21.310
+i4,warm,dataflow,240,35,q|k|v,8.520
+i4,warm,dataflow,240,36,o,6.960
+i4,warm,dataflow,240,37,router,2.930
+i4,warm,dataflow,240,38,gate|up x8,30.220
+i4,warm,dataflow,240,39,down x8,21.560
+i4,warm,dataflow,240,40,q|k|v,8.520
+i4,warm,dataflow,240,41,o,7.050
+i4,warm,dataflow,240,42,router,3.030
+i4,warm,dataflow,240,43,gate|up x8,29.990
+i4,warm,dataflow,240,44,down x8,21.430
+i4,warm,dataflow,240,45,q|k|v,8.600
+i4,warm,dataflow,240,46,o,7.000
+i4,warm,dataflow,240,47,router,2.960
+i4,warm,dataflow,240,48,gate|up x8,30.300
+i4,warm,dataflow,240,49,down x8,21.880
+i4,warm,dataflow,240,50,q|k|v,8.620
+i4,warm,dataflow,240,51,o,7.000
+i4,warm,dataflow,240,52,router,3.000
+i4,warm,dataflow,240,53,gate|up x8,30.640
+i4,warm,dataflow,240,54,down x8,21.480
+i4,warm,dataflow,240,55,q|k|v,8.440
+i4,warm,dataflow,240,56,o,7.030
+i4,warm,dataflow,240,57,router,3.030
+i4,warm,dataflow,240,58,gate|up x8,30.750
+i4,warm,dataflow,240,59,down x8,21.810
+i4,warm,dataflow,240,60,q|k|v,8.560
+i4,warm,dataflow,240,61,o,6.890
+i4,warm,dataflow,240,62,router,3.000
+i4,warm,dataflow,240,63,gate|up x8,31.520
+i4,warm,dataflow,240,64,down x8,21.600
+i4,warm,dataflow,240,65,q|k|v,8.560
+i4,warm,dataflow,240,66,o,6.960
+i4,warm,dataflow,240,67,router,2.980
+i4,warm,dataflow,240,68,gate|up x8,30.820
+i4,warm,dataflow,240,69,down x8,21.560
+i4,warm,dataflow,240,70,q|k|v,8.600
+i4,warm,dataflow,240,71,o,7.050
+i4,warm,dataflow,240,72,router,2.980
+i4,warm,dataflow,240,73,gate|up x8,30.600
+i4,warm,dataflow,240,74,down x8,21.400
+i4,warm,dataflow,240,75,q|k|v,8.580
+i4,warm,dataflow,240,76,o,7.120
+i4,warm,dataflow,240,77,router,3.000
+i4,warm,dataflow,240,78,gate|up x8,30.610
+i4,warm,dataflow,240,79,down x8,21.440
+i4,warm,dataflow,240,80,q|k|v,8.490
+i4,warm,dataflow,240,81,o,6.920
+i4,warm,dataflow,240,82,router,2.940
+i4,warm,dataflow,240,83,gate|up x8,30.450
+i4,warm,dataflow,240,84,down x8,21.300
+i4,warm,dataflow,240,85,q|k|v,8.570
+i4,warm,dataflow,240,86,o,7.020
+i4,warm,dataflow,240,87,router,3.000
+i4,warm,dataflow,240,88,gate|up x8,30.710
+i4,warm,dataflow,240,89,down x8,21.850
+i4,warm,dataflow,240,90,q|k|v,8.650
+i4,warm,dataflow,240,91,o,7.020
+i4,warm,dataflow,240,92,router,2.970
+i4,warm,dataflow,240,93,gate|up x8,30.650
+i4,warm,dataflow,240,94,down x8,21.350
+i4,warm,dataflow,240,95,q|k|v,8.410
+i4,warm,dataflow,240,96,o,7.050
+i4,warm,dataflow,240,97,router,3.010
+i4,warm,dataflow,240,98,gate|up x8,30.480
+i4,warm,dataflow,240,99,down x8,21.370
+i4,warm,dataflow,240,100,q|k|v,8.720
+i4,warm,dataflow,240,101,o,6.950
+i4,warm,dataflow,240,102,router,3.090
+i4,warm,dataflow,240,103,gate|up x8,31.160
+i4,warm,dataflow,240,104,down x8,21.260
+i4,warm,dataflow,240,105,q|k|v,8.500
+i4,warm,dataflow,240,106,o,6.990
+i4,warm,dataflow,240,107,router,2.950
+i4,warm,dataflow,240,108,gate|up x8,30.220
+i4,warm,dataflow,240,109,down x8,21.790
+i4,warm,dataflow,240,110,q|k|v,8.590
+i4,warm,dataflow,240,111,o,7.000
+i4,warm,dataflow,240,112,router,2.980
+i4,warm,dataflow,240,113,gate|up x8,30.810
+i4,warm,dataflow,240,114,down x8,21.070
+i4,warm,dataflow,240,115,q|k|v,8.590
+i4,warm,dataflow,240,116,o,6.990
+i4,warm,dataflow,240,117,router,3.000
+i4,warm,dataflow,240,118,gate|up x8,30.260
+i4,warm,dataflow,240,119,down x8,21.410
+i4,warm,dataflow,240,120,q|k|v,8.580
+i4,warm,dataflow,240,121,o,7.070
+i4,warm,dataflow,240,122,router,3.000
+i4,warm,dataflow,240,123,gate|up x8,29.920
+i4,warm,dataflow,240,124,down x8,21.500
+i4,warm,dataflow,240,125,q|k|v,8.490
+i4,warm,dataflow,240,126,o,6.990
+i4,warm,dataflow,240,127,router,3.000
+i4,warm,dataflow,240,128,gate|up x8,30.560
+i4,warm,dataflow,240,129,down x8,21.320
+i4,warm,dataflow,240,130,q|k|v,8.560
+i4,warm,dataflow,240,131,o,7.000
+i4,warm,dataflow,240,132,router,2.970
+i4,warm,dataflow,240,133,gate|up x8,29.880
+i4,warm,dataflow,240,134,down x8,21.430
+i4,warm,dataflow,240,135,q|k|v,8.640
+i4,warm,dataflow,240,136,o,7.010
+i4,warm,dataflow,240,137,router,2.980
+i4,warm,dataflow,240,138,gate|up x8,30.050
+i4,warm,dataflow,240,139,down x8,21.510
+i4,warm,dataflow,240,140,q|k|v,8.420
+i4,warm,dataflow,240,141,o,6.970
+i4,warm,dataflow,240,142,router,3.000
+i4,warm,dataflow,240,143,gate|up x8,30.720
+i4,warm,dataflow,240,144,down x8,21.230
+i4,warm,dataflow,240,145,q|k|v,8.630
+i4,warm,dataflow,240,146,o,6.860
+i4,warm,dataflow,240,147,router,3.060
+i4,warm,dataflow,240,148,gate|up x8,29.610
+i4,warm,dataflow,240,149,down x8,21.520
+i4,warm,dataflow,240,150,q|k|v,8.660
+i4,warm,dataflow,240,151,o,7.150
+i4,warm,dataflow,240,152,router,3.040
+i4,warm,dataflow,240,153,gate|up x8,30.400
+i4,warm,dataflow,240,154,down x8,21.400
+i4,warm,dataflow,240,155,q|k|v,8.560
+i4,warm,dataflow,240,156,o,7.070
+i4,warm,dataflow,240,157,router,3.000
+i4,warm,dataflow,240,158,gate|up x8,30.160
+i4,warm,dataflow,240,159,down x8,21.560
+i4,warm,dataflow,240,160,q|k|v,8.480
+i4,warm,dataflow,240,161,o,6.880
+i4,warm,dataflow,240,162,router,2.960
+i4,warm,dataflow,240,163,gate|up x8,30.650
+i4,warm,dataflow,240,164,down x8,21.380
+i4,warm,dataflow,240,165,q|k|v,8.700
+i4,warm,dataflow,240,166,o,6.960
+i4,warm,dataflow,240,167,router,3.000
+i4,warm,dataflow,240,168,gate|up x8,30.740
+i4,warm,dataflow,240,169,down x8,21.720
+i4,warm,dataflow,240,170,q|k|v,8.570
+i4,warm,dataflow,240,171,o,7.010
+i4,warm,dataflow,240,172,router,3.030
+i4,warm,dataflow,240,173,gate|up x8,30.820
+i4,warm,dataflow,240,174,down x8,21.320
+i4,warm,dataflow,240,175,q|k|v,8.680
+i4,warm,dataflow,240,176,o,6.810
+i4,warm,dataflow,240,177,router,3.040
+i4,warm,dataflow,240,178,gate|up x8,30.720
+i4,warm,dataflow,240,179,down x8,21.380
+i4,warm,dataflow,240,180,q|k|v,8.770
+i4,warm,dataflow,240,181,o,6.960
+i4,warm,dataflow,240,182,router,3.000
+i4,warm,dataflow,240,183,gate|up x8,30.080
+i4,warm,dataflow,240,184,down x8,21.500
+i4,warm,dataflow,240,185,q|k|v,8.540
+i4,warm,dataflow,240,186,o,6.970
+i4,warm,dataflow,240,187,router,2.910
+i4,warm,dataflow,240,188,gate|up x8,29.720
+i4,warm,dataflow,240,189,down x8,21.510
+i4,warm,dataflow,240,190,q|k|v,8.490
+i4,warm,dataflow,240,191,o,6.940
+i4,warm,dataflow,240,192,router,2.990
+i4,warm,dataflow,240,193,gate|up x8,30.560
+i4,warm,dataflow,240,194,down x8,21.400
+i4,warm,dataflow,240,195,q|k|v,8.550
+i4,warm,dataflow,240,196,o,6.830
+i4,warm,dataflow,240,197,router,2.960
+i4,warm,dataflow,240,198,gate|up x8,29.080
+i4,warm,dataflow,240,199,down x8,21.600
+i4,warm,dataflow,240,200,q|k|v,8.480
+i4,warm,dataflow,240,201,o,7.080
+i4,warm,dataflow,240,202,router,3.000
+i4,warm,dataflow,240,203,gate|up x8,30.930
+i4,warm,dataflow,240,204,down x8,21.440
+i4,warm,dataflow,240,205,q|k|v,8.470
+i4,warm,dataflow,240,206,o,6.950
+i4,warm,dataflow,240,207,router,3.020
+i4,warm,dataflow,240,208,gate|up x8,30.670
+i4,warm,dataflow,240,209,down x8,21.480
+i4,warm,dataflow,240,210,q|k|v,8.670
+i4,warm,dataflow,240,211,o,7.060
+i4,warm,dataflow,240,212,router,2.960
+i4,warm,dataflow,240,213,gate|up x8,30.350
+i4,warm,dataflow,240,214,down x8,21.310
+i4,warm,dataflow,240,215,q|k|v,8.550
+i4,warm,dataflow,240,216,o,6.960
+i4,warm,dataflow,240,217,router,2.980
+i4,warm,dataflow,240,218,gate|up x8,30.200
+i4,warm,dataflow,240,219,down x8,21.400
+i4,warm,dataflow,240,220,q|k|v,8.650
+i4,warm,dataflow,240,221,o,6.980
+i4,warm,dataflow,240,222,router,3.050
+i4,warm,dataflow,240,223,gate|up x8,31.460
+i4,warm,dataflow,240,224,down x8,21.310
+i4,warm,dataflow,240,225,q|k|v,8.660
+i4,warm,dataflow,240,226,o,6.850
+i4,warm,dataflow,240,227,router,2.970
+i4,warm,dataflow,240,228,gate|up x8,30.090
+i4,warm,dataflow,240,229,down x8,21.870
+i4,warm,dataflow,240,230,q|k|v,8.610
+i4,warm,dataflow,240,231,o,7.100
+i4,warm,dataflow,240,232,router,2.970
+i4,warm,dataflow,240,233,gate|up x8,30.670
+i4,warm,dataflow,240,234,down x8,21.590
+i4,warm,dataflow,240,235,q|k|v,8.470
+i4,warm,dataflow,240,236,o,7.080
+i4,warm,dataflow,240,237,router,2.950
+i4,warm,dataflow,240,238,gate|up x8,30.090
+i4,warm,dataflow,240,239,down x8,19.900
+i4,warm,dataflow-pf,240,0,q|k|v,12.250
+i4,warm,dataflow-pf,240,1,o,5.890
+i4,warm,dataflow-pf,240,2,router,2.640
+i4,warm,dataflow-pf,240,3,gate|up x8,31.130
+i4,warm,dataflow-pf,240,4,down x8,20.480
+i4,warm,dataflow-pf,240,5,q|k|v,7.690
+i4,warm,dataflow-pf,240,6,o,6.520
+i4,warm,dataflow-pf,240,7,router,2.780
+i4,warm,dataflow-pf,240,8,gate|up x8,28.480
+i4,warm,dataflow-pf,240,9,down x8,20.830
+i4,warm,dataflow-pf,240,10,q|k|v,8.280
+i4,warm,dataflow-pf,240,11,o,6.230
+i4,warm,dataflow-pf,240,12,router,2.680
+i4,warm,dataflow-pf,240,13,gate|up x8,30.030
+i4,warm,dataflow-pf,240,14,down x8,20.450
+i4,warm,dataflow-pf,240,15,q|k|v,8.060
+i4,warm,dataflow-pf,240,16,o,6.050
+i4,warm,dataflow-pf,240,17,router,2.640
+i4,warm,dataflow-pf,240,18,gate|up x8,28.530
+i4,warm,dataflow-pf,240,19,down x8,20.540
+i4,warm,dataflow-pf,240,20,q|k|v,8.050
+i4,warm,dataflow-pf,240,21,o,6.750
+i4,warm,dataflow-pf,240,22,router,2.720
+i4,warm,dataflow-pf,240,23,gate|up x8,30.200
+i4,warm,dataflow-pf,240,24,down x8,20.550
+i4,warm,dataflow-pf,240,25,q|k|v,8.030
+i4,warm,dataflow-pf,240,26,o,6.160
+i4,warm,dataflow-pf,240,27,router,2.710
+i4,warm,dataflow-pf,240,28,gate|up x8,29.200
+i4,warm,dataflow-pf,240,29,down x8,20.720
+i4,warm,dataflow-pf,240,30,q|k|v,8.060
+i4,warm,dataflow-pf,240,31,o,6.080
+i4,warm,dataflow-pf,240,32,router,2.780
+i4,warm,dataflow-pf,240,33,gate|up x8,30.300
+i4,warm,dataflow-pf,240,34,down x8,20.520
+i4,warm,dataflow-pf,240,35,q|k|v,7.970
+i4,warm,dataflow-pf,240,36,o,6.630
+i4,warm,dataflow-pf,240,37,router,2.730
+i4,warm,dataflow-pf,240,38,gate|up x8,30.150
+i4,warm,dataflow-pf,240,39,down x8,20.530
+i4,warm,dataflow-pf,240,40,q|k|v,8.040
+i4,warm,dataflow-pf,240,41,o,6.660
+i4,warm,dataflow-pf,240,42,router,2.680
+i4,warm,dataflow-pf,240,43,gate|up x8,29.860
+i4,warm,dataflow-pf,240,44,down x8,20.500
+i4,warm,dataflow-pf,240,45,q|k|v,8.030
+i4,warm,dataflow-pf,240,46,o,6.660
+i4,warm,dataflow-pf,240,47,router,2.790
+i4,warm,dataflow-pf,240,48,gate|up x8,29.310
+i4,warm,dataflow-pf,240,49,down x8,20.630
+i4,warm,dataflow-pf,240,50,q|k|v,8.230
+i4,warm,dataflow-pf,240,51,o,6.010
+i4,warm,dataflow-pf,240,52,router,2.720
+i4,warm,dataflow-pf,240,53,gate|up x8,30.120
+i4,warm,dataflow-pf,240,54,down x8,20.210
+i4,warm,dataflow-pf,240,55,q|k|v,8.000
+i4,warm,dataflow-pf,240,56,o,6.680
+i4,warm,dataflow-pf,240,57,router,2.760
+i4,warm,dataflow-pf,240,58,gate|up x8,29.610
+i4,warm,dataflow-pf,240,59,down x8,20.720
+i4,warm,dataflow-pf,240,60,q|k|v,7.890
+i4,warm,dataflow-pf,240,61,o,6.090
+i4,warm,dataflow-pf,240,62,router,2.680
+i4,warm,dataflow-pf,240,63,gate|up x8,29.900
+i4,warm,dataflow-pf,240,64,down x8,20.420
+i4,warm,dataflow-pf,240,65,q|k|v,8.230
+i4,warm,dataflow-pf,240,66,o,6.090
+i4,warm,dataflow-pf,240,67,router,2.730
+i4,warm,dataflow-pf,240,68,gate|up x8,29.380
+i4,warm,dataflow-pf,240,69,down x8,20.570
+i4,warm,dataflow-pf,240,70,q|k|v,8.190
+i4,warm,dataflow-pf,240,71,o,6.040
+i4,warm,dataflow-pf,240,72,router,2.640
+i4,warm,dataflow-pf,240,73,gate|up x8,30.190
+i4,warm,dataflow-pf,240,74,down x8,20.770
+i4,warm,dataflow-pf,240,75,q|k|v,8.060
+i4,warm,dataflow-pf,240,76,o,6.190
+i4,warm,dataflow-pf,240,77,router,2.680
+i4,warm,dataflow-pf,240,78,gate|up x8,29.200
+i4,warm,dataflow-pf,240,79,down x8,20.600
+i4,warm,dataflow-pf,240,80,q|k|v,8.060
+i4,warm,dataflow-pf,240,81,o,6.080
+i4,warm,dataflow-pf,240,82,router,2.690
+i4,warm,dataflow-pf,240,83,gate|up x8,29.400
+i4,warm,dataflow-pf,240,84,down x8,20.580
+i4,warm,dataflow-pf,240,85,q|k|v,8.100
+i4,warm,dataflow-pf,240,86,o,6.570
+i4,warm,dataflow-pf,240,87,router,2.630
+i4,warm,dataflow-pf,240,88,gate|up x8,29.400
+i4,warm,dataflow-pf,240,89,down x8,20.810
+i4,warm,dataflow-pf,240,90,q|k|v,7.880
+i4,warm,dataflow-pf,240,91,o,6.150
+i4,warm,dataflow-pf,240,92,router,2.680
+i4,warm,dataflow-pf,240,93,gate|up x8,30.110
+i4,warm,dataflow-pf,240,94,down x8,20.340
+i4,warm,dataflow-pf,240,95,q|k|v,8.110
+i4,warm,dataflow-pf,240,96,o,6.420
+i4,warm,dataflow-pf,240,97,router,2.680
+i4,warm,dataflow-pf,240,98,gate|up x8,30.000
+i4,warm,dataflow-pf,240,99,down x8,20.790
+i4,warm,dataflow-pf,240,100,q|k|v,7.920
+i4,warm,dataflow-pf,240,101,o,6.590
+i4,warm,dataflow-pf,240,102,router,2.740
+i4,warm,dataflow-pf,240,103,gate|up x8,29.970
+i4,warm,dataflow-pf,240,104,down x8,20.720
+i4,warm,dataflow-pf,240,105,q|k|v,8.080
+i4,warm,dataflow-pf,240,106,o,6.650
+i4,warm,dataflow-pf,240,107,router,2.730
+i4,warm,dataflow-pf,240,108,gate|up x8,30.630
+i4,warm,dataflow-pf,240,109,down x8,20.730
+i4,warm,dataflow-pf,240,110,q|k|v,8.070
+i4,warm,dataflow-pf,240,111,o,6.590
+i4,warm,dataflow-pf,240,112,router,2.730
+i4,warm,dataflow-pf,240,113,gate|up x8,30.390
+i4,warm,dataflow-pf,240,114,down x8,20.440
+i4,warm,dataflow-pf,240,115,q|k|v,7.960
+i4,warm,dataflow-pf,240,116,o,6.590
+i4,warm,dataflow-pf,240,117,router,2.760
+i4,warm,dataflow-pf,240,118,gate|up x8,29.480
+i4,warm,dataflow-pf,240,119,down x8,20.720
+i4,warm,dataflow-pf,240,120,q|k|v,7.970
+i4,warm,dataflow-pf,240,121,o,6.100
+i4,warm,dataflow-pf,240,122,router,2.710
+i4,warm,dataflow-pf,240,123,gate|up x8,30.350
+i4,warm,dataflow-pf,240,124,down x8,20.590
+i4,warm,dataflow-pf,240,125,q|k|v,8.040
+i4,warm,dataflow-pf,240,126,o,6.020
+i4,warm,dataflow-pf,240,127,router,2.660
+i4,warm,dataflow-pf,240,128,gate|up x8,30.340
+i4,warm,dataflow-pf,240,129,down x8,20.810
+i4,warm,dataflow-pf,240,130,q|k|v,8.000
+i4,warm,dataflow-pf,240,131,o,6.040
+i4,warm,dataflow-pf,240,132,router,2.680
+i4,warm,dataflow-pf,240,133,gate|up x8,30.240
+i4,warm,dataflow-pf,240,134,down x8,20.770
+i4,warm,dataflow-pf,240,135,q|k|v,8.030
+i4,warm,dataflow-pf,240,136,o,6.050
+i4,warm,dataflow-pf,240,137,router,2.700
+i4,warm,dataflow-pf,240,138,gate|up x8,29.890
+i4,warm,dataflow-pf,240,139,down x8,20.750
+i4,warm,dataflow-pf,240,140,q|k|v,8.120
+i4,warm,dataflow-pf,240,141,o,6.580
+i4,warm,dataflow-pf,240,142,router,2.640
+i4,warm,dataflow-pf,240,143,gate|up x8,29.670
+i4,warm,dataflow-pf,240,144,down x8,20.760
+i4,warm,dataflow-pf,240,145,q|k|v,8.110
+i4,warm,dataflow-pf,240,146,o,6.210
+i4,warm,dataflow-pf,240,147,router,2.680
+i4,warm,dataflow-pf,240,148,gate|up x8,29.930
+i4,warm,dataflow-pf,240,149,down x8,20.850
+i4,warm,dataflow-pf,240,150,q|k|v,8.000
+i4,warm,dataflow-pf,240,151,o,6.180
+i4,warm,dataflow-pf,240,152,router,2.640
+i4,warm,dataflow-pf,240,153,gate|up x8,29.710
+i4,warm,dataflow-pf,240,154,down x8,20.610
+i4,warm,dataflow-pf,240,155,q|k|v,8.200
+i4,warm,dataflow-pf,240,156,o,6.150
+i4,warm,dataflow-pf,240,157,router,2.710
+i4,warm,dataflow-pf,240,158,gate|up x8,29.730
+i4,warm,dataflow-pf,240,159,down x8,20.940
+i4,warm,dataflow-pf,240,160,q|k|v,8.070
+i4,warm,dataflow-pf,240,161,o,6.040
+i4,warm,dataflow-pf,240,162,router,2.680
+i4,warm,dataflow-pf,240,163,gate|up x8,29.480
+i4,warm,dataflow-pf,240,164,down x8,20.920
+i4,warm,dataflow-pf,240,165,q|k|v,7.960
+i4,warm,dataflow-pf,240,166,o,6.080
+i4,warm,dataflow-pf,240,167,router,2.730
+i4,warm,dataflow-pf,240,168,gate|up x8,29.740
+i4,warm,dataflow-pf,240,169,down x8,20.730
+i4,warm,dataflow-pf,240,170,q|k|v,7.990
+i4,warm,dataflow-pf,240,171,o,6.040
+i4,warm,dataflow-pf,240,172,router,2.630
+i4,warm,dataflow-pf,240,173,gate|up x8,30.400
+i4,warm,dataflow-pf,240,174,down x8,20.470
+i4,warm,dataflow-pf,240,175,q|k|v,8.030
+i4,warm,dataflow-pf,240,176,o,6.040
+i4,warm,dataflow-pf,240,177,router,2.750
+i4,warm,dataflow-pf,240,178,gate|up x8,29.970
+i4,warm,dataflow-pf,240,179,down x8,20.690
+i4,warm,dataflow-pf,240,180,q|k|v,8.170
+i4,warm,dataflow-pf,240,181,o,6.650
+i4,warm,dataflow-pf,240,182,router,2.690
+i4,warm,dataflow-pf,240,183,gate|up x8,29.920
+i4,warm,dataflow-pf,240,184,down x8,20.580
+i4,warm,dataflow-pf,240,185,q|k|v,8.090
+i4,warm,dataflow-pf,240,186,o,6.070
+i4,warm,dataflow-pf,240,187,router,2.670
+i4,warm,dataflow-pf,240,188,gate|up x8,29.330
+i4,warm,dataflow-pf,240,189,down x8,20.720
+i4,warm,dataflow-pf,240,190,q|k|v,7.970
+i4,warm,dataflow-pf,240,191,o,6.120
+i4,warm,dataflow-pf,240,192,router,2.730
+i4,warm,dataflow-pf,240,193,gate|up x8,30.270
+i4,warm,dataflow-pf,240,194,down x8,20.510
+i4,warm,dataflow-pf,240,195,q|k|v,8.090
+i4,warm,dataflow-pf,240,196,o,6.390
+i4,warm,dataflow-pf,240,197,router,2.680
+i4,warm,dataflow-pf,240,198,gate|up x8,30.160
+i4,warm,dataflow-pf,240,199,down x8,20.890
+i4,warm,dataflow-pf,240,200,q|k|v,7.960
+i4,warm,dataflow-pf,240,201,o,6.080
+i4,warm,dataflow-pf,240,202,router,2.670
+i4,warm,dataflow-pf,240,203,gate|up x8,30.100
+i4,warm,dataflow-pf,240,204,down x8,20.490
+i4,warm,dataflow-pf,240,205,q|k|v,8.030
+i4,warm,dataflow-pf,240,206,o,6.000
+i4,warm,dataflow-pf,240,207,router,2.670
+i4,warm,dataflow-pf,240,208,gate|up x8,29.520
+i4,warm,dataflow-pf,240,209,down x8,20.590
+i4,warm,dataflow-pf,240,210,q|k|v,8.130
+i4,warm,dataflow-pf,240,211,o,6.650
+i4,warm,dataflow-pf,240,212,router,2.710
+i4,warm,dataflow-pf,240,213,gate|up x8,30.630
+i4,warm,dataflow-pf,240,214,down x8,20.410
+i4,warm,dataflow-pf,240,215,q|k|v,8.050
+i4,warm,dataflow-pf,240,216,o,6.570
+i4,warm,dataflow-pf,240,217,router,2.710
+i4,warm,dataflow-pf,240,218,gate|up x8,28.830
+i4,warm,dataflow-pf,240,219,down x8,20.830
+i4,warm,dataflow-pf,240,220,q|k|v,8.000
+i4,warm,dataflow-pf,240,221,o,6.040
+i4,warm,dataflow-pf,240,222,router,2.710
+i4,warm,dataflow-pf,240,223,gate|up x8,29.460
+i4,warm,dataflow-pf,240,224,down x8,20.510
+i4,warm,dataflow-pf,240,225,q|k|v,8.100
+i4,warm,dataflow-pf,240,226,o,6.080
+i4,warm,dataflow-pf,240,227,router,2.750
+i4,warm,dataflow-pf,240,228,gate|up x8,29.860
+i4,warm,dataflow-pf,240,229,down x8,20.990
+i4,warm,dataflow-pf,240,230,q|k|v,8.180
+i4,warm,dataflow-pf,240,231,o,6.110
+i4,warm,dataflow-pf,240,232,router,2.750
+i4,warm,dataflow-pf,240,233,gate|up x8,29.530
+i4,warm,dataflow-pf,240,234,down x8,20.760
+i4,warm,dataflow-pf,240,235,q|k|v,8.120
+i4,warm,dataflow-pf,240,236,o,6.600
+i4,warm,dataflow-pf,240,237,router,2.650
+i4,warm,dataflow-pf,240,238,gate|up x8,29.860
+i4,warm,dataflow-pf,240,239,down x8,18.890
+f16,cold,barrier,240,0,q|k|v,32.760
+f16,cold,barrier,240,1,o,22.000
+f16,cold,barrier,240,2,router,7.720
+f16,cold,barrier,240,3,gate|up x8,65.920
+f16,cold,barrier,240,4,down x8,36.320
+f16,cold,barrier,240,5,q|k|v,31.560
+f16,cold,barrier,240,6,o,22.120
+f16,cold,barrier,240,7,router,7.560
+f16,cold,barrier,240,8,gate|up x8,65.840
+f16,cold,barrier,240,9,down x8,36.560
+f16,cold,barrier,240,10,q|k|v,30.240
+f16,cold,barrier,240,11,o,22.360
+f16,cold,barrier,240,12,router,7.680
+f16,cold,barrier,240,13,gate|up x8,65.720
+f16,cold,barrier,240,14,down x8,36.320
+f16,cold,barrier,240,15,q|k|v,30.360
+f16,cold,barrier,240,16,o,22.080
+f16,cold,barrier,240,17,router,7.760
+f16,cold,barrier,240,18,gate|up x8,65.960
+f16,cold,barrier,240,19,down x8,36.200
+f16,cold,barrier,240,20,q|k|v,31.000
+f16,cold,barrier,240,21,o,22.040
+f16,cold,barrier,240,22,router,7.440
+f16,cold,barrier,240,23,gate|up x8,66.280
+f16,cold,barrier,240,24,down x8,36.680
+f16,cold,barrier,240,25,q|k|v,30.160
+f16,cold,barrier,240,26,o,22.520
+f16,cold,barrier,240,27,router,7.600
+f16,cold,barrier,240,28,gate|up x8,66.720
+f16,cold,barrier,240,29,down x8,36.360
+f16,cold,barrier,240,30,q|k|v,30.320
+f16,cold,barrier,240,31,o,22.200
+f16,cold,barrier,240,32,router,7.720
+f16,cold,barrier,240,33,gate|up x8,66.120
+f16,cold,barrier,240,34,down x8,36.160
+f16,cold,barrier,240,35,q|k|v,31.400
+f16,cold,barrier,240,36,o,22.200
+f16,cold,barrier,240,37,router,7.720
+f16,cold,barrier,240,38,gate|up x8,65.920
+f16,cold,barrier,240,39,down x8,36.400
+f16,cold,barrier,240,40,q|k|v,30.440
+f16,cold,barrier,240,41,o,22.200
+f16,cold,barrier,240,42,router,7.600
+f16,cold,barrier,240,43,gate|up x8,65.480
+f16,cold,barrier,240,44,down x8,36.360
+f16,cold,barrier,240,45,q|k|v,30.000
+f16,cold,barrier,240,46,o,22.080
+f16,cold,barrier,240,47,router,7.760
+f16,cold,barrier,240,48,gate|up x8,65.720
+f16,cold,barrier,240,49,down x8,36.120
+f16,cold,barrier,240,50,q|k|v,31.200
+f16,cold,barrier,240,51,o,22.000
+f16,cold,barrier,240,52,router,7.720
+f16,cold,barrier,240,53,gate|up x8,66.120
+f16,cold,barrier,240,54,down x8,36.200
+f16,cold,barrier,240,55,q|k|v,30.040
+f16,cold,barrier,240,56,o,22.240
+f16,cold,barrier,240,57,router,7.720
+f16,cold,barrier,240,58,gate|up x8,67.520
+f16,cold,barrier,240,59,down x8,36.400
+f16,cold,barrier,240,60,q|k|v,30.360
+f16,cold,barrier,240,61,o,22.040
+f16,cold,barrier,240,62,router,7.800
+f16,cold,barrier,240,63,gate|up x8,66.040
+f16,cold,barrier,240,64,down x8,36.240
+f16,cold,barrier,240,65,q|k|v,31.320
+f16,cold,barrier,240,66,o,22.160
+f16,cold,barrier,240,67,router,7.800
+f16,cold,barrier,240,68,gate|up x8,65.920
+f16,cold,barrier,240,69,down x8,36.200
+f16,cold,barrier,240,70,q|k|v,32.320
+f16,cold,barrier,240,71,o,22.200
+f16,cold,barrier,240,72,router,7.560
+f16,cold,barrier,240,73,gate|up x8,65.760
+f16,cold,barrier,240,74,down x8,36.400
+f16,cold,barrier,240,75,q|k|v,30.200
+f16,cold,barrier,240,76,o,22.160
+f16,cold,barrier,240,77,router,7.560
+f16,cold,barrier,240,78,gate|up x8,65.960
+f16,cold,barrier,240,79,down x8,36.280
+f16,cold,barrier,240,80,q|k|v,31.880
+f16,cold,barrier,240,81,o,22.120
+f16,cold,barrier,240,82,router,7.760
+f16,cold,barrier,240,83,gate|up x8,66.440
+f16,cold,barrier,240,84,down x8,36.560
+f16,cold,barrier,240,85,q|k|v,31.280
+f16,cold,barrier,240,86,o,22.440
+f16,cold,barrier,240,87,router,7.600
+f16,cold,barrier,240,88,gate|up x8,66.720
+f16,cold,barrier,240,89,down x8,36.760
+f16,cold,barrier,240,90,q|k|v,30.480
+f16,cold,barrier,240,91,o,22.160
+f16,cold,barrier,240,92,router,7.600
+f16,cold,barrier,240,93,gate|up x8,66.160
+f16,cold,barrier,240,94,down x8,36.280
+f16,cold,barrier,240,95,q|k|v,30.400
+f16,cold,barrier,240,96,o,21.800
+f16,cold,barrier,240,97,router,7.760
+f16,cold,barrier,240,98,gate|up x8,65.840
+f16,cold,barrier,240,99,down x8,36.280
+f16,cold,barrier,240,100,q|k|v,31.280
+f16,cold,barrier,240,101,o,22.360
+f16,cold,barrier,240,102,router,7.560
+f16,cold,barrier,240,103,gate|up x8,65.840
+f16,cold,barrier,240,104,down x8,36.400
+f16,cold,barrier,240,105,q|k|v,30.320
+f16,cold,barrier,240,106,o,22.120
+f16,cold,barrier,240,107,router,7.600
+f16,cold,barrier,240,108,gate|up x8,66.080
+f16,cold,barrier,240,109,down x8,36.360
+f16,cold,barrier,240,110,q|k|v,30.560
+f16,cold,barrier,240,111,o,22.080
+f16,cold,barrier,240,112,router,7.760
+f16,cold,barrier,240,113,gate|up x8,66.280
+f16,cold,barrier,240,114,down x8,36.240
+f16,cold,barrier,240,115,q|k|v,32.120
+f16,cold,barrier,240,116,o,22.120
+f16,cold,barrier,240,117,router,7.560
+f16,cold,barrier,240,118,gate|up x8,66.960
+f16,cold,barrier,240,119,down x8,36.400
+f16,cold,barrier,240,120,q|k|v,30.440
+f16,cold,barrier,240,121,o,22.040
+f16,cold,barrier,240,122,router,7.520
+f16,cold,barrier,240,123,gate|up x8,66.640
+f16,cold,barrier,240,124,down x8,36.600
+f16,cold,barrier,240,125,q|k|v,30.680
+f16,cold,barrier,240,126,o,22.000
+f16,cold,barrier,240,127,router,7.840
+f16,cold,barrier,240,128,gate|up x8,65.800
+f16,cold,barrier,240,129,down x8,36.600
+f16,cold,barrier,240,130,q|k|v,31.600
+f16,cold,barrier,240,131,o,22.080
+f16,cold,barrier,240,132,router,7.760
+f16,cold,barrier,240,133,gate|up x8,65.360
+f16,cold,barrier,240,134,down x8,36.080
+f16,cold,barrier,240,135,q|k|v,30.240
+f16,cold,barrier,240,136,o,22.440
+f16,cold,barrier,240,137,router,7.680
+f16,cold,barrier,240,138,gate|up x8,65.880
+f16,cold,barrier,240,139,down x8,36.360
+f16,cold,barrier,240,140,q|k|v,30.200
+f16,cold,barrier,240,141,o,21.920
+f16,cold,barrier,240,142,router,7.760
+f16,cold,barrier,240,143,gate|up x8,66.160
+f16,cold,barrier,240,144,down x8,36.400
+f16,cold,barrier,240,145,q|k|v,31.480
+f16,cold,barrier,240,146,o,22.080
+f16,cold,barrier,240,147,router,7.760
+f16,cold,barrier,240,148,gate|up x8,66.760
+f16,cold,barrier,240,149,down x8,35.840
+f16,cold,barrier,240,150,q|k|v,33.000
+f16,cold,barrier,240,151,o,22.200
+f16,cold,barrier,240,152,router,7.560
+f16,cold,barrier,240,153,gate|up x8,66.280
+f16,cold,barrier,240,154,down x8,36.480
+f16,cold,barrier,240,155,q|k|v,30.280
+f16,cold,barrier,240,156,o,22.160
+f16,cold,barrier,240,157,router,7.640
+f16,cold,barrier,240,158,gate|up x8,65.880
+f16,cold,barrier,240,159,down x8,36.120
+f16,cold,barrier,240,160,q|k|v,31.960
+f16,cold,barrier,240,161,o,22.120
+f16,cold,barrier,240,162,router,7.760
+f16,cold,barrier,240,163,gate|up x8,65.800
+f16,cold,barrier,240,164,down x8,36.360
+f16,cold,barrier,240,165,q|k|v,31.040
+f16,cold,barrier,240,166,o,22.200
+f16,cold,barrier,240,167,router,7.720
+f16,cold,barrier,240,168,gate|up x8,66.000
+f16,cold,barrier,240,169,down x8,36.440
+f16,cold,barrier,240,170,q|k|v,30.240
+f16,cold,barrier,240,171,o,22.160
+f16,cold,barrier,240,172,router,7.720
+f16,cold,barrier,240,173,gate|up x8,66.440
+f16,cold,barrier,240,174,down x8,36.520
+f16,cold,barrier,240,175,q|k|v,30.240
+f16,cold,barrier,240,176,o,22.000
+f16,cold,barrier,240,177,router,7.760
+f16,cold,barrier,240,178,gate|up x8,66.840
+f16,cold,barrier,240,179,down x8,36.400
+f16,cold,barrier,240,180,q|k|v,31.600
+f16,cold,barrier,240,181,o,22.200
+f16,cold,barrier,240,182,router,7.600
+f16,cold,barrier,240,183,gate|up x8,67.000
+f16,cold,barrier,240,184,down x8,36.440
+f16,cold,barrier,240,185,q|k|v,30.320
+f16,cold,barrier,240,186,o,22.440
+f16,cold,barrier,240,187,router,7.600
+f16,cold,barrier,240,188,gate|up x8,66.120
+f16,cold,barrier,240,189,down x8,36.600
+f16,cold,barrier,240,190,q|k|v,30.240
+f16,cold,barrier,240,191,o,22.120
+f16,cold,barrier,240,192,router,7.760
+f16,cold,barrier,240,193,gate|up x8,66.040
+f16,cold,barrier,240,194,down x8,36.680
+f16,cold,barrier,240,195,q|k|v,31.600
+f16,cold,barrier,240,196,o,22.000
+f16,cold,barrier,240,197,router,7.800
+f16,cold,barrier,240,198,gate|up x8,67.120
+f16,cold,barrier,240,199,down x8,36.440
+f16,cold,barrier,240,200,q|k|v,30.960
+f16,cold,barrier,240,201,o,22.360
+f16,cold,barrier,240,202,router,7.600
+f16,cold,barrier,240,203,gate|up x8,66.200
+f16,cold,barrier,240,204,down x8,36.400
+f16,cold,barrier,240,205,q|k|v,30.560
+f16,cold,barrier,240,206,o,22.200
+f16,cold,barrier,240,207,router,7.760
+f16,cold,barrier,240,208,gate|up x8,65.680
+f16,cold,barrier,240,209,down x8,36.240
+f16,cold,barrier,240,210,q|k|v,31.800
+f16,cold,barrier,240,211,o,22.000
+f16,cold,barrier,240,212,router,7.680
+f16,cold,barrier,240,213,gate|up x8,65.320
+f16,cold,barrier,240,214,down x8,36.040
+f16,cold,barrier,240,215,q|k|v,30.240
+f16,cold,barrier,240,216,o,22.200
+f16,cold,barrier,240,217,router,7.800
+f16,cold,barrier,240,218,gate|up x8,65.760
+f16,cold,barrier,240,219,down x8,36.440
+f16,cold,barrier,240,220,q|k|v,30.360
+f16,cold,barrier,240,221,o,22.280
+f16,cold,barrier,240,222,router,7.720
+f16,cold,barrier,240,223,gate|up x8,66.360
+f16,cold,barrier,240,224,down x8,36.400
+f16,cold,barrier,240,225,q|k|v,31.600
+f16,cold,barrier,240,226,o,21.920
+f16,cold,barrier,240,227,router,7.760
+f16,cold,barrier,240,228,gate|up x8,66.200
+f16,cold,barrier,240,229,down x8,36.120
+f16,cold,barrier,240,230,q|k|v,31.840
+f16,cold,barrier,240,231,o,22.640
+f16,cold,barrier,240,232,router,7.560
+f16,cold,barrier,240,233,gate|up x8,66.360
+f16,cold,barrier,240,234,down x8,36.600
+f16,cold,barrier,240,235,q|k|v,30.560
+f16,cold,barrier,240,236,o,22.240
+f16,cold,barrier,240,237,router,7.560
+f16,cold,barrier,240,238,gate|up x8,65.920
+f16,cold,barrier,240,239,down x8,36.160
+f16,cold,barrier,240,240,lm_head,686.320
+f16,cold,barrier-pf,240,0,q|k|v,41.260
+f16,cold,barrier-pf,240,1,o,22.840
+f16,cold,barrier-pf,240,2,router,6.880
+f16,cold,barrier-pf,240,3,gate|up x8,68.120
+f16,cold,barrier-pf,240,4,down x8,38.080
+f16,cold,barrier-pf,240,5,q|k|v,32.080
+f16,cold,barrier-pf,240,6,o,23.320
+f16,cold,barrier-pf,240,7,router,6.840
+f16,cold,barrier-pf,240,8,gate|up x8,67.800
+f16,cold,barrier-pf,240,9,down x8,37.960
+f16,cold,barrier-pf,240,10,q|k|v,31.000
+f16,cold,barrier-pf,240,11,o,23.440
+f16,cold,barrier-pf,240,12,router,6.840
+f16,cold,barrier-pf,240,13,gate|up x8,67.560
+f16,cold,barrier-pf,240,14,down x8,37.800
+f16,cold,barrier-pf,240,15,q|k|v,31.520
+f16,cold,barrier-pf,240,16,o,23.560
+f16,cold,barrier-pf,240,17,router,6.720
+f16,cold,barrier-pf,240,18,gate|up x8,67.680
+f16,cold,barrier-pf,240,19,down x8,37.800
+f16,cold,barrier-pf,240,20,q|k|v,31.520
+f16,cold,barrier-pf,240,21,o,23.480
+f16,cold,barrier-pf,240,22,router,6.760
+f16,cold,barrier-pf,240,23,gate|up x8,68.440
+f16,cold,barrier-pf,240,24,down x8,37.800
+f16,cold,barrier-pf,240,25,q|k|v,30.640
+f16,cold,barrier-pf,240,26,o,23.360
+f16,cold,barrier-pf,240,27,router,6.800
+f16,cold,barrier-pf,240,28,gate|up x8,69.360
+f16,cold,barrier-pf,240,29,down x8,38.360
+f16,cold,barrier-pf,240,30,q|k|v,31.320
+f16,cold,barrier-pf,240,31,o,23.360
+f16,cold,barrier-pf,240,32,router,6.800
+f16,cold,barrier-pf,240,33,gate|up x8,67.960
+f16,cold,barrier-pf,240,34,down x8,37.560
+f16,cold,barrier-pf,240,35,q|k|v,31.240
+f16,cold,barrier-pf,240,36,o,23.560
+f16,cold,barrier-pf,240,37,router,6.880
+f16,cold,barrier-pf,240,38,gate|up x8,67.800
+f16,cold,barrier-pf,240,39,down x8,38.040
+f16,cold,barrier-pf,240,40,q|k|v,31.080
+f16,cold,barrier-pf,240,41,o,23.320
+f16,cold,barrier-pf,240,42,router,6.920
+f16,cold,barrier-pf,240,43,gate|up x8,67.920
+f16,cold,barrier-pf,240,44,down x8,37.960
+f16,cold,barrier-pf,240,45,q|k|v,30.960
+f16,cold,barrier-pf,240,46,o,23.000
+f16,cold,barrier-pf,240,47,router,6.840
+f16,cold,barrier-pf,240,48,gate|up x8,67.520
+f16,cold,barrier-pf,240,49,down x8,37.880
+f16,cold,barrier-pf,240,50,q|k|v,31.120
+f16,cold,barrier-pf,240,51,o,23.280
+f16,cold,barrier-pf,240,52,router,6.840
+f16,cold,barrier-pf,240,53,gate|up x8,68.240
+f16,cold,barrier-pf,240,54,down x8,37.840
+f16,cold,barrier-pf,240,55,q|k|v,30.920
+f16,cold,barrier-pf,240,56,o,23.280
+f16,cold,barrier-pf,240,57,router,6.800
+f16,cold,barrier-pf,240,58,gate|up x8,69.440
+f16,cold,barrier-pf,240,59,down x8,37.880
+f16,cold,barrier-pf,240,60,q|k|v,31.080
+f16,cold,barrier-pf,240,61,o,23.440
+f16,cold,barrier-pf,240,62,router,6.760
+f16,cold,barrier-pf,240,63,gate|up x8,68.040
+f16,cold,barrier-pf,240,64,down x8,37.720
+f16,cold,barrier-pf,240,65,q|k|v,31.560
+f16,cold,barrier-pf,240,66,o,23.400
+f16,cold,barrier-pf,240,67,router,6.840
+f16,cold,barrier-pf,240,68,gate|up x8,67.640
+f16,cold,barrier-pf,240,69,down x8,38.040
+f16,cold,barrier-pf,240,70,q|k|v,31.400
+f16,cold,barrier-pf,240,71,o,23.480
+f16,cold,barrier-pf,240,72,router,6.960
+f16,cold,barrier-pf,240,73,gate|up x8,68.080
+f16,cold,barrier-pf,240,74,down x8,38.480
+f16,cold,barrier-pf,240,75,q|k|v,30.920
+f16,cold,barrier-pf,240,76,o,23.640
+f16,cold,barrier-pf,240,77,router,6.800
+f16,cold,barrier-pf,240,78,gate|up x8,67.800
+f16,cold,barrier-pf,240,79,down x8,37.760
+f16,cold,barrier-pf,240,80,q|k|v,31.280
+f16,cold,barrier-pf,240,81,o,23.240
+f16,cold,barrier-pf,240,82,router,6.920
+f16,cold,barrier-pf,240,83,gate|up x8,68.120
+f16,cold,barrier-pf,240,84,down x8,38.320
+f16,cold,barrier-pf,240,85,q|k|v,31.520
+f16,cold,barrier-pf,240,86,o,23.560
+f16,cold,barrier-pf,240,87,router,6.840
+f16,cold,barrier-pf,240,88,gate|up x8,69.080
+f16,cold,barrier-pf,240,89,down x8,37.840
+f16,cold,barrier-pf,240,90,q|k|v,30.760
+f16,cold,barrier-pf,240,91,o,22.960
+f16,cold,barrier-pf,240,92,router,6.680
+f16,cold,barrier-pf,240,93,gate|up x8,67.960
+f16,cold,barrier-pf,240,94,down x8,37.920
+f16,cold,barrier-pf,240,95,q|k|v,30.960
+f16,cold,barrier-pf,240,96,o,23.320
+f16,cold,barrier-pf,240,97,router,6.920
+f16,cold,barrier-pf,240,98,gate|up x8,67.840
+f16,cold,barrier-pf,240,99,down x8,38.160
+f16,cold,barrier-pf,240,100,q|k|v,31.200
+f16,cold,barrier-pf,240,101,o,23.240
+f16,cold,barrier-pf,240,102,router,6.880
+f16,cold,barrier-pf,240,103,gate|up x8,67.920
+f16,cold,barrier-pf,240,104,down x8,37.880
+f16,cold,barrier-pf,240,105,q|k|v,31.160
+f16,cold,barrier-pf,240,106,o,23.480
+f16,cold,barrier-pf,240,107,router,6.880
+f16,cold,barrier-pf,240,108,gate|up x8,68.160
+f16,cold,barrier-pf,240,109,down x8,38.200
+f16,cold,barrier-pf,240,110,q|k|v,31.560
+f16,cold,barrier-pf,240,111,o,23.480
+f16,cold,barrier-pf,240,112,router,6.880
+f16,cold,barrier-pf,240,113,gate|up x8,67.720
+f16,cold,barrier-pf,240,114,down x8,37.880
+f16,cold,barrier-pf,240,115,q|k|v,31.120
+f16,cold,barrier-pf,240,116,o,23.600
+f16,cold,barrier-pf,240,117,router,6.800
+f16,cold,barrier-pf,240,118,gate|up x8,68.760
+f16,cold,barrier-pf,240,119,down x8,38.240
+f16,cold,barrier-pf,240,120,q|k|v,31.400
+f16,cold,barrier-pf,240,121,o,23.520
+f16,cold,barrier-pf,240,122,router,6.800
+f16,cold,barrier-pf,240,123,gate|up x8,68.680
+f16,cold,barrier-pf,240,124,down x8,38.000
+f16,cold,barrier-pf,240,125,q|k|v,31.360
+f16,cold,barrier-pf,240,126,o,23.680
+f16,cold,barrier-pf,240,127,router,6.920
+f16,cold,barrier-pf,240,128,gate|up x8,67.760
+f16,cold,barrier-pf,240,129,down x8,38.200
+f16,cold,barrier-pf,240,130,q|k|v,31.360
+f16,cold,barrier-pf,240,131,o,23.520
+f16,cold,barrier-pf,240,132,router,6.840
+f16,cold,barrier-pf,240,133,gate|up x8,67.160
+f16,cold,barrier-pf,240,134,down x8,38.280
+f16,cold,barrier-pf,240,135,q|k|v,30.800
+f16,cold,barrier-pf,240,136,o,23.440
+f16,cold,barrier-pf,240,137,router,6.720
+f16,cold,barrier-pf,240,138,gate|up x8,67.680
+f16,cold,barrier-pf,240,139,down x8,37.920
+f16,cold,barrier-pf,240,140,q|k|v,31.000
+f16,cold,barrier-pf,240,141,o,23.000
+f16,cold,barrier-pf,240,142,router,6.800
+f16,cold,barrier-pf,240,143,gate|up x8,68.040
+f16,cold,barrier-pf,240,144,down x8,38.040
+f16,cold,barrier-pf,240,145,q|k|v,31.680
+f16,cold,barrier-pf,240,146,o,23.720
+f16,cold,barrier-pf,240,147,router,6.920
+f16,cold,barrier-pf,240,148,gate|up x8,68.440
+f16,cold,barrier-pf,240,149,down x8,37.920
+f16,cold,barrier-pf,240,150,q|k|v,31.440
+f16,cold,barrier-pf,240,151,o,23.200
+f16,cold,barrier-pf,240,152,router,6.880
+f16,cold,barrier-pf,240,153,gate|up x8,68.520
+f16,cold,barrier-pf,240,154,down x8,38.040
+f16,cold,barrier-pf,240,155,q|k|v,31.120
+f16,cold,barrier-pf,240,156,o,23.440
+f16,cold,barrier-pf,240,157,router,6.880
+f16,cold,barrier-pf,240,158,gate|up x8,67.480
+f16,cold,barrier-pf,240,159,down x8,38.000
+f16,cold,barrier-pf,240,160,q|k|v,30.880
+f16,cold,barrier-pf,240,161,o,23.320
+f16,cold,barrier-pf,240,162,router,6.920
+f16,cold,barrier-pf,240,163,gate|up x8,67.240
+f16,cold,barrier-pf,240,164,down x8,38.240
+f16,cold,barrier-pf,240,165,q|k|v,30.880
+f16,cold,barrier-pf,240,166,o,23.200
+f16,cold,barrier-pf,240,167,router,6.800
+f16,cold,barrier-pf,240,168,gate|up x8,68.080
+f16,cold,barrier-pf,240,169,down x8,37.880
+f16,cold,barrier-pf,240,170,q|k|v,30.960
+f16,cold,barrier-pf,240,171,o,23.600
+f16,cold,barrier-pf,240,172,router,6.920
+f16,cold,barrier-pf,240,173,gate|up x8,68.320
+f16,cold,barrier-pf,240,174,down x8,38.000
+f16,cold,barrier-pf,240,175,q|k|v,31.240
+f16,cold,barrier-pf,240,176,o,23.680
+f16,cold,barrier-pf,240,177,router,6.760
+f16,cold,barrier-pf,240,178,gate|up x8,68.680
+f16,cold,barrier-pf,240,179,down x8,37.600
+f16,cold,barrier-pf,240,180,q|k|v,31.520
+f16,cold,barrier-pf,240,181,o,23.600
+f16,cold,barrier-pf,240,182,router,6.880
+f16,cold,barrier-pf,240,183,gate|up x8,68.840
+f16,cold,barrier-pf,240,184,down x8,37.720
+f16,cold,barrier-pf,240,185,q|k|v,30.920
+f16,cold,barrier-pf,240,186,o,23.280
+f16,cold,barrier-pf,240,187,router,6.840
+f16,cold,barrier-pf,240,188,gate|up x8,68.520
+f16,cold,barrier-pf,240,189,down x8,38.120
+f16,cold,barrier-pf,240,190,q|k|v,31.040
+f16,cold,barrier-pf,240,191,o,23.240
+f16,cold,barrier-pf,240,192,router,6.880
+f16,cold,barrier-pf,240,193,gate|up x8,68.120
+f16,cold,barrier-pf,240,194,down x8,38.040
+f16,cold,barrier-pf,240,195,q|k|v,31.400
+f16,cold,barrier-pf,240,196,o,23.480
+f16,cold,barrier-pf,240,197,router,6.880
+f16,cold,barrier-pf,240,198,gate|up x8,68.960
+f16,cold,barrier-pf,240,199,down x8,38.120
+f16,cold,barrier-pf,240,200,q|k|v,30.960
+f16,cold,barrier-pf,240,201,o,23.240
+f16,cold,barrier-pf,240,202,router,6.840
+f16,cold,barrier-pf,240,203,gate|up x8,68.320
+f16,cold,barrier-pf,240,204,down x8,38.200
+f16,cold,barrier-pf,240,205,q|k|v,30.920
+f16,cold,barrier-pf,240,206,o,23.360
+f16,cold,barrier-pf,240,207,router,6.840
+f16,cold,barrier-pf,240,208,gate|up x8,67.600
+f16,cold,barrier-pf,240,209,down x8,37.920
+f16,cold,barrier-pf,240,210,q|k|v,30.960
+f16,cold,barrier-pf,240,211,o,23.280
+f16,cold,barrier-pf,240,212,router,6.840
+f16,cold,barrier-pf,240,213,gate|up x8,66.920
+f16,cold,barrier-pf,240,214,down x8,37.840
+f16,cold,barrier-pf,240,215,q|k|v,30.560
+f16,cold,barrier-pf,240,216,o,23.360
+f16,cold,barrier-pf,240,217,router,6.920
+f16,cold,barrier-pf,240,218,gate|up x8,67.920
+f16,cold,barrier-pf,240,219,down x8,38.200
+f16,cold,barrier-pf,240,220,q|k|v,31.240
+f16,cold,barrier-pf,240,221,o,23.640
+f16,cold,barrier-pf,240,222,router,6.800
+f16,cold,barrier-pf,240,223,gate|up x8,68.040
+f16,cold,barrier-pf,240,224,down x8,37.920
+f16,cold,barrier-pf,240,225,q|k|v,30.840
+f16,cold,barrier-pf,240,226,o,23.160
+f16,cold,barrier-pf,240,227,router,6.880
+f16,cold,barrier-pf,240,228,gate|up x8,67.880
+f16,cold,barrier-pf,240,229,down x8,38.040
+f16,cold,barrier-pf,240,230,q|k|v,31.880
+f16,cold,barrier-pf,240,231,o,23.520
+f16,cold,barrier-pf,240,232,router,6.720
+f16,cold,barrier-pf,240,233,gate|up x8,68.560
+f16,cold,barrier-pf,240,234,down x8,37.880
+f16,cold,barrier-pf,240,235,q|k|v,30.880
+f16,cold,barrier-pf,240,236,o,23.760
+f16,cold,barrier-pf,240,237,router,6.720
+f16,cold,barrier-pf,240,238,gate|up x8,67.560
+f16,cold,barrier-pf,240,239,down x8,38.000
+f16,cold,barrier-pf,240,240,lm_head,684.560
+f16,cold,dataflow,240,0,q|k|v,30.280
+f16,cold,dataflow,240,1,o,21.630
+f16,cold,dataflow,240,2,router,7.170
+f16,cold,dataflow,240,3,gate|up x8,69.590
+f16,cold,dataflow,240,4,down x8,39.110
+f16,cold,dataflow,240,5,q|k|v,28.600
+f16,cold,dataflow,240,6,o,21.800
+f16,cold,dataflow,240,7,router,7.200
+f16,cold,dataflow,240,8,gate|up x8,70.150
+f16,cold,dataflow,240,9,down x8,38.840
+f16,cold,dataflow,240,10,q|k|v,28.120
+f16,cold,dataflow,240,11,o,21.830
+f16,cold,dataflow,240,12,router,7.200
+f16,cold,dataflow,240,13,gate|up x8,70.950
+f16,cold,dataflow,240,14,down x8,38.630
+f16,cold,dataflow,240,15,q|k|v,28.330
+f16,cold,dataflow,240,16,o,21.670
+f16,cold,dataflow,240,17,router,7.390
+f16,cold,dataflow,240,18,gate|up x8,70.240
+f16,cold,dataflow,240,19,down x8,38.840
+f16,cold,dataflow,240,20,q|k|v,28.330
+f16,cold,dataflow,240,21,o,21.530
+f16,cold,dataflow,240,22,router,7.160
+f16,cold,dataflow,240,23,gate|up x8,70.880
+f16,cold,dataflow,240,24,down x8,38.880
+f16,cold,dataflow,240,25,q|k|v,28.100
+f16,cold,dataflow,240,26,o,21.990
+f16,cold,dataflow,240,27,router,7.240
+f16,cold,dataflow,240,28,gate|up x8,70.170
+f16,cold,dataflow,240,29,down x8,38.720
+f16,cold,dataflow,240,30,q|k|v,28.440
+f16,cold,dataflow,240,31,o,21.690
+f16,cold,dataflow,240,32,router,7.170
+f16,cold,dataflow,240,33,gate|up x8,70.520
+f16,cold,dataflow,240,34,down x8,38.300
+f16,cold,dataflow,240,35,q|k|v,28.450
+f16,cold,dataflow,240,36,o,21.710
+f16,cold,dataflow,240,37,router,7.150
+f16,cold,dataflow,240,38,gate|up x8,71.110
+f16,cold,dataflow,240,39,down x8,38.560
+f16,cold,dataflow,240,40,q|k|v,28.680
+f16,cold,dataflow,240,41,o,21.760
+f16,cold,dataflow,240,42,router,7.130
+f16,cold,dataflow,240,43,gate|up x8,70.810
+f16,cold,dataflow,240,44,down x8,38.660
+f16,cold,dataflow,240,45,q|k|v,28.270
+f16,cold,dataflow,240,46,o,21.680
+f16,cold,dataflow,240,47,router,7.220
+f16,cold,dataflow,240,48,gate|up x8,70.640
+f16,cold,dataflow,240,49,down x8,38.640
+f16,cold,dataflow,240,50,q|k|v,28.570
+f16,cold,dataflow,240,51,o,21.560
+f16,cold,dataflow,240,52,router,7.220
+f16,cold,dataflow,240,53,gate|up x8,69.790
+f16,cold,dataflow,240,54,down x8,38.460
+f16,cold,dataflow,240,55,q|k|v,28.360
+f16,cold,dataflow,240,56,o,21.770
+f16,cold,dataflow,240,57,router,7.140
+f16,cold,dataflow,240,58,gate|up x8,70.570
+f16,cold,dataflow,240,59,down x8,38.770
+f16,cold,dataflow,240,60,q|k|v,28.170
+f16,cold,dataflow,240,61,o,21.620
+f16,cold,dataflow,240,62,router,7.160
+f16,cold,dataflow,240,63,gate|up x8,70.280
+f16,cold,dataflow,240,64,down x8,38.880
+f16,cold,dataflow,240,65,q|k|v,28.320
+f16,cold,dataflow,240,66,o,21.530
+f16,cold,dataflow,240,67,router,7.230
+f16,cold,dataflow,240,68,gate|up x8,70.650
+f16,cold,dataflow,240,69,down x8,38.790
+f16,cold,dataflow,240,70,q|k|v,28.400
+f16,cold,dataflow,240,71,o,21.870
+f16,cold,dataflow,240,72,router,7.110
+f16,cold,dataflow,240,73,gate|up x8,70.370
+f16,cold,dataflow,240,74,down x8,38.870
+f16,cold,dataflow,240,75,q|k|v,28.070
+f16,cold,dataflow,240,76,o,21.900
+f16,cold,dataflow,240,77,router,7.020
+f16,cold,dataflow,240,78,gate|up x8,69.380
+f16,cold,dataflow,240,79,down x8,38.720
+f16,cold,dataflow,240,80,q|k|v,28.520
+f16,cold,dataflow,240,81,o,21.520
+f16,cold,dataflow,240,82,router,7.240
+f16,cold,dataflow,240,83,gate|up x8,70.340
+f16,cold,dataflow,240,84,down x8,38.580
+f16,cold,dataflow,240,85,q|k|v,28.840
+f16,cold,dataflow,240,86,o,21.850
+f16,cold,dataflow,240,87,router,7.200
+f16,cold,dataflow,240,88,gate|up x8,71.070
+f16,cold,dataflow,240,89,down x8,38.520
+f16,cold,dataflow,240,90,q|k|v,28.400
+f16,cold,dataflow,240,91,o,21.890
+f16,cold,dataflow,240,92,router,7.160
+f16,cold,dataflow,240,93,gate|up x8,70.930
+f16,cold,dataflow,240,94,down x8,38.730
+f16,cold,dataflow,240,95,q|k|v,28.300
+f16,cold,dataflow,240,96,o,21.500
+f16,cold,dataflow,240,97,router,7.160
+f16,cold,dataflow,240,98,gate|up x8,70.440
+f16,cold,dataflow,240,99,down x8,38.910
+f16,cold,dataflow,240,100,q|k|v,28.360
+f16,cold,dataflow,240,101,o,21.600
+f16,cold,dataflow,240,102,router,7.170
+f16,cold,dataflow,240,103,gate|up x8,70.080
+f16,cold,dataflow,240,104,down x8,39.040
+f16,cold,dataflow,240,105,q|k|v,28.150
+f16,cold,dataflow,240,106,o,21.780
+f16,cold,dataflow,240,107,router,7.030
+f16,cold,dataflow,240,108,gate|up x8,71.200
+f16,cold,dataflow,240,109,down x8,39.070
+f16,cold,dataflow,240,110,q|k|v,28.350
+f16,cold,dataflow,240,111,o,21.560
+f16,cold,dataflow,240,112,router,7.220
+f16,cold,dataflow,240,113,gate|up x8,70.250
+f16,cold,dataflow,240,114,down x8,38.590
+f16,cold,dataflow,240,115,q|k|v,28.460
+f16,cold,dataflow,240,116,o,21.580
+f16,cold,dataflow,240,117,router,7.140
+f16,cold,dataflow,240,118,gate|up x8,70.400
+f16,cold,dataflow,240,119,down x8,38.700
+f16,cold,dataflow,240,120,q|k|v,28.280
+f16,cold,dataflow,240,121,o,21.800
+f16,cold,dataflow,240,122,router,7.160
+f16,cold,dataflow,240,123,gate|up x8,70.700
+f16,cold,dataflow,240,124,down x8,38.720
+f16,cold,dataflow,240,125,q|k|v,28.110
+f16,cold,dataflow,240,126,o,21.570
+f16,cold,dataflow,240,127,router,7.180
+f16,cold,dataflow,240,128,gate|up x8,70.760
+f16,cold,dataflow,240,129,down x8,38.520
+f16,cold,dataflow,240,130,q|k|v,28.520
+f16,cold,dataflow,240,131,o,21.560
+f16,cold,dataflow,240,132,router,7.180
+f16,cold,dataflow,240,133,gate|up x8,70.240
+f16,cold,dataflow,240,134,down x8,38.950
+f16,cold,dataflow,240,135,q|k|v,28.350
+f16,cold,dataflow,240,136,o,21.760
+f16,cold,dataflow,240,137,router,7.300
+f16,cold,dataflow,240,138,gate|up x8,70.380
+f16,cold,dataflow,240,139,down x8,38.760
+f16,cold,dataflow,240,140,q|k|v,28.100
+f16,cold,dataflow,240,141,o,21.600
+f16,cold,dataflow,240,142,router,7.250
+f16,cold,dataflow,240,143,gate|up x8,70.210
+f16,cold,dataflow,240,144,down x8,38.680
+f16,cold,dataflow,240,145,q|k|v,28.660
+f16,cold,dataflow,240,146,o,21.540
+f16,cold,dataflow,240,147,router,7.200
+f16,cold,dataflow,240,148,gate|up x8,70.860
+f16,cold,dataflow,240,149,down x8,38.760
+f16,cold,dataflow,240,150,q|k|v,28.750
+f16,cold,dataflow,240,151,o,21.790
+f16,cold,dataflow,240,152,router,7.150
+f16,cold,dataflow,240,153,gate|up x8,70.360
+f16,cold,dataflow,240,154,down x8,38.780
+f16,cold,dataflow,240,155,q|k|v,28.040
+f16,cold,dataflow,240,156,o,21.880
+f16,cold,dataflow,240,157,router,7.140
+f16,cold,dataflow,240,158,gate|up x8,70.680
+f16,cold,dataflow,240,159,down x8,38.590
+f16,cold,dataflow,240,160,q|k|v,28.370
+f16,cold,dataflow,240,161,o,21.550
+f16,cold,dataflow,240,162,router,7.150
+f16,cold,dataflow,240,163,gate|up x8,70.690
+f16,cold,dataflow,240,164,down x8,38.440
+f16,cold,dataflow,240,165,q|k|v,28.510
+f16,cold,dataflow,240,166,o,21.720
+f16,cold,dataflow,240,167,router,7.080
+f16,cold,dataflow,240,168,gate|up x8,70.840
+f16,cold,dataflow,240,169,down x8,38.760
+f16,cold,dataflow,240,170,q|k|v,28.400
+f16,cold,dataflow,240,171,o,21.750
+f16,cold,dataflow,240,172,router,7.130
+f16,cold,dataflow,240,173,gate|up x8,70.590
+f16,cold,dataflow,240,174,down x8,38.700
+f16,cold,dataflow,240,175,q|k|v,28.240
+f16,cold,dataflow,240,176,o,21.550
+f16,cold,dataflow,240,177,router,7.180
+f16,cold,dataflow,240,178,gate|up x8,70.440
+f16,cold,dataflow,240,179,down x8,38.450
+f16,cold,dataflow,240,180,q|k|v,28.480
+f16,cold,dataflow,240,181,o,21.690
+f16,cold,dataflow,240,182,router,7.110
+f16,cold,dataflow,240,183,gate|up x8,70.160
+f16,cold,dataflow,240,184,down x8,38.530
+f16,cold,dataflow,240,185,q|k|v,28.000
+f16,cold,dataflow,240,186,o,21.830
+f16,cold,dataflow,240,187,router,7.160
+f16,cold,dataflow,240,188,gate|up x8,70.710
+f16,cold,dataflow,240,189,down x8,39.350
+f16,cold,dataflow,240,190,q|k|v,28.550
+f16,cold,dataflow,240,191,o,21.660
+f16,cold,dataflow,240,192,router,7.160
+f16,cold,dataflow,240,193,gate|up x8,69.500
+f16,cold,dataflow,240,194,down x8,38.820
+f16,cold,dataflow,240,195,q|k|v,28.400
+f16,cold,dataflow,240,196,o,21.520
+f16,cold,dataflow,240,197,router,7.170
+f16,cold,dataflow,240,198,gate|up x8,70.520
+f16,cold,dataflow,240,199,down x8,38.840
+f16,cold,dataflow,240,200,q|k|v,28.430
+f16,cold,dataflow,240,201,o,21.760
+f16,cold,dataflow,240,202,router,7.140
+f16,cold,dataflow,240,203,gate|up x8,70.570
+f16,cold,dataflow,240,204,down x8,38.990
+f16,cold,dataflow,240,205,q|k|v,28.170
+f16,cold,dataflow,240,206,o,21.790
+f16,cold,dataflow,240,207,router,7.220
+f16,cold,dataflow,240,208,gate|up x8,70.750
+f16,cold,dataflow,240,209,down x8,38.740
+f16,cold,dataflow,240,210,q|k|v,28.280
+f16,cold,dataflow,240,211,o,21.580
+f16,cold,dataflow,240,212,router,7.180
+f16,cold,dataflow,240,213,gate|up x8,70.360
+f16,cold,dataflow,240,214,down x8,38.500
+f16,cold,dataflow,240,215,q|k|v,28.450
+f16,cold,dataflow,240,216,o,21.840
+f16,cold,dataflow,240,217,router,7.200
+f16,cold,dataflow,240,218,gate|up x8,70.100
+f16,cold,dataflow,240,219,down x8,38.870
+f16,cold,dataflow,240,220,q|k|v,28.350
+f16,cold,dataflow,240,221,o,21.500
+f16,cold,dataflow,240,222,router,7.220
+f16,cold,dataflow,240,223,gate|up x8,71.200
+f16,cold,dataflow,240,224,down x8,38.530
+f16,cold,dataflow,240,225,q|k|v,28.780
+f16,cold,dataflow,240,226,o,21.680
+f16,cold,dataflow,240,227,router,7.160
+f16,cold,dataflow,240,228,gate|up x8,70.800
+f16,cold,dataflow,240,229,down x8,38.770
+f16,cold,dataflow,240,230,q|k|v,28.480
+f16,cold,dataflow,240,231,o,21.940
+f16,cold,dataflow,240,232,router,7.150
+f16,cold,dataflow,240,233,gate|up x8,70.710
+f16,cold,dataflow,240,234,down x8,38.770
+f16,cold,dataflow,240,235,q|k|v,28.310
+f16,cold,dataflow,240,236,o,21.850
+f16,cold,dataflow,240,237,router,7.090
+f16,cold,dataflow,240,238,gate|up x8,69.610
+f16,cold,dataflow,240,239,down x8,38.630
+f16,cold,dataflow,240,240,lm_head,703.960
+f16,cold,dataflow-pf,240,0,q|k|v,37.450
+f16,cold,dataflow-pf,240,1,o,21.790
+f16,cold,dataflow-pf,240,2,router,6.400
+f16,cold,dataflow-pf,240,3,gate|up x8,70.820
+f16,cold,dataflow-pf,240,4,down x8,38.560
+f16,cold,dataflow-pf,240,5,q|k|v,27.830
+f16,cold,dataflow-pf,240,6,o,21.530
+f16,cold,dataflow-pf,240,7,router,6.340
+f16,cold,dataflow-pf,240,8,gate|up x8,71.720
+f16,cold,dataflow-pf,240,9,down x8,38.120
+f16,cold,dataflow-pf,240,10,q|k|v,27.530
+f16,cold,dataflow-pf,240,11,o,21.620
+f16,cold,dataflow-pf,240,12,router,6.240
+f16,cold,dataflow-pf,240,13,gate|up x8,71.290
+f16,cold,dataflow-pf,240,14,down x8,38.600
+f16,cold,dataflow-pf,240,15,q|k|v,27.500
+f16,cold,dataflow-pf,240,16,o,21.620
+f16,cold,dataflow-pf,240,17,router,6.390
+f16,cold,dataflow-pf,240,18,gate|up x8,72.080
+f16,cold,dataflow-pf,240,19,down x8,38.550
+f16,cold,dataflow-pf,240,20,q|k|v,27.420
+f16,cold,dataflow-pf,240,21,o,21.730
+f16,cold,dataflow-pf,240,22,router,6.250
+f16,cold,dataflow-pf,240,23,gate|up x8,70.600
+f16,cold,dataflow-pf,240,24,down x8,38.660
+f16,cold,dataflow-pf,240,25,q|k|v,27.590
+f16,cold,dataflow-pf,240,26,o,21.850
+f16,cold,dataflow-pf,240,27,router,6.390
+f16,cold,dataflow-pf,240,28,gate|up x8,70.820
+f16,cold,dataflow-pf,240,29,down x8,38.440
+f16,cold,dataflow-pf,240,30,q|k|v,27.110
+f16,cold,dataflow-pf,240,31,o,21.790
+f16,cold,dataflow-pf,240,32,router,6.380
+f16,cold,dataflow-pf,240,33,gate|up x8,70.890
+f16,cold,dataflow-pf,240,34,down x8,38.610
+f16,cold,dataflow-pf,240,35,q|k|v,27.680
+f16,cold,dataflow-pf,240,36,o,21.620
+f16,cold,dataflow-pf,240,37,router,6.390
+f16,cold,dataflow-pf,240,38,gate|up x8,71.320
+f16,cold,dataflow-pf,240,39,down x8,38.360
+f16,cold,dataflow-pf,240,40,q|k|v,27.920
+f16,cold,dataflow-pf,240,41,o,21.670
+f16,cold,dataflow-pf,240,42,router,6.380
+f16,cold,dataflow-pf,240,43,gate|up x8,71.630
+f16,cold,dataflow-pf,240,44,down x8,38.410
+f16,cold,dataflow-pf,240,45,q|k|v,27.490
+f16,cold,dataflow-pf,240,46,o,21.590
+f16,cold,dataflow-pf,240,47,router,6.320
+f16,cold,dataflow-pf,240,48,gate|up x8,71.630
+f16,cold,dataflow-pf,240,49,down x8,38.380
+f16,cold,dataflow-pf,240,50,q|k|v,27.650
+f16,cold,dataflow-pf,240,51,o,21.560
+f16,cold,dataflow-pf,240,52,router,6.320
+f16,cold,dataflow-pf,240,53,gate|up x8,70.640
+f16,cold,dataflow-pf,240,54,down x8,38.400
+f16,cold,dataflow-pf,240,55,q|k|v,27.510
+f16,cold,dataflow-pf,240,56,o,21.750
+f16,cold,dataflow-pf,240,57,router,6.380
+f16,cold,dataflow-pf,240,58,gate|up x8,71.710
+f16,cold,dataflow-pf,240,59,down x8,38.710
+f16,cold,dataflow-pf,240,60,q|k|v,27.670
+f16,cold,dataflow-pf,240,61,o,21.630
+f16,cold,dataflow-pf,240,62,router,6.310
+f16,cold,dataflow-pf,240,63,gate|up x8,70.750
+f16,cold,dataflow-pf,240,64,down x8,38.510
+f16,cold,dataflow-pf,240,65,q|k|v,27.280
+f16,cold,dataflow-pf,240,66,o,21.600
+f16,cold,dataflow-pf,240,67,router,6.410
+f16,cold,dataflow-pf,240,68,gate|up x8,71.570
+f16,cold,dataflow-pf,240,69,down x8,38.750
+f16,cold,dataflow-pf,240,70,q|k|v,27.540
+f16,cold,dataflow-pf,240,71,o,21.610
+f16,cold,dataflow-pf,240,72,router,6.370
+f16,cold,dataflow-pf,240,73,gate|up x8,71.420
+f16,cold,dataflow-pf,240,74,down x8,38.370
+f16,cold,dataflow-pf,240,75,q|k|v,27.510
+f16,cold,dataflow-pf,240,76,o,21.720
+f16,cold,dataflow-pf,240,77,router,6.420
+f16,cold,dataflow-pf,240,78,gate|up x8,71.620
+f16,cold,dataflow-pf,240,79,down x8,38.470
+f16,cold,dataflow-pf,240,80,q|k|v,27.370
+f16,cold,dataflow-pf,240,81,o,21.690
+f16,cold,dataflow-pf,240,82,router,6.360
+f16,cold,dataflow-pf,240,83,gate|up x8,71.050
+f16,cold,dataflow-pf,240,84,down x8,38.530
+f16,cold,dataflow-pf,240,85,q|k|v,27.450
+f16,cold,dataflow-pf,240,86,o,21.620
+f16,cold,dataflow-pf,240,87,router,6.350
+f16,cold,dataflow-pf,240,88,gate|up x8,71.750
+f16,cold,dataflow-pf,240,89,down x8,38.220
+f16,cold,dataflow-pf,240,90,q|k|v,27.600
+f16,cold,dataflow-pf,240,91,o,21.250
+f16,cold,dataflow-pf,240,92,router,6.350
+f16,cold,dataflow-pf,240,93,gate|up x8,71.310
+f16,cold,dataflow-pf,240,94,down x8,38.490
+f16,cold,dataflow-pf,240,95,q|k|v,27.630
+f16,cold,dataflow-pf,240,96,o,21.460
+f16,cold,dataflow-pf,240,97,router,6.340
+f16,cold,dataflow-pf,240,98,gate|up x8,72.190
+f16,cold,dataflow-pf,240,99,down x8,38.190
+f16,cold,dataflow-pf,240,100,q|k|v,27.770
+f16,cold,dataflow-pf,240,101,o,21.570
+f16,cold,dataflow-pf,240,102,router,6.380
+f16,cold,dataflow-pf,240,103,gate|up x8,72.050
+f16,cold,dataflow-pf,240,104,down x8,38.600
+f16,cold,dataflow-pf,240,105,q|k|v,27.730
+f16,cold,dataflow-pf,240,106,o,21.530
+f16,cold,dataflow-pf,240,107,router,6.400
+f16,cold,dataflow-pf,240,108,gate|up x8,71.330
+f16,cold,dataflow-pf,240,109,down x8,38.490
+f16,cold,dataflow-pf,240,110,q|k|v,27.470
+f16,cold,dataflow-pf,240,111,o,21.730
+f16,cold,dataflow-pf,240,112,router,6.400
+f16,cold,dataflow-pf,240,113,gate|up x8,71.250
+f16,cold,dataflow-pf,240,114,down x8,38.800
+f16,cold,dataflow-pf,240,115,q|k|v,27.640
+f16,cold,dataflow-pf,240,116,o,21.600
+f16,cold,dataflow-pf,240,117,router,6.420
+f16,cold,dataflow-pf,240,118,gate|up x8,72.460
+f16,cold,dataflow-pf,240,119,down x8,38.440
+f16,cold,dataflow-pf,240,120,q|k|v,27.470
+f16,cold,dataflow-pf,240,121,o,21.510
+f16,cold,dataflow-pf,240,122,router,6.250
+f16,cold,dataflow-pf,240,123,gate|up x8,71.020
+f16,cold,dataflow-pf,240,124,down x8,38.320
+f16,cold,dataflow-pf,240,125,q|k|v,27.500
+f16,cold,dataflow-pf,240,126,o,21.680
+f16,cold,dataflow-pf,240,127,router,6.360
+f16,cold,dataflow-pf,240,128,gate|up x8,72.080
+f16,cold,dataflow-pf,240,129,down x8,38.370
+f16,cold,dataflow-pf,240,130,q|k|v,27.220
+f16,cold,dataflow-pf,240,131,o,21.710
+f16,cold,dataflow-pf,240,132,router,6.390
+f16,cold,dataflow-pf,240,133,gate|up x8,71.160
+f16,cold,dataflow-pf,240,134,down x8,38.520
+f16,cold,dataflow-pf,240,135,q|k|v,27.520
+f16,cold,dataflow-pf,240,136,o,21.580
+f16,cold,dataflow-pf,240,137,router,6.430
+f16,cold,dataflow-pf,240,138,gate|up x8,71.410
+f16,cold,dataflow-pf,240,139,down x8,38.310
+f16,cold,dataflow-pf,240,140,q|k|v,27.470
+f16,cold,dataflow-pf,240,141,o,21.540
+f16,cold,dataflow-pf,240,142,router,6.400
+f16,cold,dataflow-pf,240,143,gate|up x8,71.330
+f16,cold,dataflow-pf,240,144,down x8,38.510
+f16,cold,dataflow-pf,240,145,q|k|v,27.380
+f16,cold,dataflow-pf,240,146,o,21.650
+f16,cold,dataflow-pf,240,147,router,6.380
+f16,cold,dataflow-pf,240,148,gate|up x8,71.080
+f16,cold,dataflow-pf,240,149,down x8,38.430
+f16,cold,dataflow-pf,240,150,q|k|v,27.780
+f16,cold,dataflow-pf,240,151,o,21.800
+f16,cold,dataflow-pf,240,152,router,6.390
+f16,cold,dataflow-pf,240,153,gate|up x8,70.840
+f16,cold,dataflow-pf,240,154,down x8,38.580
+f16,cold,dataflow-pf,240,155,q|k|v,27.340
+f16,cold,dataflow-pf,240,156,o,21.780
+f16,cold,dataflow-pf,240,157,router,6.360
+f16,cold,dataflow-pf,240,158,gate|up x8,71.880
+f16,cold,dataflow-pf,240,159,down x8,38.550
+f16,cold,dataflow-pf,240,160,q|k|v,27.450
+f16,cold,dataflow-pf,240,161,o,21.630
+f16,cold,dataflow-pf,240,162,router,6.360
+f16,cold,dataflow-pf,240,163,gate|up x8,71.680
+f16,cold,dataflow-pf,240,164,down x8,38.490
+f16,cold,dataflow-pf,240,165,q|k|v,27.490
+f16,cold,dataflow-pf,240,166,o,21.480
+f16,cold,dataflow-pf,240,167,router,6.380
+f16,cold,dataflow-pf,240,168,gate|up x8,70.490
+f16,cold,dataflow-pf,240,169,down x8,38.600
+f16,cold,dataflow-pf,240,170,q|k|v,27.610
+f16,cold,dataflow-pf,240,171,o,21.610
+f16,cold,dataflow-pf,240,172,router,6.350
+f16,cold,dataflow-pf,240,173,gate|up x8,71.330
+f16,cold,dataflow-pf,240,174,down x8,38.680
+f16,cold,dataflow-pf,240,175,q|k|v,27.520
+f16,cold,dataflow-pf,240,176,o,21.610
+f16,cold,dataflow-pf,240,177,router,6.420
+f16,cold,dataflow-pf,240,178,gate|up x8,71.330
+f16,cold,dataflow-pf,240,179,down x8,38.210
+f16,cold,dataflow-pf,240,180,q|k|v,27.580
+f16,cold,dataflow-pf,240,181,o,21.550
+f16,cold,dataflow-pf,240,182,router,6.360
+f16,cold,dataflow-pf,240,183,gate|up x8,71.340
+f16,cold,dataflow-pf,240,184,down x8,38.170
+f16,cold,dataflow-pf,240,185,q|k|v,27.560
+f16,cold,dataflow-pf,240,186,o,21.590
+f16,cold,dataflow-pf,240,187,router,6.470
+f16,cold,dataflow-pf,240,188,gate|up x8,71.040
+f16,cold,dataflow-pf,240,189,down x8,38.150
+f16,cold,dataflow-pf,240,190,q|k|v,27.450
+f16,cold,dataflow-pf,240,191,o,21.560
+f16,cold,dataflow-pf,240,192,router,6.280
+f16,cold,dataflow-pf,240,193,gate|up x8,71.530
+f16,cold,dataflow-pf,240,194,down x8,38.500
+f16,cold,dataflow-pf,240,195,q|k|v,27.640
+f16,cold,dataflow-pf,240,196,o,21.640
+f16,cold,dataflow-pf,240,197,router,6.380
+f16,cold,dataflow-pf,240,198,gate|up x8,71.800
+f16,cold,dataflow-pf,240,199,down x8,38.340
+f16,cold,dataflow-pf,240,200,q|k|v,27.450
+f16,cold,dataflow-pf,240,201,o,21.590
+f16,cold,dataflow-pf,240,202,router,6.360
+f16,cold,dataflow-pf,240,203,gate|up x8,72.240
+f16,cold,dataflow-pf,240,204,down x8,38.580
+f16,cold,dataflow-pf,240,205,q|k|v,27.480
+f16,cold,dataflow-pf,240,206,o,21.600
+f16,cold,dataflow-pf,240,207,router,6.290
+f16,cold,dataflow-pf,240,208,gate|up x8,71.660
+f16,cold,dataflow-pf,240,209,down x8,38.680
+f16,cold,dataflow-pf,240,210,q|k|v,27.410
+f16,cold,dataflow-pf,240,211,o,21.580
+f16,cold,dataflow-pf,240,212,router,6.310
+f16,cold,dataflow-pf,240,213,gate|up x8,71.400
+f16,cold,dataflow-pf,240,214,down x8,38.340
+f16,cold,dataflow-pf,240,215,q|k|v,27.680
+f16,cold,dataflow-pf,240,216,o,21.600
+f16,cold,dataflow-pf,240,217,router,6.370
+f16,cold,dataflow-pf,240,218,gate|up x8,70.960
+f16,cold,dataflow-pf,240,219,down x8,38.690
+f16,cold,dataflow-pf,240,220,q|k|v,27.470
+f16,cold,dataflow-pf,240,221,o,21.610
+f16,cold,dataflow-pf,240,222,router,6.330
+f16,cold,dataflow-pf,240,223,gate|up x8,70.880
+f16,cold,dataflow-pf,240,224,down x8,38.640
+f16,cold,dataflow-pf,240,225,q|k|v,27.200
+f16,cold,dataflow-pf,240,226,o,21.580
+f16,cold,dataflow-pf,240,227,router,6.410
+f16,cold,dataflow-pf,240,228,gate|up x8,71.320
+f16,cold,dataflow-pf,240,229,down x8,38.450
+f16,cold,dataflow-pf,240,230,q|k|v,27.630
+f16,cold,dataflow-pf,240,231,o,21.650
+f16,cold,dataflow-pf,240,232,router,6.290
+f16,cold,dataflow-pf,240,233,gate|up x8,72.410
+f16,cold,dataflow-pf,240,234,down x8,38.900
+f16,cold,dataflow-pf,240,235,q|k|v,27.430
+f16,cold,dataflow-pf,240,236,o,21.780
+f16,cold,dataflow-pf,240,237,router,6.260
+f16,cold,dataflow-pf,240,238,gate|up x8,71.310
+f16,cold,dataflow-pf,240,239,down x8,39.070
+f16,cold,dataflow-pf,240,240,lm_head,701.010

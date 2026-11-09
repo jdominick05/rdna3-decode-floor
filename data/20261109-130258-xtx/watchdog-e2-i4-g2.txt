@@ -1,0 +1,1 @@
+rc=0 wall=2.040211951 s peak XTX 698 MiB peak XT 34 MiB min avail 20591 MiB

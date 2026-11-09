@@ -1,0 +1,28 @@
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor check fmt=i4 cache=cold poll=0 sleep=1
+PASS check f16     8192 x  2048 35B gdn_qkv_proj       tile vs reference max rel 8.28e-05, reference vs host 7.51e-07, non-finite 0
+PASS check f16     4096 x  2048 30B/35B q_proj         tile vs reference max rel 7.46e-05, reference vs host 5.88e-07, non-finite 0
+PASS check f16     2048 x  4096 30B/35B o_proj         tile vs reference max rel 7.33e-05, reference vs host 2.62e-06, non-finite 0
+PASS check f16      512 x  2048 30B/35B k_proj v_proj  tile vs reference max rel 5.68e-05, reference vs host 5.88e-07, non-finite 0
+PASS check f16     2048 x   512 35B shared_down        tile vs reference max rel 2.97e-05, reference vs host 3.75e-07, non-finite 0
+PASS check f16      256 x  2048 35B router             tile vs reference max rel 2.14e-05, reference vs host 8.70e-07, non-finite 0
+PASS check f16      128 x  2048 30B router             tile vs reference max rel 2.14e-05, reference vs host 7.90e-07, non-finite 0
+PASS check f16       32 x  2048 35B gdn_b gdn_a        tile vs reference max rel 2.14e-05, reference vs host 5.88e-07, non-finite 0
+PASS check f16   151936 x  2048 30B lm_head            tile vs reference max rel 1.50e-04, reference vs host 5.88e-07, non-finite 0
+PASS check f16   248320 x  2048 35B lm_head            tile vs reference max rel 1.63e-04, reference vs host 5.88e-07, non-finite 0
+PASS check f16      768 x  2048 30B moe gate/up        tile vs reference max rel 5.68e-05, reference vs host 5.88e-07, non-finite 0
+PASS check f16     2048 x   768 30B moe down           tile vs reference max rel 5.10e-05, reference vs host 4.77e-07, non-finite 0
+PASS check f16      512 x  2048 35B moe gate/up        tile vs reference max rel 5.68e-05, reference vs host 5.88e-07, non-finite 0
+PASS check i4      8192 x  2048 35B gdn_qkv_proj       tile vs reference max rel 1.38e-04, reference vs host 3.66e-07, non-finite 0
+PASS check i4      4096 x  2048 30B/35B q_proj         tile vs reference max rel 1.38e-04, reference vs host 1.06e-06, non-finite 0
+PASS check i4      2048 x  4096 30B/35B o_proj         tile vs reference max rel 1.76e-04, reference vs host 1.92e-05, non-finite 0
+PASS check i4       512 x  2048 30B/35B k_proj v_proj  tile vs reference max rel 4.99e-05, reference vs host 1.29e-06, non-finite 0
+PASS check i4      2048 x   512 35B shared_down        tile vs reference max rel 1.65e-05, reference vs host 9.53e-07, non-finite 0
+PASS check i4       256 x  2048 35B router             tile vs reference max rel 4.99e-05, reference vs host 7.75e-08, non-finite 0
+PASS check i4       128 x  2048 30B router             tile vs reference max rel 4.99e-05, reference vs host 8.32e-07, non-finite 0
+PASS check i4        32 x  2048 35B gdn_b gdn_a        tile vs reference max rel 1.88e-05, reference vs host 3.18e-07, non-finite 0
+PASS check i4    151936 x  2048 30B lm_head            tile vs reference max rel 2.06e-04, reference vs host 1.10e-07, non-finite 0
+PASS check i4    248320 x  2048 35B lm_head            tile vs reference max rel 2.92e-04, reference vs host 1.17e-05, non-finite 0
+PASS check i4       768 x  2048 30B moe gate/up        tile vs reference max rel 4.99e-05, reference vs host 1.62e-06, non-finite 0
+PASS check i4      2048 x   768 30B moe down           tile vs reference max rel 6.29e-05, reference vs host 8.79e-07, non-finite 0
+PASS check i4       512 x  2048 35B moe gate/up        tile vs reference max rel 4.99e-05, reference vs host 1.29e-06, non-finite 0
+RESULT PASS

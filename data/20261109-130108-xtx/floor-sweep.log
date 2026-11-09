@@ -1,0 +1,40 @@
+W1109 13:01:33.273105  141244 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000292 sec
+W1109 13:01:33.273309  141244 simple_timer.cpp:55] [rocprofv3] 'env FLOOR_GRIDS=256,288,320,336,352,368,376,380,382,383,384,385,386,388,392,400,416,448,480,512,576,768 FLOOR_MV_GRIDS=376,384,392 build/decode_floor floor --reps 200 --expect-cus 48 --csv results/20261109-130108-xtx/floor-sweep.csv' ::     0.000000 sec
+W1109 13:01:33.333424  141244 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000278 sec
+W1109 13:01:33.333504  141244 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor floor --reps 200 --expect-cus 48 --csv results/20261109-130108-xtx/floor-sweep.csv' ::     0.000000 sec
+W1109 13:01:33.346600  141244 tool.cpp:3770] HSA version 1.21.0 initialized (instance=0)
+W1109 13:01:33.496514  141244 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor floor --reps 200 --expect-cus 48 --csv results/20261109-130108-xtx/floor-sweep.csv' ::     0.163009 sec
+E1109 13:01:33.507955  141244 output_stream.cpp:110] Opened result file: results/20261109-130108-xtx/prof-floor-sweep/floor-sweep_kernel_trace.csv
+E1109 13:01:33.554874  141244 output_stream.cpp:110] Opened result file: results/20261109-130108-xtx/prof-floor-sweep/floor-sweep_agent_info.csv
+W1109 13:01:33.556395  141244 simple_timer.cpp:55] [rocprofv3] output generation ::     0.059555 sec
+W1109 13:01:33.556418  141244 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.059599 sec
+W1109 13:01:33.556486  141252 tool.cpp:4676] [PPID=141222][PID=141244][TID=141252][signal_finalization_worker] rocprofv3 finalizing after signal 0...
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor floor fmt=i4 cache=cold poll=0 sleep=1
+floor,empty,-,-,0,0,256,0,0,200
+floor,empty,-,-,0,0,288,0,0,200
+floor,empty,-,-,0,0,320,0,0,200
+floor,empty,-,-,0,0,336,0,0,200
+floor,empty,-,-,0,0,352,0,0,200
+floor,empty,-,-,0,0,368,0,0,200
+floor,empty,-,-,0,0,376,0,0,200
+floor,empty,-,-,0,0,380,0,0,200
+floor,empty,-,-,0,0,382,0,0,200
+floor,empty,-,-,0,0,383,0,0,200
+floor,empty,-,-,0,0,384,0,0,200
+floor,empty,-,-,0,0,385,0,0,200
+floor,empty,-,-,0,0,386,0,0,200
+floor,empty,-,-,0,0,388,0,0,200
+floor,empty,-,-,0,0,392,0,0,200
+floor,empty,-,-,0,0,400,0,0,200
+floor,empty,-,-,0,0,416,0,0,200
+floor,empty,-,-,0,0,448,0,0,200
+floor,empty,-,-,0,0,480,0,0,200
+floor,empty,-,-,0,0,512,0,0,200
+floor,empty,-,-,0,0,576,0,0,200
+floor,empty,-,-,0,0,768,0,0,200
+floor,matvec,i4,cold,6016,128,376,409088,986,200
+floor,matvec,i4,cold,6144,128,384,417792,965,200
+floor,matvec,i4,cold,6272,128,392,426496,946,200
+floor,matvec,i4,cold,6016,2048,376,6545408,63,200
+floor,matvec,i4,cold,6144,2048,384,6684672,62,200
+floor,matvec,i4,cold,6272,2048,392,6823936,61,200

@@ -1,0 +1,27 @@
+date 2026-11-09T13:04:48-05:00
+kernel 7.0.0-38-generic
+rocm ~/rocm-therock/10.2.0a20261011
+HIP version: 7.17.26405-0000000
+AMD clang version 24.0.0git (https://github.com/ROCm/llvm-project.git 862306352beb9946c78b3e355d0d5201bbccfa3a)
+device 0000:03:00.0 high
+sclk:
+S: 0Mhz *
+1: 500Mhz 
+2: 2482Mhz 
+mclk:
+0: 96Mhz 
+1: 456Mhz 
+2: 772Mhz 
+3: 1249Mhz *
+runpm 0
+aspm policy: [default] performance powersave powersupersave 
+link 0000:00:01.1: 16.0 GT/s PCIe x16 l1_aspm=-
+link 0000:01:00.0: 16.0 GT/s PCIe x16 l1_aspm=1
+link 0000:02:00.0: 16.0 GT/s PCIe x16 l1_aspm=-
+link 0000:03:00.0: 16.0 GT/s PCIe x16 l1_aspm=1
+displays (connector on PCI device):
+  card3-HDMI-A-3 on 0000:76:00.0
+usage: decode_floor check|shapes|sweep|floor|pshapes|sync|token [--fmt f16|i4] [--warm] [--reps N] [--stages N] [--layers N] [--tokens N] [--csv FILE] [--expect-cus N] [--grid-per-cu N]
+99efcebebfda70b133d0e7c14f6862d2  build/decode_floor
+53d487e6025e1abf33306ca17e806aff  src/decode_floor.hip
+2b22b961abadcaef6d9077c78050801feb1e615d

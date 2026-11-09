@@ -1,0 +1,20 @@
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor token fmt=i4 cache=cold poll=0 sleep=1
+# token model: i4, 48 layers, 128 experts per layer allocated, 16.05 GB
+# token: 1393 matvecs in 241 stages, 1.616 GB of weights per token, 8 routing samples
+# persistent grid 240 blocks of 256 (5 per WGP; occupancy max per WGP: barrier 7, barrier-pf 5, dataflow 8, dataflow-pf 5), wall clock 100 MHz
+PASS token: dataflow outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+token,i4,cold,per-op,48,1393,241,1615880192,8.993,8.954,9.032,179.7,0,ok
+token,i4,cold,per-op-graph,48,1393,241,1615880192,8.199,8.179,8.235,197.1,0,ok
+token,i4,cold,grouped,48,1393,241,1615880192,3.806,3.777,3.827,424.5,0,ok
+token,i4,cold,grouped-graph,48,1393,241,1615880192,3.670,3.661,3.685,440.3,0,ok
+token,i4,cold,persistent-barrier,48,1393,241,1615880192,,,,,240,skip
+token,i4,cold,persistent-barrier-pf,48,1393,241,1615880192,,,,,240,skip
+token,i4,cold,persistent-dataflow,48,1393,241,1615880192,4.661,4.648,4.670,346.7,240,ok
+token,i4,cold,persistent-dataflow-pf,48,1393,241,1615880192,4.768,4.749,4.804,338.9,240,ok
+# stages dataflow     q|k|v 13.96 o 10.03 router 3.47 gate|up x8 38.52 down x8 21.60 lm_head 214.06 (us, median by kind)
+# stages dataflow     q|k|v 14.02 o 10.00 router 3.45 gate|up x8 38.59 down x8 21.61 lm_head 214.06 (us, mean by kind)
+# stages dataflow     sum of stage medians 4422.3 us; first block start to last stage end 4410.5 us (median of 10 runs)
+# stages dataflow-pf  q|k|v 11.04 o 8.25 router 2.93 gate|up x8 37.95 down x8 29.63 lm_head 206.54 (us, median by kind)
+# stages dataflow-pf  q|k|v 11.22 o 8.24 router 2.93 gate|up x8 38.06 down x8 29.63 lm_head 206.54 (us, mean by kind)
+# stages dataflow-pf  sum of stage medians 4530.7 us; first block start to last stage end 4526.4 us (median of 10 runs)

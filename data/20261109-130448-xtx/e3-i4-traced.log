@@ -1,0 +1,37 @@
+W1109 13:06:28.005614  158583 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000302 sec
+W1109 13:06:28.005900  158583 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor token --fmt i4 --tokens 4 --reps 100 --expect-cus 48' ::     0.000000 sec
+W1109 13:06:28.019272  158583 tool.cpp:3770] HSA version 1.21.0 initialized (instance=0)
+W1109 13:06:28.953185  158583 simple_timer.cpp:55] [rocprofv3] 'build/decode_floor token --fmt i4 --tokens 4 --reps 100 --expect-cus 48' ::     0.947285 sec
+E1109 13:06:28.956712  158583 output_stream.cpp:110] Opened result file: results/20261109-130448-xtx/prof-e3-i4/e3-i4_kernel_trace.csv
+E1109 13:06:29.185798  158583 output_stream.cpp:110] Opened result file: results/20261109-130448-xtx/prof-e3-i4/e3-i4_agent_info.csv
+W1109 13:06:29.190431  158583 simple_timer.cpp:55] [rocprofv3] output generation ::     0.236266 sec
+W1109 13:06:29.190473  158583 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.236329 sec
+W1109 13:06:29.190577  158586 tool.cpp:4676] [PPID=158561][PID=158583][TID=158586][signal_finalization_worker] rocprofv3 finalizing after signal 0...
+# device AMD Radeon RX 7900 XTX (gfx1100), 48 CUs, decode_floor token fmt=i4 cache=cold poll=0 sleep=1
+# token model: i4, 48 layers, 128 experts per layer allocated, 16.05 GB
+# token: 1393 matvecs in 241 stages, 1.616 GB of weights per token, 4 routing samples
+# persistent grid 240 blocks of 256 (5 per WGP; occupancy max per WGP: barrier 7, barrier-pf 5, dataflow 8, dataflow-pf 5), wall clock 100 MHz
+PASS token: barrier outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: barrier-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+PASS token: dataflow-pf outputs == the per-op outputs bitwise (1878400 floats), dependency check ok
+token,i4,cold,per-op,48,1393,241,1615880192,11.323,11.215,11.506,142.7,0,ok
+token,i4,cold,per-op-graph,48,1393,241,1615880192,10.457,10.395,10.805,154.5,0,ok
+token,i4,cold,grouped,48,1393,241,1615880192,4.192,4.185,4.287,385.4,0,ok
+token,i4,cold,grouped-graph,48,1393,241,1615880192,4.059,4.051,4.147,398.1,0,ok
+token,i4,cold,persistent-barrier,48,1393,241,1615880192,4.038,4.028,4.045,400.2,240,ok
+token,i4,cold,persistent-barrier-pf,48,1393,241,1615880192,3.820,3.818,3.856,423.1,240,ok
+token,i4,cold,persistent-dataflow,48,1393,241,1615880192,4.873,4.868,4.911,331.6,240,ok
+token,i4,cold,persistent-dataflow-pf,48,1393,241,1615880192,4.606,4.596,4.630,350.8,240,ok
+# stages barrier      q|k|v 14.52 o 9.96 router 3.84 gate|up x8 26.60 down x8 19.48 lm_head 203.12 (us, median by kind)
+# stages barrier      q|k|v 14.61 o 9.97 router 3.81 gate|up x8 26.64 down x8 19.47 lm_head 203.12 (us, mean by kind)
+# stages barrier      sum of stage medians 3779.5 us; first block start to last stage end 3781.0 us (median of 10 runs)
+# stages barrier-pf   q|k|v 9.48 o 8.56 router 3.16 gate|up x8 27.64 down x8 21.16 lm_head 196.60 (us, median by kind)
+# stages barrier-pf   q|k|v 9.70 o 8.56 router 3.15 gate|up x8 27.68 down x8 21.18 lm_head 196.60 (us, mean by kind)
+# stages barrier-pf   sum of stage medians 3569.8 us; first block start to last stage end 3563.2 us (median of 10 runs)
+# stages dataflow     q|k|v 13.70 o 9.95 router 3.42 gate|up x8 37.92 down x8 27.02 lm_head 214.16 (us, median by kind)
+# stages dataflow     q|k|v 13.74 o 9.96 router 3.42 gate|up x8 37.81 down x8 27.06 lm_head 214.16 (us, mean by kind)
+# stages dataflow     sum of stage medians 4630.1 us; first block start to last stage end 4624.4 us (median of 10 runs)
+# stages dataflow-pf  q|k|v 10.05 o 8.52 router 2.93 gate|up x8 38.25 down x8 26.25 lm_head 206.08 (us, median by kind)
+# stages dataflow-pf  q|k|v 10.28 o 8.53 router 2.92 gate|up x8 38.20 down x8 26.21 lm_head 206.08 (us, mean by kind)
+# stages dataflow-pf  sum of stage medians 4340.5 us; first block start to last stage end 4331.0 us (median of 10 runs)

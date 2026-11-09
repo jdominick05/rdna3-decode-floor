@@ -1,0 +1,9 @@
+mode,fmt,cache,strategy,layers,matvecs,stages,weight_bytes,ms_median,ms_p10,ms_p90,effective_GBps,persistent_grid,status
+token,i4,cold,per-op,48,1393,241,1615880192,8.864,8.857,8.873,182.3,0,ok
+token,i4,cold,per-op-graph,48,1393,241,1615880192,8.179,8.174,8.184,197.6,0,ok
+token,i4,cold,grouped,48,1393,241,1615880192,3.784,3.775,3.796,427.1,0,ok
+token,i4,cold,grouped-graph,48,1393,241,1615880192,3.679,3.668,3.692,439.2,0,ok
+token,i4,cold,persistent-barrier,48,1393,241,1615880192,3.801,3.780,3.810,425.2,240,ok
+token,i4,cold,persistent-barrier-pf,48,1393,241,1615880192,3.600,3.580,3.608,448.9,240,ok
+token,i4,cold,persistent-dataflow,48,1393,241,1615880192,4.659,4.636,4.667,346.8,240,ok
+token,i4,cold,persistent-dataflow-pf,48,1393,241,1615880192,4.365,4.353,4.381,370.2,240,ok
