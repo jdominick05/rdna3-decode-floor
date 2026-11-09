@@ -21,8 +21,8 @@ in [iree-org/iree#24165](https://github.com/iree-org/iree/issues/24165) and
   gaps are 6–10 % of it, and most of the rest is dependent memory latency inside small kernels.
 - A persistent kernel replaces each launch gap with a barrier of about the same cost. Here its best variant was 4 %
   slower than the graph with default settings, and 2 % faster with the PCIe link kept awake.
-- On this XTX, any single kernel longer than ~1 ms pays ~250 µs of PCIe link wake-up after it ends. No GPU clock sees
-  it, but the host does.
+- On this XTX, any single kernel longer than ~1 ms (persistent or not) pays ~250 µs of PCIe link wake-up after it
+  ends. No GPU clock sees it, but the host does.
 
 ## Build and run
 
@@ -31,7 +31,7 @@ tables.
 
 ```
 ROCM=/opt/rocm ./build.sh
-./run.sh smoke        # small sizes on a second card first (DEVICE=n picks the HIP device; run.sh documents the rest)
+./run.sh smoke        # small sizes on a second card first (an XTX alone: DEVICE=0 EXPECT_CUS=48 ./run.sh smoke)
 ./run.sh xtx          # the measurements: results/<date>-xtx/tables.md
 ```
 

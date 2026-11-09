@@ -8,6 +8,7 @@
 # variant failed its wait or dependency check; its rows say "fail") is recorded and the script goes on.
 #   ROCM   a ROCm install with hipcc and rocprofv3 (default /opt/rocm)
 #   DEVICE the HIP device index of the card (default: smoke 1, xtx 0; --expect-cus refuses any other card model)
+#   EXPECT_CUS  smoke only: the WGP count the card must report (default 42, the RX 7900 XT; 48 runs smoke on an XTX)
 #   PCI    its PCI address, for the environment record (clocks, link state; default: smoke 0000:06:00.0, xtx 0000:03:00.0)
 #   smoke  the RX 7900 XT alone (device 1, 84 CUs = 42 WGPs; HIP reports WGPs on RDNA3), small sizes: nothing reported
 #   xtx    the RX 7900 XTX (device 0, 96 CUs = 48 WGPs): E0, the floor split, E1, sync, E2, E3 (+ occupancy, one-tile claims)
@@ -27,7 +28,7 @@ if [ -n "$GUARD" ] && [ ! -x "$GUARD" ]; then echo "GUARD=$GUARD is not executab
 [ -n "$GUARD" ] || echo "no GUARD: stages run under timeout only, clocks not pinned"
 
 case $MODE in
-  smoke) export HIP_VISIBLE_DEVICES=${DEVICE:-1}; DEV=(--expect-cus 42); PCI=${PCI:-0000:06:00.0} ;;
+  smoke) export HIP_VISIBLE_DEVICES=${DEVICE:-1}; DEV=(--expect-cus ${EXPECT_CUS:-42}); PCI=${PCI:-0000:06:00.0} ;;
   xtx)   export HIP_VISIBLE_DEVICES=${DEVICE:-0}; DEV=(--expect-cus 48); PCI=${PCI:-0000:03:00.0} ;;
   *) echo "usage: run.sh smoke|xtx"; exit 2 ;;
 esac

@@ -41,9 +41,11 @@ Measured 2026-11-09 on one RX 7900 XTX (gfx1100, 96 CUs / 48 WGPs, 960 GB/s GDDR
    - **On this XTX, any single kernel that runs longer than about 1.0 ms pays about 250 µs when it ends.** The host
      sees completion that long after the GPU's own clocks say the kernel finished. Grouped launch sequences don't pay
      it, presumably because their stream of command fetches keeps the link busy.
+   - **It is not specific to persistent kernels.** A plain 1.13 ms kernel (the f16 35B vocab head) pays it too, even
+     with the next launches already queued.
    - **A host thread reading GPU memory over PCIe removes it completely.**
-   - **A real decode loop on this machine pays it on every token,** because the host must read the result before it
-     can pick the next token.
+   - **Every such launch pays it, back-to-back launches too,** so a decode loop that runs one long kernel per token
+     pays it on every token.
    - **On GPU time, the persistent kernel recovers the ~0.35 ms of gaps but spends ~0.26 ms more inside its stages.**
      The experts' down projections cost +0.52 ms; prefetching the next stage's weights saves 0.31 ms on q|k|v and o.
    - **This is far from the pre-registered bar.** The refutation test asked for at least 1.25× faster than the graph.
@@ -291,6 +293,9 @@ cell is the median of 3 runs × 60 windows.
   - With the monitors moved to the integrated GPU: 79 of 80.
 - **It is not a link speed change.** The CPU-side root port held 16 GT/s x16 throughout, polled every 1 ms; it drops to
   2.5 GT/s x1 only when the program is idle.
+- **It is not specific to persistent kernels.** E0 times plain kernels launched back to back (events around each, no
+  host wait between). The f16 35B vocab head, 1,129 µs by rocprofv3, reads 1,385 µs by events (+257 µs). The 0.70 ms
+  30B head reads +21 µs and the INT4 heads (0.19 and 0.31 ms) +12 µs.
 - **It needs about 1.0 ms of idle bus.** The default-link E2 tables hold 528 persistent measurements (3 runs × 44
   shape, grid and format rows × 4 variants; each one a median over many launches):
   - none of the 179 kernels that took 1.01 ms or less paid it (13–44 µs, normal launch latency);
@@ -371,8 +376,8 @@ against round-robin tiles is the obvious difference, but it was not tested.
 | P2 (revised): one-tile stage barrier 3.5–4.5, dataflow 2.8–3.5, dataflow-pf 2.0–2.6 µs | Barrier 3.00–3.64: **below** at low grids. Dataflow 2.84–3.01: **held**. Dataflow-pf 1.76–2.19: **at or below**. |
 | Empty-stage barrier 1–2 µs | 0.92–1.52: **held**. |
 | barrier-pf no better than barrier in sync | **Held.** It was worse: 3.64–5.28. |
-| E2: dataflow-pf ≥ 1.5 µs below launches and graph on small shapes | Below launches: **held** (1.5–2.6). Below the graph: **held** for K = 2048 shapes (1.6–2.2), **missed** for K = 512 / 768 (1.0). |
-| E2: shapes over 4 MB within 15 % across modes | **Missed** for INT4: dataflow-pf 19–34 % faster than the graph. |
+| E2: dataflow-pf ≥ 1.5 µs below launches and graph on small shapes | Scored on the plan's metric, default-link event time. Below launches: **held** (1.5–2.6; down at the edge, 1.46). Below the graph: **held** for K = 2048 shapes (1.5–2.0), **missed** for K = 512 / 768 (0.9–1.0). Awake-link stamps give the same verdicts (1.5–2.6; 1.6–2.2; 1.0). |
+| E2: shapes over 4 MB within 15 % across modes | **Missed** for INT4. On default-link event time, dataflow-pf is 9–29 % faster than the graph, and barrier-pf ranges from 24 % faster to 12 % slower (o). On awake-link stamps, dataflow-pf is 19–34 % faster. |
 | E3: per-op 7–9 ms | 9.02 (8.87 with the link awake): **at the upper edge**. |
 | E3: grouped and grouped graph 2.9–3.6 ms | 3.68–3.82: **missed**, slightly above. |
 | E3: best persistent 2.6–3.4 ms | 3.83 (3.60 with the link awake): **missed**. |
@@ -390,8 +395,8 @@ against round-robin tiles is the obvious difference, but it was not tested.
 - **A persistent kernel replaces each launch gap with a barrier of about the same cost.** What it can add is starting
   the next stage's weight loads before the barrier. What it can lose is any stage whose tiles a resident grid works
   through one after another, such as the MoE down projections.
-- **On a 7900 XTX with default link power settings, the persistent design pays a wake-up that launch sequences don't.**
-  A kernel longer than ~1 ms pays ~250 µs, which wipes out the gain here. Time any persistent kernel by GPU stamps as
+- **On a 7900 XTX with default link power settings, a persistent design pays a wake-up that launch sequences don't.**
+  Any kernel longer than ~1 ms pays ~250 µs, which wipes out the gain here. Time any persistent kernel by GPU stamps as
   well as by events.
 - **What would move it, in this order:**
   1. group the experts;
@@ -416,7 +421,8 @@ against round-robin tiles is the obvious difference, but it was not tested.
 5. **Chunk sizes must round up.** With ⌊9,496 / 210⌋ = 45 tiles per chunk, the vocab head had 212 chunks for 210 blocks.
    The two blocks with a second chunk made the stage 1.44× as long.
 6. **Time a persistent kernel by GPU stamps as well as by events.**
-   - On this XTX, a single kernel longer than ~1 ms paid ~250 µs of link wake-up that only events and the host saw.
+   - On this XTX, any single kernel longer than ~1 ms (persistent or not) paid ~250 µs of link wake-up that only events
+     and the host saw.
    - rocprofv3's kernel duration doesn't show it either.
    - A host thread reading device memory over PCIe keeps the link awake (`DF_LINK_KEEPALIVE=1`).
 7. **Grids of 380–384 blocks cost ~9 µs extra per launch on this XTX:** just under the 3,072 wave slots of 384 blocks
@@ -442,8 +448,10 @@ against round-robin tiles is the obvious difference, but it was not tested.
 - **"Cold" means cache-cold, not DRAM-cold.** The copies are walked in address order, so consecutive launches touch
   adjacent DRAM pages. The token's stages read non-adjacent weights.
 - **The gap estimates mix traced and untraced numbers.** Tracing inflates the gaps, so two estimates are given.
-- **Display.** The three runs had no display on the XTX. Earlier runs with two monitors on it gave the same launch-mode
-  numbers within 1 %.
+- **Display.** The three runs had no display on the XTX, with one exception: the monitors were moved back during run
+  3's last four stages (window with keep-alive, occupancy, one-tile claims, traced). Those stages match runs 1 and 2
+  within 0.3 %, and run 3's `environment.txt`, recorded at its start, still shows the integrated GPU. Earlier runs
+  with two monitors on the XTX gave the same launch-mode numbers within 1 %.
 - **Traces are not in data/.** The rocprofv3 traces (~370 MB per run) are not included; each run's `tables.md` holds
   what was derived from them. run.sh regenerates them.
 
@@ -451,7 +459,8 @@ against round-robin tiles is the obvious difference, but it was not tested.
 
 ```
 ROCM=/opt/rocm ./build.sh                    # hipcc from a ROCm install
-./run.sh smoke                               # a second card first, small sizes (DEVICE=n picks the HIP device)
+./run.sh smoke                               # a second card first, small sizes (DEVICE=n picks the HIP device;
+                                             # an XTX alone: DEVICE=0 EXPECT_CUS=48 ./run.sh smoke)
 ./run.sh xtx                                 # the measurements: results/<date>-xtx/ with tables.md
 python3 analyze.py --spread spread.md results/*-xtx    # medians and ranges across runs
 ```
