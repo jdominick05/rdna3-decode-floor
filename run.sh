@@ -56,7 +56,7 @@ envinfo() {  # the environment, read under the watchdog (so at its clocks)
     echo "link $x: $(cat /sys/bus/pci/devices/$x/current_link_speed 2>/dev/null) x$(cat /sys/bus/pci/devices/$x/current_link_width 2>/dev/null) l1_aspm=$(cat /sys/bus/pci/devices/$x/link/l1_aspm 2>/dev/null || echo -)"
   done
   echo "displays (connector on PCI device):"
-  for c in /sys/class/drm/card*-*; do if [ "$(cat $c/status 2>/dev/null)" = connected ]; then echo "  $(basename $c) on $(basename "$(readlink -f $c/device)")"; fi; done
+  for c in /sys/class/drm/card*-*; do if [ "$(cat $c/status 2>/dev/null)" = connected ]; then echo "  $(basename $c) on $(basename "$(readlink -f $c/device/device)")"; fi; done
   "$BIN" 2>&1 | head -1; md5sum "$BIN" "$HERE/src/decode_floor.hip"; git -C "$HERE" rev-parse HEAD 2>/dev/null; git -C "$HERE" status --short 2>/dev/null | head
 }
 export -f envinfo; export D PCI ROCM BIN HERE
