@@ -54,6 +54,13 @@ microbenchmarks did the same.
 Out of scope: attention, the norms, RoPE, sampling and the top-k selection. This measures the matvec part of the
 token only, and the report will say so.
 
+**What the token numbers can be compared with.** The "token" here is the 1,393 matvecs, not a decode token. Its times
+are compared only between the launch modes of this benchmark (per-op, grouped, graph, persistent), which run the same
+matvec code on the same weights. They are never compared with whole-token speeds such as IREE's 120 tok/s or
+llama.cpp's 99.4 tok/s, which also include attention, norms, routing and sampling: a matvec-only time of a few ms
+would look several times faster than those without being so. The one outside comparison allowed is per kernel: our
+single-dispatch times against the per-kernel times in iree#23507 (E0), shape for shape, cold cache, rocprofv3.
+
 ## Hypotheses
 
 - **H1 (floor):** a small matvec's ~5 µs kernel time is mostly fixed per-kernel cost: wave launch ramp, first-load
@@ -72,7 +79,7 @@ so 1.46 GB for the layers plus 0.17 GB for the lm_head: **1.63 GB per token**.
 - **P2:** inside the persistent kernel, the same fit gives t0' of 1–3 µs per dependent stage.
 - **P3, the token (INT4, matvecs only):**
   - **A, one dispatch per matvec:** about the sum of single-kernel times. If our kernels match IREE's Table 2, that is
-    7–8 ms (48 × 154.8 µs + 231.8 µs = 7.66 ms from their numbers).
+    7–8 ms (48 × 154.8 µs + 231.8 µs = 7.66 ms, summed from their per-kernel times; matvecs only, like ours).
   - **A', experts grouped** (8 experts' gate+up in one dispatch, the 8 downs in one, like their extern kernels): lower
     than A. How much lower is the grouping gain, measured separately from persistence.
   - **B, A' as a HIP graph:** lower than A' by the launch gaps.
@@ -87,7 +94,10 @@ so 1.46 GB for the layers plus 0.17 GB for the lm_head: **1.63 GB per token**.
 
 ### Controls
 - **Same matvec code in every mode.** A, A', B and C call the same device functions per tile; only the launch
-  strategy changes.
+  strategy changes. Checked in the generated gfx1100 code: the weight loads are `global_load_b128` in every kernel
+  (explicit global address-space pointers; without them the persistent kernel got `flat_load`), and the matvec loops
+  have the same instruction mix (57 `v_dot2acc_f32_f16`, 32 `v_pk_add_f16` per kernel) up to scheduling: per loop body
+  of 19–156 instructions, at most one instruction differs plus `s_delay_alu` hints.
 - **Cache state.**
   - "Cold" (the default): weights rotate through buffers totalling more than 4× the 96 MB Infinity Cache, so nothing
     is reused between runs. The token runs already read 1.6 GB (INT4) and 6.1 GB (f16) each.
