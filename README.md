@@ -29,6 +29,21 @@ in [iree-org/iree#24165](https://github.com/iree-org/iree/issues/24165) and
   of its links removed it (root tests, [data/link-tests/](data/link-tests/)), as did a host thread reading GPU memory
   over PCIe.
 
+## The whole model
+
+This study times one token's matvecs in isolation. The follow-up serves the whole model on the same card, from the
+GGUF file to output tokens: [Qwen3-30B-A3B on Caminus's own code](https://github.com/jdominick05/caminus/blob/testing/docs/dev/qwen3-30b-a3b.md).
+
+- One persistent kernel per token, with tiles that issue all their loads before using any (what this study pointed
+  to): 246 tok/s at short context and 106 tok/s at the full 40,960-token context, 55 % to 74 % of a bound set by the
+  bytes a token must read at the 858 GB/s measured here.
+- Where the rest of a token goes: about half is what its 432 dependent stages cost before they load or compute
+  anything (task claims, barriers, result stores, publishes). The hand-off between stages is 0.1 ms of it.
+- The link delay this study found (ASPM L1 on the card's path) cost the whole model 0.2 ms on every token. One tape
+  segment that touches host-mapped memory keeps the link awake, with no system setting.
+
+The code lives in [Caminus](https://github.com/jdominick05/caminus) (AGPL-3.0); none of it is copied here.
+
 ## Build and run
 
 Needs a ROCm install with `hipcc` and `rocprofv3`, a 7900 XTX with most of its 24 GB free, and Python 3 for the
