@@ -35,10 +35,11 @@ This study times one token's matvecs in isolation. The follow-up serves the whol
 GGUF file to output tokens: [Qwen3-30B-A3B on Caminus's own code](https://github.com/jdominick05/caminus/blob/testing/docs/dev/qwen3-30b-a3b.md).
 
 - One persistent kernel per token, with tiles that issue all their loads before using any (what this study pointed
-  to): 246 tok/s at short context and 106 tok/s at the full 40,960-token context, 55 % to 74 % of a bound set by the
+  to): 248 tok/s at short context and 111 tok/s at the full 40,960-token context, 55 % to 77 % of a bound set by the
   bytes a token must read at the 858 GB/s measured here.
-- Where the rest of a token goes: about half is what its 432 dependent stages cost before they load or compute
-  anything (task claims, barriers, result stores, publishes). The hand-off between stages is 0.1 ms of it.
+- Where the rest of a token goes: every weight stage costs 3 to 5 us on top of its bytes, whatever its size (a long
+  stage like the output head runs at 99 % of the bus's speed), and the stages that read no weights (attention at
+  short context, the norms, the router's top 8) run while the bus idles. The hand-off between stages is 0.1 ms.
 - The link delay this study found (ASPM L1 on the card's path) cost the whole model 0.2 ms on every token. One tape
   segment that touches host-mapped memory keeps the link awake, with no system setting.
 
